@@ -97,6 +97,10 @@ select#currency {
   margin-right: 5px;
 }
 
+.page-number span {
+  margin-right: 5px;
+}
+
 .page.current {
   border-bottom: 0.5px solid #000000;
 }
