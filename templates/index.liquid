@@ -6,12 +6,13 @@
       <h1 class="title">{{ collection.title }}</h1>
       <div class="top-menu-right">
         {%- paginate collection.products -%}
-        <div class="button">
-          {{ paginate | default_pagination: previous: 'BACK'}}
-        </div>
-        <div class="button">
-          {{ paginate | default_pagination: next: 'NEXT'}}
-        </div>
+          <a href="{{ paginate.previous.url }}">
+            <div class="button">BACK</div>
+          </a>
+          <a href="{{ paginate.next.url }}">
+            <div class="button">NEXT</div>
+          </a>
+          {%- endpaginate -%}
       </div>
     </div>
     <div class="top-menu-left">
