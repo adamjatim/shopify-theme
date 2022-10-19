@@ -6,10 +6,10 @@
       <h1 class="title">{{ collection.title }}</h1>
       <div class="top-menu-right">
         <div class="button">
-          {{default_pagination: previous: 'BACK'}}
+          {{ paginate | default_pagination: previous: 'BACK'}}
         </div>
         <div class="button">
-          {{ default_pagination: next: 'NEXT'}}
+          {{ paginate | default_pagination: next: 'NEXT'}}
         </div>
       </div>
     </div>
