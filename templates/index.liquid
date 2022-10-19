@@ -80,7 +80,7 @@
     </div>
   </div>
   <div class="pagination">
-    <div class="page-number">{{ paginate }}</div>
+    <div class="page-number">{{ paginate | default_pagination: next: ' ', previous: ' ' }}</div>
   </div>
   {%- endpaginate -%}
 </div>
