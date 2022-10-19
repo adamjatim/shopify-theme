@@ -87,12 +87,13 @@ select#currency {
 
 .pagination {
   margin: auto;
+  margin-bottom: 10px;
 }
 
 .page-number {
   width: 100px;
   margin: auto;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 h1.title {
