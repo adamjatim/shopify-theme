@@ -79,6 +79,8 @@
         </ul>
     </div>
   </div>
-  <div class="pagination">{{ paginate | default_pagination: next: 'Older', previous: 'Newer' }}</div>
+  <div class="pagination">
+    <div class="page-number">{{ paginate | default_pagination: next: 'Older', previous: 'Newer' }}</div>
+  </div>
   {%- endpaginate -%}
 </div>
