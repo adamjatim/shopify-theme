@@ -91,6 +91,7 @@ select#currency {
 }
 
 .page-number {
+  display: flex;
   width: auto;
   padding: 0px;
   margin: auto;
