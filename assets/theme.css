@@ -87,6 +87,7 @@ select#currency {
 
 .page-number {
   margin-right: 10px;
+  width: auto;
 }
 
 h1.title {
