@@ -85,9 +85,13 @@ select#currency {
   display: flex;
 }
 
-.page-number {
+.pagination {
+  margin: auto;
   margin-right: 10px;
-  width: auto;
+}
+
+.page-number {
+  width: 100px;
 }
 
 h1.title {
