@@ -33,7 +33,6 @@
                 <a href="{{ link.url }}" {% if link.active %}aria-current="page"{% endif %}>
                   <h2>{{ link.title }}</h2>
                 </a>
-        
                 {%- if link.links != blank -%}
                   <ul>
                     {%- for child_link in link.links -%}
@@ -41,7 +40,6 @@
                         <a{% if child_link.active %}aria-current="page"{% endif %}>
                           {{ child_link.title }}
                         </a>
-        
                         {%- if child_link.links != blank -%}
                           <ul>
                             {%- for grandchild_link in child_link.links -%}
@@ -53,12 +51,10 @@
                             {%- endfor -%}
                           </ul>
                         {%- endif -%}
-        
                       </li>
                     {%- endfor -%}
                   </ul>
                 {%- endif -%}
-        
               </div>
             {%- endfor -%}
         </nav>
