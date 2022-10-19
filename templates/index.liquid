@@ -5,7 +5,7 @@
     <div class="top-menu-right">
       <h1 class="title">{{ collection.title }}</h1>
       <div class="top-menu-right">
-        {{%- paginate collection.products -%}}
+        {%- paginate collection.products -%}
         <div class="button">
           {{ paginate | default_pagination: previous: 'BACK'}}
         </div>
