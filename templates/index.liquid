@@ -1,0 +1,85 @@
+{% assign collection = collections['all'] %}
+
+<div class="main-border">
+  <div class="top-menu">
+    <div class="top-menu-right">
+      <h1 class="title">{{ collection.title }}</h1>
+      <div class="top-menu-right">
+        <div class="button">
+          <a>Back</a>
+        </div>
+        <div class="button">
+          <a>NEXT</a>
+        </div>
+      </div>
+    </div>
+    <div class="top-menu-left">
+      <div class="button">
+        <a>CART</a>
+      </div>
+      <select id="currency" class="button">
+        <option value="IDR">IDR</option>
+        <option value="USD">USD</option>
+      </select>
+    </div>
+  </div>
+  {%- paginate collection.products by 5 -%}
+  <div class="bar">
+    <div class="left-bar">
+        <nav role="navigation">
+            {%- for link in linklists.main-menu.links -%}
+              <div class="widget-left-bar">
+                <a href="{{ link.url }}" {% if link.active %}aria-current="page"{% endif %}>
+                  <h2>{{ link.title }}</h2>
+                </a>
+                {%- if link.links != blank -%}
+                  <ul>
+                    {%- for child_link in link.links -%}
+                      <li>
+                        <a{% if child_link.active %}aria-current="page"{% endif %}>
+                          {{ child_link.title }}
+                        </a>
+                        {%- if child_link.links != blank -%}
+                          <ul>
+                            {%- for grandchild_link in child_link.links -%}
+                              <li>
+                                <a href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page"{% endif %}>
+                                  {{ grandchild_link.title }}
+                                </a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        {%- endif -%}
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+              </div>
+            {%- endfor -%}
+        </nav>
+    </div>
+    <div class="right-bar">
+        <ul>
+          {% for product in collection.products %}
+            <li class="border">
+              <a href="{{ product.url }}">
+                <img src="{{ product.featured_image | img_url: '200x', crop: 'center' }}">
+                <p class="text-product">
+                  <br>
+                  {{ product.title }}
+                  <br>
+                  {{ product.price | money }}
+                  {% if product.available != true %}
+                    <br>(SOLD OUT)
+                  {% endif %}
+                </p>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+    </div>
+  </div>
+
+</div>
+    {{ paginate | default_pagination: next: 'Older', previous: 'Newer' }}
+  {%- endpaginate -%}
