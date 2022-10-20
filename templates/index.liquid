@@ -5,8 +5,8 @@
     <div class="top-menu-right">
       <h1 class="title">{{ collection.title }}</h1>
       <div class="top-menu-right">
-        {%- paginate collection.products.url -%}
-          <a href="{{ paginate.previous }}">
+        {%- paginate collection.products -%}
+          <a href="{{ paginate.previous.url }}">
             <div class="button">BACK</div>
           </a>
           <a href="{{ paginate.next.url }}">
