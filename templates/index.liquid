@@ -5,11 +5,11 @@
     <div class="top-menu-right">
       <h1 class="title">{{ collection.title }}</h1>
       <div class="top-menu-right">
-        {%- paginate collection.products -%}
+        {%- paginate collection.products.url -%}
           <a href="{{ paginate.previous }}">
             <div class="button">BACK</div>
           </a>
-          <a href="{{ paginate.next }}">
+          <a href="{{ paginate.next.url }}">
             <div class="button">NEXT</div>
           </a>
           {%- endpaginate -%}
