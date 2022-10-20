@@ -1,11 +1,11 @@
 {% assign collection = collections['all'] %}
 
 <div class="main-border">
+  {%- paginate collection.products by 5 -%}
   <div class="top-menu">
     <div class="top-menu-right">
       <h1 class="title">{{ collection.title }}</h1>
       <div class="top-menu-right">
-        {%- paginate collection.products -%}
           <a href="{{ paginate.previous.url }}">
             <div class="button">BACK</div>
           </a>
@@ -25,7 +25,7 @@
       </select>
     </div>
   </div>
-  {%- paginate collection.products by 5 -%}
+  
   <div class="bar">
     <div class="left-bar">
         <nav role="navigation">
