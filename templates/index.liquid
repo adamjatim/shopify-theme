@@ -6,7 +6,17 @@
       <h1 class="title">{{ collection.title }}
       </h1>
       <div class="top-menu-right">
-
+        {%- capture previous_link_url -%}
+          {%- if paginate.current_page == 2 -%}
+            {%- if template contains "search" -%}
+              {{ paginate.previous.url | replace: 'page=1', '' | replace: '?&', '?' | replace: '&&', '&' }}
+            {%- else -%}
+              {{ paginate.previous.url | replace: '?page=1', '' }}
+            {%- endif -%}
+          {%- else -%}
+            {{ paginate.previous.url }}
+          {%- endif -%}
+        {%- endcapture -%}
         <a href="{{ paginate.previous.url }}">
           <div class="button">BACK</div>
         </a>
