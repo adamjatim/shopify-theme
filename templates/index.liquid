@@ -2,9 +2,6 @@
 {%- paginate collection.products by 5 -%}
 
 <div class="main-border">
-  <div class="pagination">
-    <div class="page-number">{{ paginate | default_pagination: next: 'Older', previous: 'Newer' }}</div>
-  </div>
   <div class="top-menu">
     <div class="top-menu-right">
       <h1 class="title">{{ collection.title }}
@@ -83,6 +80,8 @@
         </ul>
     </div>
   </div>
-
+  <div class="pagination">
+    <div class="page-number">{{ paginate | default_pagination: next: ' ', previous: ' ' }}</div>
+  </div>
 </div>
 {%- endpaginate -%}
