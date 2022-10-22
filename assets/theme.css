@@ -85,6 +85,10 @@ select#currency {
   display: flex;
 }
 
+.gap {
+  margin: 10px;
+}
+
 .pagination {
   margin: auto;
   margin-bottom: 10px;
