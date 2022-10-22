@@ -62,7 +62,7 @@
     <div class="right-bar border">
       <div class="flex">
         <div class="sub-left-bar">
-          <div class="gap">
+          <div class="gap-2">
             <img src="{{ featured_image | img_url: 'large' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg">
             {% for image in product.images %}
               <a href="{{ image.src | img_url: 'large' }}">
@@ -72,7 +72,7 @@
           </div>
         </div>
         <div class="sub-right-bar">
-          <div class="gap">
+          <div class="gap-1">
             <h1>{{ product.title }}</h1>
             <h1>{{ current_variant.price | money }}</h1>
             <div>{{ product.description }}</div>
