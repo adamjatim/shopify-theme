@@ -80,7 +80,7 @@
               <select name="id" id="productSelect">
                 {% for variant in product.variants %}
                   {% if variant.available %}
-                    <option value="{{ variant.id }}">{{ variant.title }}</option>
+                    <button value="{{ variant.id }}">{{ variant.title }}</button>
                   {% else %}
                     <option disabled="disabled">
                       {{ variant.title }} - sold out
@@ -88,7 +88,6 @@
                   {% endif %}
                 {% endfor %}
               </select>
-              
               <label for="Quantity">quantity</label>
               <input type="number" id="Quantity" name="quantity" value="1" min="1">
               <button type="submit" name="add" id="AddToCart">Add to cart</button>
