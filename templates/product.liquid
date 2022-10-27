@@ -77,15 +77,12 @@
             <h1>{{ current_variant.price | money }}</h1>
             <div>{{ product.description }}</div>
             <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
-              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant }}">
               <div class="product-option">
                 {% for variant in product.variants %}
                   {% if variant.available %}
-                    <option value="{{ variant.id }}">{{ variant.title }}</option>
+                    <span value="{{ variant.id  }}">{{ variant.title }}</span>
                   {% else %}
-                    <option disabled="disabled">
-                      {{ variant.title }} - sold out
-                    </option>
+                    <span disabled="disabled">{{ variant.title }}</span>
                   {% endif %}
                 {% endfor %}
               </div>
