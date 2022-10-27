@@ -167,10 +167,6 @@ li.border {
   width: 50%;
 }
 
-.sub-right-bar {
-  border-left: 1px solid #000000;
-}
-
 .sub-left-bar {
   border-right: 1px solid #000000;
 }
@@ -182,4 +178,16 @@ li.border {
 
 #SubProductPhotoImg {
   width: 130px;
+}
+
+.sub-right-bar {
+  border-left: 1px solid #000000;
+}
+
+.product-option {
+  display: inline-flex;
+}
+
+.product-variant {
+  margin: 5px 5px 0px 5px;
 }

@@ -79,11 +79,13 @@
             <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
               <div class="product-option">
                 {% for variant in product.variants %}
-                  {% if variant.available %}
-                    <span value="{{ variant.id  }}">{{ variant.title }}</span>
-                  {% else %}
-                    <span disabled="disabled">{{ variant.title }}</span>
-                  {% endif %}
+                  <div class="product-variant">
+                    {% if variant.available %}
+                      <span value="{{ variant.id  }}">{{ variant.title }}</span>
+                    {% else %}
+                      <span disabled="disabled">{{ variant.title }}</span>
+                    {% endif %}
+                  </div>
                 {% endfor %}
               </div>
               <label for="Quantity">quantity</label>
