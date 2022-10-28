@@ -64,7 +64,7 @@
           {% for product in collection.products %}
             <li class="border">
               <a href="{{ product.url }}">
-                <img src="{{ product.featured_image | img_url: '200x', crop: 'center' }}">
+                <img src="{{ product.featured_image | img_url: '180x', crop: 'center' }}">
                 <p class="text-product">
                   <br>
                   {{ product.title }}
