@@ -176,12 +176,12 @@ li.border {
 }
 
 #ProductPhotoImg {
-  width:400px;
+  width:360px;
   margin: auto;
 }
 
 #SubProductPhotoImg {
-  width: 180px;
+  width: 100px;
 }
 
 .sub-right-bar {
