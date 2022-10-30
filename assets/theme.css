@@ -201,4 +201,5 @@ li.border {
 button#AddToCart {
   border: 2px solid #000000;
   padding: 7px 30px 7px 30px;
+  background-color: white;
 }
