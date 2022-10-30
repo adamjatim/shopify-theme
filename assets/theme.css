@@ -161,7 +161,7 @@ li.border {
 
 img#ProductPhotoImg,
 img#SubProductPhotoImg {
-  display: flex;
+  display: inline-flex;
 }
 
 .text-product {
