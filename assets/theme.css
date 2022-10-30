@@ -22,7 +22,7 @@ main {
 }
 
 .gap-main-border {
-  padding: 100px;
+  padding: 50px;
 }
 
 .main-border {
@@ -193,5 +193,6 @@ li.border {
 
 .product-variant {
   margin: 5px 5px 0px 5px;
-  padding: AA;
+  padding: 10px 20px;
+  border: 1px solid #000000;
 }
