@@ -175,7 +175,14 @@ li.border {
   border-right: 1px solid #000000;
 }
 
+#ProductPhotoImg {
+  width:fit-content;
+  margin: auto;
+}
 
+#SubProductPhotoImg {
+  width: min-content;
+}
 
 .sub-right-bar {
   border-left: 1px solid #000000;
