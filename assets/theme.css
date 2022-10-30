@@ -18,7 +18,6 @@ p {
 
 main {
   display: flex;
-  margin: 80px;
   justify-content: center;
 }
 
