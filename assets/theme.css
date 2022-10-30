@@ -159,11 +159,6 @@ li.border {
   margin: 0;
 }
 
-img#ProductPhotoImg,
-img#SubProductPhotoImg {
-  display: inline-flex;
-}
-
 .text-product {
   font-size: medium;
   max-width: 180px;
@@ -180,14 +175,7 @@ img#SubProductPhotoImg {
   border-right: 1px solid #000000;
 }
 
-#ProductPhotoImg {
-  width: 400px;
-  margin: auto;
-}
 
-#SubProductPhotoImg {
-  width: 130px;
-}
 
 .sub-right-bar {
   border-left: 1px solid #000000;
