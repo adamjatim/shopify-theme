@@ -27,7 +27,7 @@ main {
   border: 2px solid #000000;
   margin: 40px;
   width: auto;
-  max-width: 1000px;
+  max-width: 60vw;
 }
 
 .top-menu {
