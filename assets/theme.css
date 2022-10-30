@@ -22,12 +22,16 @@ main {
   justify-content: center;
 }
 
+.gap-main-border {
+  padding: 100px;
+}
+
 .main-border {
   justify-content: center;
   border: 2px solid #000000;
   margin: 40px;
   width: auto;
-  max-width: 60vw;
+  max-width: 100%;
 }
 
 .top-menu {
@@ -157,7 +161,7 @@ li.border {
 
 .text-product {
   font-size: medium;
-  max-width: 200px;
+  max-width: 180px;
 }
 
 
