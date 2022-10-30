@@ -64,9 +64,9 @@
         <div class="flex">
           <div class="sub-left-bar">
             <div class="gap-1">
-              <img src="{{ featured_image | img_url: 'medium' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg">
+              <img src="{{ featured_image | img_url: 'compact' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg">
               {% for image in product.images %}
-                <a href="{{ image.src | img_url: 'medium' }}">
+                <a href="{{ image.src | img_url: 'compact' }}">
                   <img src="{{ image.src | img_url: 'small' }}" alt="{{ image.alt | escape }}" id="SubProductPhotoImg">
                 </a>
               {% endfor %}
