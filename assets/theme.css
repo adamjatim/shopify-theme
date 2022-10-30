@@ -188,7 +188,7 @@ li.border {
 }
 
 .product-option {
-  display: inline-flex;
+  display: flex;
 }
 
 .product-variant {
