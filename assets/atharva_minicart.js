@@ -1,37 +1,35 @@
 
-	var cart_layout = 'sidebar';
-	var cart_display = 'click';
-	var cart_title = 'Cart Item(s)';
-	var cart_desc = 'This app gives your shoppers a quick access to cart preview in a click.';
-	var checkout_btn_title = 'CHECKOUT';
-	var cart_btn_title = 'VIEW CART';
-	var empty_cart_title = 'Your shopping cart is empty!';
-	var total_title = 'Subtotal';
-	var background_color = '#efefef';
-	var border_color = '#e4e2e2';
-	var text_color = '#00084b';
-	var desc_color = '#3e3e3e';
-	var product_text_color = '#4f4f4f';
-	var product_price_color = '#4f4f4f';
-	var btn_text_color = '#ffffff';
-	var cart_btn_color = '#3f4eae';
-	var checkout_btn_color = '#00084b';
-	var subtotal_text_color = '#00084b';
-	var minicart_count_color = '#00084b';
-	var quantity_button_color = '';
-	var minicart_visibility_overlay = '1';
-	var minicart_visibility_addtocart = '1';
-	var cart_counter_visibility = '1';		
-	var minicart_font_family = 'Merienda'; 
-	var minicart_image_url = 'https://as-minicart.atharvasystem.com/minicart-app/images/default.jpg'; 
-	var minicart_css_code = ''; 
-	var minicart_js_code = ''; 
-	var minicart_cart_btn_visibility = 1; 
-	var minicart_checkout_btn_visibility = 1; 
-	var minicart_dropdown_top_margin = '80px'; 
-
-
-$(document).ready(function() {
+		var cart_layout = "sidebar";
+		var cart_display = "click";
+		var cart_title = "Cart Item(s)";
+		var cart_desc = "This app gives your shoppers a quick access to cart preview in a click.";
+		var checkout_btn_title = "CHECKOUT";
+		var cart_btn_title = "VIEW CART";
+		var empty_cart_title = "Your shopping cart is empty!";
+		var total_title = "Subtotal";
+		var background_color = "#efefef";
+		var border_color = "#e4e2e2";
+		var text_color = "#00084b";
+		var desc_color = "#3e3e3e";
+		var product_text_color = "#4f4f4f";
+		var product_price_color = "#4f4f4f";
+		var btn_text_color = "#ffffff";
+		var cart_btn_color = "#3f4eae";
+		var checkout_btn_color = "#00084b";
+		var subtotal_text_color = "#00084b";
+		var minicart_count_color = "#00084b";
+		var quantity_button_color = "";
+		var minicart_visibility_overlay = "1";
+		var minicart_visibility_addtocart = "1";
+		var cart_counter_visibility = "1";
+		var minicart_font_family = "Merienda";
+		var minicart_image_url = "https://as-minicart.atharvasystem.com/minicart-app/images/default.jpg";
+		var minicart_css_code = "";
+		var minicart_js_code = "";
+		var minicart_cart_btn_visibility = "1";
+		var minicart_checkout_btn_visibility = "1";
+		var minicart_dropdown_top_margin = "80px";
+		$(document).ready(function() {
 
 	$("#CartCount, .cart-link__bubble--visible, .site-header__cart-bubble--visible, .header-cart-btn .cart-count, .site-header__cart-indicator").css('background-color','#ff000000').html(''); // hide original cartcounter
 	$(".cart-popup-wrapper").remove();	// remove original cartpopup	
