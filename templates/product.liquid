@@ -100,3 +100,23 @@
     </div>
   </div>
 </div>
+
+  {% form 'currency', class:'shopify-currency-form' %}
+	{% assign current_url = '' %}
+	{% case template %}
+	{% when 'index' %}{% assign current_url = '/' %}
+	{% when 'page' %}{% assign current_url = page.url %}
+	{% when 'blog' %}{% assign current_url = blog.url %}
+	{% when 'article' %}{% assign current_url = blog.url %}
+	{% when 'collection' %}{% assign current_url = collection.url %}
+	{% when 'product' %}{% assign current_url = product.url %}
+	{% when 'search' %}{% assign current_url = '/search?q=' | append: search.terms  %}
+	{% endcase %}
+	{{ form | currency_selector }}
+	<input type='hidden' name='return_to' value='{{ current_url }}'>
+  {% endform %}
+  <script>  
+	  $('.shopify-currency-form select').on('change', function() {
+		$(this).parents('form').submit();
+	  });
+  </script>
