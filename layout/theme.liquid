@@ -19,5 +19,6 @@ window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
   <main role="main">
     {{ content_for_layout }}
   </main>
-{% include 'mlveda-currencies-switcher' %}{% include 'mlveda-currencies' %}{% include 'mlveda-flag' %}{% include 'mlveda-currencies-style' %}</body>
+{%- comment -%} {% include 'mlveda-currencies-switcher' %}{% include 'mlveda-currencies' %}{% include 'mlveda-flag' %}{% include 'mlveda-currencies-style' %} {%- endcomment -%}
+</body>
 </html>
