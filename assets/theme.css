@@ -65,10 +65,11 @@ main {
 
 .top-menu-left {
   width: 80%;
+  justify-content: space-between;
 }
 
 .top-menu-content {
-  display: inline-flexbox;
+  display: inline;
 }
 
 select#currency {
