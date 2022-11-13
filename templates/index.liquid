@@ -2,10 +2,15 @@
 {%- paginate collection.products by 5 -%}
 <div class="gap-main-border">
   <div class="main-border">
+    <div class="main-content">
+      
+    </div>
     <div class="top-menu">
       <div class="top-menu-right">
         <h1 class="title">{{ collection.title }}
         </h1>
+      </div>
+      <div class="top-menu-left">
         <div class="top-menu-right">
           <a href="{{ paginate.previous.url }}">
             <div class="button">BACK</div>
@@ -14,8 +19,6 @@
             <div class="button">NEXT</div>
           </a>
         </div>
-      </div>
-      <div class="top-menu-left">
         <div class="button">
           <a>CART</a>
         </div>
