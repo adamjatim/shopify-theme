@@ -11,7 +11,7 @@
         </h1>
       </div>
       <div class="top-menu-left">
-        <div class="top-menu-right">
+        <div class="top-menu-right-content">
           <a href="{{ paginate.previous.url }}">
             <div class="button">BACK</div>
           </a>
@@ -19,13 +19,15 @@
             <div class="button">NEXT</div>
           </a>
         </div>
-        <div class="button">
-          <a>CART</a>
+        <div class="top-menu-left-content">
+          <div class="button">
+            <a>CART</a>
+          </div>
+          <select id="currency" class="button">
+            <option value="IDR">IDR</option>
+            <option value="USD">USD</option>
+          </select>
         </div>
-        <select id="currency" class="button">
-          <option value="IDR">IDR</option>
-          <option value="USD">USD</option>
-        </select>
       </div>
     </div>
     <div class="bar">
