@@ -59,6 +59,14 @@ main {
   margin-bottom: 0px;
 }
 
+.top-menu-left {
+  width: 20%;
+}
+
+.top-menu-right {
+  width: 80%;
+}
+
 select#currency {
   height: 33px;
   border: 2px solid #000000;
