@@ -67,6 +67,10 @@ main {
   width: 80%;
 }
 
+.top-menu-content {
+  display: inline-flexbox;
+}
+
 select#currency {
   height: 33px;
   border: 2px solid #000000;
