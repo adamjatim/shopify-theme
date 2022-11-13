@@ -76,6 +76,7 @@ select#currency {
   border: 2px solid #000000;
   justify-content : center;
   padding : 5px;
+  padding-left: 0px;
   background-color: transparent;
   height: 20px;
   margin-left: 5px;
