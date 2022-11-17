@@ -100,7 +100,7 @@
                 <input type="number" id="Quantity" name="quantity" value="1" min="1">
                 <button type="submit" name="add" id="AddToCart">ADD TO CART</button>
               </form>
-              {%- comment -%}  {%- endcomment -%}
+              
               {%- comment -%} == Now ==  {%- endcomment -%}
               {%- comment -%} <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
                 <div class="product-option">
@@ -114,8 +114,6 @@
                     </div>
                   {% endfor %}
                 </div>
-                {%- comment -%} <label for="Quantity">quantity</label> {%- endcomment -%}
-                {%- comment -%} <input type="number" id="Quantity" name="quantity" value="1" min="1">
                 <button type="submit" name="add" id="AddToCart">ADD TO CART</button>
               </form> {%- endcomment -%}
 
