@@ -87,7 +87,7 @@
                   <div class="product-option">
                     {% for value in product_option.values %}
                       <div class="product-variant">
-                        <input type="radio" id = "{{ value }}" name="{{ product_option.name}}" value="{{ value }}" >
+                        <input type="radio" id = "{{ value }}" name="{{ product_option.name}}" value="{{ value }}" class="hide">
                         <label for="{{ value }}">{{ value }}</label>
                       </div>
                     {% endfor %}

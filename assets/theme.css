@@ -160,6 +160,10 @@ ul {
   flex-flow: row wrap;
 }
 
+.hide {
+  display: block;
+}
+
 li.border {
   width: auto;
   border-right: 1px solid #000000;
