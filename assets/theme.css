@@ -161,7 +161,7 @@ ul {
 }
 
 .hide {
-  display: block;
+  display: none;
 }
 
 li.border {
