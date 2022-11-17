@@ -84,10 +84,14 @@
               <form>
                 {% for product_option in product.options_with_values %}
                   {{ product_option.name }}
-                  {% for value in product_option.values %}
-                    <input type="radio" id = "{{ value }}" name="{{ product_option.name}}" value="{{ value }}" >
-                    <label for="{{ value }}">{{ value }}</label>
-                  {% endfor %}
+                  <div class="product-option">
+                    {% for value in product_option.values %}
+                      <div class="product-variant">
+                        <input type="radio" id = "{{ value }}" name="{{ product_option.name}}" value="{{ value }}" >
+                        <label for="{{ value }}">{{ value }}</label>
+                      </div>
+                    {% endfor %}
+                  </div>
                   <br>
                 {% endfor %}
                 <!--need to show the price here-->
