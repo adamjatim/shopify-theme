@@ -1,3 +1,5 @@
+<img class="product-single__logo" src="{{ 'logo2.jpg' | asset_img_url: '200x' }}">
+
 {% assign collection = collections['all'] %}
 {%- paginate collection.products by 5 -%}
 <div class="gap-main-border">
