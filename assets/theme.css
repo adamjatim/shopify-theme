@@ -181,7 +181,8 @@ li.border {
 }
 
 .product-single__logo {
-	width: 120px;
+	width: 300px;
+  height: 175px;
 }
 
 
