@@ -188,7 +188,14 @@ li.border {
   left: 16px;
 }
 
-
+.minicart {
+  position: absolute;
+  width: 100px;
+  background-color: aqua;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+}
 
 .sub-left-bar,
 .sub-right-bar {
