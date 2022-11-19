@@ -201,9 +201,9 @@ li.border {
 
 .minicart-title {
   display: flex;
-  height: 50px;
+  height: auto;
   justify-content: space-between;
-  padding: auto;
+  padding: 10px;
   border-bottom: 1px solid #000000;
 }
 
