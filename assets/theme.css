@@ -238,7 +238,8 @@ li.border {
 }
 
 .minicart-detail {
-  position:fixed;
+  position: absolute;
+  top: auto;
   bottom: 0px;
 }
 
