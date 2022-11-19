@@ -213,7 +213,7 @@ li.border {
 }
 
 .minicart-product-image {
-  width: auto;
+  width:fit-content;
 }
 
 .sub-left-bar,
