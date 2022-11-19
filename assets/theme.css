@@ -237,6 +237,10 @@ li.border {
   margin: 10px;
 }
 
+.minicart-detail {
+  bottom: 0px;
+}
+
 .sub-left-bar,
 .sub-right-bar {
   width: 50%;
