@@ -233,6 +233,10 @@ li.border {
   width: 50%;
 }
 
+.minicart-product-quantity > button{
+  width: 20px;
+}
+
 .minicart-note {
   margin: 10px;
 }
