@@ -110,7 +110,7 @@
 </div>
 
 <div class="minicart">
-  <div class="minicart__title">Your Cart - </div>
+  <div class="minicart-title">Your Cart - </div>
 
   <form action="{{ routes.cart_url }}" method="post">
     <div class="cart__items cart__block">
@@ -124,7 +124,6 @@
         <strong class="cart__total-text">Total:</strong>
         <span class="cart__total-price">{{ cart.total_price | money }}</span>
       </div>
-      <button class="button" type="submit">Update Quantities</button>
       <button class="button" type="submit" name="checkout">Checkout</button>
     </div>
 
