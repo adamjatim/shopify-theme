@@ -233,7 +233,8 @@ li.border {
   width: 50%;
 }
 
-.minicart-product-quantity > button{
+.minicart-product-quantity > button,
+.minicart-product-quantity > input {
   width: 20px;
 }
 
