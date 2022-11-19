@@ -256,7 +256,8 @@ li.border {
   width: auto;
   height: max-content;
   border-radius: 10em;
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   justify-content: center;
   margin: 10px;
 }
