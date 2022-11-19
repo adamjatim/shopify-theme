@@ -212,6 +212,10 @@ li.border {
   width: auto;
 }
 
+.minicart-product {
+  display: flex;
+}
+
 .minicart-product-image {
   width:fit-content;
 }
