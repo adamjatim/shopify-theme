@@ -215,6 +215,8 @@ li.border {
 .minicart-product {
   display: flex;
   margin: 10px;
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #000000;
 }
 
 .minicart-product-image {
