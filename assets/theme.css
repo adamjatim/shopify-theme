@@ -233,6 +233,10 @@ li.border {
   width: 50%;
 }
 
+.minicart-note {
+  display: flex;
+}
+
 .sub-left-bar,
 .sub-right-bar {
   width: 50%;
