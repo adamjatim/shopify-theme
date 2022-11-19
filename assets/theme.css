@@ -101,6 +101,10 @@ select#currency {
   display: flex;
 }
 
+.flex-direction-column {
+  flex-direction: column;
+}
+
 .gap-1 {
   margin: 10px;
 }
@@ -231,6 +235,10 @@ li.border {
 
 .minicart-product-title {
   width: 50%;
+}
+
+.minicart-product-quantity {
+  width: auto;
 }
 
 .minicart-product-quantity > button,
