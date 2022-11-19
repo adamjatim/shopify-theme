@@ -98,44 +98,8 @@
                 {% endfor %}
                 <!--need to show the price here-->
                 <input type="number" min="1">
-                <button type="submit" id="AddToCart">Add to Cart</button>
+                <button type="submit" id="AddToCart">ADD TO CART</button>
               </form>
-
-              {%- comment -%} <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
-                <select name="id" id="productSelect">
-                  {% for variant in product.variants %}
-                    {% if variant.available %}
-                      <input type="button" value="{{ variant.id }}">
-                        {{ variant.title }}
-                      </input>
-                    {% else %}
-                      <input type="button" disabled="disabled">
-                        {{ variant.title }}
-                      </input>
-                    {% endif %}
-                  {% endfor %}
-                </select>
-                
-                <label for="Quantity">quantity</label>
-                <input type="number" id="Quantity" name="quantity" value="1" min="1">
-                <button type="submit" name="add" id="AddToCart">ADD TO CART</button>
-              </form> {%- endcomment -%}
-
-              {%- comment -%} == Now ==  {%- endcomment -%}
-              {%- comment -%} <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
-                <div class="product-option">
-                  {% for variant in product.variants %}
-                    <div class="product-variant">
-                      {% if variant.available %}
-                        <span value="{{ variant.id  }}">{{ variant.title }}</span>
-                      {% else %}
-                        <span disabled="disabled">{{ variant.title }}</span>
-                      {% endif %}
-                    </div>
-                  {% endfor %}
-                </div>
-                <button type="submit" name="add" id="AddToCart">ADD TO CART</button>
-              </form> {%- endcomment -%}
 
             </div>
           </div>
@@ -149,11 +113,22 @@
   <div class="minicart__title">Your Cart - </div>
 
   <form action="{{ routes.cart_url }}" method="post">
-    {% for item in cart.items %}
-      <!-- line item info -->
-    {% endfor %}
+    <div class="cart__items cart__block">
+      {% for line_item in cart.items %}
+        {% render 'line-item', line-item: line_item%}
+      {% endfor %}
+    </div>
 
-    <input type="submit" name="checkout" value="Checkout">
+    <div class="cart__details cart__block">
+      <div class="cart__total">
+        <strong class="cart__total-text">Total:</strong>
+        <span class="cart__total-price">{{ cart.total_price | money }}</span>
+      </div>
+      <button class="button" type="submit">Update Quantities</button>
+      <button class="button" type="submit" name="checkout">Checkout</button>
+    </div>
+
+    {%- comment -%} <input type="submit" name="checkout" value="Checkout"> {%- endcomment -%}
   </form>
 
 </div>
