@@ -209,6 +209,7 @@ li.border {
 
 .minicart-product-list {
   height: auto;
+  width: auto;
 }
 
 .minicart-product-image > img{
