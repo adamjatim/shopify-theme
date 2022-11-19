@@ -211,7 +211,7 @@ li.border {
   height: auto;
 }
 
-.minicart-product-image {
+.minicart-product-image > img{
   width: 50px;
 }
 
