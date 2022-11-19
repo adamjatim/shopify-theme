@@ -252,6 +252,7 @@ li.border {
 }
 
 .minicart-detail > .button {
+  display: flex;
   width: auto;
   height: max-content;
   border-radius: 10em;
