@@ -257,6 +257,7 @@ li.border {
   border-radius: 10em;
   padding: 10px;
   justify-content: center;
+  margin: 10px;
 }
 
 .sub-left-bar,
