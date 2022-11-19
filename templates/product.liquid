@@ -121,8 +121,15 @@
         <img src="{{ featured_image | img_url: 'small' }}" alt="{{ featured_image.alt | escape }}">
       </div>
       <div class="minicart-product-description">
-        <div class="minicart-product-title">
-          {{ product.title }}
+        <div class="flex">
+          <div class="minicart-product-title">
+            {{ product.title }}
+          </div>
+          <div class="minicart-product-quantity">
+            <button> - </button>
+            <input value="0" type="text">
+            <button> + </button>
+          </div>
         </div>
         <div class="minicart-product-price">
           {{ current_variant.price | money }}
