@@ -190,8 +190,8 @@ li.border {
 
 .minicart {
   position: absolute;
-  width: 100px;
-  background-color: aqua;
+  width: 300px;
+  background-color: white;
   right: 0px;
   top: 0px;
   bottom: 0px;
