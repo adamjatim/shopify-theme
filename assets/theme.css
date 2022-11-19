@@ -253,7 +253,7 @@ li.border {
 
 .minicart-detail > .button {
   width: auto;
-  height: auto;
+  height: max-content;
   border-radius: 10em;
   padding: 10px;
   justify-content: center;
