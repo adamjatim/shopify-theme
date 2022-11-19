@@ -207,6 +207,14 @@ li.border {
   border-bottom: 1px solid #000000;
 }
 
+.minicart-product-list {
+  height: auto;
+}
+
+.minicart-product-image {
+  width: 50px;
+}
+
 .sub-left-bar,
 .sub-right-bar {
   width: 50%;
