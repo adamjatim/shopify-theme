@@ -248,7 +248,15 @@ li.border {
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
+}
+
+.minicart-detail > .button {
+  width: auto;
+  height: auto;
+  border-radius: 10em;
+  padding: 10px;
+  justify-content: center;
 }
 
 .sub-left-bar,
