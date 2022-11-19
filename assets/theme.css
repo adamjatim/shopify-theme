@@ -254,7 +254,7 @@ li.border {
 .minicart-detail > .button {
   display: flex;
   width: 380px;
-  height: max-content;
+  height: auto;
   border-radius: 10em;
   padding: 10px;
   padding-top: 10px;
