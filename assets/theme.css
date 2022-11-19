@@ -244,8 +244,11 @@ li.border {
 }
 
 .minicart-detail-total {
+  border-top: 1px solid #000000;
   display: flex;
   justify-content: space-between;
+  padding: 10px;
+  padding-bottom: 40px;
 }
 
 .sub-left-bar,
