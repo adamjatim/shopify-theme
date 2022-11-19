@@ -243,6 +243,11 @@ li.border {
   bottom: 0px;
 }
 
+.minicart-detail-total {
+  display: flex;
+  justify-content: space-between;
+}
+
 .sub-left-bar,
 .sub-right-bar {
   width: 50%;
