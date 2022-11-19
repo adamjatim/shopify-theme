@@ -215,6 +215,7 @@ li.border {
 .minicart-product {
   display: flex;
   padding: 10px;
+  gap: 10px;
   border-top: 1px solid #000000;
   border-bottom: 1px solid #000000;
 }
@@ -229,7 +230,7 @@ li.border {
 }
 
 .minicart-product-title {
-  width: 80%;
+  width: 50%;
 }
 
 .sub-left-bar,
