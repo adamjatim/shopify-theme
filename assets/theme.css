@@ -249,6 +249,7 @@ li.border {
 .product-quantity {
   background-color: transparent;
   border: none;
+  font-size: large;
 }
 
 .minicart-note {
