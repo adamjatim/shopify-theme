@@ -250,7 +250,11 @@ li.border {
   background-color: transparent;
   border: none;
   font-size: large;
-  font-weight: 500;
+  font-weight: 400;
+}
+
+.product-quantity-value {
+  text-decoration: underline;
 }
 
 .minicart-note {
