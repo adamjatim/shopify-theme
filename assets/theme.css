@@ -246,6 +246,11 @@ li.border {
   width: 20px;
 }
 
+.product-quantity {
+  background-color: transparent;
+  border: none;
+}
+
 .minicart-note {
   margin: 10px;
 }
