@@ -254,6 +254,10 @@ li.border {
 }
 
 .product-quantity-value {
+  width: 30px;
+  padding: 1px;
+  text-align: center;
+
   border-bottom: 1px solid #000000;
 }
 
