@@ -73,15 +73,8 @@
                     <br>
                     {{ product.title }}
                     <br>
-                    {%- assign min_price = product.price_min -%}
-                    {%- assign max_price = product.price_max -%}
-                    
-                    <span class="price-item price-item--regular" data-regular-price>
-                      {% if money_price_max > money_price_min %} From {{ money_price_min }}
-                      {% else %}
-                        {{ money_price }}
-                      {% endif %}
-                    </span>
+
+                    <dl class="price{% if available and compare_at_price > price %} price--on-sale{% endif %}{% if available and variant.unit_price_measurement %} price--unit-available{% endif %}" data-price></dl>
                     
                     {%- comment -%} {{ product.price | money }}
                     {% if product.available != true %}
