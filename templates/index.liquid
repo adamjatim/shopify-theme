@@ -73,11 +73,25 @@
                     <br>
                     {{ product.title }}
                     <br>
-                    {{ product_card_product.compare_at_price | minus: product_card_product.price | times: 100 | divided_by: product_card_product.compare_at_price }}% OFF
-                    {%- comment -%} {{ product.price | money }} {%- endcomment -%}
+                    {% if available %}
+                      {% if compare_at_price > price %}
+                        <s class="price-item price-item--regular" data-regular-price>
+                        {{ compare_at_price | money }}
+                        </s>
+                      {% else %}
+                        <span class="price-item price-item--regular" data-regular-price>
+                        {% unless product.price_min == product.price_max  %}From{% endunless %} {{ money_price }}
+                        </span>
+                      {% endif %}
+                      {% else %}
+                        <span class="price-item price-item--regular" data-regular-price>
+                        {{ 'products.product.sold_out' | t }}
+                      </span>
+                    {% endif %}
+                    {%- comment -%} {{ product.price | money }}
                     {% if product.available != true %}
                       <br>(SOLD OUT)
-                    {% endif %}
+                    {% endif %} {%- endcomment -%}
                   </p>
                 </a>
               </li>
