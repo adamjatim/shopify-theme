@@ -93,10 +93,6 @@ select#currency {
   margin: 10px;
 }
 
-.border {
-  border: 1px solid #000000;
-}
-
 .offer-badge {
   position: absolute; 
   width: 196px;
