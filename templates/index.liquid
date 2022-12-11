@@ -73,21 +73,16 @@
                     <br>
                     {{ product.title }}
                     <br>
-                    {% if available %}
-                      {% if compare_at_price > price %}
-                        <s class="price-item price-item--regular" data-regular-price>
-                        {{ compare_at_price | money }}
-                        </s>
+                    {%- assign min_price = product.price_min -%}
+                    {%- assign max_price = product.price_max -%}
+                    
+                    <span class="price-item price-item--regular" data-regular-price>
+                      {% if money_price_max > money_price_min %} From {{ money_price_min }}
                       {% else %}
-                        <span class="price-item price-item--regular" data-regular-price>
-                        {% unless product.price_min == product.price_max  %}From{% endunless %} {{ money_price }}
-                        </span>
+                        {{ money_price }}
                       {% endif %}
-                      {% else %}
-                        <span class="price-item price-item--regular" data-regular-price>
-                        {{ 'products.product.sold_out' | t }}
-                      </span>
-                    {% endif %}
+                    </span>
+                    
                     {%- comment -%} {{ product.price | money }}
                     {% if product.available != true %}
                       <br>(SOLD OUT)
