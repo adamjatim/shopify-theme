@@ -38,7 +38,7 @@
                     <h2>{{ link.title }}</h2>
                   </a>
                   {%- if link.links != blank -%}
-                    <ul class="product-list">
+                    <ul class="product-list" >
                       {%- for child_link in link.links -%}
                         <li>
                           <a{% if child_link.active %}aria-current="page"{% endif %}>
