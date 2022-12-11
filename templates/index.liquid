@@ -74,7 +74,7 @@
                     {{ product.title }}
                     <br>
                     <dl class="price{% if available and compare_at_price > price %} price--on-sale{% endif %}{% if available and variant.unit_price_measurement %} price--unit-available{% endif %}" data-price></dl>
-                    {{ product.price | money }}
+                    {%- comment -%} {{ product.price | money }} {%- endcomment -%}
                     {% if product.available != true %}
                       <br>(SOLD OUT)
                     {% endif %}
