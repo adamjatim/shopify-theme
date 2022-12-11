@@ -73,7 +73,7 @@
                     <br>
                     {{ product.title }}
                     <br>
-                    <dl class="price{% if available and compare_at_price > price %} price--on-sale{% endif %}{% if available and variant.unit_price_measurement %} price--unit-available{% endif %}" data-price></dl>
+                    {{ product_card_product.compare_at_price | minus: product_card_product.price | times: 100 | divided_by: product_card_product.compare_at_price }}% OFF
                     {%- comment -%} {{ product.price | money }} {%- endcomment -%}
                     {% if product.available != true %}
                       <br>(SOLD OUT)
