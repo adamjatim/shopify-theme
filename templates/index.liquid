@@ -67,6 +67,7 @@
           <ul>
             {% for product in collection.products %}
               <li class="border">
+                <img style="width: auto;" src="{{ 'offer.png' | asset_img_url: '200x' }}">
                 <a href="{{ product.url }}">
                   <img src="{{ product.featured_image | img_url: '180x', crop: 'center' }}">
                   <p class="text-product">
@@ -75,7 +76,7 @@
                     <br>
 
                     <dl class="price{% if available and compare_at_price > price %} price--on-sale{% endif %}{% if available and variant.unit_price_measurement %} price--unit-available{% endif %}" data-price></dl>
-                    
+                    {{ product.price | money }}
                     {%- comment -%} {{ product.price | money }}
                     {% if product.available != true %}
                       <br>(SOLD OUT)
