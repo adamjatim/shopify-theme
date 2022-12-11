@@ -67,7 +67,9 @@
           <ul>
             {% for product in collection.products %}
               <li class="border">
-                <img style="width: auto;" src="{{ 'offer.png' | asset_img_url: '200x' }}">
+                <img style="width: auto;" src="https://cdn.shopify.com/s/files/1/0667/6172/0127/files/offer.png?v=1670739895
+                {%- comment -%} {{ 'offer.png' | asset_img_url: '200x' }} {%- endcomment -%}
+                ">
                 <a href="{{ product.url }}">
                   <img src="{{ product.featured_image | img_url: '180x', crop: 'center' }}">
                   <p class="text-product">
