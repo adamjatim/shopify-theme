@@ -166,6 +166,10 @@ ul {
   flex-flow: row wrap;
 }
 
+ul.product-list {
+  width: 800px;
+}
+
 .hide {
   display: none;
 }
