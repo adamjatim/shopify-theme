@@ -97,6 +97,11 @@ select#currency {
   border: 2px solid #000000;
 }
 
+.offer-badge {
+  position: absolute; 
+  width: 200px;
+}
+
 .flex {
   display: flex;
 }
