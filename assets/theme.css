@@ -158,6 +158,7 @@ h1.title {
   
 .right-bar {
   width: 80%;
+  border: 1px solid #000000;
 }
 
 ul {
@@ -296,10 +297,6 @@ li.border {
   width: 50%;
 }
 
-.sub-left-bar {
-  border-right: 1px solid #000000;
-}
-
 #ProductPhotoImg {
   width:360px;
   margin: auto;
@@ -310,7 +307,7 @@ li.border {
 }
 
 .sub-right-bar {
-  border-left: 1px solid #000000;
+  border-left: 0.5px solid #000000;
 }
 
 .product-option {
