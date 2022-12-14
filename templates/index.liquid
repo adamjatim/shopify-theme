@@ -63,10 +63,16 @@
               {%- endfor -%}
           </nav>
       </div>
-      <div class="main-right-bar">
+      <div class="right-bar">
           <ul>
+            {% assign product_variable = 1 %}
             {% for product in collection.products %}
-              <li class="border">
+              {% product_variable++ %}
+              {% if product_variable % 5 == 0 %}
+                <li class="border border-product-5">
+              {% else %}
+                <li class="border">
+              {% endif %}
                 <a href="{{ product.url }}">
                   <img src="{{ product.featured_image | img_url: '180x', crop: 'center' }}">
                   <p class="text-product">

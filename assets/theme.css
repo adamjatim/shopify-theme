@@ -157,13 +157,13 @@ h1.title {
   width: 100%;
 }
   
-.main-right-bar {
+/* .main-right-bar {
   width: 800px;
   border-top: 1px solid #000000;
-}
+} */
 
 .right-bar {
-  width: 80%;
+  width: 800px;
   border: 1px solid #000000;
 }
 
@@ -184,12 +184,16 @@ ul.product-list {
 li.border {
   width: 183px;
   border-right: 1px solid #000000;
-  border-top: 0px;
+  border-top: 1px solid #000000;
   border-left: 0px;
   border-bottom: 1px solid #000000;
   padding: 0.5em;
   padding-bottom: 2em;
   margin: 0;
+}
+
+.border-product-5 {
+  border-top: 0px;
 }
 
 .text-product {
