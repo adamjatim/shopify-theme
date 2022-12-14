@@ -156,9 +156,14 @@ h1.title {
   width: 100%;
 }
   
-.right-bar {
+.main-right-bar {
   width: 80%;
   border-top: 1px solid #000000;
+}
+
+.right-bar {
+  width: 80%;
+  border: 1px solid #000000;
 }
 
 ul {
