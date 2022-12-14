@@ -67,8 +67,8 @@
           <ul>
             {% assign product_variable = 1 %}
             {% for product in collection.products %}
-              {% product_variable++ %}
-              {% if product_variable % 5 == 0 %}
+              {%- assign last_product = collection.products | last -%}
+              {% if product ==  last_product %}
                 <li class="border border-product-5">
               {% else %}
                 <li class="border">
