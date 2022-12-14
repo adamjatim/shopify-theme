@@ -95,7 +95,8 @@ select#currency {
 
 .offer-badge {
   position: absolute; 
-  width: 196px;
+  width: 150px;
+  margin: 5%;
 }
 
 .flex {
