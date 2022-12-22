@@ -369,6 +369,10 @@ button#AddToCart {
     margin-top: 0px;
   }
 
+  .top-menu-left {
+    width: auto;
+  }
+
   .hamburger {
     display: none;
     visibility: hidden;
