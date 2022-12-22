@@ -24,6 +24,7 @@ main {
 
 .gap-main-border {
   padding: 50px;
+  margin-top: 50px;
 }
 
 .main-border {
@@ -348,4 +349,21 @@ button#AddToCart {
   border: 1px solid #000000;
   padding: 7px 30px 7px 30px;
   background-color: white;
+}
+
+@media screen and (min-width: 1080px) {
+  .gap-main-border {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .main-border {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .hamburger {
+    display: none;
+    visibility: hidden;
+  }
 }
