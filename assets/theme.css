@@ -373,6 +373,15 @@ button#AddToCart {
     margin-right: 0px;
   }
 
+  .bar > .main-right-bar > ul {
+    width: auto;
+  }
+
+  .bar > .main-right-bar > ul > li{
+    width: auto;
+    max-width: 520px;
+  }
+
   .top-menu {
     flex-direction: column;
     margin-top: 0px;
