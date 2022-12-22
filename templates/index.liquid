@@ -74,7 +74,7 @@
                 <li class="border">
               {% endif %}
                 <a href="{{ product.url }}">
-                  <img src="{{ product.featured_image | img_url: '180x', crop: 'center' }}">
+                  <img class="product-image" src="{{ product.featured_image | img_url: '400x', crop: 'center' }}">
                   <p class="text-product">
                     <br>
                     {{ product.title }}

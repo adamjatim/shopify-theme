@@ -378,8 +378,18 @@ button#AddToCart {
   }
 
   .bar > .main-right-bar > ul > li{
-    width: auto;
     max-width: 520px;
+    margin: auto;
+    height: 350px;
+  }
+
+  li.border {
+    width: auto;
+  }
+
+  .product-image {
+    max-width: 400px;
+    margin: auto;
   }
 
   .top-menu {
