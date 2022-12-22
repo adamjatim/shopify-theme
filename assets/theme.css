@@ -198,6 +198,10 @@ li.border {
   margin: 0;
 }
 
+.product-image {
+  max-width: 180px;
+}
+
 .text-product {
   font-size: medium;
   max-width: 180px;
