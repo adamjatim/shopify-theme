@@ -366,6 +366,13 @@ button#AddToCart {
     border-left: none;
   }
 
+  .bar {
+    margin-top: 10px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+  }
+
   .top-menu {
     flex-direction: column;
     margin-top: 0px;
