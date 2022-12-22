@@ -360,6 +360,8 @@ button#AddToCart {
     margin-left: 0px;
     margin-right: 0px;
     width: 1080px;
+    border-right: none;
+    border-left: none;
   }
 
   .hamburger {
