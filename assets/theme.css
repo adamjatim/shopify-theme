@@ -364,6 +364,10 @@ button#AddToCart {
     border-left: none;
   }
 
+  .top-menu {
+    flex-direction: column;
+  }
+
   .hamburger {
     display: none;
     visibility: hidden;
