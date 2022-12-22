@@ -359,6 +359,7 @@ button#AddToCart {
   .main-border {
     margin-left: 0px;
     margin-right: 0px;
+    width: 1080px;
   }
 
   .hamburger {
