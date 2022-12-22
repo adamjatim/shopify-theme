@@ -361,6 +361,7 @@ button#AddToCart {
     margin-left: 0px;
     margin-right: 0px;
     max-width: 1080px;
+    width: auto;
     border-right: none;
     border-left: none;
   }
