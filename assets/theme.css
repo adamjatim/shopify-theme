@@ -31,8 +31,7 @@ main {
   justify-content: center;
   border: 1px solid #000000;
   margin: 40px;
-  width: auto;
-  max-width: 1022px;
+  width: 1022px;
 }
 
 .top-menu {
