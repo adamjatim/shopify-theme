@@ -354,12 +354,13 @@ button#AddToCart {
   .gap-main-border {
     padding-left: 0px;
     padding-right: 0px;
+    width: 1080px;
   }
 
   .main-border {
     margin-left: 0px;
     margin-right: 0px;
-    width: 1080px;
+    max-width: 1080px;
     border-right: none;
     border-left: none;
   }
@@ -371,6 +372,9 @@ button#AddToCart {
 
   .top-menu-left {
     width: auto;
+  }
+  .left-bar {
+    display: none;
   }
 
   .hamburger {
