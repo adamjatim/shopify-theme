@@ -8,7 +8,7 @@
       <div class="top-menu-right">
         <h1 class="title">{{ collection.title }}
         </h1>
-      </div>
+      </div>2
       <div class="top-menu-left">
         <div class="top-menu-content">
           <a href="{{ paginate.previous.url }}">
@@ -74,7 +74,7 @@
                 <li class="border">
               {% endif %}
                 <a href="{{ product.url }}">
-                  <img class="product-image" src="{{ product.featured_image | img_url: '400x', crop: 'center' }}">
+                  <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
                   <p class="text-product">
                     <br>
                     {{ product.title }}
