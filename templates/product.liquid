@@ -43,9 +43,9 @@
                 <ul>
                   {%- for child_link in link.links -%}
                     <li>
-                      <aaria-current="page" {% endif %}{% if child_link.active %}>
+                      <a {% if child_link.active %}aria-current="page"{% endif %}>
                         {{ child_link.title }}
-                      </aaria-current=>
+                      </a>
                       {%- if child_link.links != blank -%}
                         <ul>
                           {%- for grandchild_link in child_link.links -%}
