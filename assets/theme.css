@@ -363,7 +363,7 @@ button#AddToCart {
 .hamburger {
   position: relative;
   z-index: 1; 
-  background-color: none;
+  background-color: #ffffff;
   margin: 5px;
   margin-left: 10px;
   margin-right: 10px;
@@ -380,11 +380,12 @@ button#AddToCart {
   transform-origin: 0 0;
 }
 
-.border-hamburger:hover {
+.border-hamburger:hover,
+.border-hamburger .hamburger {
   background-color: #000000;
 }
 
-.border-hamburger:hover span {
+.border-hamburger:hover .hamburger span {
   background-color: #ffffff;
 }
 
