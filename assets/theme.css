@@ -360,10 +360,6 @@ button#AddToCart {
   background-color: white;
 }
 
-.border-hamburger {
-  background-color: #ffffff;
-}
-
 .hamburger {
   position: relative;
   z-index: 1; 
@@ -382,14 +378,6 @@ button#AddToCart {
   border-radius: 6px;
   z-index: 1;
   transform-origin: 0 0;
-}
-
-.border-hamburger:hover .hamburger:hover {
-  background-color: #000000;
-}
-
-.border-hamburger:hover .hamburger span {
-  background-color: #ffffff;
 }
 
 @media screen and (min-width: 1080px){
