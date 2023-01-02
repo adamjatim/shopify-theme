@@ -74,11 +74,11 @@
           <div class="sub-left-bar">
             <div class="gap-1">
               <img
-                src="{{ featured_image | img_url: 'master' }}"
+                src="{{ featured_image | img_url: 'grande' }}"
                 alt="{{ featured_image.alt | escape }}"
                 id="ProductPhotoImg">
               {% for image in product.images %}
-                <a href="{{ image.src | img_url: 'master' }}">
+                <a href="{{ image.src | img_url: 'grande' }}">
                   <img
                     src="{{ image.src | img_url: 'compact' }}"
                     alt="{{ image.alt | escape }}"
