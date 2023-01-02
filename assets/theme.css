@@ -393,10 +393,6 @@ button#AddToCart {
   .hamburger {
     display: none;
   }
-
-  .mobile-product-page {
-    display: flex;
-  }
 }
 
 @media screen and (max-width: 1080px) {
@@ -413,13 +409,15 @@ button#AddToCart {
     width: auto;
     border-right: none;
     border-left: none;
+    border-bottom: none;
   }
 
   .bar {
+    margin: 0px;
     margin-top: 10px;
-    margin-left: 0px;
-    margin-bottom: 0px;
-    margin-right: 0px;
+    border: 1px solid #000000;
+    border-left: none;
+    border-right: none;
   }
 
   .bar > .main-right-bar > ul {
@@ -484,5 +482,15 @@ button#AddToCart {
   .minicart {
     display: none;
   }
+}
 
+@media screen and (max-width: 720px){
+  .sub-left-bar,
+  .sub-right-bar {
+    width: 100%;
+  }
+
+  .mobile-product-page {
+    display: flex;
+  }
 }
