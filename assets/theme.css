@@ -389,7 +389,7 @@ button#AddToCart {
   background-color: #ffffff;
 }
 
-@media screen and (min-width: 1080px){
+@media screen and (min-width: 1081px){
   .hamburger {
     display: none;
   }
