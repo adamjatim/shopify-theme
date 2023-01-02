@@ -393,6 +393,10 @@ button#AddToCart {
   .hamburger {
     display: none;
   }
+
+  .mobile-product-page {
+    display: flex;
+  }
 }
 
 @media screen and (max-width: 1080px) {
@@ -474,9 +478,7 @@ button#AddToCart {
   .right-bar {
     border: none;
     width: 100%;
-
   }
-
 
   /* for a develop */
   .minicart {
