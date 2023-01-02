@@ -378,7 +378,7 @@ button#AddToCart {
   transition: 0.4s;
 }
 
-.hamburger:hover {
+.border-hamburger:hover {
   background-color: #000000;
 }
 
