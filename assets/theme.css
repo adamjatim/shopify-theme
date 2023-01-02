@@ -325,7 +325,7 @@ li.border {
 }
 
 #ProductPhotoImg {
-  width:360px;
+  max-width:460px;
   margin: auto;
 }
 
@@ -470,6 +470,13 @@ button#AddToCart {
   .left-bar {
     display: none;
   }
+
+  .right-bar {
+    border: none;
+    width: 100%;
+
+  }
+
 
   /* for a develop */
   .minicart {
