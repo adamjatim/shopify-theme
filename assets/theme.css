@@ -364,9 +364,12 @@ button#AddToCart {
   position: relative;
   z-index: 1; 
   background-color: #ffffff;
-  margin: 5px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: auto;
+  margin-right: 0px;
+  padding: 5px 10px;
+  height: 30px;
+  border: 1px solid #000000;
+  border-radius: 8px;
 }
 
 .hamburger span {
@@ -378,6 +381,14 @@ button#AddToCart {
   border-radius: 6px;
   z-index: 1;
   transform-origin: 0 0;
+}
+
+.hamburger:hover {
+  background-color: #000000;
+}
+
+.hamburger:hover span {
+  background-color: #ffffff;
 }
 
 @media screen and (min-width: 1080px){
