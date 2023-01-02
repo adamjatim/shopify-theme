@@ -380,8 +380,7 @@ button#AddToCart {
   transform-origin: 0 0;
 }
 
-.border-hamburger:hover,
-.border-hamburger .hamburger {
+.border-hamburger:hover .hamburger:hover {
   background-color: #000000;
 }
 
