@@ -468,4 +468,8 @@ button#AddToCart {
     display: none;
   }
 
+  .minicart {
+    display: none;
+  }
+
 }
