@@ -43,7 +43,7 @@
                 <ul>
                   {%- for child_link in link.links -%}
                     <li>
-                      <aaria-current="page"{%endif%} {% if child_link.active %}>
+                      <aaria-current="page" {% endif %}{% if child_link.active %}>
                         {{ child_link.title }}
                       </aaria-current=>
                       {%- if child_link.links != blank -%}
@@ -127,6 +127,7 @@
       <span></span>
       <span></span>
     </div>
+    <div></div>
   </div>
 
   <div class="minicart-product-list">
