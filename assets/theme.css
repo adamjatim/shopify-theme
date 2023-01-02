@@ -378,14 +378,13 @@ button#AddToCart {
   border-radius: 6px;
   z-index: 1;
   transform-origin: 0 0;
-  transition: 0.4s;
 }
 
 .border-hamburger:hover {
   background-color: #000000;
 }
 
-.hamburger:hover span {
+.border-hamburger:hover span {
   background-color: #ffffff;
 }
 
