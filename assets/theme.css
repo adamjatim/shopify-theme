@@ -468,6 +468,7 @@ button#AddToCart {
     display: none;
   }
 
+  /* for a develop */
   .minicart {
     display: none;
   }
