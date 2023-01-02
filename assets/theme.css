@@ -484,13 +484,15 @@ button#AddToCart {
   }
 }
 
+@media screen and (min-width: 721px){
+  .mobile-product-page {
+    display: flex;
+  }
+}
+
 @media screen and (max-width: 720px){
   .sub-left-bar,
   .sub-right-bar {
     width: 100%;
-  }
-
-  .mobile-product-page {
-    display: flex;
   }
 }
