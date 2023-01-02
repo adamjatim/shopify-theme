@@ -387,7 +387,7 @@ button#AddToCart {
   background-color: #ffffff;
 }
 
-@media screen and (max-width: 1080px){
+@media screen and (min-width: 1080px){
   .hamburger {
     display: none;
   }
@@ -453,8 +453,4 @@ button#AddToCart {
     display: none;
   }
 
-  .hamburger {
-    display: none;
-    visibility: hidden;
-  }
 }
