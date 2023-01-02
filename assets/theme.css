@@ -446,9 +446,11 @@ button#AddToCart {
     margin-top: 0px;
   }
 
-  .top-menu-left {
+  .top-menu-left,
+  .top-menu-right {
     width: auto;
   }
+  
   .left-bar {
     display: none;
   }
