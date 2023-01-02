@@ -460,6 +460,7 @@ button#AddToCart {
     width: auto;
     padding: 2px;
     margin: auto;
+    margin-right: 0px;
     border: 1px solid #000000;
   }
 
