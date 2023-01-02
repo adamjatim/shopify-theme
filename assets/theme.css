@@ -364,13 +364,16 @@ button#AddToCart {
   position: relative;
   z-index: 1; 
   background-color: #ffffff;
+  margin: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .hamburger span {
   display: block;
   width: 25px;
-  height: 3px;
-  margin-bottom: 5px;
+  height: 4px;
+  margin: 4px;
   background-color: #000000;
   border-radius: 6px;
   z-index: 1;
