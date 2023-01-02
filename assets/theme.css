@@ -363,7 +363,7 @@ button#AddToCart {
 .hamburger {
   position: relative;
   z-index: 1; 
-  background-color: #ffffff;
+  background-color: none;
   margin: 5px;
   margin-left: 10px;
   margin-right: 10px;
