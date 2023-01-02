@@ -360,6 +360,10 @@ button#AddToCart {
   background-color: white;
 }
 
+.border-hamburger {
+  background-color: #ffffff;
+}
+
 .hamburger {
   position: relative;
   z-index: 1; 
