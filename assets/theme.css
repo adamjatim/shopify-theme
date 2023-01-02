@@ -371,7 +371,6 @@ button#AddToCart {
   width: 25px;
   height: 3px;
   margin-bottom: 5px;
-  position: relative;
   background-color: #000000;
   border-radius: 6px;
   z-index: 1;
@@ -450,7 +449,20 @@ button#AddToCart {
   .top-menu-right {
     width: auto;
   }
-  
+
+  .top-menu-right {
+    margin: 5px;
+    justify-content: space-between;
+    width: auto;
+  }
+
+  .top-menu-right .border-hamburger {
+    width: auto;
+    padding: 2px;
+    margin: auto;
+    border: 1px solid #000000;
+  }
+
   .left-bar {
     display: none;
   }
