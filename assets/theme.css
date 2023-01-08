@@ -389,6 +389,25 @@ button#AddToCart {
   background-color: #ffffff;
 }
 
+.navbar-mobile {
+  display: none;
+}
+
+.navbar-mobile-active {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 1;
+  height: 100%;
+  width: 400px;
+  background-color: #ffffff;
+}
+
+.background-navbar-mobile {
+  background-color: #000000;
+  opacity: 50%;
+}
+
 @media screen and (min-width: 1081px){
   .hamburger {
     display: none;
@@ -501,3 +520,4 @@ button#AddToCart {
     border-bottom: none;
   }
 }
+
