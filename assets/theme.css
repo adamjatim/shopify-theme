@@ -494,5 +494,10 @@ button#AddToCart {
   .sub-left-bar,
   .sub-right-bar {
     width: 100%;
+    border: none;
+  }
+
+  .bar {
+    border-bottom: none;
   }
 }
