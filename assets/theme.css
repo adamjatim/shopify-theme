@@ -396,10 +396,6 @@ button#AddToCart {
   transform: rotate(-45deg) translate(-2.5px, 0px);
 }
 
-.navbar-mobile {
-  display: none;
-}
-
 .navbar-mobile.is-active {
   position: fixed;
   top: 0px;
@@ -416,6 +412,9 @@ button#AddToCart {
     display: none;
   }
   .hamburger-cancel {
+    display: none;
+  }
+  .navbar-mobile {
     display: none;
   }
 }
