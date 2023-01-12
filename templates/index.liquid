@@ -4,6 +4,10 @@
 {%- paginate collection.products by 5 -%}
 
 <div class="navbar-mobile">
+  <div class="hamburger-cancel">
+    <span></span>
+    <span></span>
+  </div>
   <nav role="navigation">
     {%- for link in linklists.main-menu.links -%}
       <div class="widget-left-bar">
@@ -35,7 +39,6 @@
       </div>
     {%- endfor -%}
   </nav>
-  <div class="background-navbar-mobile"></div>
 </div>
 
 <div class="gap-main-border">
