@@ -388,15 +388,19 @@ button#AddToCart {
   background-color: #ffffff;
 }
 
-.hamburger-cancel {
+.navbar-mobile.is-active .hamburger-cancel span:nth-child(1) {
+  transform: rotate(45deg);
+}
 
+.navbar-mobile.is-active .hamburger-cancel span:nth-child(2) {
+  transform: rotate(-45deg) translate(-2.5px, 0px);
 }
 
 .navbar-mobile {
   display: none;
 }
 
-.navbar-mobile-active {
+.navbar-mobile.is-active {
   position: fixed;
   top: 0px;
   bottom: 0px;
