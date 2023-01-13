@@ -390,6 +390,7 @@ button#AddToCart {
 
 .hamburger-cancel {
   width: fit-content;
+  margin: 10px;
 }
 
 .navbar-mobile.is-active .hamburger-cancel span:nth-child(1) {
@@ -401,7 +402,7 @@ button#AddToCart {
 }
 
 .navbar-mobile.is-active .hamburger-cancel span:nth-child(3) {
-  transform: rotate(-45deg) translate(-2.5px, 0px);
+  transform: rotate(-45deg) translate(-3px, 1px);
 }
 
 .navbar-mobile.is-active {
