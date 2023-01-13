@@ -409,11 +409,16 @@ button#AddToCart {
   position: fixed;
   top: 0px;
   bottom: 0px;
-  width: 400px;
+  width: 350px;
   background-color: #ffffff;
   z-index: 1;
   margin: auto;
   margin-right: 0;
+}
+
+nav[role=navigation] {
+  font-size: x-large;
+  margin: 10px;
 }
 
 @media screen and (min-width: 1081px){
