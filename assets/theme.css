@@ -222,7 +222,7 @@ li.border {
 }
 
 .minicart {
-  position: absolute;
+  position: fixed;
   width: 400px;
   background-color: #ffffff;
   right: 0px;
@@ -399,15 +399,18 @@ button#AddToCart {
   display: none;
 }
 
-.navbar-mobile.is-active .hamburger-cancel span:nth-child(1) {
+.navbar-mobile.is-active .hamburger-cancel span:nth-child(1),
+.minicart .hamburger-cancel span:nth-child(1) {
   transform: rotate(45deg);
 }
 
-.navbar-mobile.is-active .hamburger-cancel span:nth-child(2) {
+.navbar-mobile.is-active .hamburger-cancel span:nth-child(2),
+.minicart .hamburger-cancel span:nth-child(2) {
   opacity: 0;
 }
 
-.navbar-mobile.is-active .hamburger-cancel span:nth-child(3) {
+.navbar-mobile.is-active .hamburger-cancel span:nth-child(3),
+.minicart .hamburger-cancel span:nth-child(3) {
   transform: rotate(-45deg) translate(-3px, 1px);
 }
 
