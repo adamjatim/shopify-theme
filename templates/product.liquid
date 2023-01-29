@@ -21,7 +21,7 @@
             <ul class="product-list">
               {%- for child_link in link.links -%}
                 <li>
-                  <aaria-current="page"{%endif%} {% if child_link.active %}>
+                  <a {% if child_link.active %}aria-current="page"{% endif %}>
                     {{ child_link.title }}
                   </a>
                   {%- if child_link.links != blank -%}
