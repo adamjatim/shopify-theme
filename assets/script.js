@@ -1,7 +1,6 @@
-function on() {
-    document.getElementById("overlay").style.display = "block";
-}
+const hamburger = document.querySelector('.hamburger');
+const navbarMobile = document.querySelector('.navbar-mobile');
 
-function off() {
-    document.getElementById("overlay").style.display = "none";
-}
+hamburger.addEventListener('click', function () {
+    navbarMobile.classList.toggle('is-active');
+})
