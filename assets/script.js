@@ -1,3 +1,4 @@
+// hamburger function
 const hamburger = document.querySelector('.hamburger');
 const navbarMobile = document.querySelector('.navbar-mobile');
 
@@ -11,3 +12,11 @@ const activeNavbarMobile = document.querySelector('.navbar-mobile.is-active')
 hamburgerCancel.addEventListener('click', function () {
     navbarMobile.classList.remove('is-active');
 });
+
+// minicart function
+const cart = document.getElementById('cart');
+const minicart = 
+
+cart.addEventListener('click', function () {
+
+})
