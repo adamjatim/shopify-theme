@@ -436,9 +436,6 @@ nav[role=navigation] {
   .hamburger {
     display: none;
   }
-  .hamburger-cancel {
-    display: none;
-  }
   .navbar-mobile {
     display: none;
   }
