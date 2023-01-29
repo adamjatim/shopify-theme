@@ -9,5 +9,5 @@ const hamburgerCancel = document.querySelector('.hamburger-cancel');
 const activeNavbarMobile = document.querySelector('.navbar-mobile.is-active')
 
 hamburgerCancel.addEventListener('click', function () {
-    activeNavbarMobile.classList.remove('is-active');
+    navbarMobile.classList.remove('is-active');
 });
