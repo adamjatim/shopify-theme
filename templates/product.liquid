@@ -4,7 +4,46 @@
 
 <img class="product-single__logo" src="{{ 'logo.jpg' | asset_url }}">
 
-<div class=""></div>
+<div id="overlay">
+  <div class="navbar-mobile">
+    <button class="hamburger-cancel">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav role="navigation">
+      {%- for link in linklists.main-menu.links -%}
+        <div class="widget-left-bar">
+          <a href="{{ link.url }}" {% if link.active %}aria-current="page"{% endif %}>
+            <h2>{{ link.title }}</h2>
+          </a>
+          {%- if link.links != blank -%}
+            <ul class="product-list">
+              {%- for child_link in link.links -%}
+                <li>
+                  <aaria-current="page"{%endif%} {% if child_link.active %}>
+                    {{ child_link.title }}
+                  </a>
+                  {%- if child_link.links != blank -%}
+                    <ul>
+                      {%- for grandchild_link in child_link.links -%}
+                        <li>
+                          <a href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page"{% endif %}>
+                            {{ grandchild_link.title }}
+                          </a>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </nav>
+  </div>
+</div>
 
 <div class="gap-main-border">
   <div class="main-border">
