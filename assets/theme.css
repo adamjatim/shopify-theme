@@ -425,6 +425,10 @@ nav[role=navigation] {
   display: none;
 }
 
+#overlay .navbar-mobile.is-active {
+  display: block;
+}
+
 @media screen and (min-width: 1081px){
   .hamburger {
     display: none;
