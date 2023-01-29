@@ -431,9 +431,6 @@ nav[role=navigation] {
   .navbar-mobile {
     display: none;
   }
-  #overlay {
-    display: none;
-  }
 }
 
 @media screen and (max-width: 1080px) {
