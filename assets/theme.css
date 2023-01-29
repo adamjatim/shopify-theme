@@ -391,6 +391,7 @@ button#AddToCart {
 .hamburger-cancel {
   width: fit-content;
   margin: 10px;
+  background-color: none;
 }
 
 .navbar-mobile {
