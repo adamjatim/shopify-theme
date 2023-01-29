@@ -392,6 +392,7 @@ button#AddToCart {
   width: fit-content;
   margin: 10px;
   background-color: #ffffff;
+  border: none;
 }
 
 .navbar-mobile {
