@@ -421,12 +421,12 @@ nav[role=navigation] {
   margin: 10px;
 }
 
-#overlay {
-  display: none;
-}
-
 #overlay .navbar-mobile.is-active {
   display: block;
+}
+
+#overlay {
+  display: none;
 }
 
 @media screen and (min-width: 1081px){
