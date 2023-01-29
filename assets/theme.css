@@ -393,6 +393,10 @@ button#AddToCart {
   margin: 10px;
 }
 
+.navbar-mobile {
+  display: none;
+}
+
 .navbar-mobile.is-active .hamburger-cancel span:nth-child(1) {
   transform: rotate(45deg);
 }
@@ -419,14 +423,6 @@ button#AddToCart {
 nav[role=navigation] {
   font-size: x-large;
   margin: 10px;
-}
-
-#overlay .navbar-mobile.is-active {
-  display: block;
-}
-
-#overlay {
-  display: none;
 }
 
 @media screen and (min-width: 1081px){
