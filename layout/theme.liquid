@@ -8,7 +8,6 @@
   <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover">
   {{ content_for_header }} <!-- Header hook for plugins -->
   {{ 'theme.css' | asset_url | stylesheet_tag }}
-  {{ 'script.js' | asset_url | script_tag }}
 
 <script>
 window.mlvedaShopCurrency = "{{ shop.currency }}";
@@ -20,5 +19,6 @@ window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
     {{ content_for_layout }}
   </main>
 {%- comment -%} {% include 'mlveda-currencies-switcher' %}{% include 'mlveda-currencies' %}{% include 'mlveda-flag' %}{% include 'mlveda-currencies-style' %} {%- endcomment -%}
+  {{ 'script.js' | asset_url | script_tag }}
 </body>
 </html>
