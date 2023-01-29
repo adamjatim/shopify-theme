@@ -419,6 +419,7 @@ button#AddToCart {
   z-index: 1;
   margin: auto;
   margin-right: 0;
+  border-left: 1px solid #000000;
 }
 
 nav[role=navigation] {
