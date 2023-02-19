@@ -384,7 +384,8 @@ button#AddToCart {
 }
 
 .hamburger span,
-.hamburger-cancel span {
+.hamburger-cancel span,
+.cart-cancel span {
   display: block;
   width: 25px;
   height: 3px;
@@ -401,7 +402,8 @@ button#AddToCart {
   background-color: #ffffff;
 }
 
-.hamburger-cancel {
+.hamburger-cancel,
+.cart-cancel {
   width: fit-content;
   margin: 10px;
   background-color: #ffffff;
@@ -413,17 +415,17 @@ button#AddToCart {
 }
 
 .navbar-mobile.is-active .hamburger-cancel span:nth-child(1),
-.minicart .hamburger-cancel span:nth-child(1) {
+.minicart .cart-cancel span:nth-child(1) {
   transform: rotate(45deg);
 }
 
 .navbar-mobile.is-active .hamburger-cancel span:nth-child(2),
-.minicart .hamburger-cancel span:nth-child(2) {
+.minicart .cart-cancel span:nth-child(2) {
   opacity: 0;
 }
 
 .navbar-mobile.is-active .hamburger-cancel span:nth-child(3),
-.minicart .hamburger-cancel span:nth-child(3) {
+.minicart .cart-cancel span:nth-child(3) {
   transform: rotate(-45deg) translate(-3px, 1px);
 }
 
