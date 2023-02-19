@@ -240,6 +240,10 @@ li.border {
   border-bottom: 1px solid #000000;
 }
 
+.minicart-title div {
+  padding: 10px 0px;
+}
+
 .minicart-product-list {
   height: auto;
   width: auto;
