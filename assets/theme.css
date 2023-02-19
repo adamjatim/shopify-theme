@@ -223,6 +223,7 @@ li.border {
 
 .minicart.is-active {
   display: block;
+  visibility: visible;
   position: fixed;
   width: 400px;
   background-color: #ffffff;
