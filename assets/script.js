@@ -15,8 +15,8 @@ hamburgerCancel.addEventListener('click', function () {
 
 // minicart function
 const cart = document.getElementById('cart');
-const minicart = 
+const minicart = document.querySelector('.minicart');
 
 cart.addEventListener('click', function () {
-
+    minicart.classList.toggle('is-active');
 })
