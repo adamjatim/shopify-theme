@@ -410,6 +410,16 @@ button#AddToCart {
   border: none;
 }
 
+.overlay {
+  padding: 0px;
+  left: 0;
+  width: calc(100% - 350px);
+  height: 100%;
+  background-color: #000;
+  position: fixed;
+  opacity: 50%;
+}
+
 .navbar-mobile {
   display: none;
 }
