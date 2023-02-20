@@ -159,7 +159,7 @@
                       </div>
                       <br>
                     {% else %}
-                      <div class="product-variant">
+                      <div class="product-variant out-of-stock">
                         <input
                           type="radio"
                           id="variant_{{ variant.id }}"
@@ -167,7 +167,7 @@
                           value="{{ variant.id }}"
                           disabled="disabled">
 
-                        <label for="variant_{{ variant.id }}" class="product-variant out-of-stock">{{ variant.title }}</label>
+                        <label for="variant_{{ variant.id }}">{{ variant.title }}</label>
                       </div>
                       <br>
                     {% endif %}
