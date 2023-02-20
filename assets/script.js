@@ -23,4 +23,14 @@ cart.addEventListener('click', function () {
 
 minicartCancel.addEventListener('click', function () {
     minicart.classList.remove('is-active');    
-})
+});
+
+var variantLabels = document.querySelectorAll('.product-variant');
+for (var i = 0; i < variantLabels.length; i++) {
+    variantLabels[i].addEventListener('click', function() {
+        // Get the associated radio button and set its checked property to true
+        var radioBtn = this.previousElementSibling;
+        radioBtn.checked = true;
+        variantLabels.classList.toggle('is-active');
+    });
+}
