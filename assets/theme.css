@@ -370,6 +370,9 @@ li.border {
 .product-variant-out-of-stock {
   color: #888888;
   background-color: #ffffff;
+  margin: 5px 5px 0px 5px;
+  padding: 10px 20px;
+  border: 1px solid #888888;
 }
 
 button#AddToCart {
