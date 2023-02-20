@@ -163,7 +163,7 @@
                         value="{{ variant.id }}"
                         disabled="disabled">
 
-                      <label for="variant_{{ variant.id }}">{{ variant.title }} - {{ 'products.product.sold_out' | t }}</label>
+                      <label for="variant_{{ variant.id }}" class="product-variant">{{ variant.title }}</label>
                       <br>
                     {% endif %}
                   {% endfor %}
