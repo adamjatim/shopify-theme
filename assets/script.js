@@ -37,5 +37,5 @@ var radios = document.getElementsByName('id');
 
   var variantRadio = document.querySelectorAll('.product-variant');
   variantRadio.forEach(function(el) {
-    el.style.display = 'none';
+    el.style.display = '';
   });
