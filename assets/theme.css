@@ -572,7 +572,7 @@ nav[role=navigation] {
     border-bottom: none;
   }
 
-  .minicart {
+  #minicart.minicart {
     width: 100%;
     height: 60%;
     bottom: 0px;
