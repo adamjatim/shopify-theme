@@ -31,6 +31,25 @@ for (var i = 0; i < variantLabels.length; i++) {
         // Get the associated radio button and set its checked property to true
         var radioBtn = this.previousElementSibling;
         radioBtn.checked = true;
-        variantLabels.classList.toggle('is-active');
+        variantLabels.classList.toggle('out-of-stock');
     });
 }
+
+// get checked condition from variant-product
+// var radios = document.getElementsByName('id');
+// var selectedValue = null;
+
+// for (var i = 0; i < radios.length; i++) {
+//   if (radios[i].checked) {
+//     selectedValue = radios[i].value;
+//     break;
+//   }
+// }
+
+// if (selectedValue != null) {
+//   // Do something with the selected value
+//   variantLabels.classList.toggle('is-active');
+// } else {
+//   // No radio button was selected
+//   console.log('Please select a variant');
+// }

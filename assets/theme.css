@@ -367,7 +367,7 @@ li.border {
   background-color: #000000;
 }
 
-.product-variant-out-of-stock {
+.product-variant.out-of-stock {
   color: #888888;
   background-color: #ffffff;
   margin: 5px 5px 0px 5px;
