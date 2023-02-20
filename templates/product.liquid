@@ -137,24 +137,24 @@
 
               <form action="/cart/add" method="post">
                 {% for variant in product.variants %}
-                  {% if variant.available %}
-                    {% if product.selected_or_first_available_variant.id == variant.id %}
-                      <input
-                        type="radio"
-                        id="variant_{{ variant.id }}"
-                        name="id"
-                        value="{{ variant.id }}"
-                        checked="checked">
-                    {% else %}
-                      <input
-                        type="radio"
-                        id="variant_{{ variant.id }}"
-                        name="id"
-                        value="{{ variant.id }}">
-                    {% endif %}
-                    <label for="variant_{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</label>
-                    <br>
+
+                  {% if product.selected_or_first_available_variant.id == variant.id %}
+                    <input
+                      type="radio"
+                      id="variant_{{ variant.id }}"
+                      name="id"
+                      value="{{ variant.id }}"
+                      checked="checked">
+                  {% else %}
+                    <input
+                      type="radio"
+                      id="variant_{{ variant.id }}"
+                      name="id"
+                      value="{{ variant.id }}">
                   {% endif %}
+                  <label for="variant_{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</label>
+                  <br>
+
                 {% endfor %}
                 <input type="submit" value="Add to Cart">
               </form>
