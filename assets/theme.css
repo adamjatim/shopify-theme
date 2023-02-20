@@ -559,16 +559,6 @@ nav[role=navigation] {
   .mobile-product-page {
     display: flex;
   }
-
-  .minicart {
-    width: 100%;
-    height: 60%;
-    bottom: 0px;
-    position: fixed;
-    margin: auto;
-    margin-bottom: 0px;
-    border-top: 2px solid;
-  }
 }
 
 @media screen and (max-width: 720px){
@@ -580,5 +570,15 @@ nav[role=navigation] {
 
   .bar {
     border-bottom: none;
+  }
+
+  .minicart {
+    width: 100%;
+    height: 60%;
+    bottom: 0px;
+    position: fixed;
+    margin: auto;
+    margin-bottom: 0px;
+    border-top: 2px solid;
   }
 }
