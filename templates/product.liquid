@@ -135,6 +135,27 @@
               <h1>{{ current_variant.price | money }}</h1>
               <div>{{ product.description }}</div>
 
+              <form action="/cart/add" method="post">
+                <select name="id">
+                  {{ product_options.name }}
+                  <div class="product-option">
+                    {% for variant in product.variants %}
+                      <div class="product-variant">
+                        {% if variant.available %}
+                          {% if product.selected_or_first_available_variant.id == variant.id %}
+                            <input tipe="radio" value="{{ variant.id }}" selected="selected">{{ variant.title }} - {{ variant.price | money }}</input>
+                          {% else %}
+                            <input tipe="radio"  value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</input>
+                          {% endif %}
+                        {% endif %}
+                      </div>
+                    {% endfor %}
+                  </div>
+                </select>
+                <input type="submit" value="Add to Cart">
+              </form>
+
+            {%  comment  %} 
               <form>
                 {% for product_option in product.options_with_values %}
                   {{ product_option.name }}
@@ -156,6 +177,8 @@
 
                 <button type="submit" id="AddToCart">ADD TO CART</button>
               </form>
+
+                 {% endcomment %} 
 
             </div>
           </div>
