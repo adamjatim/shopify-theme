@@ -26,14 +26,6 @@ minicartCancel.addEventListener('click', function () {
 });
 
 var variantLabels = document.querySelectorAll('.product-variant');
-// for (var i = 0; i < variantLabels.length; i++) {
-//     variantLabels[i].addEventListener('click', function() {
-//         // Get the associated radio button and set its checked property to true
-//         var radioBtn = this.previousElementSibling;
-//         radioBtn.checked = true;
-//         variantLabels.classList.toggle('is-active');
-//     });
-// }
 
 // get checked condition from variant-product
 var radios = document.getElementsByName('id');
@@ -51,5 +43,4 @@ if (selectedValue != null) {
   variantLabels.classList.toggle('is-active');
 } else {
   // No radio button was selected
-  console.log('Please select a variant');
 }
