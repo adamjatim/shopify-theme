@@ -136,29 +136,32 @@
               <div>{{ product.description }}</div>
 
               <form action="/cart/add" method="post">
-                {% for variant in product.variants %}
-                  <div class="product-variant">
-                    {% if product.selected_or_first_available_variant.id == variant.id %}
-                      <input
-                        type="radio"
-                        id="variant_{{ variant.id }}"
-                        name="id"
-                        value="{{ variant.id }}"
-                        checked="checked"
-                        class="hide">
-                    {% else %}
-                      <input
-                        type="radio"
-                        id="variant_{{ variant.id }}"
-                        name="id"
-                        value="{{ variant.id }}"
-                        class="hide">
-                    {% endif %}
-                    <label for="variant_{{ variant.id }}">{{ variant.title }}</label>
-                    <br>
-                  </div>
+                <div class="product-option">
+                  {% for variant in product.variants %}
+                    <div class="product-variant">
+                      {% if product.selected_or_first_available_variant.id == variant.id %}
+                        <input
+                          type="radio"
+                          id="variant_{{ variant.id }}"
+                          name="id"
+                          value="{{ variant.id }}"
+                          checked="checked"
+                          class="hide">
+                      {% else %}
+                        <input
+                          type="radio"
+                          id="variant_{{ variant.id }}"
+                          name="id"
+                          value="{{ variant.id }}"
+                          class="hide">
+                      {% endif %}
+                      <label for="variant_{{ variant.id }}">{{ variant.title }}</label>
+                      <br>
+                    </div>
 
-                {% endfor %}
+                  {% endfor %}
+                </div>
+
                 <input
                   id="AddToCart"
                   type="submit"
