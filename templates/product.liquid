@@ -138,6 +138,7 @@
               <form action="/cart/add" method="post">
                 <div class="product-option">
                   {% for variant in product.variants %}
+                    <div class="product-variant">
                     {% if variant.available %}
                       {% if product.selected_or_first_available_variant.id == variant.id %}
                         <input
@@ -153,7 +154,8 @@
                           name="id"
                           value="{{ variant.id }}">
                       {% endif %}
-                      <label for="variant_{{ variant.id }}" class="product-variant">{{ variant.title }}</label>
+                      <label for="variant_{{ variant.id }}" >{{ variant.title }}</label>
+                      </div>
                       <br>
                     {% else %}
                       <input
@@ -164,6 +166,7 @@
                         disabled="disabled">
 
                       <label for="variant_{{ variant.id }}" class="product-variant out-of-stock">{{ variant.title }}</label>
+                      </div>
                       <br>
                     {% endif %}
                   {% endfor %}

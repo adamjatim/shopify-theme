@@ -25,24 +25,17 @@ minicartCancel.addEventListener('click', function () {
     minicart.classList.remove('is-active');    
 });
 
-function checker(){
-    var variantLabels = document.querySelectorAll('.product-variant');
+var radios = document.getElementsByName('id');
+  var selectedValue = null;
 
-    // get checked condition from variant-product
-    var radios = document.getElementsByName('id');
-    var selectedValue = null;
+  for (var i = 0; i < radios.length; i++) {
+    radios[i].addEventListener('change', function() {
+      selectedValue = this.value;
+      console.log('Selected variant ID: ' + selectedValue);
+    });
+  }
 
-    for (var i = 0; i < radios.length; i++) {
-        if (radios[i].checked) {
-            selectedValue = radios[i].value;
-            break;
-        }
-    }
-
-    if (selectedValue != null) {
-        // Do something with the selected value
-        variantLabels.classList.toggle('is-active');
-    } else {
-        // No radio button was selected
-    }
-}setInterval(checker, 1);
+  var variantRadio = document.querySelectorAll('.product-variant');
+  variantRadio.forEach(function(el) {
+    el.style.display = 'none';
+  });
