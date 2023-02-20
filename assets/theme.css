@@ -361,6 +361,10 @@ li.border {
   border: 1px solid #000000;
 }
 
+.product-variant input {
+  display: none;
+}
+
 .product-variant:hover,
 .product-variant.is-active {
   color: #ffffff;

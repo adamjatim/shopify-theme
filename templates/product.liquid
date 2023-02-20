@@ -147,15 +147,13 @@
                             id="variant_{{ variant.id }}"
                             name="id"
                             value="{{ variant.id }}"
-                            checked="checked"
-                            display="none">
+                            checked="checked">
                         {% else %}
                           <input
                             type="radio"
                             id="variant_{{ variant.id }}"
                             name="id"
-                            value="{{ variant.id }}"
-                            display="none">
+                            value="{{ variant.id }}">
                         {% endif %}
                         <label for="variant_{{ variant.id }}">{{ variant.title }}</label>
                       </div>
@@ -167,8 +165,7 @@
                           id="variant_{{ variant.id }}"
                           name="id"
                           value="{{ variant.id }}"
-                          disabled="disabled"
-                          display="none">
+                          disabled="disabled">
 
                         <label for="variant_{{ variant.id }}">{{ variant.title }}</label>
                       </div>
