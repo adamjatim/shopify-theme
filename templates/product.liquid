@@ -138,25 +138,34 @@
               <form action="/cart/add" method="post">
                 <div class="product-option">
                   {% for variant in product.variants %}
-                    {% if product.selected_or_first_available_variant.id == variant.id %}
-                      <input
-                        type="radio"
-                        id="variant_{{ variant.id }}"
-                        name="id"
-                        value="{{ variant.id }}"
-                        checked="checked"
-                        class="hide">
+                    {% if variant.available %}
+                      {% if product.selected_or_first_available_variant.id == variant.id %}
+                        <input
+                          type="radio"
+                          id="variant_{{ variant.id }}"
+                          name="id"
+                          value="{{ variant.id }}"
+                          checked="checked">
+                      {% else %}
+                        <input
+                          type="radio"
+                          id="variant_{{ variant.id }}"
+                          name="id"
+                          value="{{ variant.id }}">
+                      {% endif %}
+                      <label for="variant_{{ variant.id }}" class="product-variant">{{ variant.title }}</label>
+                      <br>
                     {% else %}
                       <input
                         type="radio"
                         id="variant_{{ variant.id }}"
                         name="id"
                         value="{{ variant.id }}"
-                        class="hide">
-                    {% endif %}
-                    <label for="variant_{{ variant.id }}" class="product-variant">{{ variant.title }}</label>
-                    <br>
+                        disabled="disabled">
 
+                      <label for="variant_{{ variant.id }}">{{ variant.title }} - {{ 'products.product.sold_out' | t }}</label>
+                      <br>
+                    {% endif %}
                   {% endfor %}
                 </div>
 
