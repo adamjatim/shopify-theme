@@ -114,9 +114,9 @@
           <ul>
             {% assign product_count = collection.products | size %}
             {% assign product_range = (1..product_count) %}
-            {% for product in product_range %}
-              {%- assign last_product = collection.products | 5 -%}
-              {% if product >= 5 %}
+            {% for index in product_range %}
+              {% assign product = collection.products[index] %}
+              {% if index >= 5 %}
                 <li class="border border-product-5">
               {% else %}
                 <li class="border">
