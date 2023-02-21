@@ -135,7 +135,7 @@
             {% endfor %}
 
             {% comment %} display 4 last product {% endcomment %}
-            {% for product in collection_products reversed limit: 4 %}
+            {% for product in collection_products offset: 4 limit: 4 %}
               <li class="border border-product-5">
                 <a href="{{ product.url }}">
                   <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
