@@ -115,7 +115,7 @@
             {% assign product_variable =  %}
             {% for product in collection.products %}
               {%- assign last_product = collection.products | 5 -%}
-              {% if product >= 5 %}
+              {% if product == 5 %}
                 <li class="border border-product-5">
               {% else %}
                 <li class="border">
