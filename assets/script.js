@@ -26,16 +26,16 @@ minicartCancel.addEventListener('click', function () {
 });
 
 var radios = document.getElementsByName('id');
-  var selectedValue = null;
+var selectedValue = null;
 
-  for (var i = 0; i < radios.length; i++) {
-    radios[i].addEventListener('change', function() {
-      selectedValue = this.value;
-      console.log('Selected variant ID: ' + selectedValue);
-    });
-  }
-
-  var variantRadio = document.querySelectorAll('.product-variant');
-  variantRadio.forEach(function(el) {
-    el.style.display = '';
+for (var i = 0; i < radios.length; i++) {
+  radios[i].addEventListener('change', function() {
+    selectedValue = this.value;
+    console.log('Selected variant ID: ' + selectedValue);
   });
+}
+
+var variantRadio = document.querySelectorAll('.product-variant');
+ variantRadio.forEach(function(el) {
+  el.style.display = '';
+});
