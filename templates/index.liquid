@@ -112,10 +112,10 @@
       </div>
       <div class="main-right-bar">
           <ul>
-            {% assign product_variable = 1 %}
+            {% assign productVariable = 1 %}
             {% for product in collection.products %}
-              {%- product_variable = product_variable + 1 -%}
-              {% if product_variable >= 5  %}
+              {%- productVariable = productVariable + 1 -%}
+              {% if productVariable >= 5  %}
                 <li class="border border-product-5">
               {% else %}
                 <li class="border">
