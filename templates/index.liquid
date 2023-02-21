@@ -88,7 +88,10 @@
                   <ul class="product-list">
                     {%- for child_link in link.links -%}
                       <li>
-                        <a {% if child_link.active %}aria-current="page"{% endif %}>
+                        <a
+                          {%- if child_link.active -%}
+                          aria-current="page"
+                          {%- endif -%}>
                           {{ child_link.title }}
                         </a>
                         {%- if child_link.links != blank -%}
