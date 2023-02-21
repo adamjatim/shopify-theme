@@ -114,7 +114,7 @@
           <ul>
             {% assign productVariable = 1 %}
             {% for product in collection.products %}
-              {%- productVariable = productVariable + 1 -%}
+              {%- assign productVariable = productVariable + 1 -%}
               {% if productVariable >= 5  %}
                 <li class="border border-product-5">
               {% else %}
