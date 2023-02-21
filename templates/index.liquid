@@ -116,10 +116,9 @@
         <div class="main-right-bar">
           <ul>
             {% assign collection_products = collection.products %}
-            {% assign collection_products_count = collection_products.size %}
 
             {% comment %} display 4 first product {% endcomment %}
-            {% for product in collection_products | slice: 0, 4 %}
+            {% for product in collection_products limit: 4 %}
               <li class="border">
                 <a href="{{ product.url }}">
                   <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
@@ -136,7 +135,7 @@
             {% endfor %}
 
             {% comment %} display 4 last product {% endcomment %}
-            {% for product in collection_products | slice: collection_products_count | minus: 4, collection_products_count %}
+            {% for product in collection_products reversed limit: 4 %}
               <li class="border border-product-5">
                 <a href="{{ product.url }}">
                   <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
