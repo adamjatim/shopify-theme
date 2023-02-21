@@ -114,8 +114,7 @@
           <ul>
             {% assign productVariable = (1..8) %}
             {% for product in collection.products %}
-              {% for number in productVariable %}
-              {% if number >= 5  %}
+              {% if collection.products[product] >= 5  %}
                 <li class="border border-product-5">
               {% else %}
                 <li class="border">
@@ -133,7 +132,6 @@
                 </a>
                 <img class="offer-badge" src="{{ 'free-shipping.png' | asset_url }}">
               </li>
-              {% endfor %}
             {% endfor %}
           </ul>
       </div>
