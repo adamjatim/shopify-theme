@@ -20,7 +20,7 @@
               <ul class="product-list">
                 {%- for child_link in link.links -%}
                   <li>
-                    <aaria-current="page" {% endif %}{% if child_link.active %}>
+                    <a {% if child_link.active %}aria-current="page"{% endif %}>
                       {{ child_link.title }}
                     </a>
                     {%- if child_link.links != blank -%}
@@ -88,7 +88,7 @@
                   <ul class="product-list">
                     {%- for child_link in link.links -%}
                       <li>
-                        <aaria-current="page" {% endif %}{% if child_link.active %}>
+                        <aaria-current="page" {%endif%}{% if child_link.active %}>
                           {{ child_link.title }}
                         </aaria-current=>
                         {%- if child_link.links != blank -%}
@@ -119,7 +119,7 @@
             {% for product in collection.products | slice: 0, 4 %}
               <li class="border">
                 <a href="{{ product.url }}">
-                  <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
+                  <img class="product-image"src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
                   <p class="text-product">
                     <br>
                     {{ product.title }}
@@ -128,7 +128,7 @@
                     {{ product.price | money }}
                   </p>
                 </a>
-                <img class="offer-badge" src="{{ 'free-shipping.png' | asset_url }}">
+                <img class="offer-badge"src="{{ 'free-shipping.png' | asset_url }}">
               </li>
             {% endfor %}
 
@@ -136,7 +136,7 @@
             {% for product in collection.products | slice: collection_products_count | minus: 4, collection_products_count %}
               <li class="border border-product-5">
                 <a href="{{ product.url }}">
-                  <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
+                  <img class="product-image"src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
                   <p class="text-product">
                     <br>
                     {{ product.title }}
@@ -145,7 +145,7 @@
                     {{ product.price | money }}
                   </p>
                 </a>
-                <img class="offer-badge" src="{{ 'free-shipping.png' | asset_url }}">
+                <img class="offer-badge"src="{{ 'free-shipping.png' | asset_url }}">
               </li>
             {% endfor %}
           </ul>
