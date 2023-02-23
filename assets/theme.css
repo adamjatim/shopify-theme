@@ -284,6 +284,10 @@ li.border {
   width: auto;
 }
 
+.minicart-product-price {
+  text-align: end;
+}
+
 .minicart-product-quantity > button,
 .minicart-product-quantity > input {
   width: 20px;
