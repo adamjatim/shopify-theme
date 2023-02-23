@@ -54,3 +54,20 @@ function updateParentObject(radio) {
     parentObject.style.backgroundColor = 'blue';
   }
 }
+
+document.getElementById("add-product-form").addEventListener("submit", function(event) {
+  // Prevent the default form submission action
+  event.preventDefault();
+  
+  // Get the form data
+  var formData = new FormData(event.target);
+  
+  // Do something with the form data, such as submit it using AJAX
+  // For example:
+  fetch(event.target.action, {
+    method: event.target.method,
+    body: formData
+  }).then(function(response) {
+    console.log("Form submitted successfully!");
+  });
+});

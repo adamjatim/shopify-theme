@@ -135,7 +135,7 @@
               <h1>{{ current_variant.price | money }}</h1>
               <div>{{ product.description }}</div>
 
-              <form action="/cart/add" method="post">
+              <form action="/cart/add" method="post" id="add-product-form">
                 <div class="product-option">
                   {% for variant in product.variants %}
 
