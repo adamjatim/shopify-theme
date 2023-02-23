@@ -55,6 +55,7 @@ function updateParentObject(radio) {
   }
 }
 
+// hold product-page after add to cart
 document.getElementById("add-product-form").addEventListener("submit", function(event) {
   // Prevent the default form submission action
   event.preventDefault();
@@ -63,7 +64,6 @@ document.getElementById("add-product-form").addEventListener("submit", function(
   var formData = new FormData(event.target);
   
   // Do something with the form data, such as submit it using AJAX
-  // For example:
   fetch(event.target.action, {
     method: event.target.method,
     body: formData

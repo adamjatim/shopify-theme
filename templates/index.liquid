@@ -169,16 +169,21 @@
       </button>
     </div>
     {% if cart.item_count > 0 %}
-      <form action="/cart" method="post" novalidate>
+      <form
+        action="/cart"
+        method="post"
+        novalidate
+        class="minicart-product-list">
         {% for item in cart.items %}
-          <tr>
-            <td>
+          <tr class="minicart-product">
+            <td class="minicart-product-image">
               <a href="{{ item.url | within: :collections.all }}">
                 <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
               </a>
             </td>
-            <td>
+            <td class="minicart-product-description">
               <a href="{{ item.url }}">{{ item.product.title }}</a>
+              -
               {{ item.variant.title }}
             </td>
             <td></td>
