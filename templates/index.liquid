@@ -183,11 +183,16 @@
                 </a>
               </td>
               <td class="minicart-product-description">
-                <a href="{{ item.url }}">{{ item.product.title }}</a>
-                -
-                {{ item.variant.title }}
+                <div class="flex-direction-column">
+                  <div class="minicart-product-title">
+                    <a href="{{ item.url }}">{{ item.product.title }} ( {{ item.variant.title }} )</a>
+                  </div>
+                  <div class="minicart-product-quantity"></div>
+                </div>
+                <div class="minicart-product-price">
+                  {{ item.price | money }}
+                </div>
               </td>
-              <td></td>
             </tr>
           </table>
         {% endfor %}
