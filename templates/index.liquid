@@ -185,7 +185,11 @@
               <td class="minicart-product-description">
                 <div class="flex-direction-column">
                   <div class="minicart-product-title">
-                    <a href="{{ item.url }}">{{ item.product.title }} ( {{ item.variant.title }} )</a>
+                    <a href="{{ item.url }}">
+                      {{ item.product.title }}
+                      <br>
+                      ( {{ item.variant.title }} )
+                    </a>
                   </div>
                   <div class="minicart-product-quantity"></div>
                 </div>
