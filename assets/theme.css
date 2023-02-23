@@ -367,7 +367,7 @@ li.border {
 
 .product-variant:hover,
 .product-variant.is-active,
-#AddToCart {
+#AddToCart:hover {
   color: #ffffff;
   background-color: #000000;
 }
