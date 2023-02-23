@@ -74,7 +74,7 @@ document.getElementById("add-product-form").addEventListener("submit", function(
 
 // handle plus and minus button in quantity product
 // Get the input field and the plus and minus buttons
-const quantityInput = document.getElementsByClassName('product-quantity-value');
+let quantityInput = document.getElementsByClassName('product-quantity-value');
 const plusButton = document.querySelector('.plus-btn');
 const minusButton = document.querySelector('.minus-btn');
 
