@@ -193,7 +193,7 @@
                   </div>
                   <div class="minicart-product-quantity">
                     <button
-                      class="minus-btn"
+                      class="product-quantity minus-btn"
                       type="button"
                       name="button">-</button>
                     <input
@@ -201,9 +201,10 @@
                       name="updates[]"
                       id="updates_{{ item.key }}"
                       name="quantity"
-                      value="{{ item.quantity }}">
+                      value="{{ item.quantity }}"
+                      class="product-quantity product-quantity-value">
                     <button
-                      class="plus-btn"
+                      class="product-quantity plus-btn"
                       type="button"
                       name="button">+</button>
                   </div>
