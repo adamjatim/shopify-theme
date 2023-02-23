@@ -175,19 +175,21 @@
         novalidate
         class="minicart-product-list">
         {% for item in cart.items %}
-          <tr class="minicart-product">
-            <td class="minicart-product-image">
-              <a href="{{ item.url | within: :collections.all }}">
-                <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
-              </a>
-            </td>
-            <td class="minicart-product-description">
-              <a href="{{ item.url }}">{{ item.product.title }}</a>
-              -
-              {{ item.variant.title }}
-            </td>
-            <td></td>
-          </tr>
+          <table>
+            <tr class="minicart-product">
+              <td class="minicart-product-image">
+                <a href="{{ item.url | within: :collections.all }}">
+                  <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+                </a>
+              </td>
+              <td class="minicart-product-description">
+                <a href="{{ item.url }}">{{ item.product.title }}</a>
+                -
+                {{ item.variant.title }}
+              </td>
+              <td></td>
+            </tr>
+          </table>
         {% endfor %}
         <div></div>
       </form>
