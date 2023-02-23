@@ -71,3 +71,18 @@ document.getElementById("add-product-form").addEventListener("submit", function(
     console.log("Form submitted successfully!");
   });
 });
+
+// handle plus and minus button in quantity product
+// Get the input field and the plus and minus buttons
+const quantityInput = document.getElementsByClassName('minicart-product-quantity');
+const plusButton = document.querySelector('.plus-btn');
+const minusButton = document.querySelector('.minus-btn');
+
+// Add event listeners to the plus and minus buttons
+plusButton.addEventListener('click', () => {
+  quantityInput.stepUp();
+});
+
+minusButton.addEventListener('click', () => {
+  quantityInput.stepDown();
+});

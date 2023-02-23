@@ -191,7 +191,11 @@
                       ( {{ item.variant.title }} )
                     </a>
                   </div>
-                  <div class="minicart-product-quantity"></div>
+                  <div class="minicart-product-quantity">
+                    <button class="minus-btn" type="button" name="button">-</button>
+                    <input type="number" id="quantity" name="quantity" value="1">
+                    <button class="plus-btn" type="button" name="button">+</button>
+                  </div>
                 </div>
                 <div class="minicart-product-price">
                   {{ item.price | money | replace: ' ', '' }}
