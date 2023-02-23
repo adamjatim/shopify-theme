@@ -73,16 +73,28 @@ document.getElementById("add-product-form").addEventListener("submit", function(
 });
 
 // handle plus and minus button in quantity product
-// Get the input field and the plus and minus buttons
-let quantityInput = document.getElementsByClassName('.product-quantity-value');
-const plusButton = document.querySelector('.plus-btn');
-const minusButton = document.querySelector('.minus-btn');
+// Get all of the plus and minus buttons
+const plusButtons = document.querySelectorAll('.plus-btn');
+const minusButtons = document.querySelectorAll('.minus-btn');
 
-// Add event listeners to the plus and minus buttons
-plusButton.addEventListener('click', () => {
-  quantityInput.stepUp();
+// Loop through the plus buttons and add event listeners
+plusButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    // Get the quantity input field for this button
+    const input = button.parentElement.querySelector('input[type="number"]');
+    
+    // Increase the quantity by one
+    input.stepUp();
+  });
 });
 
-minusButton.addEventListener('click', () => {
-  quantityInput.stepDown();
+// Loop through the minus buttons and add event listeners
+minusButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    // Get the quantity input field for this button
+    const input = button.parentElement.querySelector('input[type="number"]');
+    
+    // Decrease the quantity by one
+    input.stepDown();
+  });
 });
