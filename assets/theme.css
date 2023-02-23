@@ -276,10 +276,11 @@ li.border {
 }
 
 .minicart-product-title {
-  width: 50%;
+  width: 100%;
 }
 
-.minicart-product-quantity {
+.minicart-product-quantity,
+.minicart-product-price {
   width: auto;
 }
 
