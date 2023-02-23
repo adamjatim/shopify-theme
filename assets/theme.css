@@ -379,7 +379,7 @@ li.border {
   border: 1px solid #888888;
 }
 
-button#AddToCart {
+#AddToCart {
   margin-top: 20px;
   border: 1px solid #000000;
   padding: 7px 30px 7px 30px;

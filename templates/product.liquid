@@ -147,13 +147,15 @@
                             id="variant_{{ variant.id }}"
                             name="id"
                             value="{{ variant.id }}"
-                            checked="checked">
+                            checked="checked"
+                            onchange="updateParentObject(this)">
                         {% else %}
                           <input
                             type="radio"
                             id="variant_{{ variant.id }}"
                             name="id"
-                            value="{{ variant.id }}">
+                            value="{{ variant.id }}"
+                            onchange="updateParentObject(this)">
                         {% endif %}
                         <label for="variant_{{ variant.id }}">{{ variant.title }}</label>
                       </div>
