@@ -275,12 +275,10 @@ li.border {
   justify-content: space-between;
 }
 
-.minicart-product-title {
-  width: 100%;
-}
-
+.minicart-product-title,
 .minicart-product-quantity,
 .minicart-product-price {
+  max-width: 100%;
   width: auto;
 }
 
