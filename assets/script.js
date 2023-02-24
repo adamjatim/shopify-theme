@@ -99,3 +99,37 @@ document.getElementById('plus-minus-btn').addEventListener("submit", function(ev
     console.log("Form submitted successfully!");
   });
 });
+
+  function incrementNum(key) {
+    var element = document.getElementById('updates_' + key);
+    element.stepUp();
+  }
+
+  function decrementNum(key) {
+    var element = document.getElementById('updates_' + key);
+    if (element.value > 1) {
+      element.stepDown();
+    }
+  }
+
+  // Show/hide the mini cart dropdown
+  var miniCart = document.querySelector('.mini-cart');
+  var miniCartDropdown = document.querySelector('.mini-cart-dropdown');
+
+  miniCart.addEventListener('click', function(e) {
+    e.preventDefault();
+    miniCartDropdown.classList.toggle('show');
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!miniCart.contains(e.target)) {
+      miniCartDropdown.classList.remove('show');
+    }
+  });
+
+  // Close the mini cart dropdown when the user clicks outside of it
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      miniCartDropdown.classList.remove('show');
+    }
+  });

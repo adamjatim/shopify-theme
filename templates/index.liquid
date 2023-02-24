@@ -158,7 +158,83 @@
       </div>
     </div>
   </div>
+  {% assign items_count = cart.item_count %}
+  {% assign total_price = cart.total_price %}
 
+  <div class="mini-cart">
+    <a href="{{ '/cart' | url }}" class="mini-cart-link">
+      <span class="mini-cart-icon">{{ items_count }}</span>
+      <span class="mini-cart-label">{{ 'layout.minicart.cart' | t }}</span>
+      <span class="mini-cart-price">{{ total_price | money }}</span>
+    </a>
+    <div class="mini-cart-dropdown">
+      {% if items_count > 0 %}
+        <ul class="mini-cart-items">
+          {% for item in cart.items %}
+            <li class="mini-cart-item">
+              <div class="mini-cart-item-image">
+                {% if item.image %}
+                  <img src="{{ item.image | product_img_url: 'small' }}" alt="{{ item.product_title }}" />
+                {% else %}
+                  <img src="{{ 'product-image-placeholder.svg' | asset_url }}" alt="{{ item.product_title }}" />
+                {% endif %}
+              </div>
+              <div class="mini-cart-item-info">
+                <div class="mini-cart-item-title">{{ item.product_title }}</div>
+                <div class="mini-cart-item-quantity">
+                  <div class="minicart-product-quantity">
+                    <button
+                      id="minus-btn-{{ item.key }}"
+                      class="product-quantity"
+                      type="button"
+                      onclick="decrementNum('{{ item.key }}')">
+                      -
+                    </button>
+                    <input
+                      type="number"
+                      id="updates_{{ item.key }}"
+                      name="updates[]"
+                      value="{{ item.quantity }}"
+                      min="1"
+                      class="product-quantity product-quantity-value" />
+                    <button
+                      id="plus-btn-{{ item.key }}"
+                      class="product-quantity"
+                      type="button"
+                      onclick="incrementNum('{{ item.key }}')">
+                      +
+                    </button>
+                  </div>
+                </div>
+                <div class="mini-cart-item-price">{{ item.line_price | money }}</div>
+                <div class="mini-cart-item-remove">
+                  <form method="post" action="/cart/change">
+                    <input
+                      type="hidden"
+                      name="line"
+                      value="{{ item.key }}" />
+                    <input
+                      type="hidden"
+                      name="quantity"
+                      value="0" />
+                    <button type="submit" class="mini-cart-item-remove-btn">{{ 'layout.minicart.remove' | t }}</button>
+                  </form>
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+        <div class="mini-cart-subtotal">{{ 'layout.minicart.subtotal' | t }} {{ total_price | money }}</div>
+        <div class="mini-cart-actions">
+          <a href="{{ '/cart' | url }}" class="mini-cart-view-cart">{{ 'layout.minicart.view_cart' | t }}</a>
+          <a href="{{ '/checkout' | url }}" class="mini-cart-checkout">{{ 'layout.minicart.checkout' | t }}</a>
+        </div>
+      {% else %}
+        <div class="mini-cart-empty">{{ 'layout.minicart.empty' | t }}</div>
+      {% endif %}
+    </div>
+  </div>
+  
   <div class="minicart">
     <div class="minicart-title">
       <div>Your Cart - item</div>
