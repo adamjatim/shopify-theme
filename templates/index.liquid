@@ -195,7 +195,8 @@
                     <button
                       class="product-quantity minus-btn"
                       type="button"
-                      name="button">-</button>
+                      name="button"
+                      onclick="this.parentNode.querySelector('input[type=number]').stepDown()">-</button>
                     <input
                       type="number"
                       name="updates[]"
@@ -206,7 +207,8 @@
                     <button
                       class="product-quantity plus-btn"
                       type="button"
-                      name="button">+</button>
+                      name="button"
+                      onclick="this.parentNode.querySelector('input[type=number]').stepUp()">+</button>
                   </div>
                 </div>
                 <div class="minicart-product-price">
@@ -228,7 +230,18 @@
               <div class="minicart-product-title">
                 {{ product.title }}
               </div>
-
+              <div class="minicart-product-quantity">
+                <button class="product-quantity">
+                  -
+                </button>
+                <input
+                  class="product-quantity product-quantity-value"
+                  value="1"
+                  type="text">
+                <button class="product-quantity">
+                  +
+                </button>
+              </div>
             </div>
             <div class="minicart-product-price">
               {{ current_variant.price | money }}
