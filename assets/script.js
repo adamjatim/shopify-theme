@@ -75,12 +75,12 @@ document.getElementById("add-product-form").addEventListener("submit", function(
 // Get all of the plus and minus buttons
 function incrementNum(elementName, key) {
   var element = document.getElementById('updates_' + key);
-  input.stepUp();
+  element.stepUp();
 }
 
 function decrementNum(elementName, key) {
   var element = document.getElementById('updates_' + key);
-  input.stepDown();
+  element.stepDown();
 }
 
 var buttons = document.querySelectorAll('#plus-minus-btn');
