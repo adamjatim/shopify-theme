@@ -73,19 +73,29 @@ document.getElementById("add-product-form").addEventListener("submit", function(
 });
 
 // Get all of the plus and minus buttons
-function incrementNum(key) {
-  var element = document.getElementById('updates_' + key);
-  element.stepUp();
+function incrementNum(name) {
+  var input = document.querySelector('input[name="' + name + '"]');
+  input.stepUp();
 }
 
-function decrementNum(key) {
-  var element = document.getElementById('updates_' + key);
-  element.stepDown();
+function decrementNum(name) {
+  var input = document.querySelector('input[name="' + name + '"]');
+  input.stepDown();
 }
 
-var buttons = document.querySelectorAll('#plus-btn, #minus-btn');
-for (var i = 0; i < buttons.length; i++) {
-  buttons[i].addEventListener('click', function(event) {
-    event.preventDefault();
+// hold minicart after increment and decrement value
+document.getElementById('plus-minus-btn').addEventListener("submit", function(event) {
+  // Prevent the default form submission action
+  event.preventDefault();
+  
+  // Get the form data
+  var formData = new FormData(event.target);
+  
+  // Do something with the form data, such as submit it using AJAX
+  fetch(event.target.action, {
+    method: event.target.method,
+    body: formData
+  }).then(function(response) {
+    console.log("Form submitted successfully!");
   });
-}
+});
