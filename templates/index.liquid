@@ -173,7 +173,8 @@
         action="/cart"
         method="post"
         novalidate
-        class="minicart-product-list">
+        class="minicart-product-list"
+        onsubmit="event.preventDefault();">
         {% for item in cart.items %}
           <div class="minicart-product">
             <div class="minicart-product-image">
