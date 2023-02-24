@@ -73,31 +73,6 @@ document.getElementById("add-product-form").addEventListener("submit", function(
 });
 
 // Get all of the plus and minus buttons
-const plusButtons = document.querySelectorAll('.plus-btn');
-const minusButtons = document.querySelectorAll('.minus-btn');
-
-// Loop through the plus buttons and add event listeners
-plusButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    // Get the quantity input field for this button
-    const input = button.parentElement.querySelector('input[type="number"]');
-    
-    // Increase the quantity by one
-    input.stepUp();
-  });
-});
-
-// Loop through the minus buttons and add event listeners
-minusButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    // Get the quantity input field for this button
-    const input = button.parentElement.querySelector('input[type="number"]');
-    
-    // Decrease the quantity by one
-    input.stepDown();
-  });
-});
-
 function incrementNum() {
   var input = document.getElementsByClassName('.product-quantity-value');
   input.stepUp();
