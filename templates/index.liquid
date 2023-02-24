@@ -196,7 +196,7 @@
                     class="product-quantity"
                     type="button"
                     name="button"
-                    onclick="decrementNum('updates[]', '{{ item.key }}')">-</button>
+                    onclick="decrementNum('{{ item.key }}')">-</button>
                   <input
                     type="number"
                     name="updates[]"
@@ -210,7 +210,7 @@
                     class="product-quantity"
                     type="button"
                     name="button"
-                    onclick="incrementNum('updates[]', '{{ item.key }}')">+</button>
+                    onclick="incrementNum('{{ item.key }}')">+</button>
                 </div>
               </div>
               <div class="minicart-product-price">

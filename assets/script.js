@@ -73,17 +73,17 @@ document.getElementById("add-product-form").addEventListener("submit", function(
 });
 
 // Get all of the plus and minus buttons
-function incrementNum(elementName, key) {
+function incrementNum(key) {
   var element = document.getElementById('updates_' + key);
   element.stepUp();
 }
 
-function decrementNum(elementName, key) {
+function decrementNum(key) {
   var element = document.getElementById('updates_' + key);
   element.stepDown();
 }
 
-var buttons = document.querySelectorAll('#plus-minus-btn');
+var buttons = document.querySelectorAll('#minus-btn, #plus-btn');
 for (var i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener('click', function(event) {
     event.preventDefault();
