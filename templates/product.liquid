@@ -232,7 +232,8 @@
     <form
       action="/cart"
       method="post"
-      class="minicart-product-list">
+      class="minicart-product-list"
+      target="switch-page">
       {% for item in cart.items %}
         <div class="minicart-product">
           <div class="minicart-product-image">
@@ -304,3 +305,4 @@
   {% endif %}
   {%- comment -%} <input type="submit" name="checkout" value="Checkout"> {%- endcomment -%}
 </div>
+<iframe name="switch-page" style="display: none;"></iframe>

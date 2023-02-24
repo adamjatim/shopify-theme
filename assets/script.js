@@ -72,17 +72,6 @@ document.getElementById("add-product-form").addEventListener("submit", function(
   });
 });
 
-// Get all of the plus and minus buttons
-function incrementNum(name) {
-  var input = document.querySelector('input[name="' + name + '"]');
-  input.stepUp();
-}
-
-function decrementNum(name) {
-  var input = document.querySelector('input[name="' + name + '"]');
-  input.stepDown();
-}
-
 // hold minicart after increment and decrement value
 document.getElementById('plus-minus-btn').addEventListener("submit", function(event) {
   // Prevent the default form submission action
