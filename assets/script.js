@@ -101,7 +101,7 @@ document.getElementById("add-product-form").addEventListener("submit", function(
 
 
 // Add event listener for plus button
-$('.plus-btn').on('click', function() {
+$(' .plus-btn').on('click', function() {
   // Get the input field associated with this plus button
   var inputField = $(this).prev('input[type="number"]');
   
@@ -110,7 +110,7 @@ $('.plus-btn').on('click', function() {
 });
 
 // Add event listener for minus button
-$('.minus-btn').on('click', function() {
+$(' .minus-btn').on('click', function() {
   // Get the input field associated with this minus button
   var inputField = $(this).next('input[type="number"]');
   
