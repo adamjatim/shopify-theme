@@ -78,7 +78,6 @@ const plusButtons = document.getElementsByClassName('.plus-btn');
 const minusButtons = document.getElementsByClassName('.minus-btn');
 
 // Loop through the plus buttons and add event listeners
-plusButtons.forEach(button => {
   button.addEventListener('click', () => {
     // Get the quantity input field for this button
     const input = button.parentElement.querySelector('.product-quantity-value');
@@ -86,10 +85,8 @@ plusButtons.forEach(button => {
     // Increase the quantity by one
     input.stepUp();
   });
-});
 
 // Loop through the minus buttons and add event listeners
-minusButtons.forEach(button => {
   button.addEventListener('click', () => {
     // Get the quantity input field for this button
     const input = button.parentElement.querySelector('.product-quantity-value');
@@ -97,4 +94,3 @@ minusButtons.forEach(button => {
     // Decrease the quantity by one
     input.stepDown();
   });
-});
