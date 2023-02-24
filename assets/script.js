@@ -41,19 +41,19 @@ var variantRadio = document.querySelectorAll('.product-variant');
 });
 
 
-function updateParentObject(radio) {
-  var parentObject = document.getElementsByClassName('.product-variant');
-  if (radio.value === 'option1') {
-    // Code to update the parent object when option 1 is selected
-    parentObject.style.backgroundColor = 'red';
-  } else if (radio.value === 'option2') {
-    // Code to update the parent object when option 2 is selected
-    parentObject.style.backgroundColor = 'green';
-  } else if (radio.value === 'option3') {
-    // Code to update the parent object when option 3 is selected
-    parentObject.style.backgroundColor = 'blue';
-  }
-}
+// function updateParentObject(radio) {
+//   var parentObject = document.getElementsByClassName('.product-variant');
+//   if (radio.value === 'option1') {
+//     // Code to update the parent object when option 1 is selected
+//     parentObject.style.backgroundColor = 'red';
+//   } else if (radio.value === 'option2') {
+//     // Code to update the parent object when option 2 is selected
+//     parentObject.style.backgroundColor = 'green';
+//   } else if (radio.value === 'option3') {
+//     // Code to update the parent object when option 3 is selected
+//     parentObject.style.backgroundColor = 'blue';
+//   }
+// }
 
 // hold product-page after add to cart
 document.getElementById("add-product-form").addEventListener("submit", function(event) {
@@ -82,3 +82,20 @@ function decrementNum(name) {
   var input = document.querySelector('input[name="' + name + '"]');
   input.stepDown();
 }
+
+// hold minicart after increment and decrement value
+document.querySelector('.plus-minus-btn').addEventListener("submit", function(event) {
+  // Prevent the default form submission action
+  event.preventDefault();
+  
+  // Get the form data
+  var formData = new FormData(event.target);
+  
+  // Do something with the form data, such as submit it using AJAX
+  fetch(event.target.action, {
+    method: event.target.method,
+    body: formData
+  }).then(function(response) {
+    console.log("Form submitted successfully!");
+  });
+});
