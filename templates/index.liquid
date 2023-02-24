@@ -170,7 +170,7 @@
     </div>
     {% if cart.item_count > 0 %}
       <form
-        action="/"
+        action="/cart"
         method="post"
         novalidate
         class="minicart-product-list">
@@ -194,7 +194,7 @@
                   <button
                     id="plus-minus-btn"
                     class="product-quantity"
-                    type="submit"
+                    type="input"
                     name="update"
                     onclick="decrementNum('updates[]')">-</button>
                   <input
@@ -208,7 +208,7 @@
                   <button
                     id="plus-minus-btn"
                     class="product-quantity"
-                    type="submit"
+                    type="input"
                     name="update"
                     onclick="incrementNum('updates[]')">+</button>
                 </div>
