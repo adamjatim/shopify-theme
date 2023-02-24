@@ -1,0 +1,27 @@
+<div class="top-menu-right">
+  <h1 class="title">{{ collection.title }}</h1>
+  <button class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</div>
+<div class="top-menu-left">
+  <div class="top-menu-content">
+    <a href="{{ paginate.previous.url }}">
+      <div class="button">BACK</div>
+    </a>
+    <a href="{{ paginate.next.url }}">
+      <div class="button">NEXT</div>
+    </a>
+  </div>
+  <div class="top-menu-content">
+    <div id="cart" class="button">
+      <a>CART</a>
+    </div>
+    <select id="currency" class="button">
+      <option value="IDR">IDR</option>
+      <option value="USD">USD</option>
+    </select>
+  </div>
+</div>
