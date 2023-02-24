@@ -67,7 +67,7 @@ document.getElementById("add-product-form").addEventListener("submit", function(
   fetch(event.target.action, {
     method: event.target.method,
     body: formData
-  }).then(function(response) {
+  }).then(function() {
     console.log("Form submitted successfully!");
   });
 });
@@ -95,7 +95,7 @@ document.getElementById('plus-minus-btn').addEventListener("submit", function(ev
   fetch(event.target.action, {
     method: event.target.method,
     body: formData
-  }).then(function(response) {
+  }).then(function() {
     console.log("Form submitted successfully!");
   });
 });
