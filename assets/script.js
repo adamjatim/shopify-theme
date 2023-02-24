@@ -83,7 +83,7 @@ function decrementNum(key) {
   element.stepDown();
 }
 
-var buttons = document.querySelectorAll('#minus-btn, #plus-btn');
+var buttons = document.querySelectorAll('#plus-btn, #minus-btn');
 for (var i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener('click', function(event) {
     event.preventDefault();
