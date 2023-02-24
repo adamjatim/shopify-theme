@@ -97,3 +97,13 @@ minusButtons.forEach(button => {
     input.stepDown();
   });
 });
+
+function incrementNum() {
+  var input = document.getElementsByClassName('.product-quantity-value');
+  input.stepUp();
+}
+
+function decrementNum() {
+  var input = document.getElementsByClassName('.product-quantity-value');
+  input.stepDown();
+}
