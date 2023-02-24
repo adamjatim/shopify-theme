@@ -72,11 +72,3 @@ document.getElementById("add-product-form").addEventListener("submit", function(
   });
 });
 
-// handle plus and minus button in quantity product
-  function increaseQuantity() {
-    document.getElementsByClassName('.product-quantity-value').stepUp();
-  }
-
-  function decreaseQuantity() {
-    document.getElementsByClassName('.product-quantity-value').stepDown();
-  }
