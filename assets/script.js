@@ -72,29 +72,50 @@ document.getElementById("add-product-form").addEventListener("submit", function(
   });
 });
 
-// handle plus and minus button in quantity product
-// Get all of the plus and minus buttons
-const plusButtons = document.querySelectorAll('.plus-btn');
-const minusButtons = document.querySelectorAll('.minus-btn');
+// // handle plus and minus button in quantity product
+// // Get all of the plus and minus buttons
+// const plusButtons = document.querySelectorAll('.plus-btn');
+// const minusButtons = document.querySelectorAll('.minus-btn');
 
-// Loop through the plus buttons and add event listeners
-plusButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    // Get the quantity input field for this button
-    const input = button.parentElement.querySelector('.product-quantity-value');
+// // Loop through the plus buttons and add event listeners
+// plusButtons.forEach(button => {
+//   button.addEventListener('click', () => {
+//     // Get the quantity input field for this button
+//     const input = button.parentElement.querySelector('.product-quantity-value');
     
-    // Increase the quantity by one
-    input.stepUp();
-  });
+//     // Increase the quantity by one
+//     input.stepUp();
+//   });
+// });
+
+// // Loop through the minus buttons and add event listeners
+// minusButtons.forEach(button => {
+//   button.addEventListener('click', () => {
+//     // Get the quantity input field for this button
+//     const input = button.parentElement.querySelector('.product-quantity-value');
+    
+//     // Decrease the quantity by one
+//     input.stepDown();
+//   });
+// });
+
+
+// Add event listener for plus button
+$('.plus-btn').on('click', function() {
+  // Get the input field associated with this plus button
+  var inputField = $(this).prev('input[type="number"]');
+  
+  // Increase the value by one
+  inputField.val(parseInt(inputField.val()) + 1);
 });
 
-// Loop through the minus buttons and add event listeners
-minusButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    // Get the quantity input field for this button
-    const input = button.parentElement.querySelector('.product-quantity-value');
-    
-    // Decrease the quantity by one
-    input.stepDown();
-  });
+// Add event listener for minus button
+$('.minus-btn').on('click', function() {
+  // Get the input field associated with this minus button
+  var inputField = $(this).next('input[type="number"]');
+  
+  // Decrease the value by one, but not below 1
+  if (parseInt(inputField.val()) > 1) {
+    inputField.val(parseInt(inputField.val()) - 1);
+  }
 });
