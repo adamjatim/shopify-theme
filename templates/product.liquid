@@ -2,8 +2,6 @@
 {% assign current_variant = product.selected_or_first_available_variant %}
 {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
 
-<img class="product-single__logo" src="{{ 'logo.jpg' | asset_url }}">
-
 <div id="overlay">
   <div class="navbar-mobile">
     <button class="hamburger-cancel">
