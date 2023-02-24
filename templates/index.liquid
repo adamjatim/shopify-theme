@@ -1,275 +1,275 @@
 <img class="product-single__logo" src="{{ 'logo.jpg' | asset_url }}">
 
-                                            {% assign collection = collections['all'] %}
-                                            {%- paginate collection.products by 8 -%}
+{% assign collection = collections['all'] %}
+{%- paginate collection.products by 8 -%}
 
-                                              <div id="overlay">
-                                                <div class="navbar-mobile">
-                                                  <button class="hamburger-cancel">
-                                                    <span></span>
-                                                    <span></span>
-                                                    <span></span>
-                                                  </button>
-                                                  <nav role="navigation">
-                                                    {%- for link in linklists.main-menu.links -%}
-                                                      <div class="widget-left-bar">
-                                                        <a href="{{ link.url }}" {% if link.active %}aria-current="page"{% endif %}>
-                                                          <h2>{{ link.title }}</h2>
-                                                        </a>
-                                                        {%- if link.links != blank -%}
-                                                          <ul class="product-list">
-                                                            {%- for child_link in link.links -%}
-                                                              <li>
-                                                                <a {% if child_link.active %}aria-current="page"{% endif %}>
-                                                                  {{ child_link.title }}
-                                                                </a>
-                                                                {%- if child_link.links != blank -%}
-                                                                  <ul>
-                                                                    {%- for grandchild_link in child_link.links -%}
-                                                                      <li>
-                                                                        <a href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page"{% endif %}>
-                                                                          {{ grandchild_link.title }}
-                                                                        </a>
-                                                                      </li>
-                                                                    {%- endfor -%}
-                                                                  </ul>
-                                                                {%- endif -%}
-                                                              </li>
-                                                            {%- endfor -%}
-                                                          </ul>
-                                                        {%- endif -%}
-                                                      </div>
-                                                    {%- endfor -%}
-                                                  </nav>
-                                                  <div class="overlay"></div>
-                                                </div>
-                                              </div>
+  <div id="overlay">
+    <div class="navbar-mobile">
+      <button class="hamburger-cancel">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav role="navigation">
+        {%- for link in linklists.main-menu.links -%}
+          <div class="widget-left-bar">
+            <a href="{{ link.url }}" {% if link.active %}aria-current="page"{% endif %}>
+              <h2>{{ link.title }}</h2>
+            </a>
+            {%- if link.links != blank -%}
+              <ul class="product-list">
+                {%- for child_link in link.links -%}
+                  <li>
+                    <a {% if child_link.active %}aria-current="page"{% endif %}>
+                      {{ child_link.title }}
+                    </a>
+                    {%- if child_link.links != blank -%}
+                      <ul>
+                        {%- for grandchild_link in child_link.links -%}
+                          <li>
+                            <a href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page"{% endif %}>
+                              {{ grandchild_link.title }}
+                            </a>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    {%- endif -%}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </nav>
+      <div class="overlay"></div>
+    </div>
+  </div>
 
-                                              <div class="gap-main-border">
-                                                <div class="main-border">
-                                                  <div class="top-menu">
-                                                    <div class="top-menu-right">
-                                                      <h1 class="title">{{ collection.title }}</h1>
-                                                      <button class="hamburger">
-                                                        <span></span>
-                                                        <span></span>
-                                                        <span></span>
-                                                      </button>
-                                                    </div>
-                                                    <div class="top-menu-left">
-                                                      <div class="top-menu-content">
-                                                        <a href="{{ paginate.previous.url }}">
-                                                          <div class="button">BACK</div>
-                                                        </a>
-                                                        <a href="{{ paginate.next.url }}">
-                                                          <div class="button">NEXT</div>
-                                                        </a>
-                                                      </div>
-                                                      <div class="top-menu-content">
-                                                        <div id="cart" class="button">
-                                                          <a>CART</a>
-                                                        </div>
-                                                        <select id="currency" class="button">
-                                                          <option value="IDR">IDR</option>
-                                                          <option value="USD">USD</option>
-                                                        </select>
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                  <div class="bar">
-                                                    <div class="left-bar">
-                                                      <nav role="navigation">
-                                                        {%- for link in linklists.main-menu.links -%}
-                                                          <div class="widget-left-bar">
-                                                            <a href="{{ link.url }}" {% if link.active %}aria-current="page"{% endif %}>
-                                                              <h2>{{ link.title }}</h2>
-                                                            </a>
-                                                            {%- if link.links != blank -%}
-                                                              <ul class="product-list">
-                                                                {%- for child_link in link.links -%}
-                                                                  <li>
-                                                                    <a
-                                                                      {%- if child_link.active -%}
-                                                                      aria-current="page"
-                                                                      {%- endif -%}>
-                                                                      {{ child_link.title }}
-                                                                    </a>
-                                                                    {%- if child_link.links != blank -%}
-                                                                      <ul>
-                                                                        {%- for grandchild_link in child_link.links -%}
-                                                                          <li>
-                                                                            <a href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page"{% endif %}>
-                                                                              {{ grandchild_link.title }}
-                                                                            </a>
-                                                                          </li>
-                                                                        {%- endfor -%}
-                                                                      </ul>
-                                                                    {%- endif -%}
-                                                                  </li>
-                                                                {%- endfor -%}
-                                                              </ul>
-                                                            {%- endif -%}
-                                                          </div>
-                                                        {%- endfor -%}
-                                                      </nav>
-                                                    </div>
-                                                    <div class="main-right-bar">
-                                                      <ul>
-                                                        {% assign collection_products = collection.products %}
+  <div class="gap-main-border">
+    <div class="main-border">
+      <div class="top-menu">
+        <div class="top-menu-right">
+          <h1 class="title">{{ collection.title }}</h1>
+          <button class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+        <div class="top-menu-left">
+          <div class="top-menu-content">
+            <a href="{{ paginate.previous.url }}">
+              <div class="button">BACK</div>
+            </a>
+            <a href="{{ paginate.next.url }}">
+              <div class="button">NEXT</div>
+            </a>
+          </div>
+          <div class="top-menu-content">
+            <div id="cart" class="button">
+              <a>CART</a>
+            </div>
+            <select id="currency" class="button">
+              <option value="IDR">IDR</option>
+              <option value="USD">USD</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="bar">
+        <div class="left-bar">
+          <nav role="navigation">
+            {%- for link in linklists.main-menu.links -%}
+              <div class="widget-left-bar">
+                <a href="{{ link.url }}" {% if link.active %}aria-current="page"{% endif %}>
+                  <h2>{{ link.title }}</h2>
+                </a>
+                {%- if link.links != blank -%}
+                  <ul class="product-list">
+                    {%- for child_link in link.links -%}
+                      <li>
+                        <a
+                          {%- if child_link.active -%}
+                          aria-current="page"
+                          {%- endif -%}>
+                          {{ child_link.title }}
+                        </a>
+                        {%- if child_link.links != blank -%}
+                          <ul>
+                            {%- for grandchild_link in child_link.links -%}
+                              <li>
+                                <a href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page"{% endif %}>
+                                  {{ grandchild_link.title }}
+                                </a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        {%- endif -%}
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+              </div>
+            {%- endfor -%}
+          </nav>
+        </div>
+        <div class="main-right-bar">
+          <ul>
+            {% assign collection_products = collection.products %}
 
-                                                        {% comment %} display 4 first product {% endcomment %}
-                                                        {% for product in collection_products limit: 4 %}
-                                                          <li class="border">
-                                                            <a href="{{ product.url }}">
-                                                              <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
-                                                              <p class="text-product">
-                                                                <br>
-                                                                {{ product.title }}
-                                                                <br>
-                                                                <dl class="price{% if available and compare_at_price > price %} price--on-sale{% endif %}{% if available and variant.unit_price_measurement %} price--unit-available{% endif %}" data-price></dl>
-                                                                {{ product.price | money }}
-                                                              </p>
-                                                            </a>
-                                                            <img class="offer-badge" src="{{ 'free-shipping.png' | asset_url }}">
-                                                          </li>
-                                                        {% endfor %}
+            {% comment %} display 4 first product {% endcomment %}
+            {% for product in collection_products limit: 4 %}
+              <li class="border">
+                <a href="{{ product.url }}">
+                  <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
+                  <p class="text-product">
+                    <br>
+                    {{ product.title }}
+                    <br>
+                    <dl class="price{% if available and compare_at_price > price %} price--on-sale{% endif %}{% if available and variant.unit_price_measurement %} price--unit-available{% endif %}" data-price></dl>
+                    {{ product.price | money }}
+                  </p>
+                </a>
+                <img class="offer-badge" src="{{ 'free-shipping.png' | asset_url }}">
+              </li>
+            {% endfor %}
 
-                                                        {% comment %} display 4 last product {% endcomment %}
-                                                        {% for product in collection_products offset: 4 limit: 4 %}
-                                                          <li class="border border-product-5">
-                                                            <a href="{{ product.url }}">
-                                                              <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
-                                                              <p class="text-product">
-                                                                <br>
-                                                                {{ product.title }}
-                                                                <br>
-                                                                <dl class="price{% if available and compare_at_price > price %} price--on-sale{% endif %}{% if available and variant.unit_price_measurement %} price--unit-available{% endif %}" data-price></dl>
-                                                                {{ product.price | money }}
-                                                              </p>
-                                                            </a>
-                                                            <img class="offer-badge" src="{{ 'free-shipping.png' | asset_url }}">
-                                                          </li>
-                                                        {% endfor %}
-                                                      </ul>
-                                                    </div>
-                                                  </div>
-                                                  <div class="pagination">
-                                                    <div class="page-number">{{ paginate | default_pagination: next: ' ', previous: ' ' }}</div>
-                                                  </div>
-                                                </div>
-                                              </div>
+            {% comment %} display 4 last product {% endcomment %}
+            {% for product in collection_products offset: 4 limit: 4 %}
+              <li class="border border-product-5">
+                <a href="{{ product.url }}">
+                  <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
+                  <p class="text-product">
+                    <br>
+                    {{ product.title }}
+                    <br>
+                    <dl class="price{% if available and compare_at_price > price %} price--on-sale{% endif %}{% if available and variant.unit_price_measurement %} price--unit-available{% endif %}" data-price></dl>
+                    {{ product.price | money }}
+                  </p>
+                </a>
+                <img class="offer-badge" src="{{ 'free-shipping.png' | asset_url }}">
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="pagination">
+        <div class="page-number">{{ paginate | default_pagination: next: ' ', previous: ' ' }}</div>
+      </div>
+    </div>
+  </div>
 
-                                              <div class="minicart">
-                                                <div class="minicart-title">
-                                                  <div>Your Cart - item</div>
-                                                  <button class="cart-cancel">
-                                                    <span></span>
-                                                    <span></span>
-                                                    <span></span>
-                                                  </button>
-                                                </div>
-                                                {% if cart.item_count > 0 %}
-                                                  <form
-                                                    action="/cart"
-                                                    method="post"
-                                                    novalidate
-                                                    class="minicart-product-list">
-                                                    {% for item in cart.items %}
-                                                      <table>
-                                                        <tr class="minicart-product">
-                                                          <td class="minicart-product-image">
-                                                            <a href="{{ item.url | within: :collections.all }}">
-                                                              <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
-                                                            </a>
-                                                          </td>
-                                                          <td class="minicart-product-description">
-                                                            <div class="flex-direction-column">
-                                                              <div class="minicart-product-title">
-                                                                <a href="{{ item.url }}">
-                                                                  {{ item.product.title }}
-                                                                  <br>
-                                                                  ( {{ item.variant.title }} )
-                                                                </a>
-                                                              </div>
-                                                              <div class="minicart-product-quantity">
-                                                                <button
-                                                                  class="product-quantity minus-btn"
-                                                                  type="button"
-                                                                  name="button">-</button>
-                                                                <input
-                                                                  type="number"
-                                                                  name="updates[]"
-                                                                  id="updates_{{ item.key }} "
-                                                                  name="quantity"
-                                                                  value="1"
-                                                                  class="product-quantity product-quantity-value">
-                                                                <button
-                                                                  class="product-quantity plus-btn"
-                                                                  type="button"
-                                                                  name="button">+</button>
-                                                              </div>
-                                                            </div>
-                                                            <div class="minicart-product-price">
-                                                              {{ item.price | money | replace: ' ', '' }}
-                                                            </div>
-                                                          </td>
-                                                        </tr>
-                                                      </table>
-                                                    {% endfor %}
-                                                    <div></div>
-                                                  </form>
-                                                  <div class="minicart-product-list">
-                                                    <div class="minicart-product">
-                                                      <div class="minicart-product-image">
-                                                        <img src="{{ featured_image | img_url: 'small' }}" alt="{{ featured_image.alt | escape }}">
-                                                      </div>
-                                                      <div class="minicart-product-description">
-                                                        <div class="flex-direction-column">
-                                                          <div class="minicart-product-title">
-                                                            {{ product.title }}
-                                                          </div>
-                                                          <div class="minicart-product-quantity">
-                                                            <button class="product-quantity">
-                                                              -
-                                                            </button>
-                                                            <input
-                                                              class="product-quantity product-quantity-value"
-                                                              value="1"
-                                                              type="text">
-                                                            <button class="product-quantity">
-                                                              +
-                                                            </button>
-                                                          </div>
-                                                        </div>
-                                                        <div class="minicart-product-price">
-                                                          {{ current_variant.price | money }}
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  </div>
+  <div class="minicart">
+    <div class="minicart-title">
+      <div>Your Cart - item</div>
+      <button class="cart-cancel">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    {% if cart.item_count > 0 %}
+      <form
+        action="/cart"
+        method="post"
+        novalidate
+        class="minicart-product-list">
+        {% for item in cart.items %}
+          <table>
+            <tr class="minicart-product">
+              <td class="minicart-product-image">
+                <a href="{{ item.url | within: :collections.all }}">
+                  <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+                </a>
+              </td>
+              <td class="minicart-product-description">
+                <div class="flex-direction-column">
+                  <div class="minicart-product-title">
+                    <a href="{{ item.url }}">
+                      {{ item.product.title }}
+                      <br>
+                      ( {{ item.variant.title }} )
+                    </a>
+                  </div>
+                  <div class="minicart-product-quantity">
+                    <button
+                      class="product-quantity minus-btn"
+                      type="button"
+                      name="button">-</button>
+                    <input
+                      type="number"
+                      name="updates[]"
+                      id="updates_{{ item.key }} "
+                      name="quantity"
+                      value="{{ item.quantity }}"
+                      class="product-quantity product-quantity-value">
+                    <button
+                      class="product-quantity plus-btn"
+                      type="button"
+                      name="button">+</button>
+                  </div>
+                </div>
+                <div class="minicart-product-price">
+                  {{ item.price | money | replace: ' ', '' }}
+                </div>
+              </td>
+            </tr>
+          </table>
+        {% endfor %}
+        <div></div>
+      </form>
+      <div class="minicart-product-list">
+        <div class="minicart-product">
+          <div class="minicart-product-image">
+            <img src="{{ featured_image | img_url: 'small' }}" alt="{{ featured_image.alt | escape }}">
+          </div>
+          <div class="minicart-product-description">
+            <div class="flex-direction-column">
+              <div class="minicart-product-title">
+                {{ product.title }}
+              </div>
+              <div class="minicart-product-quantity">
+                <button class="product-quantity">
+                  -
+                </button>
+                <input
+                  class="product-quantity product-quantity-value"
+                  value="1"
+                  type="text">
+                <button class="product-quantity">
+                  +
+                </button>
+              </div>
+            </div>
+            <div class="minicart-product-price">
+              {{ current_variant.price | money }}
+            </div>
+          </div>
+        </div>
+      </div>
 
-                                                  <div class="minicart-note">
-                                                    <div>Add a note to your order</div>
-                                                    <textarea
-                                                      name="noteOrder"
-                                                      rows="2"
-                                                      cols="25"></textarea>
-                                                  </div>
+      <div class="minicart-note">
+        <div>Add a note to your order</div>
+        <textarea
+          name="noteOrder"
+          rows="2"
+          cols="25"></textarea>
+      </div>
 
-                                                  <div class="minicart-detail">
-                                                    <div class="minicart-detail-total">
-                                                      <strong>Subtotal</strong>
-                                                      <span class="cart__total-price">{{ cart.total_price | money }}</span>
-                                                    </div>
-                                                    <button
-                                                      class="button"
-                                                      type="submit"
-                                                      name="checkout">Checkout</button>
-                                                  </div>
-                                                {% else %}
-                                                  <div style="text-align:center; margin:auto; padding-top: 30px;">Cart is empty</div>
-                                                {% endif %}
-                                                {%- comment -%} <input type="submit" name="checkout" value="Checkout"> {%- endcomment -%}
-                                              </div>
+      <div class="minicart-detail">
+        <div class="minicart-detail-total">
+          <strong>Subtotal</strong>
+          <span class="cart__total-price">{{ cart.total_price | money }}</span>
+        </div>
+        <button
+          class="button"
+          type="submit"
+          name="checkout">Checkout</button>
+      </div>
+    {% else %}
+      <div style="text-align:center; margin:auto; padding-top: 30px;">Cart is empty</div>
+    {% endif %}
+    {%- comment -%} <input type="submit" name="checkout" value="Checkout"> {%- endcomment -%}
+  </div>
 
-                                            {%- endpaginate -%}
+{%- endpaginate -%}
