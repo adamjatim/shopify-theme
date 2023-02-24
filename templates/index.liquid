@@ -161,7 +161,7 @@
   {% assign items_count = cart.item_count %}
   {% assign total_price = cart.total_price %}
 
-  <div class="mini-cart">
+  <div class="mini-cart ">
     <a href="{{ '/cart' | url }}" class="mini-cart-link">
       <span class="mini-cart-icon">{{ items_count }}</span>
       <span class="mini-cart-label">{{ 'layout.minicart.cart' | t }}</span>
@@ -234,7 +234,7 @@
       {% endif %}
     </div>
   </div>
-  
+
   <div class="minicart">
     <div class="minicart-title">
       <div>Your Cart - item</div>
