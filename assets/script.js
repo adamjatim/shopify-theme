@@ -84,7 +84,7 @@ function decrementNum(name) {
 }
 
 // hold minicart after increment and decrement value
-document.querySelector('.plus-minus-btn').addEventListener("submit", function(event) {
+document.getElementById('plus-minus-btn').addEventListener("submit", function(event) {
   // Prevent the default form submission action
   event.preventDefault();
   
