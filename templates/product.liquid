@@ -98,17 +98,17 @@
                     {% for option in product.options_with_values %}
                       <fieldset>
                         <legend>{{ option.name }}</legend>
-                        {% for variant in product.variants %}
+                        {% for value in option.value %}
                           <div>
                             <input
-                              {% if variant.selected_value == value %}
+                              {% if option.selected_value == value %}
                               checked
                               {% endif %}
                               type="radio"
-                              name="{{ variant.name }}"
+                              name="{{ option.name }}"
                               value="{{ value }}"
-                              id="{{ variant.name | handleize }}-{{ value | handleize }}">
-                            <label for="{{ variant.name | handleize }}-{{ value | handleize }}">
+                              id="{{ option.name | handleize }}-{{ value | handleize }}">
+                            <label for="{{ option.name | handleize }}-{{ value | handleize }}">
                               {{ value }}
                             </label>
                           </div>
