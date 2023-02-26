@@ -88,36 +88,38 @@
               <h1>{{ current_variant.price | money }}</h1>
               <div>{{ product.description }}</div>
 
+              {% comment %} 
               {% form 'product', product %}
-                <input
-                  type="hidden"
-                  name="id"
-                  value="{{ product.selected_or_first_available_variant.id }}">
-                {% if product.variants.size > 1 %}
-                  <div class="product-option">
-                    {% for option in product.options_with_values %}
-                      <fieldset>
-                        <legend>{{ option.name }}</legend>
-                        {% for value in option.value %}
-                          <div>
-                            <input
-                              {% if option.selected_value == value %}
-                              checked
-                              {% endif %}
-                              type="radio"
-                              name="{{ option.name }}"
-                              value="{{ value }}"
-                              id="{{ option.name | handleize }}-{{ value | handleize }}">
-                            <label for="{{ option.name | handleize }}-{{ value | handleize }}">
-                              {{ value }}
-                            </label>
-                          </div>
-                        {% endfor %}
-                      </fieldset>
-                    {% endfor %}
-                  </div>
-                {% endif %}
+              <input
+              type="hidden"
+              name="id"
+              value="{{ product.selected_or_first_available_variant.id }}">
+              {% if product.variants.size > 1 %}
+              <div class="product-option">
+              {% for option in product.options_with_values %}
+              <fieldset>
+              <legend>{{ option.name }}</legend>
+              {% for value in option.value %}
+              <div>
+              <input
+              {% if option.selected_value == value %}
+              checked
+              {% endif %}
+              type="radio"
+              name="{{ option.name }}"
+              value="{{ value }}"
+              id="{{ option.name | handleize }}-{{ value | handleize }}">
+              <label for="{{ option.name | handleize }}-{{ value | handleize }}">
+              {{ value }}
+              </label>
+              </div>
+              {% endfor %}
+              </fieldset>
+              {% endfor %}
+              </div>
+              {% endif %}
               {% endform %}
+              {% endcomment %}
 
               <form
                 action="/cart/add"
