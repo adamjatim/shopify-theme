@@ -119,57 +119,61 @@
                 {% endif %}
               {% endform %}
 
-              {% comment %}  
               <form
-              action="/cart/add"
-              method="post"
-              id="add-product-form">
-              <div class="product-option">
-              {% for variant in product.variants %}
-              {% if variant.available %}
-              <div class="product-variant">
-              {% if product.selected_or_first_available_variant.id == variant.id %}
-              <input
-              type="radio"
-              id="variant_{{ variant.id }}"
-              name="id"
-              value="{{ variant.id }}"
-              checked="checked"
-              onchange="updateParentObject(this)">
-              {% else %}
-              <input
-              type="radio"
-              id="variant_{{ variant.id }}"
-              name="id"
-              value="{{ variant.id }}"
-              onchange="updateParentObject(this)">
-              {% endif %}
-              <label for="variant_{{ variant.id }}">{{ variant.title }}</label>
-              </div>
-              <br>
-              {% else %}
-              <div class="product-variant out-of-stock">
-              <input
-              type="radio"
-              id="variant_{{ variant.id }}"
-              name="id"
-              value="{{ variant.id }}"
-              disabled="disabled">
+                action="/cart/add"
+                method="post"
+                id="add-product-form">
+                <div class="product-option">
+                  {% for variant in product.variants %}
+                    {% if variant.available %}
+                      <div class="product-variant">
+                        <input
+                          {% if product.selected_or_first_available_variant.id == variant.id %}
+                          checked
+                          {% endif %}
+                          type="radio"
+                          name="{{ variant.name }}"
+                          value="{{ variant }}"
+                          id="{{ product.name | handleize }}-{{ variant | handleize }}">
+                        <label for="{{ product.name | handleize }}-{{ variant | handleize }}">
+                          {{ variant }}
+                        </label>
 
-              <label for="variant_{{ variant.id }}">{{ variant.title }}</label>
-              </div>
-              <br>
-              {% endif %}
-              {% endfor %}
+                        {% comment %} 
+                        {% else %}
+                        <input
+                        type="radio"
+                        id="variant_{{ variant.id }}"
+                        name="id"
+                        value="{{ variant.id }}"
+                        onchange="updateParentObject(this)">
+                        {% endif %}
+                        <label for="variant_{{ variant.id }}">{{ variant.title }}</label>
+                        {% endcomment %}
+                      </div>
+                      <br>
+                    {% else %}
+                      <div class="product-variant out-of-stock">
+                        <input
+                          type="radio"
+                          id="variant_{{ variant.id }}"
+                          name="id"
+                          value="{{ variant.id }}"
+                          disabled="disabled">
 
-              </div>
+                        <label for="variant_{{ variant.id }}">{{ variant.title }}</label>
+                      </div>
+                      <br>
+                    {% endif %}
+                  {% endfor %}
 
-              <input
-              id="AddToCart"
-              type="submit"
-              value="Add to Cart">
+                </div>
+
+                <input
+                  id="AddToCart"
+                  type="submit"
+                  value="Add to Cart">
               </form>
-              {% endcomment %}
             </div>
           </div>
         </div>
