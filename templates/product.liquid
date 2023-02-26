@@ -26,10 +26,7 @@
           <div id="cart" class="button">
             <a>CART</a>
           </div>
-          <select id="currency" class="button">
-            <option value="IDR">IDR</option>
-            <option value="USD">USD</option>
-          </select>
+          <div class="buckscc-currency-box"></div>
         </div>
       </div>
     </div>
@@ -91,55 +88,71 @@
               <h1>{{ current_variant.price | money }}</h1>
               <div>{{ product.description }}</div>
 
-              <form
-                action="/cart/add"
-                method="post"
-                id="add-product-form">
+              {% form 'product', product %}
+                <input
+                  type="hidden"
+                  name="id"
+                  value="{{ product.selected_or_first_available_variant.id }}">
                 <div class="product-option">
-                  {% for variant in product.variants %}
-
-                    {% if variant.available %}
-                      <div class="product-variant">
-                        {% if product.selected_or_first_available_variant.id == variant.id %}
-                          <input
-                            type="radio"
-                            id="variant_{{ variant.id }}"
-                            name="id"
-                            value="{{ variant.id }}"
-                            checked="checked"
-                            onchange="updateParentObject(this)">
-                        {% else %}
-                          <input
-                            type="radio"
-                            id="variant_{{ variant.id }}"
-                            name="id"
-                            value="{{ variant.id }}"
-                            onchange="updateParentObject(this)">
-                        {% endif %}
-                        <label for="variant_{{ variant.id }}">{{ variant.title }}</label>
-                      </div>
-                      <br>
-                    {% else %}
-                      <div class="product-variant out-of-stock">
-                        <input
-                          type="radio"
-                          id="variant_{{ variant.id }}"
-                          name="id"
-                          value="{{ variant.id }}"
-                          disabled="disabled">
-
-                        <label for="variant_{{ variant.id }}">{{ variant.title }}</label>
-                      </div>
-                      <br>
-                    {% endif %}
+                  {% for option in product.options_with_values %}
+                    <fieldset>
+                      <legend>{{ option.name }}</legend>
+                    </fieldset>
                   {% endfor %}
                 </div>
+              {% endform %}
 
-                <input
-                  id="AddToCart"
-                  type="submit"
-                  value="Add to Cart">
+              {% comment %}  
+              <form
+              action="/cart/add"
+              method="post"
+              id="add-product-form">
+              <div class="product-option">
+              {% for variant in product.variants %}
+              {% if variant.available %}
+              <div class="product-variant">
+              {% if product.selected_or_first_available_variant.id == variant.id %}
+              <input
+              type="radio"
+              id="variant_{{ variant.id }}"
+              name="id"
+              value="{{ variant.id }}"
+              checked="checked"
+              onchange="updateParentObject(this)">
+              {% else %}
+              <input
+              type="radio"
+              id="variant_{{ variant.id }}"
+              name="id"
+              value="{{ variant.id }}"
+              onchange="updateParentObject(this)">
+              {% endif %}
+              <label for="variant_{{ variant.id }}">{{ variant.title }}</label>
+              </div>
+              <br>
+              {% else %}
+              <div class="product-variant out-of-stock">
+              <input
+              type="radio"
+              id="variant_{{ variant.id }}"
+              name="id"
+              value="{{ variant.id }}"
+              disabled="disabled">
+
+              <label for="variant_{{ variant.id }}">{{ variant.title }}</label>
+              </div>
+              <br>
+              {% endif %}
+              {% endfor %}
+
+              </div>
+
+              <input
+              id="AddToCart"
+              type="submit"
+              value="Add to Cart">
               </form>
+              {% endcomment %}
             </div>
           </div>
         </div>
