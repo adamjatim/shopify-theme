@@ -87,6 +87,7 @@
               <h1>{{ product.title }}</h1>
               <h1>{{ current_variant.price | money }}</h1>
               <div>{{ product.description }}</div>
+              
               <form
                 action="/cart/add"
                 method="post"
@@ -99,21 +100,21 @@
                     {% else %}
                       <div class="product-variant out-of-stock">
                         <input
-                        disabled="disabled"
-                    {% endif %}  
-                        {% if product.selected_or_first_available_variant.id == variant.id %}
-                        checked
-                        {% endif %}
-                        type="radio"
-                        name="{{ variant.name }}"
-                        value="{{ variant }}"
-                        id="{{ variant.id }}">
-                        <label for="{{ variant.id }}">{{ variant.title }}</label>
+                          disabled="disabled"
+                    {% endif %}
+                          {% if product.selected_or_first_available_variant.id == variant.id %}
+                          checked="checked"
+                          {% else %}
+                          type="radio"
+                          id="variant_{{ variant.id }}"
+                          name="id"
+                          value="{{ variant.id }}"
+                          {% endif %}
+                          <label for="variant_{{ variant.id }}">{{ variant.title }}</label>
                       </div>
-                      <br>
+                      <br> 
                   {% endfor %}
                 </div>
-
                 <input
                   id="AddToCart"
                   type="submit"
