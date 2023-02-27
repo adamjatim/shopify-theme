@@ -104,12 +104,12 @@
                     {% endif %}
                           {% if product.selected_or_first_available_variant.id == variant.id %}
                           checked="checked"
-                          {% else %}
+                          {% endif %}
                           type="radio"
                           id="variant_{{ variant.id }}"
                           name="id"
                           value="{{ variant.id }}">
-                          {% endif %}
+                          
                           <label for="variant_{{ variant.id }}">{{ variant.title }}</label>
                       </div>
                       <br> 
