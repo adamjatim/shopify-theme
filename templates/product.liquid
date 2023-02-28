@@ -144,39 +144,36 @@
 
 <script>
   var product = {{ product | json }};
-  console.log(product);
-  document.querySelectorAll('.product-variant input[type="radio"]').forEach(radio => {
+
+  document.querySelectorAll('.product-option input[type="radio"]').forEach(radio => {
     radio.addEventListener('change', () => {
 
 // find selection product
-      var selectVariants = [];
+      var selectedOptions = [];
 
       document.querySelectorAll('.product-variant input[type="radio"]:checked').forEach(radio => {
-        selectVariants.push(radio.value);
+        selectedOptions.push(radio.value);
       });
 
 // finding matched variant
-      var matchedVariant = product
-        .variants
-        .find(variant => {
-          for (var i = 0; i < selectVariants.length; i++) {
-            var pass = true;
-            if (selectVariants.indexOf({{ variant.options[i] }}) === -1) {
-              pass = false;
-              break;
-            }
+      var matchedVariant = product.variants.find(variant => {
+        for (var i = 0; i < selectedOptions.length; i++) {
+          var pass = true;
+          if (selectedOptions.indexOf(variant.options[i]) === -1) {
+            pass = false;
+            break;
           }
-          return pass;
-        })
+        }
+        return pass;
+      })
+      console.log(selectedOptions);
 
-  // change product form variant id
-        document
-        .querySelector('#product-id')
-        .value = matchedVariant.id;
+// change product form variant id
+      document.querySelector('#product-id').value = matchedVariant.id;
 
 // change url
       var url = new URLParse(window.location.href, true);
-      console.log(url);
+
     });
   });
 </script>
