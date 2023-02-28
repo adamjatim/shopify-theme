@@ -39,48 +39,48 @@ for (var i = 0; i < radios.length; i++) {
 //   el.style.display = '';
 // });
 
-// hold product-page after add to cart
-document.getElementById("add-product-form").addEventListener("submit", function(event) {
-  // Prevent the default form submission action
-  event.preventDefault();
+// // hold product-page after add to cart
+// document.getElementById("add-product-form").addEventListener("submit", function(event) {
+//   // Prevent the default form submission action
+//   event.preventDefault();
   
-  // Get the form data
-  var formData = new FormData(event.target);
+//   // Get the form data
+//   var formData = new FormData(event.target);
   
-  // Do something with the form data, such as submit it using AJAX
-  fetch(event.target.action, {
-    method: event.target.method,
-    body: formData
-  }).then(function() {
-    console.log("Form submitted successfully!");
-  });
-});
+//   // Do something with the form data, such as submit it using AJAX
+//   fetch(event.target.action, {
+//     method: event.target.method,
+//     body: formData
+//   }).then(function() {
+//     console.log("Form submitted successfully!");
+//   });
+// });
 
-// hold minicart after increment and decrement value
-document.getElementById('plus-minus-btn').addEventListener("submit", function(event) {
-  // Prevent the default form submission action
-  event.preventDefault();
+// // hold minicart after increment and decrement value
+// document.getElementById('plus-minus-btn').addEventListener("submit", function(event) {
+//   // Prevent the default form submission action
+//   event.preventDefault();
   
-  // Get the form data
-  var formData = new FormData(event.target);
+//   // Get the form data
+//   var formData = new FormData(event.target);
   
-  // Do something with the form data, such as submit it using AJAX
-  fetch(event.target.action, {
-    method: event.target.method,
-    body: formData
-  }).then(function() {
-    console.log("Form submitted successfully!");
-  });
-});
+//   // Do something with the form data, such as submit it using AJAX
+//   fetch(event.target.action, {
+//     method: event.target.method,
+//     body: formData
+//   }).then(function() {
+//     console.log("Form submitted successfully!");
+//   });
+// });
 
-  function incrementNum(key) {
-    var element = document.getElementById('updates_' + key);
-    element.stepUp();
-  }
+//   function incrementNum(key) {
+//     var element = document.getElementById('updates_' + key);
+//     element.stepUp();
+//   }
 
-  function decrementNum(key) {
-    var element = document.getElementById('updates_' + key);
-    if (element.value > 1) {
-      element.stepDown();
-    }
-  }
+//   function decrementNum(key) {
+//     var element = document.getElementById('updates_' + key);
+//     if (element.value > 1) {
+//       element.stepDown();
+//     }
+//   }
