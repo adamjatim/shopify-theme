@@ -95,9 +95,9 @@
                   value="{{ product.selected_or_first_available_variant.id }}">
 
                 <div class="product-option">
-                  {% for variant in product.variants %}
+                  {% for option in product.options_with_values %}
                     <div>
-                      <div>{{ variant.name }}</div>
+                      <div>{{ option.name }}</div>
                     </div>
                   {% endfor %}
                 </div>
