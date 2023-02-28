@@ -148,14 +148,12 @@
   document.querySelectorAll('.product-option input[type="radio"]').forEach(radio => {
     radio.addEventListener('change', () => {
 
-// find selection product
       var selectedOptions = []
 
-      document.querySelectorAll('.product-variant input[type="radio"]:checked').forEach(radio => {
+      document.querySelectorAll('.product-option input[type="radio"]:checked').forEach(radio => {
         selectedOptions.push(radio.value)
       })
 
-// finding matched variant
       var matchedVariant = product.variants.find(variant => {
         var pass = true
 
