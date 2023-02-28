@@ -100,7 +100,7 @@
                         {% for value in option.values %}
                           <div>
                             <input
-                              {% if option.selected_value == value %}checked{% endif %}
+                              {% if option.selected_value == value %}checked="checked"{% endif %}
                               type="radio"
                               name="{{ option.name }}"
                               value="{{ value }}"
