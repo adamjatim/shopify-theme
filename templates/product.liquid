@@ -95,7 +95,7 @@
 
                   <div class="product-option">
                     {% for option in product.options_with_values %}
-                      <fieldset>
+                      <fieldset style="display: block ruby;">
                         <legend>{{ option.name }}</legend>
                         {% for value in option.values %}
                           <div class="product-variant">
