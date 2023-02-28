@@ -31,7 +31,6 @@ var selectedValue = null;
 for (var i = 0; i < radios.length; i++) {
   radios[i].addEventListener('change', function() {
     selectedValue = this.value;
-    console.log('Selected variant ID: ' + selectedValue);
   });
 }
 
