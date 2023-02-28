@@ -95,9 +95,9 @@
                   value="{{ product.selected_or_first_available_variant.id }}">
 
                 <div class="product-option">
-                  {% for variant in prodoct.variants %}
+                  {% for product_option in prodoct.options_with_values %}
                     <fieldset>
-                      <legend>{{ variant.name }}</legend>
+                      <legend>{{ product_options.name }}</legend>
                     </fieldset>
                   {% endfor %}
                 </div>
