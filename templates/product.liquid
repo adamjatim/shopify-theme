@@ -134,7 +134,13 @@
   var product = {{ product | json }};
   document.querySelectorAll('.product-variant input[type="radio"]').forEach(radio => {
     radio.addEventListener('change', () => {
-      console.log('hey');
-    })
-  })
+      var selectVariants = [];
+
+      document.querySelectorAll('.product-variant input[type="radio"]:checked').forEach(rdio => {
+        selectVariants.push(radio.value);
+      });
+
+      console.log(selectVariants);
+    });
+  });
 </script>
