@@ -158,18 +158,18 @@
 // finding matched variant
       var matchedVariant = product.variants.find(variant => {
         var pass = true
-          
-        for (var i = 0; i < selectedOptions.length; i++) {    
-            if (selectedOptions.indexOf(variant.options[i]) === -1) {
-              pass = false
-              break
-            }
-          }
-          return pass;
-        })
-        console.log(selectedOptions)
 
-  // change product form variant id
+        for (var i = 0; i < selectedOptions.length; i++) {
+          if (selectedOptions.indexOf(variant.options[i]) === -1) {
+            pass = false
+            break
+          }
+        }
+        return pass;
+      })
+      console.log(selectedOptions)
+
+// change product form variant id
 //        document.querySelector('#product-id').value = matchedVariant.id;
 
 // change url
