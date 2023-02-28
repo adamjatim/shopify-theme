@@ -92,6 +92,7 @@
                 action="/cart/add"
                 method="post"
                 id="add-product-form">
+                <input id="product-id" type="hidden" name="id" value="{{ product.selected_or_first_available_variant }}">
                 <div class="product-option">
                   {% for variant in product.variants %}
                     {% if variant.available %}
@@ -134,12 +135,14 @@
   var product = {{ product | json }};
   document.querySelectorAll('.product-variant input[type="radio"]').forEach(radio => {
     radio.addEventListener('change', () => {
+      // find selection product
       var selectVariants = [];
 
       document.querySelectorAll('.product-variant input[type="radio"]:checked').forEach(radio => {
         selectVariants.push(radio.value);
       });
-
+      
+      // finding matched variant
       var matchedVariant = product.variants.find(variant => {
         for(var i = 0; i < selectVariants.length; i++) {
           var pass = true;
@@ -150,8 +153,8 @@
         }
         return pass;
       })
-
-      console.log(matchedVariants);
+      // change product form variant id
+      document.querySelector('#product-id').value = matchedVariant.id;
     });
   });
 </script>
