@@ -96,9 +96,9 @@
 
                 <div class="product-option">
                   {% for option in product.options_with_values %}
-                    <div>
-                      <div>{{ option.name }}</div>
-                    </div>
+                    <fieldset>
+                      <legend>{{ option.name }}</legend>
+                    </fieldset>
                   {% endfor %}
                 </div>
 
