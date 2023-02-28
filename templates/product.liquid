@@ -144,6 +144,7 @@
 
 <script>
   var product = {{ product | json }};
+  console.log(product);
   document.querySelectorAll('.product-variant input[type="radio"]').forEach(radio => {
     radio.addEventListener('change', () => {
 
