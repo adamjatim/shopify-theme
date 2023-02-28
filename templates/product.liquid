@@ -86,8 +86,8 @@
             <div class="gap-1">
               <h1>{{ product.title }}</h1>
               <div class="product-prices">
-                <p class="product-compare">
-                  <strike>{{ product.compare_at_price | money }}</strike>
+                <p class="product-compare"  style="text-decoration: line-through;">
+                  {{ product.compare_at_price | money }}
                 </p>
                 <p class="product-price">
                   <h1>{{ current_variant.price | money }}</h1>
