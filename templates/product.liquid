@@ -94,13 +94,28 @@
                   name="id"
                   value="{{ product.selected_or_first_available_variant.id }}">
 
-                <div class="product-option">
-                  {% for option in product.options_with_values %}
-                    <fieldset>
-                      <legend>{{ option.name }}</legend>
-                    </fieldset>
-                  {% endfor %}
-                </div>
+                {% if product.variants.size > 1 %}
+
+                  <div class="product-option">
+                    {% for option in product.options_with_values %}
+                      <fieldset>
+                        <legend>{{ option.name }}</legend>
+                        {% for value in option.values %}
+                          <div>
+                            <input
+                              {% if option.selected_value == value %}checked{% endif %}
+                              type="radio"
+                              name="{{ option.name }}"
+                              value="{{ value }}"
+                              id="{{ option.name | handleize}}-{{ value | handleize}}">
+                            <label for="{ option.name | handleize}}-{{ value | handleize}}"></label>
+                          </div>
+                        {% endfor %}
+                      </fieldset>
+                    {% endfor %}
+                  </div>
+
+                {% endif %}
 
                 <div class="product-option">
                   <label for="quantity">Quantity</label>
