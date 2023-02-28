@@ -39,21 +39,6 @@ var variantRadio = document.querySelectorAll('.product-variant');
   el.style.display = '';
 });
 
-
-// function updateParentObject(radio) {
-//   var parentObject = document.getElementsByClassName('.product-variant');
-//   if (radio.value === 'option1') {
-//     // Code to update the parent object when option 1 is selected
-//     parentObject.style.backgroundColor = 'red';
-//   } else if (radio.value === 'option2') {
-//     // Code to update the parent object when option 2 is selected
-//     parentObject.style.backgroundColor = 'green';
-//   } else if (radio.value === 'option3') {
-//     // Code to update the parent object when option 3 is selected
-//     parentObject.style.backgroundColor = 'blue';
-//   }
-// }
-
 // hold product-page after add to cart
 document.getElementById("add-product-form").addEventListener("submit", function(event) {
   // Prevent the default form submission action

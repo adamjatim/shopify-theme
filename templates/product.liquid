@@ -132,7 +132,7 @@
 <iframe name="switch-page" style="display: none;"></iframe>
 
 <script>
-  var product = {{ product | json }};
+  var product = {% product | json %};
   document.querySelectorAll('.product-variant input[type="radio"]').forEach(radio => {
     radio.addEventListener('change', () => {
       // find selection product
