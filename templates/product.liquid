@@ -87,40 +87,34 @@
               <h1>{{ product.title }}</h1>
               <h1>{{ current_variant.price | money }}</h1>
               <div>{{ product.description }}</div>
-              
-              <form
-                action="/cart/add"
-                method="post"
-                id="add-product-form">
-                <input id="product-id" type="hidden" name="id" value="{{ product.selected_or_first_available_variant }}">
+
+              {% form 'product', product %}
+                <input
+                  type="hidden"
+                  name="id"
+                  value="{{ product.selected_or_first_available_variant.id }}">
+
                 <div class="product-option">
-                  {% for variant in product.variants %}
-                    {% if variant.available %}
-                      <div class="product-variant">
-                        <input
-                    {% else %}
-                      <div class="product-variant out-of-stock">
-                        <input
-                          disabled="disabled"
-                    {% endif %}
-                          {% if product.selected_or_first_available_variant.id == variant.id %}
-                          checked="checked"
-                          {% endif %}
-                          type="radio"
-                          id="variant_{{ variant.id }}"
-                          name="id"
-                          value="{{ variant.id }}">
-                          
-                          <label for="variant_{{ variant.id }}">{{ variant.title }}</label>
-                      </div>
-                      <br> 
+                  {% for product_option in prodoct.options_with_values %}
+                    <fieldset>
+                      <legend>{{ product_options.name }}</legend>
+                    </fieldset>
                   {% endfor %}
                 </div>
-                <input
-                  id="AddToCart"
-                  type="submit"
-                  value="Add to Cart">
-              </form>
+
+                <div class="product-option">
+                  <label for="quantity">Quantity</label>
+                  <input
+                    id="quantity"
+                    name="quantity"
+                    value="1"
+                    class="product-quantity">
+                </div>
+
+                <button type="submit" class="product-add"></button>
+              {% endform %}
+
+
             </div>
           </div>
         </div>
@@ -135,28 +129,34 @@
   var product = {{ product | json }};
   document.querySelectorAll('.product-variant input[type="radio"]').forEach(radio => {
     radio.addEventListener('change', () => {
-      // find selection product
+
+// find selection product
       var selectVariants = [];
 
       document.querySelectorAll('.product-variant input[type="radio"]:checked').forEach(radio => {
         selectVariants.push(radio.value);
       });
-      
-      // finding matched variant
-      var matchedVariant = product.variants.find(variant => {
-        for(var i = 0; i < selectVariants.length; i++) {
-          var pass = true;
-          if(selectVariants.indexOf(variant.options[i]) === -1){
-            pass = false;
-            break;
-          }
-        }
-        return pass;
-      })
-      // change product form variant id
-      document.querySelector('#product-id').value = matchedVariant.id;
 
-      // change url
+// finding matched variant
+      var matchedVariant = product
+        .variants
+        .find(variant => {
+          for (var i = 0; i < selectVariants.length; i++) {
+            var pass = true;
+            if (selectVariants.indexOf({{ variant.options[i] }}) === -1) {
+              pass = false;
+              break;
+            }
+          }
+          return pass;
+        })
+
+  // change product form variant id
+        document
+        .querySelector('#product-id')
+        .value = matchedVariant.id;
+
+// change url
       var url = new URLParse(window.location.href, true);
       console.log(url);
     });
