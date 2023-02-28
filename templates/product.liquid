@@ -87,10 +87,10 @@
               <h1>{{ product.title }}</h1>
               <div class="product-prices">
                 <p class="product-compare"  style="text-decoration: line-through;">
-                  {{ product.compare_at_price | money }}
+                  {{ product.selected_or_first_available.compare_at_price | money }}
                 </p>
                 <p class="product-price">
-                  <h1>{{ current_variant.price | money }}</h1>
+                  <h1>{{ product.selected_or_first_available_variant.price | money }}</h1>
                 </p>
               </div>
               <div>{{ product.description }}</div>
