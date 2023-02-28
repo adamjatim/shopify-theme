@@ -34,10 +34,10 @@ for (var i = 0; i < radios.length; i++) {
   });
 }
 
-var variantRadio = document.querySelectorAll('.product-variant');
- variantRadio.forEach(function(el) {
-  el.style.display = '';
-});
+// var variantRadio = document.querySelectorAll('.product-variant');
+//  variantRadio.forEach(function(el) {
+//   el.style.display = '';
+// });
 
 // hold product-page after add to cart
 document.getElementById("add-product-form").addEventListener("submit", function(event) {
