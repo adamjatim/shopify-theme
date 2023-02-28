@@ -132,5 +132,33 @@
 <iframe name="switch-page" style="display: none;"></iframe>
 
 <script>
+  var product = {{ product | json }};
+  document.querySelectorAll('.product-variant input[type="radio"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      // find selection product
+      var selectVariants = [];
 
+      document.querySelectorAll('.product-variant input[type="radio"]:checked').forEach(radio => {
+        selectVariants.push(radio.value);
+      });
+      
+      // finding matched variant
+      var matchedVariant = product.variants.find(variant => {
+        for(var i = 0; i < selectVariants.length; i++) {
+          var pass = true;
+          if(selectVariants.indexOf(variant.options[i]) === -1){
+            pass = false;
+            break;
+          }
+        }
+        return pass;
+      })
+      // change product form variant id
+      document.querySelector('#product-id').value = matchedVariant.id;
+
+      // change url
+      var url = new URLParse(window.location.href, true);
+      console.log(url);
+    });
+  });
 </script>

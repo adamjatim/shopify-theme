@@ -13,7 +13,9 @@
 window.mlvedaShopCurrency = "{{ shop.currency }}";
 window.shopCurrency = "{{ shop.currency }}";
 window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
-</script></head>
+<script src=" https://cdn.jsdelivr.net/npm/url-parse@1.5.10/dist/url-parse.min.js "></script>
+</script>
+</head>
 <body>
   <main role="main">
     <img class="product-single__logo" src="{{ 'logo.jpg' | asset_url }}">
@@ -65,6 +67,6 @@ window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
   </main>
 {%- comment -%} {% include 'mlveda-currencies-switcher' %}{% include 'mlveda-currencies' %}{% include 'mlveda-flag' %}{% include 'mlveda-currencies-style' %} {%- endcomment -%}
   {{ 'script.js' | asset_url | script_tag }}
-  <script src=" https://cdn.jsdelivr.net/npm/url-parse@1.5.10/dist/url-parse.min.js "></script>
+  
 </body>
 </html>
