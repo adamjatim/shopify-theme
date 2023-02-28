@@ -26,7 +26,7 @@
           <div id="cart" class="button">
             <a>CART</a>
           </div>
-          <div class="buckscc-currency-box"></div>
+          <div class="buckscc-currency-box button"></div>
         </div>
       </div>
     </div>
@@ -140,7 +140,18 @@
         selectVariants.push(radio.value);
       });
 
-      console.log(selectVariants);
+      var matchedVariant = product.variants.find(variant => {
+        for(var i = 0; i < selectVariants.length; i++) {
+          var pass = true;
+          if(selectVariants.indexOf(variant.options[i]) === -1){
+            pass = false;
+            break;
+          }
+        }
+        return pass;
+      })
+
+      console.log(matchedVariants);
     });
   });
 </script>
