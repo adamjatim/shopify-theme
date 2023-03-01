@@ -11,9 +11,7 @@
 
   <script src=" https://cdn.jsdelivr.net/npm/url-parse@1.5.10/dist/url-parse.min.js "></script>
 </head>
-<div id="button-currency" class="buckscc-currency-box">
-  {% include 'bucks-cc' %}
-</div>
+
 <body>
   <main role="main">
     <img class="product-single__logo" src="{{ 'logo.jpg' | asset_url }}">
@@ -58,7 +56,9 @@
         <div class="overlay"></div>
       </div>
     </div>
-    
+    <div id="button-currency" class="buckscc-currency-box">
+      {% include 'bucks-cc' %}
+    </div>
     {{ content_for_layout }}
     
     {% render 'minicart' %}
