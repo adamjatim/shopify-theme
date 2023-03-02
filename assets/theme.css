@@ -623,6 +623,6 @@ nav[role=navigation] {
 }
 
 .hxoSelectTheme {
-  --hxoSelect-width: none;
-  --hxoSelect-height: none;
+  --hxoSelect-width: none !important;
+  --hxoSelect-height: none !important;
 }
