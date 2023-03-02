@@ -26,7 +26,8 @@
           <div id="cart" class="button">
             <a>CART</a>
           </div>
-          <div class="button buckscc-currency-box" id="button-currency"></div>
+          <div class="button buckscc-currency-box" id="button-currency">
+          </div>
         </div>
       </div>
     </div>
@@ -96,11 +97,7 @@
               <div>{{ product.description }}</div>
 
               {% form 'product', product %}
-                <input
-                  id="product-id"
-                  type="hidden"
-                  name="id"
-                  value="{{ product.selected_or_first_available_variant.id }}">
+                <input id="product-id" type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 
                 {% if product.variants.size > 1 %}
 
@@ -156,45 +153,41 @@
   document.querySelectorAll('.product-option input[type="radio"]').forEach(radio => {
     radio.addEventListener('change', () => {
 
-// find selection option
+      // find selection option
       var selectedOptions = [];
 
       document.querySelectorAll('.product-option input[type="radio"]:checked').forEach(radio => {
         selectedOptions.push(radio.value);
       })
 
-// finding the matched variant
-      var matchedVariant = product
-        .variants
-        .find(variant => {
-          var pass = true;
+      // finding the matched variant
+      var matchedVariant = product.variants.find(variant => {
+        var pass = true;
 
-          for (var i = 0; i < selectedOptions.length; i++) {
-            if (selectedOptions.indexOf(variant.options[i]) === -1) {
-              pass = false;
-              break;
-            }
+        for (var i = 0; i < selectedOptions.length; i++) {
+          if (selectedOptions.indexOf(variant.options[i]) === -1) {
+            pass = false;
+            break;
           }
-          return pass;
-        })
+        }
+        return pass;
+      })
+      
+      // change product form variant id
+      document.querySelector('#product-id').value = matchedVariant.id;
 
-  // change product form variant id
-        document
-        .querySelector('#product-id')
-        .value = matchedVariant.id;
-
-// change url
+      // change url
       var url = new URLParse(window.location.href, true);
       url.query.variant = matchedVariant.id;
       window.history.replaceState(null, null, url.toString());
+      
+      // change price
+      document.querySelector('product-price').textContent = formatMoney(matchedVariant.price, "{{ shop.money_format }}" )
+      document.querySelector('product-compare').textContent = formatMoney(matchedVariant.compare_at_price, "{{ shop.money_format }}" )
 
-// change price
-      document.querySelector('product-price').textContent = formatMoney(matchedVariant.price, "{{ shop.money_format }}")
-      document.querySelector('product-compare').textContent = formatMoney(matchedVariant.compare_at_price, "{{ shop.money_format }}")
-
-      matchedVariant.compare_at_price > matchedVariant.price
-        ? document.querySelector('product-compare').classList.remove('hide')
-        : document.querySelector('product-compare').classList.add('hide')
+      matchedVariant.compare_at_price > matchedVariant.price ? 
+        document.querySelector('product-compare').classList.remove('hide') : 
+        document.querySelector('product-compare').classList.add('hide')
 
     })
   })
