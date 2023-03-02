@@ -87,8 +87,8 @@
             <div class="gap-1">
               <h1>{{ product.title }}</h1>
               <div class="product-prices">
-                <p class="product-compare"  style="text-decoration: line-through;">
-                  {{ product.selected_or_first_available.compare_at_price | money }}
+                <p class="product-compare {%  unless product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %} hide {% endunless %} ">
+                  {{ product.selected_or_first_available_variant.compare_at_price | money }}
                 </p>
                 <p class="product-price">
                   <h1>{{ product.selected_or_first_available_variant.price | money }}</h1>
@@ -182,7 +182,8 @@
       window.history.replaceState(null, null, url.toString());
       
       // change price
-      document.querySelector('product-price').textContent = formatMoney(matchedVariant.price, "{{ shop.money_format }}" ) 
+      document.querySelector('product-price').textContent = formatMoney(matchedVariant.price, "{{ shop.money_format }}" )
+      document.querySelector('product-compare').textContent = formatMoney(matchedVariant.compare_at_price, "{{ shop.money_format }}" )
     })
   })
 </script>
