@@ -444,6 +444,7 @@ input[type=number]::-webkit-outer-spin-button {
   background-color: #000;
   position: fixed;
   opacity: 50%;
+  z-index: 9999;
 }
 
 .navbar-mobile {
