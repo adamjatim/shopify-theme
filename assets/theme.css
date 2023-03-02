@@ -610,3 +610,19 @@ nav[role=navigation] {
     border-top: 2px solid;
   }
 }
+
+/* Style for BUCKS-CC shopify app */
+.hxoSelectTheme.hxo-relative {
+  margin: 0 !important;
+  position: static !important;
+}
+
+.buckscc-select-styled {
+  border: none !important;
+  padding: 0px !important;
+}
+
+.hxoSelectTheme {
+  --hxoSelect-width: none;
+  --hxoSelect-height: none;
+}
