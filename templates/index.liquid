@@ -34,7 +34,7 @@
           <nav role="navigation">
             {%- for link in linklists.main-menu.links -%}
               <div class="widget-left-bar">
-                <a href="{{ link.url }}" {% if link.active %}aria-current="page"{% endif %}>
+                <a {% comment  %} href="{{ link.url }}" {% endcomment %} {% if link.active %}aria-current="page"{% endif %}>
                   <h2>{{ link.title }}</h2>
                 </a>
                 {%- if link.links != blank -%}
