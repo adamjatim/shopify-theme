@@ -51,6 +51,6 @@ for (var i = 0; i < radios.length; i++) {
 //   });
 // });
 
-var changeSpan = document.querySelector('.product-prices p');
+var changeSpan = document.querySelector('.product-prices');
 changeSpan.replace(/&lt;/g, '<');
 changeSpan.replace(/&gt;/g, '>');
