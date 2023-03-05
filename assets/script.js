@@ -52,4 +52,5 @@ for (var i = 0; i < radios.length; i++) {
 // });
 
 var changeSpan = document.querySelector('.product-prices p');
-changeSpan.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+changeSpan.replace(/&lt;/g, '<');
+changeSpan.replace(/&gt;/g, '>');
