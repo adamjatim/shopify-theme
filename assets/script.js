@@ -70,6 +70,3 @@ var decodeEntities = (function() {
 
   return decodeHTMLEntities;
 })();
-
-decodeEntities("&lt;");
-decodeEntities("&gt;");

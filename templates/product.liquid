@@ -89,9 +89,17 @@
               <div class="product-prices">
                 <p class="product-compare {%  unless product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %} hide {% endunless %} ">
                   {{ product.selected_or_first_available_variant.compare_at_price | money }}
+                  <script>
+                    decodeEntities("&lt;");
+                    decodeEntities("&gt;");
+                  </script>
                 </p>
                 <p class="product-price">
                   {{ product.selected_or_first_available_variant.price | money }}
+                  <script>
+                    decodeEntities("&lt;");
+                    decodeEntities("&gt;");
+                  </script>
                 </p>
               </div>
               <div>{{ product.description }}</div>
