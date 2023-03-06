@@ -193,8 +193,12 @@
   })
   
 
-  async function replaceHtmlTags() {
-    let myDiv = document.getElementById("product-prices");
+  document.addEventListener("DOMContentLoaded", function() {
+    replaceHtmlTags();
+  });
+
+  function replaceHtmlTags() {
+    let myDiv = document.getElementById("myDiv");
     let children = myDiv.querySelectorAll("*");
     children.forEach(child => {
       let content = child.innerHTML;
@@ -203,5 +207,4 @@
     });
   }
 
-replaceHtmlTags();
 </script>
