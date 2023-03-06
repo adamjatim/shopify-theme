@@ -86,7 +86,7 @@
           <div class="sub-right-bar">
             <div class="gap-1">
               <h1>{{ product.title }}</h1>
-              <div class="product-prices">
+              <div class="product-prices" id="product-prices">
                 <p class="product-compare {%  unless product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %} hide {% endunless %} ">
                   {{ product.selected_or_first_available_variant.compare_at_price | money }}
                 </p>
@@ -195,23 +195,12 @@
 
     })
   })
-  var decodeEntities = (function() {
-    // this prevents any overhead from creating the object each time
-    var element = document.createElement('div');
-
-    function decodeHTMLEntities (str) {
-      if(str && typeof str === 'string') {
-        // strip script/html tags
-        str = str.replace(/<script[^>]*>([\S\s]*?)<\/script>/gmi, '');
-        str = str.replace(/<\/?\w(?:[^"'>]|"[^"]*"|'[^']*')*>/gmi, '');
-        element.innerHTML = str;
-        str = element.textContent;
-        element.textContent = '';
-      }
-
-      return str;
-    }
-
-    return decodeHTMLEntities;
-  })();
+  
+  let myDiv = document.getElementById("product-prices");
+  let children = myDiv.querySelectorAll(".product-price, .product-compare");
+  children.forEach(child => {
+    let content = child.innerHTML;
+    content = content.replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+    child.innerHTML = content;
+  });
 </script>
