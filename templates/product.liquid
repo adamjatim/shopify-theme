@@ -202,7 +202,7 @@
     let children = myDiv.querySelectorAll("*");
     children.forEach(child => {
       let content = child.innerHTML;
-      content = content.replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+      content = content.replace("&lt;", "<").replace("&gt;", ">");
       child.innerHTML = content;
     });
   }
