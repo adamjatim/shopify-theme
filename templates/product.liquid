@@ -87,9 +87,11 @@
             <div class="gap-1">
               <h1>{{ product.title }}</h1>
               <div class="product-prices" id="product-prices">
-            <p class="product-compare {% if product.selected_or_first_available_variant.compare_at_price <= product.selected_or_first_available_variant.price %} hide {% endif %} ">
-                  {{ product.selected_or_first_available_variant.compare_at_price | money }}
-                </p>
+                {% comment  %} 
+                  <p class="product-compare {% if product.selected_or_first_available_variant.compare_at_price <= product.selected_or_first_available_variant.price %} hide {% endif %} ">
+                    {{ product.selected_or_first_available_variant.compare_at_price | money }}
+                  </p>
+                {% endcomment %}
                 <p class="product-price">
                   {{ product.selected_or_first_available_variant.price | money }}
                 </p>
@@ -192,19 +194,5 @@
     })
   })
   
-
-  document.addEventListener("DOMContentLoaded", function() {
-    replaceHtmlTags();
-  });
-
-  function replaceHtmlTags() {
-    let myDiv = document.getElementById("product-prices");
-    let children = myDiv.querySelectorAll("*");
-    children.forEach(child => {
-      let content = child.innerHTML;
-      content = content.replace("&lt;", "<").replace("&gt;", ">");
-      child.innerHTML = content;
-    });
-  }
 
 </script>
