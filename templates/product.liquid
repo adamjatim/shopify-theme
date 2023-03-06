@@ -87,11 +87,11 @@
             <div class="gap-1">
               <h1>{{ product.title }}</h1>
               <div class="product-prices" id="product-prices">
-                {% comment  %} 
+                {% comment  %}{% endcomment %} 
                   <p class="product-compare {% if product.selected_or_first_available_variant.compare_at_price <= product.selected_or_first_available_variant.price %} hide {% endif %} ">
                     {{ product.selected_or_first_available_variant.compare_at_price | money }}
                   </p>
-                {% endcomment %}
+                {% comment  %}{% endcomment %}
                 <p class="product-price">
                   {{ product.selected_or_first_available_variant.price | money }}
                 </p>
