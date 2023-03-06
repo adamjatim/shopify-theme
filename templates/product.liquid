@@ -69,6 +69,21 @@
         <div class="mobile-product-page">
           <div class="sub-left-bar">
             <div class="gap-1">
+            {% if product.selected_or_first_available_variant.featured_image %}
+              {%  assign featured = product.selected_or_first_available_variant.featured_image %}
+              <img id="product-image" src="{{ featured | image_url }}"/>
+            {% else %}
+            {%  assign featured = product.featured_image %}
+              <img id="product-image" src="{{ featured | image_url }}"/>
+            {% endif %}
+              
+            <ul class="product-image-thumbs">
+              {%  for image in product.images %}  
+                <li class="{% if image == featured %}selected{% endif %}"><img src="{{ image | image_url: master }}"/></li>
+              {% endfor %}
+            </ul>
+
+              {% comment  %}  
               <img
                 src="{{ featured_image | img_url: 'grande' }}"
                 alt="{{ featured_image.alt | escape }}"
@@ -81,10 +96,11 @@
                     id="SubProductPhotoImg">
                 </a>
               {% endfor %}
+              {% endcomment %}
             </div>
           </div>
           <div class="sub-right-bar">
-            <div class="gap-1">
+            <div {class="gap-1">
               <h1>{{ product.title }}</h1>
               <div class="product-prices" id="product-prices">
                 {% comment  %}
