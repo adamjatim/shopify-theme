@@ -93,10 +93,6 @@
                 <p class="product-price">
                   {{ product.selected_or_first_available_variant.price | money }}
                 </p>
-                <script>
-                    decodeEntities("&lt;");
-                    decodeEntities("&gt;");
-                  </script>
               </div>
               <div>{{ product.description }}</div>
 
@@ -196,11 +192,16 @@
     })
   })
   
-  let myDiv = document.getElementById("product-prices");
-  let children = myDiv.querySelectorAll(".product-price, .product-compare");
-  children.forEach(child => {
-    let content = child.innerHTML;
-    content = content.replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-    child.innerHTML = content;
-  });
+
+  async function replaceHtmlTags() {
+    let myDiv = document.getElementById("product-prices");
+    let children = myDiv.querySelectorAll("*");
+    children.forEach(child => {
+      let content = child.innerHTML;
+      content = content.replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+      child.innerHTML = content;
+    });
+  }
+
+replaceHtmlTags();
 </script>
