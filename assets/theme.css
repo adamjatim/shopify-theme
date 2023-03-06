@@ -208,6 +208,18 @@ li.border {
   margin: auto;
 }
 
+.product-image-thumbs {
+  max-width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  margin: auto;
+}
+
+.selected {
+  opacity: 70%;
+  border: 1px solid #888;
+}
+
 .text-product {
   font-size: medium;
   max-width: 180px;
