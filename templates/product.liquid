@@ -124,13 +124,14 @@
                       <fieldset style="display: block ruby; border: none;">
                         <legend>{{ option.name }}</legend>
                         {% for value in option.values %}
-                          <div class="product-variant">
+                          <div>
                             <input
                               {% if option.selected_value == value %}checked="checked"{% endif %}
                               type="radio"
                               name="{{ option.name }}"
                               value="{{ value }}"
-                              id="{{ option.name | handleize}}-{{ value | handleize}}">
+                              id="{{ option.name | handleize}}-{{ value | handleize}}"
+                              class="product-variant">
                             <label for="{ option.name | handleize}}-{{ value | handleize}}">
                               {{ value }}
                             </label>
