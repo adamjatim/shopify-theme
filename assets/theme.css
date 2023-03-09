@@ -220,6 +220,10 @@ li.border {
   border: 1px solid #888;
 }
 
+.money {
+  color: blue;
+}
+
 .text-product {
   font-size: medium;
   max-width: 180px;
