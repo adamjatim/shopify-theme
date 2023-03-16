@@ -415,7 +415,7 @@ input[type=number]::-webkit-outer-spin-button {
   border: 1px solid #000000;
 }
 
-.product-variant:hover,
+.product-variant label:hover,
 .product-variant.is-active,
 #AddToCart:hover {
   color: #ffffff;
