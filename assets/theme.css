@@ -402,13 +402,17 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .product-variant {
+  
+}
+
+.product-variant [type="radio"]{
+  display: none;
+}
+
+.product-variant label {
   margin: 5px 5px 0px 5px;
   padding: 10px 20px;
   border: 1px solid #000000;
-}
-
-.product-variant input {
-  /* display: none; */
 }
 
 .product-variant:hover,
