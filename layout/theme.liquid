@@ -10,6 +10,7 @@
   {{ 'theme.css' | asset_url | stylesheet_tag }}
 
   <script src=" https://cdn.jsdelivr.net/npm/url-parse@1.5.10/dist/url-parse.min.js "></script>
+{% capture cur %}{% include "booster-currency" %}{% endcapture %}{% unless cur contains "Liquid error" %}{{ cur }}{% endunless %}
 </head>
 {% render 'bucks-cc' %}
 <body>
