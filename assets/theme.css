@@ -403,7 +403,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .product-variant {
   margin: 5px 5px 0px 5px;
-  padding: 10px 20px;
+  padding: 10px 0px;
 }
 
 .product-variant [type="radio"]{
@@ -411,14 +411,28 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .product-variant label {
-  margin: 5px 5px 0px 5px;
-  padding: 10px 20px;
+  padding: 10px 22px;
   border: 1px solid #000000;
+  cursor: pointer;
+}
+
+.product-variant label:after,
+.product-variant label:before{
+  content: "";
+  position: absolute;
+}
+
+.product-variant label:after{
+  height: 20px;
+  width: 20px;
+  left: 20px;
+  top: calc(50% - 12px);
 }
 
 .product-variant label:hover,
 .product-variant.is-active,
-#AddToCart:hover {
+#AddToCart:hover,
+.product-variant [type="radio"]:checked ~ label {
   color: #ffffff;
   background-color: #000000;
 }
