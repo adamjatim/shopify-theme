@@ -11,7 +11,12 @@
 
   <script src=" https://cdn.jsdelivr.net/npm/url-parse@1.5.10/dist/url-parse.min.js "></script>
 {% capture cur %}{% include "booster-currency" %}{% endcapture %}{% unless cur contains "Liquid error" %}{{ cur }}{% endunless %}
-</head>
+
+<script>
+window.mlvedaShopCurrency = "{{ shop.currency }}";
+window.shopCurrency = "{{ shop.currency }}";
+window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
+</script></head>
 {% render 'bucks-cc' %}
 <body>
   <main role="main">
@@ -66,5 +71,5 @@
   {{ 'script.js' | asset_url | script_tag }}
   {{ 'shopify-money.js' | asset_url | script_tag }}
   
-</body>
+{% include 'mlveda-currencies-switcher' %}{% include 'mlveda-currencies' %}{% include 'mlveda-flag' %}{% include 'mlveda-currencies-style' %}</body>
 </html>
