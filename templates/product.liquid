@@ -231,20 +231,11 @@
   document.addEventListener('DOMContentLoaded', function() {
     var addToCartButton = document.querySelector('#AddToCart');
     addToCartButton.addEventListener('click', function(event) {
-      event.preventDefault();
-      var currentUrl = window.location.href;
-      var parsedUrl = new URL(currentUrl);
-      parsedUrl.pathname = '/cart';
-      window.history.pushState({}, '', parsedUrl);
+      // Delay the reload for 1 second
+      setTimeout(function() {
+        location.reload();
+      }, 1000);
     });
   });
 
-  // handler url to back the previous page from /cart page
-  document.addEventListener('DOMContentLoaded', function() {
-    var backButton = document.getElementsByClassName('cart-cancel');
-    backButton.addEventListener('click', function(event) {
-      event.preventDefault();
-      window.history.back();
-    });
-  });
 </script>
