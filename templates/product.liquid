@@ -85,7 +85,7 @@
             </div>
           </div>
           <div class="sub-right-bar">
-            <div {class="gap-1">
+            <div class="gap-1">
               <h1>{{ product.title }}</h1>
               <div class="product-prices" id="product-prices">
                 {% comment  %}
@@ -192,7 +192,11 @@
 
       // change price
       document.querySelector('.product-price').textContent = formatMoney(matchedVariant.price, "{{ shop.money_format }}" );
+      
       // handle <span class=money>...</span>
+      setTimeout(function() {
+        $('#product-prices').load('/product #product-prices');
+      }, 5000);
       location.reload();
       //document.querySelector('.product-compare').textContent = formatMoney(matchedVariant.compare_at_price, "{{ shop.money_format }}" );
 
