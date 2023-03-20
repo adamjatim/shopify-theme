@@ -139,7 +139,8 @@
 
                 <button {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %} type="submit" id="AddToCart">
                   {% if product.selected_or_first_available_variant.available %}
-                    Add to Cart
+                    {{ 'General.add_to_cart' | t }}  
+                  
                   {% else %}
                     Out of Stock
                   {% endif %}
