@@ -192,6 +192,8 @@
 
       // change price
       document.querySelector('.product-price').textContent = formatMoney(matchedVariant.price, "{{ shop.money_format }}" );
+      // handle <span class=money>...</span>
+      location.reload();
       //document.querySelector('.product-compare').textContent = formatMoney(matchedVariant.compare_at_price, "{{ shop.money_format }}" );
 
       //matchedVariant.compare_at_price > matchedVariant.price ? 
@@ -208,7 +210,6 @@
         add.textContent = "Out of Stock"
         add.disabled = true
       }
-      location.reload();
     })
   })
   
