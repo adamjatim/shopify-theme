@@ -115,8 +115,9 @@
                               type="radio"
                               name="{{ option.name }}"
                               value="{{ value }}"
-                              id="{{ option.name | handleize}}-{{ value | handleize}}">
-                            <label for="{{ option.name | handleize}}-{{ value | handleize}}">
+                              id="{{ option.name | handleize}}-{{ value | handleize}}"
+                              {% if variant.inventory_quantity == 0 %}disabled{% endif %}>
+                            <label for="{{ option.name | handleize}}-{{ value | handleize}}" {% if variant.inventory_quantity == 0 %}class="out-of-stock"{% endif %}>
                               {{ value }}
                             </label>
                           </div>

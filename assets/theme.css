@@ -436,7 +436,7 @@ input[type=number]::-webkit-outer-spin-button {
   background-color: #000000;
 }
 
-.product-variant.out-of-stock {
+.out-of-stock {
   color: #888888;
   background-color: #ffffff;
   margin: 5px 5px 0px 5px;
