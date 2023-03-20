@@ -136,12 +136,14 @@
                     class="product-quantity">
                 </div>
 
-              <button {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %} type="submit" class="button" id="AddToCart">
-                  {% if product.selected_or_first_available_variant.available %}
-                    Add_to Cart
-                  {% else %}
-                    Out Of Stock
-                  {% endif %}
+                <button {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %} type="submit" id="AddToCart">
+                  <h3>
+                    {% if product.selected_or_first_available_variant.available %}
+                      Add_to Cart
+                    {% else %}
+                      Out Of Stock
+                    {% endif %}
+                  </h3>
                 </button>
               {% endform %}
 
