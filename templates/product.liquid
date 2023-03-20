@@ -136,7 +136,7 @@
                     class="product-quantity">
                 </div>
 
-              <button {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %} type="submit" class="product-add">
+              <button {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %} type="submit" class="button" id="AddToCart">
                   {% if product.selected_or_first_available_variant.available %}
                     Add_to Cart
                   {% else %}
