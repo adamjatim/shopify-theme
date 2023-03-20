@@ -231,12 +231,10 @@
   document.addEventListener('DOMContentLoaded', function() {
     var addToCartButton = document.querySelector('#AddToCart');
     addToCartButton.addEventListener('click', function(event) {
-      // Delay the reload for a second
-      setTimeout(function() {
+      window.onload = function() {
         location.reload();
-        minicart.classList.add('is-active');
-      }, 0);
-      
+        document.getElementById('myDiv').classList.add('myClass');
+      };
     });
   });
 
