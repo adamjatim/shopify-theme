@@ -77,26 +77,11 @@
               <img id="product-image" src="{{ featured | image_url }}"/>
             {% endif %}
               
-            <ul class="product-image-thumbs">
-              {%  for image in product.images %}  
-                <li class="{% if image == featured %}selected{% endif %}"><img src="{{ image | image_url: master }}"/></li>
-              {% endfor %}
-            </ul>
-
-              {% comment  %}  
-              <img
-                src="{{ featured_image | img_url: 'grande' }}"
-                alt="{{ featured_image.alt | escape }}"
-                id="ProductPhotoImg">
-              {% for image in product.images %}
-                <a href="{{ image.src | img_url: 'grande' }}">
-                  <img
-                    src="{{ image.src | img_url: 'compact' }}"
-                    alt="{{ image.alt | escape }}"
-                    id="SubProductPhotoImg">
-                </a>
-              {% endfor %}
-              {% endcomment %}
+              <ul class="product-image-thumbs">
+                {%  for image in product.images %}  
+                  <li class="{% if image == featured %}selected{% endif %}"><img src="{{ image | image_url: master }}"/></li>
+                {% endfor %}
+              </ul>
             </div>
           </div>
           <div class="sub-right-bar">
@@ -151,7 +136,13 @@
                     class="product-quantity">
                 </div>
 
-                <button type="submit" class="product-add"></button>
+              <button {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %} type="submit" class="product-add">
+                  {% if product.selected_or_first_available_variant.available %}
+                    {{ 'General.add_to_cart' | t }}
+                  {% else %}
+                    Out Of Stock
+                  {% endif %}
+                </button>
               {% endform %}
 
 
