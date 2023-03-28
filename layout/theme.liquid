@@ -73,3 +73,6 @@ window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
   
 {% include 'mlveda-currencies-switcher' %}{% include 'mlveda-currencies' %}{% include 'mlveda-flag' %}{% include 'mlveda-currencies-style' %}</body>
 </html>
+{% if shop.metafields.qimify_minicart.script_src %}
+<script type="text/javascript" src="{{ shop.metafields.qimify_minicart.script_src }}&shop={{shop.permanent_domain }}" async="async"></script>
+{% endif %}
