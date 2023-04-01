@@ -29,6 +29,10 @@
                   </a>
                 </div>
                 <div class="minicart-product-quantity">
+                  <span class="btnqty qtyminus icon icon-minus">-</span>
+                  <input type="text" id="quantity" name="quantity" value="1" min="1" class="quantity-selector quantity-input" readonly="">
+                  <span class="btnqty qtyplus icon icon-plus">+</span>
+                  {% comment  %}  
                   <button
                     id="plus-minus-btn"
                     class="product-quantity"
@@ -49,6 +53,7 @@
                     type="submit"
                     name="update"
                     onclick="incrementNum('updates[]')">+</button>
+                    {% endcomment %}
                 </div>
               </div>
               <div class="minicart-product-price">

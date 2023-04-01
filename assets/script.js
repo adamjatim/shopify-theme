@@ -34,6 +34,19 @@ for (var i = 0; i < radios.length; i++) {
   });
 }
 
+$('.qtybox .btnqty').on('click', function(){
+  var qty = parseInt($(this).parent('.qtybox').find('.quantity-input').val());
+  if($(this).hasClass('qtyplus')) {
+    qty++;
+  }else {
+    if(qty > 1) {
+      qty--;
+    }
+  }
+  qty = (isNaN(qty))?1:qty;
+  $(this).parent('.qtybox').find('.quantity-input').val(qty);
+}); 
+
 // // hold product-page after add to cart
 // document.getElementById("add-product-form").addEventListener("submit", function(event) {
 //   // Prevent the default form submission action
