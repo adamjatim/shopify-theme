@@ -280,6 +280,10 @@ li.border {
   width: fit-content;
 }
 
+.minicart-product-image img {
+  width: 120px;
+}
+
 .minicart-product-description {
   display: flex;
   justify-content: space-between;
