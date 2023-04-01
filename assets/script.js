@@ -34,7 +34,7 @@ for (var i = 0; i < radios.length; i++) {
   });
 }
 
-$('.minicart-product-quantity .btnqty').on('click', function(){
+('.minicart-product-quantity .btnqty').on('click', function(){
   var qty = parseInt($(this).parent('.minicart-product-quantity').find('.quantity-input').val());
   if($(this).hasClass('qtyplus')) {
     qty++;
@@ -44,7 +44,7 @@ $('.minicart-product-quantity .btnqty').on('click', function(){
     }
   }
   qty = (isNaN(qty))?1:qty;
-  $(this).parent('.minicart-product-quantity').find('.quantity-input').val(qty);
+  (this).parent('.minicart-product-quantity').find('.quantity-input').val(qty);
 }); 
 
 // // hold product-page after add to cart
