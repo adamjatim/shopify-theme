@@ -34,18 +34,6 @@ for (var i = 0; i < radios.length; i++) {
   });
 }
 
-('.minicart-product-quantity .btnqty').on('click', function(){
-  var qty = parseInt($(this).parent('.minicart-product-quantity').find('.quantity-input').val());
-  if($(this).hasClass('qtyplus')) {
-    qty++;
-  }else {
-    if(qty > 1) {
-      qty--;
-    }
-  }
-  qty = (isNaN(qty))?1:qty;
-  (this).parent('.minicart-product-quantity').find('.quantity-input').val(qty);
-}); 
 
 // // hold product-page after add to cart
 // document.getElementById("add-product-form").addEventListener("submit", function(event) {

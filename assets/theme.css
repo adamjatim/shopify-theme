@@ -686,21 +686,40 @@ nav[role=navigation] {
   --hxoSelect-height: none !important;
 }
 
-/* minicart quantity */
-.minicart-product-quantity .btnqty {
-  display: inline-block;
-  cursor: pointer;
-  user-select: none;
-  font-size: 25px;
-  padding: 5px;
-  line-height: 5px;
+.qtydiv label{
+  display: block;
+  margin-bottom: 12px;
+  letter-spacing: 2.8px;
+  color: #747a7b;}
+
+.qtydiv .btnqty{
+ display: inline-block;
+ cursor: pointer;
+ user-select: none;
+ font-size: 25px;
+ padding: 5px;
+ line-height: 5px;}
+
+.qtydiv .btnqty.qtyminus{
+ margin-right: 8px;
 }
 
-.minicart-product-quantity .quantity-input {
-  border: none;
-  border: none;
-  padding: 8px;
-  text-align: center;
-  outline: none;
-  display: inline-block;
+.qtydiv .btnqty.qtyplus{
+ margin-left: 8px;
+}
+
+.qtydiv .quantity-input{
+ border: none;
+ border: none;
+ padding: 8px;
+ text-align: center;
+ width: 50px;
+ outline: none;
+ display: inline-block;
+}
+
+.qtydiv {
+ display: inline-block;
+ padding-right: 15px;
+ padding-top: 10px;
 }

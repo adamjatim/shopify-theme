@@ -28,11 +28,17 @@
                     ( {{ item.variant.title }} )
                   </a>
                 </div>
+                <div class="qtydiv">
+                  <div class="qtybox">
+                     <span class="btnqty qtyminus icon icon-minus">-</span>
+                         <input type="text" id="quantity" name="quantity" value="1" min="1" class="quantity-selector quantity-input" readonly="">
+                     <span class="btnqty qtyplus icon icon-plus">+</span>
+                  </div>
+                </div>
+                
+                {% comment  %}  
                 <div class="minicart-product-quantity">
-                  <span class="btnqty qtyminus icon icon-minus">-</span>
-                  <input type="text" id="quantity" name="quantity" value="1" min="1" class="quantity-selector quantity-input" readonly="">
-                  <span class="btnqty qtyplus icon icon-plus">+</span>
-                  {% comment  %}  
+                  
                   <button
                     id="plus-minus-btn"
                     class="product-quantity"
@@ -53,8 +59,8 @@
                     type="submit"
                     name="update"
                     onclick="incrementNum('updates[]')">+</button>
-                    {% endcomment %}
                 </div>
+                {% endcomment %}
               </div>
               <div class="minicart-product-price">
                 {{ item.price | money | replace: " ", "" }}
@@ -88,3 +94,20 @@
     {% endif %}
     {%- comment -%} <input type="submit" name="checkout" value="Checkout"> {%- endcomment -%}
     </div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+<script>
+$('.qtybox .btnqty').on('click', function(){
+  var qty = parseInt($(this).parent('.qtybox').find('.quantity-input').val());
+  if($(this).hasClass('qtyplus')) {
+    qty++;
+  }else {
+    if(qty > 1) {
+      qty--;
+    }
+  }
+  qty = (isNaN(qty))?1:qty;
+  $(this).parent('.qtybox').find('.quantity-input').val(qty);
+});
+</script>
