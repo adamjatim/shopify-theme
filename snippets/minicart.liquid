@@ -31,7 +31,7 @@
                 <div class="qtydiv">
                   <div class="qtybox">
                      <span class="btnqty qtyminus icon icon-minus">-</span>
-                         <input type="text" id="updates_{{ item.key }}" name="quantity" value="{{ item.quantity }}" min="1" class="quantity-selector quantity-input">
+                         <input type="number" id="updates_{{ item.key }}" name="updates[]" value="{{ item.quantity }}" min="1" class="quantity-selector quantity-input">
                      <span class="btnqty qtyplus icon icon-plus">+</span>
                   </div>
                   <div class="rmvbtn">
