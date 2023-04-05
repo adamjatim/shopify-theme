@@ -296,8 +296,13 @@ li.border {
   width: auto;
 }
 
+.minicart-product-title {
+  margin-right: 2px;
+}
+
 .minicart-product-price {
   text-align: end;
+  margin-left: 2px;
 }
 
 .minicart-product-quantity > button,
@@ -713,6 +718,5 @@ nav[role=navigation] {
 
 .qtydiv {
  display: inline-block;
- padding-right: 15px;
  padding-top: 10px;
 }

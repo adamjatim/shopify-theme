@@ -31,8 +31,13 @@
                 <div class="qtydiv">
                   <div class="qtybox">
                      <span class="btnqty qtyminus icon icon-minus">-</span>
-                         <input type="text" id="quantity" name="quantity" value="1" min="1" class="quantity-selector quantity-input" readonly="">
+                         <input type="text" id="quantity" name="quantity" value="1" min="1" class="quantity-selector quantity-input">
                      <span class="btnqty qtyplus icon icon-plus">+</span>
+                  </div>
+                  <div class="rmvbtn">
+                    <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
+                    <i class="fa-regular fa-trash" style="color: #000000;"></i>
+                    </a>
                   </div>
                 </div>
                 
