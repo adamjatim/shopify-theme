@@ -5,7 +5,7 @@ const navbarMobile = document.querySelector('.navbar-mobile');
 const hamburgerCancel = document.querySelector('.hamburger-cancel');
 
 // minicart
-const cart = document.getElementById('cart');
+const cart = document.getElementById('cartbtn');
 const minicart = document.querySelector('.minicart');
 const minicartCancel = document.querySelector('.cart-cancel');
 
