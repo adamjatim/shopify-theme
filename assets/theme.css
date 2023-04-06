@@ -691,6 +691,14 @@ nav[role=navigation] {
   --hxoSelect-height: none !important;
 }
 
+.buckscc-select {
+  
+}
+
+.hxoSelectTheme .buckscc-select span {
+  font-size: 15.5px !important;
+}
+
 .qtydiv label{
   display: block;
   margin-bottom: 12px;
@@ -724,3 +732,4 @@ nav[role=navigation] {
 .rmvbtn img {
   width: 35px;
 }
+
