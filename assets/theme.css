@@ -23,14 +23,12 @@ main {
 }
 
 .gap-main-border {
-  padding: 50px;
-  margin-top: 50px;
+  margin-top: 140px;
 }
 
 .main-border {
   justify-content: center;
   border: 1px solid #000000;
-  margin: 40px;
   width: 1022px;
 }
 
@@ -562,7 +560,9 @@ nav[role=navigation] {
   .gap-main-border {
     padding-left: 0px;
     padding-right: 0px;
-    width: 1080px;
+    max-width: 1080px;
+    width: auto;
+    min-width: 720px;
   }
 
   .main-border {
@@ -654,6 +654,12 @@ nav[role=navigation] {
 }
 
 @media screen and (max-width: 720px){
+  .gap-main-border {
+    max-width: 720px;
+    width: auto;
+    min-width: none;
+  }
+
   .sub-left-bar,
   .sub-right-bar {
     width: 100%;
