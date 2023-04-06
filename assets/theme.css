@@ -657,7 +657,7 @@ nav[role=navigation] {
   .gap-main-border {
     max-width: 720px;
     width: auto;
-    min-width: none;
+    min-width: 0px;
   }
 
   .sub-left-bar,
