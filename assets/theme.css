@@ -676,6 +676,10 @@ nav[role=navigation] {
 }
 
 /* Style for BUCKS-CC shopify app */
+#button-currency.buckscc-currency-box {
+  padding-top: 7px !important;
+  padding-bottom: 3px !important;
+}
 .hxoSelectTheme.hxo-relative {
   margin: 0 !important;
   position: static !important;
@@ -689,10 +693,6 @@ nav[role=navigation] {
 .hxoSelectTheme {
   --hxoSelect-width: none !important;
   --hxoSelect-height: none !important;
-}
-
-.buckscc-select {
-  
 }
 
 .hxoSelectTheme .buckscc-select span {
