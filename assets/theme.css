@@ -548,9 +548,7 @@ nav[role=navigation] {
 }
 
 @media screen and (min-width: 1081px){
-  .hamburger {
-    display: none;
-  }
+  .hamburger,
   .navbar-mobile {
     display: none;
   }
