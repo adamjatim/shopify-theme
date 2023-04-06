@@ -727,9 +727,19 @@ nav[role=navigation] {
 .qtydiv {
  display: inline-flex;
  padding-top: 10px;
+ justify-content: space-between;
+  width: 100%;
 }
 
-.rmvbtn img {
-  width: 35px;
+.qtydiv .qtybox {
+  margin-left: 10px;
+}
+
+.qtydiv .rmvbtn {
+  margin-right: 10px;
+}
+
+.qtydiv .rmvbtn img {
+  width: 25px;
 }
 
