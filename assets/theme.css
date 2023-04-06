@@ -725,7 +725,7 @@ nav[role=navigation] {
 }
 
 .qtydiv {
- display: inline-block;
+ display: inline-flex;
  padding-top: 10px;
 }
 
