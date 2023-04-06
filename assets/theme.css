@@ -720,3 +720,7 @@ nav[role=navigation] {
  display: inline-block;
  padding-top: 10px;
 }
+
+.rmvbtn img {
+  width: 35px;
+}

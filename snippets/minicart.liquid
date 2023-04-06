@@ -36,7 +36,7 @@
                   </div>
                   <div class="rmvbtn">
                     <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
-                    <i class="fa-regular fa-trash" style="color: #000000;"></i>
+                      <img src="/assets/trash.svg">
                     </a>
                   </div>
                 </div>
@@ -115,4 +115,6 @@ $('.qtybox .btnqty').on('click', function(){
   qty = (isNaN(qty))?1:qty;
   $(this).parent('.qtybox').find('.quantity-input').val(qty);
 });
+
+
 </script>
