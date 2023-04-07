@@ -89,7 +89,7 @@ Shopify.AjaxifyCart = (function($) {
             $addToCartBtn.addClass('inverted');
             _setText($addToCartBtn, _config.addedToCartBtnLabel);
             _showFeedback('success','<i class="fa fa-check"></i> Added to cart! ',$addToCartForm);
-            
+            document.querySelector('.minicart').classList.toggle('is-active');
             window.setTimeout(function(){
               $addToCartBtn.prop('disabled', false).removeClass('disabled').removeClass('inverted');
               _setText($addToCartBtn,_config.addToCartBtnLabel);

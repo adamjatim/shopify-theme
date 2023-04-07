@@ -217,6 +217,10 @@ li.border {
   margin: auto;
 }
 
+.product-image-thumbs li {
+  cursor: pointer;
+}
+
 .selected {
   opacity: 70%;
   border: 1px solid #888;
