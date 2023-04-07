@@ -86,6 +86,11 @@ select#currency {
   margin-right: 5px;
   object-position: bottom;
 }
+
+.button:hover,
+button:hover {
+  cursor: pointer;
+}
   
 .bar {
   display: flex;
