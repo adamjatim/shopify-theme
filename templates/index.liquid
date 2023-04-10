@@ -22,7 +22,7 @@
             </a>
           </div>
           <div class="top-menu-content">
-            <div id="cart" class="button">
+            <div id="cartbtn" class="button">
               <a>CART</a>
             </div>
             <div class="buckscc-currency-box button"></div>
@@ -34,7 +34,7 @@
           <nav role="navigation">
             {%- for link in linklists.main-menu.links -%}
               <div class="widget-left-bar">
-                <a {% comment  %} href="{{ link.url }}" {% endcomment %} {% if link.active %}aria-current="page"{% endif %}>
+                <a href="/" {% comment  %} href="{{ link.url }}" {% endcomment %} {% if link.active %}aria-current="page"{% endif %}>
                   <h2>{{ link.title }}</h2>
                 </a>
                 {%- if link.links != blank -%}
