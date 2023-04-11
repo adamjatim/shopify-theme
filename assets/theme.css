@@ -259,6 +259,7 @@ li.border {
   border: 2px solid #000000;
   border-top: 0px;
   border-bottom: 0px;
+  border-right: 0px;
 
 }
 
@@ -726,6 +727,7 @@ nav[role=navigation] {
 
 .hxoSelectTheme .buckscc-select span {
   font-size: 15.5px !important;
+  padding-top: 2.5px;
 }
 
 .qtydiv label{
