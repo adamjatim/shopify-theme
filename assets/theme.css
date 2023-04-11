@@ -263,6 +263,9 @@ li.border {
 }
 
 .minicart-title {
+  position: absolute;
+  top: 0px;
+  bottom: auto;
   display: flex;
   height: auto;
   justify-content: space-between;
@@ -275,9 +278,14 @@ li.border {
 }
 
 .minicart-product-list {
-  height: 600px;
+  height: auto;
+  max-height: 640px;
+  min-height: 300px;
   width: auto;
   overflow-y: scroll;
+  position: absolute;
+  top: 66px;
+  bottom: 240px;
 }
 
 .minicart-product {
@@ -348,8 +356,10 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .minicart-note {
+  position: absolute;
   padding: 10px;
-  
+  top: auto;
+  bottom: 120px;
 }
 
 .minicart-detail {
@@ -376,6 +386,11 @@ input[type=number]::-webkit-outer-spin-button {
   padding-bottom: 10px;
   justify-content: center;
   margin: 10px;
+}
+
+.minicart-detail > .button:hover {
+  background-color: #000;
+  color: #ffffff;
 }
 
 .sub-left-bar,
