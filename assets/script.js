@@ -33,21 +33,3 @@ for (var i = 0; i < radios.length; i++) {
     selectedValue = this.value;
   });
 }
-
-
-// // hold product-page after add to cart
-// document.getElementById("add-product-form").addEventListener("submit", function(event) {
-//   // Prevent the default form submission action
-//   event.preventDefault();
-  
-//   // Get the form data
-//   var formData = new FormData(event.target);
-  
-//   // Do something with the form data, such as submit it using AJAX
-//   fetch(event.target.action, {
-//     method: event.target.method,
-//     body: formData
-//   }).then(function() {
-//     console.log("Form submitted successfully!");
-//   });
-// });
