@@ -31,41 +31,13 @@
                 <div class="qtydiv">
                   <div class="qtybox">
                      <span class="btnqty qtyminus icon icon-minus">-</span>
-                         <input type="number" id="updates_{{ item.key }}" name="updates[]" value="{{ item.quantity }}" min="1" class="quantity-selector quantity-input">
+                      <input type="number" id="updates_{{ item.key }}" name="updates[]" value="{{ item.quantity }}" min="1" class="quantity-selector quantity-input">
                      <span class="btnqty qtyplus icon icon-plus">+</span>
                   </div>
                   <div class="rmvbtn">
-                    <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
-                      <img src="{{ 'trash.svg' | asset_url }}">
-                    </a>
+                    <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">X</a>
                   </div>
                 </div>
-                
-                {% comment  %}  
-                <div class="minicart-product-quantity">
-                  
-                  <button
-                    id="plus-minus-btn"
-                    class="product-quantity"
-                    type="submit"
-                    name="update"
-                    onclick="decrementNum('updates[]')">-</button>
-                  <input
-                    type="number"
-                    name="updates[]"
-                    id="updates_{{ item.key }} "
-                    name="quantity"
-                    value="{{ item.quantity }}"
-                    min="1"
-                    class="product-quantity product-quantity-value">
-                  <button
-                    id="plus-minus-btn"
-                    class="product-quantity"
-                    type="submit"
-                    name="update"
-                    onclick="incrementNum('updates[]')">+</button>
-                </div>
-                {% endcomment %}
               </div>
               <div class="minicart-product-price">
                 {{ item.price | money | replace: " ", "" }}
@@ -117,4 +89,12 @@ $('.qtybox .btnqty').on('click', function(){
 });
 
 
+</script>
+
+<script>
+  document.querySelectorAll('.qtybox .btnqty').forEach(span => {
+    span.addEventListener('click', () => {
+      console.log("P")
+    })
+  })
 </script>

@@ -770,7 +770,7 @@ nav[role=navigation] {
   margin-right: 10px;
 }
 
-.qtydiv .rmvbtn img {
+.qtydiv .rmvbtn a {
   width: 25px;
 }
 
