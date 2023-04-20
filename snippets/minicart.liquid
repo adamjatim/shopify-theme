@@ -30,9 +30,9 @@
                 </div>
                 <div class="qtydiv">
                   <div class="qtybox">
-                     <span class="btnqty qtyminus icon icon-minus">-</span>
-                      <input type="number" id="updates_{{ item.key }}" name="updates[]" value="{{ item.quantity }}" min="1" class="quantity-selector quantity-input">
-                     <span class="btnqty qtyplus icon icon-plus">+</span>
+                    <button class="btnqty qtyminus icon icon-minus">-</button>
+                    <input type="number" id="updates_{{ item.key }}" name="updates[]" value="{{ item.quantity }}" min="1" class="quantity-selector quantity-input">
+                    <button class="btnqty qtyplus icon icon-plus">+</button>
                   </div>
                   <div class="rmvbtn">
                     <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">X</a>
@@ -73,12 +73,12 @@
     </div>
 
 <script>
-  document.querySelectorAll('.qtybox .btnqty').forEach(span => {
-    span.addEventListener('click', () => {
-      const input = span.parentElement.querySelector('input');
+  document.querySelectorAll('.qtybox .btnqty').forEach(button => {
+    button.addEventListener('click', () => {
+      const input = button.parentElement.querySelector('input');
       const value = Number(input.value);
-      const isPlus = span.classList.contains('.qtyplus');
-      const isMinus = span.classList.contains('.qtyminus');
+      const isPlus = button.classList.contains('.qtyplus');
+      const isMinus = button.classList.contains('.qtyminus');
 
       if (isPlus) {
         input.value = value + 1;
