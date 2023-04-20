@@ -75,7 +75,16 @@
 <script>
   document.querySelectorAll('.qtybox .btnqty').forEach(span => {
     span.addEventListener('click', () => {
-      console.log("P")
+      const input = span.parentElement.querySelector('input');
+      const value = Number(input.value);
+      const isPlus = span.classList.contains('.qtyplus');
+      const isMinus = span.classList.contains('.qtyminus');
+
+      if (isPlus) {
+        input.value = value + 1;
+      } else if (value > 1) {
+        input.value = value - 1;
+      }
     })
   })
 </script>
