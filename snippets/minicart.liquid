@@ -13,7 +13,7 @@
         method="post"
         class="minicart-product-list">
         {% for item in cart.items %}
-          <div class="minicart-product">
+          <div class="minicart-product" data-key="{{ item.key }}">
             <div class="minicart-product-image">
               <a href="{{ item.url | within: :collections.all }}">
                 <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
@@ -78,13 +78,21 @@
       const input = button.parentElement.querySelector('input');
       const value = Number(input.value);
       const isPlus = button.classList.contains('.qtyplus');
-      const isMinus = button.classList.contains('.qtyminus');
+      const key = button.closest('.minicart-product').getAttribute('data-key');
 
       if (isPlus) {
-        input.value = value + 1;
+        const newValue = value + 1;
+        input.value = newValue;
+        changeItemQuantity(key, newValue)
       } else if (value > 1) {
-        input.value = value - 1;
+        const newValue = value - 1;
+        input.value = newValue;
+        changeItemQuantity(key, newValue)
       }
-    })
-  })
+    });
+  });
+
+  function changeItemQuantity(key, quantity) {
+    console.log({ quantity, key})
+  }
 </script>
