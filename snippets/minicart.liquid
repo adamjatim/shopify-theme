@@ -8,10 +8,6 @@
       </button>
     </div>
     {% if cart.item_count > 0 %}
-      <form
-        action="/cart"
-        method="post"
-        class="minicart-product-list">
         {% for item in cart.items %}
           <div class="minicart-product" data-key="{{ item.key }}">
             <div class="minicart-product-image">
@@ -46,7 +42,6 @@
           </div>
         {% endfor %}
         <div></div>
-      </form>
 
       <div class="minicart-note">
         <div>Add a note to your order</div>
