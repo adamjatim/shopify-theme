@@ -104,3 +104,30 @@
     
   }
 </script>
+
+<script>
+  $(document).ready(function() {
+      $.ajax({
+        url: '/cart.js',
+        type: 'GET',
+        dataType: 'json',
+        success: function(cart) {
+          // Extract the items from the cart object
+          var items = cart.items;
+
+          // Loop through each item and output the product image, title, quantity, and price
+          for (var i = 0; i < items.length; i++) {
+            var item = items[i];
+            var productImage = item.featured_image.url;
+            var productTitle = item.product_title;
+            var quantity = item.quantity;
+            var productPrice = item.final_line_price;
+            $('#minicart-product').append('<div><img src="' + productImage + '"><p>' + productTitle + '</p><p>Quantity: ' + quantity + '</p><p>Price: ' + productPrice + '</p></div>');
+          }
+        },
+        error: function() {
+          console.log('Error loading cart.');
+        }
+      });
+    });
+</script>
