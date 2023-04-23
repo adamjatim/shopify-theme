@@ -105,6 +105,8 @@
   }
 </script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 <script>
   $(document).ready(function() {
       $.ajax({
@@ -121,8 +123,8 @@
             var productImage = item.featured_image.url;
             var productTitle = item.product_title;
             var quantity = item.quantity;
-            var productPrice = item.final_line_price;
-            $('#minicart-product').append('<div><img src="' + productImage + '"><p>' + productTitle + '</p><p>Quantity: ' + quantity + '</p><p>Price: ' + productPrice + '</p></div>');
+            var productPrice = item.final_price;
+            $('#cart').append('<div><img src="' + productImage + '"><p>' + productTitle + '</p><p>Quantity: ' + quantity + '</p><p>Price: ' + productPrice + '</p></div>');
           }
         },
         error: function() {
