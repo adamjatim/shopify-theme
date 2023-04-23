@@ -124,7 +124,7 @@
             var productTitle = item.product_title;
             var quantity = item.quantity;
             var productPrice = item.final_price;
-            $('#cart').append('<div><img src="' + productImage + '"><p>' + productTitle + '</p><p>Quantity: ' + quantity + '</p><p>Price: ' + productPrice + '</p></div>');
+            $('#minicart-product').append('<div><img src="' + productImage + '"><p>' + productTitle + '</p><p>Quantity: ' + quantity + '</p><p>Price: ' + productPrice + '</p></div>');
           }
         },
         error: function() {
