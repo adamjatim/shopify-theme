@@ -125,6 +125,9 @@
         // Extract the items from the cart object
         var items = cart.items;
 
+        // Clear the contents of the cart div before adding the updated contents
+        $('#minicart-product').empty();
+
         // Loop through each item and output the product image, title, quantity, and price
         for (var i = 0; i < items.length; i++) {
           var item = items[i];
