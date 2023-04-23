@@ -9,13 +9,15 @@
     </div>
 
     {% if cart.item_count > 0 %}
+      <div id="minicart-product"></div>
+      {% comment %}
       <form
         action="/cart"
         method="post"
         class="minicart-product-list">
 
         {% for item in cart.items %}
-          <div class="minicart-product" data-key="{{ item.key }}">
+          <div id="minicart-product" class="minicart-product" data-key="{{ item.key }}">
             <div class="minicart-product-image">
               <a href="{{ item.url | within: :collections.all }}">
                 <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
@@ -52,6 +54,7 @@
         {% endfor %}
         <div></div>
       </form>
+      {% endcomment %}
 
       <div class="minicart-note">
         <div>Add a note to your order</div>
@@ -98,6 +101,6 @@
   });
 
   function changeItemQuantity(key, quantity) {
-    console.log({ quantity, key})
+    
   }
 </script>
