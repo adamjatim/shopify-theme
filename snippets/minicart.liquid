@@ -104,7 +104,7 @@
             var productTitle = item.product_title;
             var variantTitle = item.variant_title;
             var quantity = item.quantity;
-            console.log(item.final_price);
+            console.log(Number(item.final_price));
             var productPrice =  formatCurrency(Number(item.final_price), currencyCode);
             var itemTotalPrice = Number(item.final_price) * quantity;
             totalPrice += itemTotalPrice;
