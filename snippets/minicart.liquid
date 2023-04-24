@@ -66,16 +66,6 @@
 
 <script>
   $(document).ready(function() {
-      // Fetch the initial contents of the cart
-      fetchCart('IDR');
-
-      // Set an interval to fetch the contents of the cart every 5 seconds
-      setInterval(function() {
-        fetchCart('IDR');
-      }, 100);
-  });
-
-  function fetchCart(currencyCode) {
     $.ajax({
       url: '/cart.js',
       type: 'GET',
@@ -104,13 +94,11 @@
             var productTitle = item.product_title;
             var variantTitle = item.variant_title;
             var quantity = item.quantity;
-            console.log(parseFloat(item.final_price));
-            var productPrice =  formatCurrency(Number(item.final_price), currencyCode);
-            var itemTotalPrice = Number(item.final_price) * quantity;
+            var price = parseFloat(item.final_price);
+            var formattedPrice = price.toFixed(2).replace(/\.?0+$/, '');
+            var itemTotalPrice = price * quantity;
             totalPrice += itemTotalPrice;
 
-
-            {% comment  %} 
             $('#minicart-product').append(
               '<div class="minicart-product" data-key="' + key + '">' +
                 '<div class="minicart-product-image">' +
@@ -138,16 +126,15 @@
                   '</div>' +
 
                   '<div class="minicart-product-price">' +
-                    formatCurrency(itemTotalPrice, currencyCode) +
+                    formatCurrency(linePrice.toFixed(2), cart.currency) +
                   '</div>' +
                 '</div>' +
               '</div>'
             );
-          {% endcomment %}
           }
         }
 
-        $('.cart__total-price').text(formatCurrency(totalPrice, currencyCode));
+        $('.cart__total-price').text(formatCurrency(totalPrice.toFixed(2), cart.currency));
 
       },
       error: function() {
