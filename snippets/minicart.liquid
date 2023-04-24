@@ -8,6 +8,7 @@
       </button>
     </div>
 
+    {% if cart.item_count > 0 %}
       <form
         action="/cart"
         method="post"
@@ -34,6 +35,9 @@
               name="checkout">Checkout</button>
           </div>
       </form>
+    {% else %}
+      
+    {% endif %}
     {%- comment -%} <input type="submit" name="checkout" value="Checkout"> {%- endcomment -%}
     </div>
 
@@ -85,51 +89,57 @@
         // Clear the contents of the cart div before adding the updated contents
         $('#minicart-product').empty();
 
-        // Loop through each item and output the product image, title, quantity, and price
-        for (var i = 0; i < items.length; i++) {
-          var item = items[i];
-          var productImage = item.featured_image.url;
-          var productTitle = item.product_title;
-          var quantity = item.quantity;
-          var productPrice = item.final_price;
+        if (items.length < 1) {
           $('#minicart-product').append(
-            '<div class="minicart-product" data-key="' + item.key + '">' +
-              '<div class="minicart-product-image">' +
-                '<a href="' + item.url + '">' +
-                  '<img src="' + productImage + '">' +
-                '</a></div>' +
-
-              '<div class="minicart-product-description"><div class="flex-direction-column"><div class="minicart-product-title"><a href="' + item.url +'">' +
-                      item.product_title +
-                      '<br>' +
-                      '( ' + item.variant_title + ' )' +
-                    '</a>' +
-                  '</div>' +
-
-                  '<div class="qtydiv">' +
-                    '<div class="qtybox">' +
-                      '<button class="btnqty qtyminus icon icon-minus">-</button>' +
-                      '<input type="number" id="updates_' + item.key + '" name="updates[]" value="' + item.quantity + '" min="1" class="quantity-selector quantity-input">' +
-                      '<button class="btnqty qtyplus icon icon-plus">+</button>' +
-                    '</div>' +
-
-                    '<div class="rmvbtn">' +
-                    '</div>' +
-                  '</div>' +
-                '</div>' +
-
-                '<div class="minicart-product-price">' +
-                  item.final_price +
-                '</div>' +
-              '</div>' +
-            '</div>'
+            '<div style="text-align:center; margin:auto; margin-top: 30px;">Cart is empty</div>'
           );
+        }
+
+        else {
+          // Loop through each item and output the product image, title, quantity, and price
+          for (var i = 0; i < items.length; i++) {
+            var item = items[i];
+            var productImage = item.featured_image.url;
+            var productTitle = item.product_title;
+            var quantity = item.quantity;
+            var productPrice = item.final_price;
+            $('#minicart-product').append(
+              '<div class="minicart-product" data-key="' + item.key + '">' +
+                '<div class="minicart-product-image">' +
+                  '<a href="' + item.url + '">' +
+                    '<img src="' + productImage + '">' +
+                  '</a></div>' +
+
+                '<div class="minicart-product-description"><div class="flex-direction-column"><div class="minicart-product-title"><a href="' + item.url +'">' +
+                        item.product_title +
+                        '<br>' +
+                        '( ' + item.variant_title + ' )' +
+                      '</a>' +
+                    '</div>' +
+
+                    '<div class="qtydiv">' +
+                      '<div class="qtybox">' +
+                        '<button class="btnqty qtyminus icon icon-minus">-</button>' +
+                        '<input type="number" id="updates_' + item.key + '" name="updates[]" value="' + item.quantity + '" min="1" class="quantity-selector quantity-input">' +
+                        '<button class="btnqty qtyplus icon icon-plus">+</button>' +
+                      '</div>' +
+
+                      '<div class="rmvbtn">' +
+                      '</div>' +
+                    '</div>' +
+                  '</div>' +
+
+                  '<div class="minicart-product-price">' +
+                    item.final_price +
+                  '</div>' +
+                '</div>' +
+              '</div>'
+            );
+          }
         }
       },
       error: function() {
-        $('#minicart-product').append(
-          '<div style="text-align:center; margin:auto; margin-top: 30px;">Cart is empty</div>'
-        );
+        console.log('Error loading cart.');
       }
     });
   };
