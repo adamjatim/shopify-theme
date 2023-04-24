@@ -92,6 +92,7 @@
         }
 
         else {
+          var totalPrice = 0;
           // Loop through each item and output the product image, title, quantity, and price
           for (var i = 0; i < items.length; i++) {
             var item = items[i];
@@ -103,7 +104,8 @@
             var quantity = item.quantity;
             var productPrice = item.final_price;
             var itemTotalPrice = productPrice * quantity;
-            var totalPrice += itemTotalPrice;
+            totalPrice += itemTotalPrice;
+
             $('#minicart-product').append(
               '<div class="minicart-product" data-key="' + key + '">' +
                 '<div class="minicart-product-image">' +
