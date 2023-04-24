@@ -95,7 +95,7 @@
             var variantTitle = item.variant_title;
             var quantity = item.quantity;
             var price = parseFloat(item.final_price);
-            var formattedPrice = price.toFixed(2).replace(/\.?0+$/, ' ');
+            var formattedPrice = price.toFixed().replace(/\.?0+$/, ' ');
             var itemTotalPrice = price * quantity;
             totalPrice += itemTotalPrice;
 
@@ -126,7 +126,7 @@
                   '</div>' +
 
                   '<div class="minicart-product-price">' +
-                    formatCurrency(itemTotalPrice.toFixed(2)), +
+                    formatCurrency(itemTotalPrice.toFixed()), +
                   '</div>' +
                 '</div>' +
               '</div>'
@@ -134,7 +134,7 @@
           }
         }
 
-        $('.cart__total-price').text(formatCurrency(totalPrice.toFixed(2), cart.currency));
+        $('.cart__total-price').text(formatCurrency(totalPrice.toFixed(), cart.currency));
 
       },
       error: function() {
