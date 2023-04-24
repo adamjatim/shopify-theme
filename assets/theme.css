@@ -286,7 +286,7 @@ li.border {
   overflow-y: scroll;
   position: absolute;
   top: 66px;
-  bottom: 240px;
+  bottom: 0px;
 }
 
 .minicart-product {
@@ -359,14 +359,12 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .minicart-note {
-  position: absolute;
   padding: 10px;
   top: auto;
   bottom: 120px;
 }
 
 .minicart-detail {
-  position: absolute;
   top: auto;
   bottom: 0px;
 }
