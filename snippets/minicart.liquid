@@ -104,8 +104,8 @@
             var productTitle = item.product_title;
             var variantTitle = item.variant_title;
             var quantity = item.quantity;
-            var productPrice =  formatCurrency(item.final_price, currencyCode);
-            var itemTotalPrice = item.final_price * quantity;
+            var productPrice =  formatCurrency(Number(item.final_price), currencyCode);
+            var itemTotalPrice = Number(item.final_price) * quantity;
             totalPrice += itemTotalPrice;
 
             $('#minicart-product').append(
