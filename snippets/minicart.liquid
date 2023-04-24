@@ -67,13 +67,15 @@
 <script>
   $(document).ready(function() {
       // Fetch the initial contents of the cart
-      fetchCart();
+      fetchCart('IDR');
 
       // Set an interval to fetch the contents of the cart every 5 seconds
-      setInterval(fetchCart, 100);
+      setInterval(function() {
+        fetchCart('IDR');
+      }, 100);
   });
 
-  function fetchCart() {
+  function fetchCart(currencyCode) {
     $.ajax({
       url: '/cart.js',
       type: 'GET',
@@ -87,23 +89,23 @@
 
         if (items.length < 1) {
           $('#minicart-product').append(
-            '<div style="text-align:center; margin:auto; margin-top: 30px;">Cart is empty</div>'
+            '<div style="text-align:center; margin:auto; margin-top: 30px; margin-bottom: 40px;">Cart is empty</div>'
           );
         }
 
         else {
-          var totalPrice = 0;
           // Loop through each item and output the product image, title, quantity, and price
+          var totalPrice = 0;
           for (var i = 0; i < items.length; i++) {
             var item = items[i];
             var key = item.key;
             var url = item.url;
             var productImage = item.featured_image.url;
             var productTitle = item.product_title;
-            var productVariantTitle = item.variant_title;
+            var variantTitle = item.variant_title;
             var quantity = item.quantity;
-            var productPrice = item.final_price;
-            var itemTotalPrice = productPrice * quantity;
+            var productPrice =  formatCurrency(item.final_price, currencyCode);
+            var itemTotalPrice = item.final_price * quantity;
             totalPrice += itemTotalPrice;
 
             $('#minicart-product').append(
@@ -116,7 +118,7 @@
                 '<div class="minicart-product-description"><div class="flex-direction-column"><div class="minicart-product-title"><a href="' + url +'">' +
                         productTitle +
                         '<br>' +
-                        '( ' + productVariantTitle + ' )' +
+                        '( ' + variantTitle + ' )' +
                       '</a>' +
                     '</div>' +
 
@@ -133,7 +135,7 @@
                   '</div>' +
 
                   '<div class="minicart-product-price">' +
-                    itemTotalPrice +
+                    formatCurrency(itemTotalPrice, currencyCode) +
                   '</div>' +
                 '</div>' +
               '</div>'
@@ -141,7 +143,7 @@
           }
         }
 
-        $('.cart__total-price').text(totalPrice.toFixed(2));
+        $('.cart__total-price').text(formatCurrency(totalPrice, currencyCode));
 
       },
       error: function() {
@@ -149,4 +151,9 @@
       }
     });
   };
+
+  function formatCurrency(value, currencyCode) {
+    var options = { style: 'currency', currency: currencyCode };
+    return value.toLocaleString(undefined, options);
+  }
 </script>
