@@ -8,7 +8,6 @@
       </button>
     </div>
 
-    {% if cart.item_count > 0 %}
       <form
         action="/cart"
         method="post"
@@ -35,9 +34,6 @@
               name="checkout">Checkout</button>
           </div>
       </form>
-    {% else %}
-      
-    {% endif %}
     {%- comment -%} <input type="submit" name="checkout" value="Checkout"> {%- endcomment -%}
     </div>
 
