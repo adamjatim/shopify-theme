@@ -26,7 +26,7 @@
           <div class="minicart-detail">
             <div class="minicart-detail-total">
               <strong>Subtotal</strong>
-              <span class="cart__total-price">{{ cart.total_price | money }}</span>
+              <span class="cart__total-price"></span>
             </div>
             <button
               class="button"
@@ -95,28 +95,33 @@
           // Loop through each item and output the product image, title, quantity, and price
           for (var i = 0; i < items.length; i++) {
             var item = items[i];
+            var key = item.key;
+            var url = item.url;
             var productImage = item.featured_image.url;
             var productTitle = item.product_title;
+            var productVariantTitle = item.variant_title;
             var quantity = item.quantity;
             var productPrice = item.final_price;
+            var itemTotalPrice = productPrice * quantity;
+            var totalPrice += itemTotalPrice;
             $('#minicart-product').append(
-              '<div class="minicart-product" data-key="' + item.key + '">' +
+              '<div class="minicart-product" data-key="' + key + '">' +
                 '<div class="minicart-product-image">' +
-                  '<a href="' + item.url + '">' +
+                  '<a href="' + url + '">' +
                     '<img src="' + productImage + '">' +
                   '</a></div>' +
 
-                '<div class="minicart-product-description"><div class="flex-direction-column"><div class="minicart-product-title"><a href="' + item.url +'">' +
-                        item.product_title +
+                '<div class="minicart-product-description"><div class="flex-direction-column"><div class="minicart-product-title"><a href="' + url +'">' +
+                        productTitle +
                         '<br>' +
-                        '( ' + item.variant_title + ' )' +
+                        '( ' + productVariantTitle + ' )' +
                       '</a>' +
                     '</div>' +
 
                     '<div class="qtydiv">' +
                       '<div class="qtybox">' +
                         '<button class="btnqty qtyminus icon icon-minus">-</button>' +
-                        '<input type="number" id="updates_' + item.key + '" name="updates[]" value="' + item.quantity + '" min="1" class="quantity-selector quantity-input">' +
+                        '<input type="number" id="updates_' + key + '" name="updates[]" value="' + quantity + '" min="1" class="quantity-selector quantity-input">' +
                         '<button class="btnqty qtyplus icon icon-plus">+</button>' +
                       '</div>' +
 
@@ -126,13 +131,16 @@
                   '</div>' +
 
                   '<div class="minicart-product-price">' +
-                    item.final_price +
+                    itemTotalPrice +
                   '</div>' +
                 '</div>' +
               '</div>'
             );
           }
         }
+
+        $('.cart__total-price').text(totalPrice.toFixed(2));
+
       },
       error: function() {
         console.log('Error loading cart.');
