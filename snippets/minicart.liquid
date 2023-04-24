@@ -99,8 +99,10 @@
           var quantity = item.quantity;
           var productPrice = item.final_price;
           $('#minicart-product').append(
-            '<div class="minicart-product-image"><a href="' + item.url + 
-            '> <img src="' + item.featured_image.url + '"> </a></div>' +
+            '<div class="minicart-product-image">' +
+              '<a href="' + item.url + '>' +
+                '<img src="' + item.featured_image.url + '">' +
+              '</a></div>' +
 
             '<div class="minicart-product-description"><div class="flex-direction-column"><div class="minicart-product-title"><a href="' + item.url +'">' +
                     item.product_title +
