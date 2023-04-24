@@ -136,17 +136,17 @@
 
         $('.cart__total-price').text(formatCurrency(totalPrice.toFixed(2), cart.currency));
 
+        function formatCurrency(amount, currency) {
+          return amount.toLocaleString('id-ID', {
+            style: 'currency',
+            currency: currency || 'IDR'
+          });
+        }
+
       },
       error: function() {
         console.log('Error loading cart.');
       }
     });
   });
-
-  function formatCurrency(amount, currency) {
-    return amount.toLocaleString('id-ID', {
-      style: 'currency',
-      currency: currency || 'IDR'
-    });
-  }
 </script>
