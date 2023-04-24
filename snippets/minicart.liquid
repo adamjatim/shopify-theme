@@ -143,8 +143,10 @@
     });
   });
 
-  function formatCurrency(value, currencyCode) {
-    var options = { style: 'currency', currency: currencyCode };
-    return value.toLocaleString(undefined, options);
+  function formatCurrency(amount, currency) {
+    return amount.toLocaleString('id-ID', {
+      style: 'currency',
+      currency: currency || 'IDR'
+    });
   }
 </script>
