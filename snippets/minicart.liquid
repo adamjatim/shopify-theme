@@ -95,8 +95,8 @@
             var variantTitle = item.variant_title;
             var quantity = item.quantity;
             var price = parseFloat(item.final_price);
-            var formattedPrice = price.toFixed(2).replace(/\.?0+$/, '');
-            var itemTotalPrice = price * quantity;
+            var formattedPrice = price.toFixed(2).replace(/\.?0+$/, ' ');
+            var itemTotalPrice = formattedPrice * quantity;
             totalPrice += itemTotalPrice;
 
             $('#minicart-product').append(
