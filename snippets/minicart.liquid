@@ -134,7 +134,7 @@
           }
         }
 
-        $('.cart__total-price').(formatCurrency(totalPrice.toFixed(), cart.currency));
+        $('.cart__total-price').text(formatCurrency(totalPrice.toFixed(), cart.currency));
 
       },
       error: function() {
