@@ -8,7 +8,6 @@
       </button>
     </div>
 
-    {% if cart.item_count > 0 %}
       <form
         action="/cart"
         method="post"
@@ -35,9 +34,6 @@
               name="checkout">Checkout</button>
           </div>
       </form>
-    {% else %}
-      <div style="text-align:center; margin:auto; margin-top: 30px;">Cart is empty</div>
-    {% endif %}
     {%- comment -%} <input type="submit" name="checkout" value="Checkout"> {%- endcomment -%}
     </div>
 
@@ -131,7 +127,9 @@
         }
       },
       error: function() {
-        console.log('Error loading cart.');
+        $('#minicart-product').append(
+          '<div style="text-align:center; margin:auto; margin-top: 30px;">Cart is empty</div>'
+        );
       }
     });
   };
