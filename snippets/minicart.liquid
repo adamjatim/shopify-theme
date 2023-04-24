@@ -84,9 +84,6 @@
         // Extract the items from the cart object
         var items = cart.items;
 
-        // Clear the contents of the cart div before adding the updated contents
-        $('#minicart-product').empty();
-
         if (items.length < 1) {
           $('#minicart-product').append(
             '<div style="text-align:center; margin:auto; margin-top: 30px; margin-bottom: 40px;">Cart is empty</div>'
@@ -94,6 +91,9 @@
         }
 
         else {
+          // Clear the contents of the cart div before adding the updated contents
+          $('#minicart-product').empty();
+          
           // Loop through each item and output the product image, title, quantity, and price
           var totalPrice = 0;
           for (var i = 0; i < items.length; i++) {
@@ -154,7 +154,6 @@
 
   function formatCurrency(value, currencyCode) {
     var options = { style: 'currency', currency: currencyCode };
-    return value.toLocaleString('id-ID', options);
+    return value.toLocaleString(undefined, options);
   }
-
 </script>
