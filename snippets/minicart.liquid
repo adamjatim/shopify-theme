@@ -9,52 +9,14 @@
     </div>
 
     {% if cart.item_count > 0 %}
-      <div id="minicart-product"></div>
-      {% comment %}
       <form
         action="/cart"
         method="post"
         class="minicart-product-list">
 
-        {% for item in cart.items %}
           <div id="minicart-product" class="minicart-product" data-key="{{ item.key }}">
-            <div class="minicart-product-image">
-              <a href="{{ item.url | within: :collections.all }}">
-                <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
-              </a>
-            </div>
-            
-            <div class="minicart-product-description">
-              <div class="flex-direction-column">
-                <div class="minicart-product-title">
-                  <a href="{{ item.url }}">
-                    {{ item.product.title }}
-                    <br>
-                    ( {{ item.variant.title }} )
-                  </a>
-                </div>
-                
-                <div class="qtydiv">
-                  <div class="qtybox">
-                    <button class="btnqty qtyminus icon icon-minus">-</button>
-                    <input type="number" id="updates_{{ item.key }}" name="updates[]" value="{{ item.quantity }}" min="1" class="quantity-selector quantity-input">
-                    <button class="btnqty qtyplus icon icon-plus">+</button>
-                  </div>
-                  
-                  <div class="rmvbtn">
-                    <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">X</a>
-                  </div>
-                </div>
-              </div>
-              <div class="minicart-product-price">
-                {{ item.price | money | replace: " ", "" }}
-              </div>
-            </div>
           </div>
-        {% endfor %}
-        <div></div>
       </form>
-      {% endcomment %}
 
       <div class="minicart-note">
         <div>Add a note to your order</div>
@@ -135,7 +97,40 @@
           var productTitle = item.product_title;
           var quantity = item.quantity;
           var productPrice = item.final_price;
-          $('#minicart-product').append('<div><img src="' + productImage + '"><p>' + productTitle + '</p><p>Quantity: ' + quantity + '</p><p>Price: ' + productPrice + '</p></div>');
+          $('#minicart-product').append(
+            '<div class="minicart-product-image">'
+              '<a href="' + item.url + '>' +
+                '<img src="' + item.featured_image.url + '">' +
+              '</a>' +
+            '</div>' +
+
+            '<div class="minicart-product-description">' +
+              '<div class="flex-direction-column">' +
+                '<div class="minicart-product-title">' +
+                  '<a href="' + item.url +'">' +
+                    item.product_title +
+                    '<br>' +
+                    '( ' item.variant_title ' )' +
+                  '</a>' +
+                '</div>' +
+
+                '<div class="qtydiv">' +
+                  '<div class="qtybox">' +
+                    '<button class="btnqty qtyminus icon icon-minus">-</button>' +
+                    '<input type="number" id="updates_' + item.key + '" name="updates[]" value="' + item.quantity + '" min="1" class="quantity-selector quantity-input">' +
+                    '<button class="btnqty qtyplus icon icon-plus">+</button>' +
+                  '</div>' +
+
+                  '<div class="rmvbtn">' +
+                  '</div>' +
+                '</div>' +
+              '</div>' +
+
+              '<div class="minicart-product-price">' +
+                item.final_price +
+              '</div>' +
+            '</div>' +
+          );
         }
       },
       error: function() {
