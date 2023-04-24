@@ -143,10 +143,12 @@
     });
   });
 
-  function formatCurrency(amount, currency) {
-    return amount.toLocaleString('id-ID', {
+  function formatCurrency(price, currency) {
+    var formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: currency || 'IDR'
+      currency: currency,
     });
+    return formatter.format(price);
   }
+
 </script>
