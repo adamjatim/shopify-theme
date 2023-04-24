@@ -300,6 +300,7 @@ li.border {
 .minicart-product-image {
   width: 120px;
   height: auto;
+  min-height: 120px;
 }
 
 .minicart-product-image img {
