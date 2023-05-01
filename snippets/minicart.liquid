@@ -34,8 +34,24 @@
               name="checkout">Checkout</button>
           </div>
       </form>
-    {%- comment -%} <input type="submit" name="checkout" value="Checkout"> {%- endcomment -%}
     </div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+<script>
+  $('.qtybox .btnqty').on('click', function(){
+    var qty = parseInt($(this).parent('.qtybox').find('.quantity-input').val());
+    if($(this).hasClass('qtyplus')) {
+      qty++;
+    }else {
+      if(qty > 1) {
+        qty--;
+      }
+    }
+    qty = (isNaN(qty))?1:qty;
+    $(this).parent('.qtybox').find('.quantity-input').val(qty);
+  });
+</script>
 
 <script>
   document.querySelectorAll('.qtybox .btnqty').forEach(button => {
@@ -120,7 +136,7 @@
                         '<button class="btnqty qtyplus icon icon-plus">+</button>' +
                       '</div>' +
 
-                      '<div class="rmvbtn">' +
+                      '<div class="remove-btn">' +
                       '</div>' +
                     '</div>' +
                   '</div>' +
@@ -135,6 +151,27 @@
         }
 
         $('.cart__total-price').text(formatCurrency(totalPrice.toFixed(), cart.currency));
+
+        // Remove item functionality
+        $('.remove-btn').click(function() {
+          var key = $(this).data('key');
+          $.ajax({
+            url: '/cart/change.js',
+            type: 'POST',
+            data: {
+              'quantity': 0,
+              'id': key
+            },
+            dataType: 'json',
+            success: function(cart) {
+              console.log('Item removed from cart');
+              location.reload();
+            },
+            error: function() {
+              console.log('Error removing item from cart');
+            }
+          });
+        });
 
       },
       error: function() {
