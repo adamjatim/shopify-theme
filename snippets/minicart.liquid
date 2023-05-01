@@ -36,25 +36,6 @@
       </form>
     </div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-
-<script>
-  $('.qtybox .btnqty').on('click', function(){
-    var qty = parseInt($(this).parent('.qtybox').find('.quantity-input').val());
-    if($(this).hasClass('qtyplus')) {
-      console.log('halooo!!!!')
-      qty++;
-    }else {
-      if(qty > 1) {
-        console.log('halooo!!!!')
-        qty--;
-      }
-    }
-    qty = (isNaN(qty))?1:qty;
-    $(this).parent('.qtybox').find('.quantity-input').val(qty);
-  });
-</script>
-
 {%comment%}
 
 <script>
@@ -194,4 +175,23 @@
     return formatter.format(price);
   }
 
+</script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+<script>
+  $('.qtybox .btnqty').on('click', function(){
+    var qty = parseInt($(this).parent('.qtybox').find('.quantity-input').val());
+    if($(this).hasClass('qtyplus')) {
+      console.log('halooo!!!!')
+      qty++;
+    }else {
+      if(qty > 1) {
+        console.log('halooo!!!!')
+        qty--;
+      }
+    }
+    qty = (isNaN(qty))?1:qty;
+    $(this).parent('.qtybox').find('.quantity-input').val(qty);
+  });
 </script>
