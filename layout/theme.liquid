@@ -69,6 +69,7 @@ window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
     {{ content_for_layout }}
     
     {% render 'minicart' %}
+    {% render 'qty' %}
   </main>
   {{ 'script.js' | asset_url | script_tag }}
   {{ 'shopify-money.js' | asset_url | script_tag }}
