@@ -59,110 +59,117 @@ $(document).on('click', '.qtybox .btnqty', function(){
 
 <script>
   $(document).ready(function() {
-    $.ajax({
-      url: '/cart.js',
-      type: 'GET',
-      dataType: 'json',
-      success: function(cart) {
-        // Extract the items from the cart object
-        var items = cart.items;
-
-        if (items.length < 1) {
-          $('#minicart-product').append(
-            '<div style="text-align:center; margin:auto; margin-top: 30px; margin-bottom: 40px;">Cart is empty</div>'
-          );
-        }
-
-        else {
-          // Clear the contents of the cart div before adding the updated contents
-          $('#minicart-product').empty();
-          
-          // Loop through each item and output the product image, title, quantity, and price
-          var totalPrice = 0;
-          for (var i = 0; i < items.length; i++) {
-            var item = items[i];
-            var key = item.key;
-            var url = item.url;
-            var productImage = item.featured_image.url;
-            var productTitle = item.product_title;
-            var variantTitle = item.variant_title;
-            var quantity = item.quantity;
-            var price = parseFloat(item.final_price);
-            var formattedPrice = parseFloat((item.final_price / 100).toFixed(2));
-            var itemTotalPrice = ( price / 100 ) * quantity;
-            totalPrice += itemTotalPrice;
-
-            $('#minicart-product').append(
-              '<div class="minicart-product" data-key="' + key + '">' +
-                '<div class="minicart-product-image">' +
-                  '<a href="' + url + '">' +
-                    '<img src="' + productImage + '">' +
-                  '</a></div>' +
-
-                '<div class="minicart-product-description"><div class="flex-direction-column"><div class="minicart-product-title"><a href="' + url +'">' +
-                        productTitle +
-                        '<br>' +
-                        '( ' + variantTitle + ' )' +
-                      '</a>' +
-                    '</div>' +
-
-                    '<div class="qtydiv">' +
-                      '<div class="qtybox">' +
-                        '<span class="btnqty qtyminus icon icon-minus">-</span>' +
-                        '<input type="number" id="updates_' + key + '" name="updates[]" value="' + quantity + '" min="1" class="quantity-selector quantity-input">' +
-                        '<span class="btnqty qtyplus icon icon-plus">+</span>' +
-                      '</div>' +
-
-                      '<span class="remove-btn">x' +
-                      '</span>' +
-                    '</div>' +
-                  '</div>' +
-
-                  '<div class="minicart-product-price">' +
-                    formatCurrency(itemTotalPrice.toFixed(), cart.currency) +
-                  '</div>' +
-                '</div>' +
-              '</div>'
-            );
-          }
-        }
-
-        $('.cart__total-price').text(formatCurrency(totalPrice.toFixed(), cart.currency));
-
-        // Remove item functionality
-        $('.remove-btn').click(function() {
-          var key = $(this).data('key');
-          $.ajax({
-            url: '/cart/change.js',
-            type: 'POST',
-            data: {
-              'quantity': 0,
-              'id': key
-            },
-            dataType: 'json',
-            success: function(cart) {
-              console.log('Item removed from cart');
-              location.reload();
-            },
-            error: function() {
-              console.log('Error removing item from cart');
-            }
-          });
-        });
-
-      },
-      error: function() {
-        console.log('Error loading cart.');
-      }
-    });
+    fetchCart();
+    setInterval(fetchCart, 100);
   });
 
-  function formatCurrency(price, currency) {
-    var formatter = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: currency,
+  function fetchCart() {
+    $(document).ready(function() {
+      $.ajax({
+        url: '/cart.js',
+        type: 'GET',
+        dataType: 'json',
+        success: function(cart) {
+          // Extract the items from the cart object
+          var items = cart.items;
+
+          if (items.length < 1) {
+            $('#minicart-product').append(
+              '<div style="text-align:center; margin:auto; margin-top: 30px; margin-bottom: 40px;">Cart is empty</div>'
+            );
+          }
+
+          else {
+            // Clear the contents of the cart div before adding the updated contents
+            $('#minicart-product').empty();
+            
+            // Loop through each item and output the product image, title, quantity, and price
+            var totalPrice = 0;
+            for (var i = 0; i < items.length; i++) {
+              var item = items[i];
+              var key = item.key;
+              var url = item.url;
+              var productImage = item.featured_image.url;
+              var productTitle = item.product_title;
+              var variantTitle = item.variant_title;
+              var quantity = item.quantity;
+              var price = parseFloat(item.final_price);
+              var formattedPrice = parseFloat((item.final_price / 100).toFixed(2));
+              var itemTotalPrice = ( price / 100 ) * quantity;
+              totalPrice += itemTotalPrice;
+
+              $('#minicart-product').append(
+                '<div class="minicart-product" data-key="' + key + '">' +
+                  '<div class="minicart-product-image">' +
+                    '<a href="' + url + '">' +
+                      '<img src="' + productImage + '">' +
+                    '</a></div>' +
+
+                  '<div class="minicart-product-description"><div class="flex-direction-column"><div class="minicart-product-title"><a href="' + url +'">' +
+                          productTitle +
+                          '<br>' +
+                          '( ' + variantTitle + ' )' +
+                        '</a>' +
+                      '</div>' +
+
+                      '<div class="qtydiv">' +
+                        '<div class="qtybox">' +
+                          '<span class="btnqty qtyminus icon icon-minus">-</span>' +
+                          '<input type="number" id="updates_' + key + '" name="updates[]" value="' + quantity + '" min="1" class="quantity-selector quantity-input">' +
+                          '<span class="btnqty qtyplus icon icon-plus">+</span>' +
+                        '</div>' +
+
+                        '<span class="remove-btn">x' +
+                        '</span>' +
+                      '</div>' +
+                    '</div>' +
+
+                    '<div class="minicart-product-price">' +
+                      formatCurrency(itemTotalPrice.toFixed(), cart.currency) +
+                    '</div>' +
+                  '</div>' +
+                '</div>'
+              );
+            }
+          }
+
+          $('.cart__total-price').text(formatCurrency(totalPrice.toFixed(), cart.currency));
+
+          // Remove item functionality
+          $('.remove-btn').click(function() {
+            var key = $(this).data('key');
+            $.ajax({
+              url: '/cart/change.js',
+              type: 'POST',
+              data: {
+                'quantity': 0,
+                'id': key
+              },
+              dataType: 'json',
+              success: function(cart) {
+                console.log('Item removed from cart');
+                location.reload();
+              },
+              error: function() {
+                console.log('Error removing item from cart');
+              }
+            });
+          });
+
+        },
+        error: function() {
+          console.log('Error loading cart.');
+        }
+      });
     });
-    return formatter.format(price);
+
+    function formatCurrency(price, currency) {
+      var formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: currency,
+      });
+      return formatter.format(price);
+    }
   }
 
 </script>
