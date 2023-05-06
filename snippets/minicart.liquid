@@ -52,6 +52,8 @@ $(document).on('click', '.qtybox .btnqty', function(){
   }
   qty = (isNaN(qty))?1:qty;
   $(this).parent('.qtybox').find('.quantity-input').val(qty);
+
+  
 });
 
 
@@ -119,8 +121,7 @@ $(document).on('click', '.qtybox .btnqty', function(){
                           '<span class="btnqty qtyplus icon icon-plus">+</span>' +
                         '</div>' +
 
-                        '<span class="remove-btn">x' +
-                        '</span>' +
+                        '<span class="remove-btn">x</span>' +
                       '</div>' +
                     '</div>' +
 
@@ -136,7 +137,7 @@ $(document).on('click', '.qtybox .btnqty', function(){
           $('.cart__total-price').text(formatCurrency(totalPrice.toFixed(), cart.currency));
 
           // Remove item functionality
-          $('.remove-btn').click(function() {
+          $(document).on('click', '.remove-btn', function() {
             var key = $(this).data('key');
             $.ajax({
               url: '/cart/change.js',
