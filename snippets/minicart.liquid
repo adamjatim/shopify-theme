@@ -65,32 +65,28 @@
 
 {% endcomment %}
 
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+<script>
+$('.qtybox .btnqty').on('click', function(){
+  var qty = parseInt($(this).parent('.qtybox').find('.quantity-input').val());
+  if($(this).hasClass('qtyplus')) {
+    qty++;
+  }else {
+    if(qty > 1) {
+      qty--;
+    }
+  }
+  qty = (isNaN(qty))?1:qty;
+  $(this).parent('.qtybox').find('.quantity-input').val(qty);
+});
+
+
+</script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
-  document.querySelectorAll('.qtybox .btnqty').forEach(button => {
-    button.addEventListener('click', () => {
-      const input = button.parentElement.querySelector('input');
-      const value = Number(input.value);
-      const isPlus = button.classList.contains('.qtyplus');
-      const key = button.closest('.minicart-product').getAttribute('data-key');
-
-      if (isPlus) {
-        const newValue = value + 1;
-        input.value = newValue;
-        changeItemQuantity(key, newValue);
-      } else if (value > 1) {
-        const newValue = value - 1;
-        input.value = newValue;
-        changeItemQuantity(key, newValue);
-      }
-    });
-  });
-
-  function changeItemQuantity(key, quantity) {
-    
-  }
-  
   $(document).ready(function() {
     $.ajax({
       url: '/cart.js',
