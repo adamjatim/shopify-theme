@@ -36,35 +36,6 @@
       </form>
     </div>
 
-{%comment%}
-
-<script>
-  document.querySelectorAll('.qtybox .btnqty').forEach(button => {
-    button.addEventListener('click', () => {
-      const input = button.parentElement.querySelector('input');
-      const value = Number(input.value);
-      const isPlus = button.classList.contains('.qtyplus');
-      const key = button.closest('.minicart-product').getAttribute('data-key');
-
-      if (isPlus) {
-        const newValue = value + 1;
-        input.value = newValue;
-        changeItemQuantity(key, newValue);
-      } else if (value > 1) {
-        const newValue = value - 1;
-        input.value = newValue;
-        changeItemQuantity(key, newValue);
-      }
-    });
-  });
-
-  function changeItemQuantity(key, quantity) {
-    
-  }
-</script>
-
-{% endcomment %}
-
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
 <script>
