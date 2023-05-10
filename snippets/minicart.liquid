@@ -53,6 +53,15 @@ $(document).on('click', '.qtybox .btnqty', function(){
   qty = (isNaN(qty))?1:qty;
   $(this).parent('.qtybox').find('.quantity-input').val(qty);
 
+  $.ajax({
+    url: '/cart/add.js',
+    type: 'POST',
+    dataType: 'json',
+    success: function() {
+      var valueqty = document.querySelector('.quantity-selector').value;
+      console.log(valueqty);
+    }
+  })
   
 });
 
