@@ -41,31 +41,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
-  $(document).on('click', '.qtybox .btnqty', function(){
-    var qty = parseInt($(this).parent('.qtybox').find('.quantity-input').val());
-    if($(this).hasClass('qtyplus')) {
-      qty++;
-    }else {
-      if(qty > 1) {
-        qty--;
-      }
-    }
-    qty = (isNaN(qty))?1:qty;
-    $(this).parent('.qtybox').find('.quantity-input').val(qty);
-
-    $.ajax({
-      url: '/cart/add.js',
-      type: 'POST',
-      dataType: 'json',
-      success: function() {
-        var valueqty = $('.quantity-selector').val();
-        console.log(valueqty);
-      }
-    })
-    
-  });
-
-
 </script>
 
 <script>
@@ -183,6 +158,29 @@
       });
       return formatter.format(price);
     }
-  }
+    
+    $(document).on('click', '.qtybox .btnqty', function(){
+      var qty = parseInt($(this).parent('.qtybox').find('.quantity-input').val());
+      if($(this).hasClass('qtyplus')) {
+        qty++;
+      }else {
+        if(qty > 1) {
+          qty--;
+        }
+      }
+      qty = (isNaN(qty))?1:qty;
+      $(this).parent('.qtybox').find('.quantity-input').val(qty);
 
+      $.ajax({
+        url: '/cart/add.js',
+        type: 'POST',
+        dataType: 'json',
+        success: function() {
+          var valueqty = $('.quantity-selector').val();
+          console.log(valueqty);
+        }
+      })
+      
+    });
+  }
 </script>
