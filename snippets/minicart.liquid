@@ -78,7 +78,7 @@
               var productImage = item.featured_image.url;
               var productTitle = item.product_title;
               var variantTitle = item.variant_title;
-              var quantity = item.quantity;
+              var qty = item.quantity;
               var price = parseFloat(item.final_price);
               var formattedPrice = parseFloat((item.final_price / 100).toFixed(2));
               var itemTotalPrice = ( price / 100 ) * quantity;
@@ -105,7 +105,7 @@
                       '<div class="qtydiv">' +
                         '<div class="qtybox">' +
                           '<span class="btnqty qtyminus icon icon-minus">-</span>' +
-                          '<input type="number" id="updates_' + key + '" name="updates[]" value="' + quantity + '" min="1" class="quantity-selector quantity-input">' +
+                          '<input type="number" id="updates_' + key + '" name="updates[]" value="' + qty + '" min="1" class="quantity-selector quantity-input">' +
                           '<span class="btnqty qtyplus icon icon-plus">+</span>' +
                         '</div>' +
 
@@ -118,40 +118,42 @@
                     '</div>' +
                   '</div>' +
                 '</div>'
+                
               );
+              $(document).on('click', '.qtybox .btnqty', function(){
+                var qty = parseInt($(this).parent('.qtybox').find('.quantity-input').val());
+                if($(this).hasClass('qtyplus')) {
+                  qty++;
+                }else {
+                  if(qty > 1) {
+                    qty--;
+                  }
+                }
+                qty = (isNaN(qty))?1:qty;
+                $(this).parent('.qtybox').find('.quantity-input').val(qty);
+
+                $.ajax({
+                  url: '/cart/add.js',
+                  type: 'POST',
+                  dataType: 'json',
+                  data: {
+                    items: [
+                      {
+                        id: 'updates_' + key,
+                        quantity: qty
+                        // Include any other necessary information about the product
+                        console.log(id);
+                        console.log(qty);
+                      }
+                    ]
+                  },
+                  success: function() {
+                    var valueqty = $('.quantity-selector').val();
+                    console.log(valueqty);
+                  }
+                });      
+              });
             }
-
-            $(document).on('click', '.qtybox .btnqty', function(){
-              var qty = parseInt($(this).parent('.qtybox').find('.quantity-input').val());
-              if($(this).hasClass('qtyplus')) {
-                qty++;
-              }else {
-                if(qty > 1) {
-                  qty--;
-                }
-              }
-              qty = (isNaN(qty))?1:qty;
-              $(this).parent('.qtybox').find('.quantity-input').val(qty);
-
-              $.ajax({
-                url: '/cart/add.js',
-                type: 'POST',
-                dataType: 'json',
-                data: {
-                  items: [
-                    {
-                      id: 'product_id',
-                      quantity: qty
-                      // Include any other necessary information about the product
-                    }
-                  ]
-                },
-                success: function() {
-                  var valueqty = $('.quantity-selector').val();
-                  console.log(valueqty);
-                }
-              });      
-            });
             
           }
 
