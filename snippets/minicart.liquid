@@ -74,59 +74,6 @@ $(document).on('click', '.qtybox .btnqty', function(){
     setInterval(fetchCart, 5000);
   });
 
-  function minicartProduct() {
-    var totalPrice = 0;
-    for (var i = 0; i < items.length; i++) {
-      var item = items[i];
-      var key = item.key;
-      var url = item.url;
-      var productImage = item.featured_image.url;
-      var productTitle = item.product_title;
-      var variantTitle = item.variant_title;
-      var quantity = item.quantity;
-      var price = parseFloat(item.final_price);
-      var formattedPrice = parseFloat((item.final_price / 100).toFixed(2));
-      var itemTotalPrice = ( price / 100 ) * quantity;
-      totalPrice += itemTotalPrice;
-
-      $('#minicart-product').append(
-        '<div class="minicart-product" data-key="' + key + '">' +
-          '<div class="minicart-product-image">' +
-            '<a href="' + url + '">' +
-              '<img src="' + productImage + '">' +
-            '</a>' + 
-          '</div>' +
-
-          '<div class="minicart-product-description">' + 
-            '<div class="flex-direction-column">' + 
-              '<div class="minicart-product-title">' + 
-                '<a href="' + url +'">' +
-                  productTitle +
-                  '<br>' +
-                  '( ' + variantTitle + ' )' +
-                '</a>' +
-              '</div>' +
-
-              '<div class="qtydiv">' +
-                '<div class="qtybox">' +
-                  '<span class="btnqty qtyminus icon icon-minus">-</span>' +
-                  '<input type="number" id="updates_' + key + '" name="updates[]" value="' + quantity + '" min="1" class="quantity-selector quantity-input">' +
-                  '<span class="btnqty qtyplus icon icon-plus">+</span>' +
-                '</div>' +
-
-                '<span class="remove-btn">x</span>' +
-              '</div>' +
-            '</div>' +
-
-            '<div class="minicart-product-price">' +
-              formatCurrency(itemTotalPrice.toFixed(), cart.currency) +
-            '</div>' +
-          '</div>' +
-        '</div>'
-      );
-    }
-  }
-
   function fetchCart() {
     $(document).ready(function() {
       $.ajax({
@@ -148,7 +95,56 @@ $(document).on('click', '.qtybox .btnqty', function(){
             $('#minicart-product').empty();
             
             // Loop through each item and output the product image, title, quantity, and price
-            minicartProduct();
+            var totalPrice = 0;
+            for (var i = 0; i < items.length; i++) {
+              var item = items[i];
+              var key = item.key;
+              var url = item.url;
+              var productImage = item.featured_image.url;
+              var productTitle = item.product_title;
+              var variantTitle = item.variant_title;
+              var quantity = item.quantity;
+              var price = parseFloat(item.final_price);
+              var formattedPrice = parseFloat((item.final_price / 100).toFixed(2));
+              var itemTotalPrice = ( price / 100 ) * quantity;
+              totalPrice += itemTotalPrice;
+
+              $('#minicart-product').append(
+                '<div class="minicart-product" data-key="' + key + '">' +
+                  '<div class="minicart-product-image">' +
+                    '<a href="' + url + '">' +
+                      '<img src="' + productImage + '">' +
+                    '</a>' + 
+                  '</div>' +
+
+                  '<div class="minicart-product-description">' + 
+                    '<div class="flex-direction-column">' + 
+                      '<div class="minicart-product-title">' + 
+                        '<a href="' + url +'">' +
+                          productTitle +
+                          '<br>' +
+                          '( ' + variantTitle + ' )' +
+                        '</a>' +
+                      '</div>' +
+
+                      '<div class="qtydiv">' +
+                        '<div class="qtybox">' +
+                          '<span class="btnqty qtyminus icon icon-minus">-</span>' +
+                          '<input type="number" id="updates_' + key + '" name="updates[]" value="' + quantity + '" min="1" class="quantity-selector quantity-input">' +
+                          '<span class="btnqty qtyplus icon icon-plus">+</span>' +
+                        '</div>' +
+
+                        '<span class="remove-btn">x</span>' +
+                      '</div>' +
+                    '</div>' +
+
+                    '<div class="minicart-product-price">' +
+                      formatCurrency(itemTotalPrice.toFixed(), cart.currency) +
+                    '</div>' +
+                  '</div>' +
+                '</div>'
+              );
+            }
           }
 
           $('.cart__total-price').text(formatCurrency(totalPrice.toFixed(), cart.currency));
