@@ -158,7 +158,7 @@
       });
       return formatter.format(price);
     }
-    
+
     $(document).on('click', '.qtybox .btnqty', function(){
       var qty = parseInt($(this).parent('.qtybox').find('.quantity-input').val());
       if($(this).hasClass('qtyplus')) {
@@ -175,12 +175,20 @@
         url: '/cart/add.js',
         type: 'POST',
         dataType: 'json',
+        data: {
+          items: [
+            {
+              id: 'product_id',
+              quantity: qty
+              // Include any other necessary information about the product
+            }
+          ]
+        },
         success: function() {
           var valueqty = $('.quantity-selector').val();
           console.log(valueqty);
         }
-      })
-      
+      });      
     });
   }
 </script>
