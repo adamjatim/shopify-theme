@@ -142,14 +142,15 @@
                         id: 'updates_' + key,
                         quantity: qty
                         // Include any other necessary information about the product
-                        console.log(id);
-                        console.log(qty);
+          
                       }
                     ]
                   },
                   success: function() {
                     var valueqty = $('.quantity-selector').val();
                     console.log(valueqty);
+                    console.log(id);
+                        console.log(qty);
                   }
                 });      
               });
