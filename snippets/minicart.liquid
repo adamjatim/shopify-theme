@@ -139,14 +139,14 @@ $(document).on('click', '.qtybox .btnqty', function(){
                         '<a href="' + url +'">' +
                           productTitle +
                           '<br>' +
-                          '( ' + variantTitle + ' )' +
+                          '( ' + if( variantTitle == 'null'){ '' } else{variantTitle} + ' )' +
                         '</a>' +
                       '</div>' +
 
                       '<div class="qtydiv">' +
                         '<div class="qtybox">' +
                           '<span class="btnqty qtyminus icon icon-minus">-</span>' +
-                          '<input type="number" id="updates_' + key + '" name="updates[]" value="' + {% if item.quantity === 'null' %} '' {% else %} quantity {% endelse %} + '" min="1" class="quantity-selector quantity-input">' +
+                          '<input type="number" id="updates_' + key + '" name="updates[]" value="' + quantity + '" min="1" class="quantity-selector quantity-input">' +
                           '<span class="btnqty qtyplus icon icon-plus">+</span>' +
                         '</div>' +
 
