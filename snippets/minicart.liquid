@@ -41,9 +41,26 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
+$(document).ready(function() {
+  $('.quantity-control').each(function() {
+    var $control = $(this);
+    var variantId = $control.data('variant-id');
+    var $decreaseBtn = $control.find('.decrease-quantity');
+    var $increaseBtn = $control.find('.increase-quantity');
+    var $quantityText = $control.find('.current-quantity');
+
+    $decreaseBtn.on('click', function() {
+      changeQuantity(variantId, -1, $quantityText);
+    });
+
+    $increaseBtn.on('click', function() {
+      changeQuantity(variantId, 1, $quantityText);
+    });
+  });
+});
 
 function changeQuantity(variantId, amount, qty) {
-  var currentQuantity = parseInt(qty.text(), 10);
+  var currentQuantity = parseInt(qty, 10);
   var newQuantity = currentQuantity + amount;
 
   $.ajax({
