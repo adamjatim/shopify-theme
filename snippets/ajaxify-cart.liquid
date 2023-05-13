@@ -78,6 +78,9 @@ Shopify.AjaxifyCart = (function($) {
         var $addToCartBtn = $addToCartForm.find(_config.addToCartBtnSelector);
         _setText($addToCartBtn, _config.addingToCartBtnLabel);
         $addToCartBtn.addClass('disabled').prop('disabled', true);
+        var quantity = parseInt($addToCartForm.find('.quantity-input').val());
+        $addToCartForm.find('[name="quantity"]').val(quantity); // Update the quantity in the form
+        // Rest of the code...
         // Add to cart.
         $.ajax({
           url: _config.shopifyAjaxAddURL,
@@ -111,7 +114,7 @@ Shopify.AjaxifyCart = (function($) {
               _setText($addToCartBtn, _config.addToCartBtnLabel);
             }
           }
-        });   
+        });
         return false;    
       });
     });
