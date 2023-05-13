@@ -33,7 +33,7 @@ Shopify.AjaxifyCart = (function($) {
     // What you will never need to change
     addToCartBtnSelector:          '[type="submit"]',
     addToCartFormSelector:         'form[action="/cart/add"]',
-    shopifyAjaxAddURL:             '/cart/add.js',
+    shopifyAjaxAddURL:             '/cart/change.js',
     shopifyAjaxCartURL:            '/cart.js'
   };
   
@@ -98,8 +98,9 @@ Shopify.AjaxifyCart = (function($) {
               _setText($addToCartBtn,_config.addToCartBtnLabel);
             }, _config.howLongTillBtnReturnsToNormal);
             // Custom code to change the quantity in the cart
-            var cartQuantity = itemData.item_count; // Get the updated cart quantity
-            updateCartQuantity(cartQuantity); // Call a custom function to update the cart quantity display
+            var variantId = itemData.variant_id; // Get the variant ID of the added product
+            var newQuantity = parseInt($addToCartForm.find('.quantity-input').val()); // Get the updated quantity from the input field
+            changeCartQuantity(variantId, newQuantity); // Call a custom function to update the quantity in the cart
           }, 
           error: function(XMLHttpRequest) {
             var response = eval('(' + XMLHttpRequest.responseText + ')');
