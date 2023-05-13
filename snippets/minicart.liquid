@@ -65,11 +65,12 @@ $(document).on('click', '.qtybox .btnqty', function(){
   var inputId = $(this).parent('.qtybox').find('.quantity-input').attr('id');
   if($(this).hasClass('qtyplus')) {
     qty++;
-    {%comment%}qtyIdAndValue(inputId, qty);{%endcomment%}
+    qtyIdAndValue(inputId, qty);
+    {%comment%}{%endcomment%}
   }else {
     if(qty > 1) {
       qty--;
-      {%comment%}qtyIdAndValue(inputId, qty);{%endcomment%}
+      qtyIdAndValue(inputId, qty);
     }
   }
   qty = (isNaN(qty))?1:qty;
