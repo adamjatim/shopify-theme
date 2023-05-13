@@ -114,6 +114,30 @@ Shopify.AjaxifyCart = (function($) {
             }
           }
         });
+        function qtyIdAndValue(id, value){
+          $(document).ready(function() {
+            $(_config.addToCartFormSelector).submit(function(e) { // Make sure to include the event parameter `e`
+              e.preventDefault();
+              // Rest of the code...
+              $.ajax({
+                url: '/cart/change.js',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                  id: id,
+                  quantity: quantity
+                },
+                success: function() {
+                  console.log('Cart updated:', cartData);
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                  // Handle error response
+                  console.log('Error:', textStatus, errorThrown);
+                }
+              });
+            });
+          });
+        }
         return false;    
       });
     });
