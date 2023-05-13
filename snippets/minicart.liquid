@@ -85,15 +85,6 @@ $(document).on('click', '.qtybox .btnqty', function(){
 </script>
 
 <script>
-  checkVariantTitle(title){
-    if(title == 'null'){
-      return '';
-    }
-    else{
-      return title;
-    }
-  }
-
   $(document).ready(function() {
     fetchCart();
     setInterval(fetchCart, 4000);
