@@ -85,6 +85,15 @@ $(document).on('click', '.qtybox .btnqty', function(){
 </script>
 
 <script>
+  checkVariantTitle(title){
+    if(title == 'null'){
+      return '';
+    }
+    else{
+      return title;
+    }
+  }
+
   $(document).ready(function() {
     fetchCart();
     setInterval(fetchCart, 4000);
@@ -139,7 +148,7 @@ $(document).on('click', '.qtybox .btnqty', function(){
                         '<a href="' + url +'">' +
                           productTitle +
                           '<br>' +
-                          '( ' + if( variantTitle == 'null'){ '' } else{variantTitle} + ' )' +
+                          '( ' + checkVariantTitle(variantTitle) + ' )' +
                         '</a>' +
                       '</div>' +
 
