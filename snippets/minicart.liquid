@@ -43,16 +43,13 @@
 <script>
 
 
-function changeQuantity(variantId, amount, qty) {
-  var currentQuantity = parseInt(qty, 10);
-  var newQuantity = currentQuantity + amount;
-
+function changeQuantity(variantId, qty) {
   $.ajax({
     type: 'POST',
     url: '/cart/change.js',
     dataType: 'json',
     data: {
-      quantity: newQuantity,
+      quantity: qty,
       id: variantId
     },
     success: function(cart) {
@@ -71,13 +68,13 @@ $(document).on('click', '.qtybox .btnqty', function(){
   var qty = parseInt($(this).parent('.qtybox').find('.quantity-input').val());
   var inputId = $(this).parent('.qtybox').find('.quantity-input').attr('id');
   if($(this).hasClass('qtyplus')) {
-    changeQuantity(inputId, 1, qty);
     qty++;
+    changeQuantity(inputId, qty);
     {%comment%}{%endcomment%}
   }else {
     if(qty > 1) {
-      changeQuantity(inputId, -1, qty);
       qty--;
+      changeQuantity(inputId, qty);
     }
   }
   qty = (isNaN(qty))?1:qty;
