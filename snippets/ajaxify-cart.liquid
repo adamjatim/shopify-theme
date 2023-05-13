@@ -97,7 +97,9 @@ Shopify.AjaxifyCart = (function($) {
               $addToCartBtn.prop('disabled', false).removeClass('disabled').removeClass('inverted');
               _setText($addToCartBtn,_config.addToCartBtnLabel);
             }, _config.howLongTillBtnReturnsToNormal);
-                    
+            // Custom code to change the quantity in the cart
+            var cartQuantity = itemData.item_count; // Get the updated cart quantity
+            updateCartQuantity(cartQuantity); // Call a custom function to update the cart quantity display
           }, 
           error: function(XMLHttpRequest) {
             var response = eval('(' + XMLHttpRequest.responseText + ')');
