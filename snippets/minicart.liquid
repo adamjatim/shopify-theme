@@ -41,9 +41,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
-
-
 function changeQuantity(variantId, qty) {
+  qty.replace('update_','');
   $.ajax({
     type: 'POST',
     url: '/cart/change.js',
