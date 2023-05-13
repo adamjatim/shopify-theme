@@ -41,8 +41,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
-function changeQuantity(variantId, amount, $quantityText) {
-  var currentQuantity = parseInt($quantityText.text(), 10);
+
+function changeQuantity(variantId, amount, qty) {
+  var currentQuantity = parseInt(qty.text(), 10);
   var newQuantity = currentQuantity + amount;
 
   $.ajax({
