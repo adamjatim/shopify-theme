@@ -124,6 +124,9 @@ $(document).on('click', '.qtybox .btnqty', function(){
               if (quantity === null) {
                 quantity = "";
               }
+              else {
+                quantity = "(" + quantity + ")"
+              }
               var price = parseFloat(item.final_price);
               var formattedPrice = parseFloat((item.final_price / 100).toFixed(2));
               var itemTotalPrice = ( price / 100 ) * quantity;
@@ -143,7 +146,7 @@ $(document).on('click', '.qtybox .btnqty', function(){
                         '<a href="' + url +'">' +
                           productTitle +
                           '<br>' +
-                          '( ' + variantTitle + ' )' +
+                          variantTitle +
                         '</a>' +
                       '</div>' +
 
