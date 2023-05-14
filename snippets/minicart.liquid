@@ -120,10 +120,7 @@ $(document).on('click', '.qtybox .btnqty', function(){
               var productImage = item.featured_image.url;
               var productTitle = item.product_title;
               var variantTitle = item.variant_title;
-              var quantity = item.quantity;
-              if(!quantity){
-                quantity = ' ';
-              }
+              var quantity = item.quantity !== null ? item.quantity : "";
               var price = parseFloat(item.final_price);
               var formattedPrice = parseFloat((item.final_price / 100).toFixed(2));
               var itemTotalPrice = ( price / 100 ) * quantity;
