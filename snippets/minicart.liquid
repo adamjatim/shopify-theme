@@ -122,6 +122,8 @@ $(document).on('click', '.remove-btn', function() {
         success: function(cart) {
           // Extract the items from the cart object
           var items = cart.items;
+          // Clear the contents of the cart div before adding the updated contents
+          $('#minicart-product').empty();
 
           if (items.length < 1) {
             $('#minicart-product').append(
@@ -130,9 +132,6 @@ $(document).on('click', '.remove-btn', function() {
           }
 
           else {
-            // Clear the contents of the cart div before adding the updated contents
-            $('#minicart-product').empty();
-            
             // Loop through each item and output the product image, title, quantity, and price
             var totalPrice = 0;
             for (var i = 0; i < items.length; i++) {
