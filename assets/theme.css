@@ -90,7 +90,11 @@ select#currency {
 }
 
 .button:hover,
-button:hover {
+button:hover,
+.product-image-thumbs li,
+.qtydiv .btnqty,
+.qtydiv .remove-btn,
+.product-variant label {
   cursor: pointer;
 }
   
@@ -217,10 +221,6 @@ li.border {
   display: flex;
   flex-wrap: nowrap;
   margin: auto;
-}
-
-.product-image-thumbs li {
-  cursor: pointer;
 }
 
 .selected {
@@ -444,7 +444,6 @@ input[type=number]::-webkit-outer-spin-button {
 .product-variant label {
   padding: 10px 22px;
   border: 1px solid #000000;
-  cursor: pointer;
   display: block;
   background-color: #ffffff;
   position: relative;
@@ -735,7 +734,6 @@ nav[role=navigation] {
 
 .qtydiv .btnqty{
  display: inline-block;
- cursor: pointer;
  user-select: none;
  font-size: 25px;
  line-height: 5px;
