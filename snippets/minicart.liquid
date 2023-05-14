@@ -82,13 +82,33 @@ $(document).on('click', '.qtybox .btnqty', function(){
   $(this).parent('.qtybox').find('.quantity-input').val(qty);
 });
 
+// Remove item functionality
+$(document).on('click', '.remove-btn', function() {
+  var inputId = $(this).parent('.qtybox').find('.quantity-input').attr('id');
+  $.ajax({
+    url: '/cart/change.js',
+    type: 'POST',
+    data: {
+      'quantity': 0,
+      'id': inputId
+    },
+    dataType: 'json',
+    success: function(cart) {
+      console.log('Item removed from cart');
+    },
+    error: function() {
+      console.log('Error removing item from cart');
+    }
+  });
+});
+
 </script>
 
 <script>
   
   $(document).ready(function() {
     fetchCart();
-    setInterval(fetchCart, 4000);
+      setInterval(fetchCart, 4000);
   });
 
   function fetchCart() {
@@ -171,26 +191,6 @@ $(document).on('click', '.qtybox .btnqty', function(){
           }
 
           $('.cart__total-price').text(formatCurrency(totalPrice.toFixed(), cart.currency));
-
-          // Remove item functionality
-          $(document).on('click', '.remove-btn', function() {
-            var key = $(this).data('key');
-            $.ajax({
-              url: '/cart/change.js',
-              type: 'POST',
-              data: {
-                'quantity': 0,
-                'id': key
-              },
-              dataType: 'json',
-              success: function(cart) {
-                console.log('Item removed from cart');
-              },
-              error: function() {
-                console.log('Error removing item from cart');
-              }
-            });
-          });
 
         },
         error: function() {
