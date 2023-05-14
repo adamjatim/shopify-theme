@@ -85,6 +85,8 @@ $(document).on('click', '.qtybox .btnqty', function(){
 // Remove item functionality
 $(document).on('click', '.remove-btn', function() {
   var inputId = $(this).prev('.qtybox').find('.quantity-input').attr('id');
+  var removeId = 'updates_';
+  var newId = inputId.replace(removeId, '');
   $.ajax({
     url: '/cart/change.js',
     type: 'POST',
