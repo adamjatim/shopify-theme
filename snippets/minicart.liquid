@@ -89,8 +89,8 @@ $(document).on('click', '.remove-btn', function() {
     url: '/cart/change.js',
     type: 'POST',
     data: {
-      'quantity': 0,
-      'id': inputId
+      quantity: 0,
+      id: inputId
     },
     dataType: 'json',
     success: function(cart) {
