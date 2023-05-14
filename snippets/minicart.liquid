@@ -122,7 +122,7 @@ $(document).on('click', '.qtybox .btnqty', function(){
               var variantTitle = item.variant_title;
               var quantity = item.quantity;
               if(!quantity){
-                quantity = '';
+                quantity = ' ';
               }
               var price = parseFloat(item.final_price);
               var formattedPrice = parseFloat((item.final_price / 100).toFixed(2));
