@@ -107,7 +107,7 @@
                   <div class="product-option">
                     {% for option in product.options_with_values %}
                       <fieldset style="display: block ruby; border: none;">
-                        <legend> {{ option.name }} </legend>
+                        {% comment  %} <legend> {{ option.name }} </legend> {% endcomment %}
                         {% for value in option.values %}
                           <div class="product-variant">
                             <input
