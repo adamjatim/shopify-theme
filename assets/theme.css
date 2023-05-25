@@ -105,8 +105,10 @@ button:hover,
 
 .offer-badge {
   position: absolute; 
-  width: 130px;
-  margin: 5%;
+  width: 90px;
+  margin: auto;
+  margin-top: 0;
+  margin-right: 0;
 }
 
 .flex {
