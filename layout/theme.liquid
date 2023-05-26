@@ -19,7 +19,8 @@ window.mlvedaShopCurrency = "{{ shop.currency }}";
 window.shopCurrency = "{{ shop.currency }}";
 window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
 </script>
-</head>
+{% include 'bucks-cc' %}
+            </head>
 {% render 'bucks-cc' %}
 <body>
   <main role="main">
