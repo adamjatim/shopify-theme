@@ -12,7 +12,7 @@
     "custom_css": [
       "nav[role=\"navigation\"] {font-size: 20px;}",
       ".top-menu,.top-menu-right,.top-menu-left {margin-left: 0px;}",
-      "h1.title {padding: 0px;}"
+      "h1.title {padding: 0px 5px;}"
     ]
   }
 }
