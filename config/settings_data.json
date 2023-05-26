@@ -1,6 +1,16 @@
 {
-  "current": "Default",
+  "current": {
+    "content_for_index": [
+
+    ]
+  },
   "presets": {
-    "Default": { }
+    "Default": {
+    }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      "nav[role=navigation] {font-size: 20px;}"
+    ]
   }
 }
