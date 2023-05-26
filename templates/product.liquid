@@ -117,8 +117,8 @@
                             name="{{ option.name }}"
                             value="{{ value }}"
                             id="{{ option.name | handleize}}-{{ value | handleize}}"
-                            {% if variant.inventory_quantity == null or variant.inventory_quantity <= 0 %}disabled{% endif %}>
-                          <label for="{{ option.name | handleize}}-{{ value | handleize}}" {% if variant.inventory_quantity == null or variant.inventory_quantity <= 0 %}class="out-of-stock"{% endif %}>
+                            {% unless variant.available %}disabled{% endunless %}>
+                          <label for="{{ option.name | handleize}}-{{ value | handleize}}" {% unless variant.available %}class="out-of-stock"{% endunless %}>
                             {{ value }}
                           </label>
                         </div>
@@ -126,6 +126,7 @@
                     </fieldset>
                   {% endfor %}
                 </div>
+
                 
 
                 {% endif %}
