@@ -159,24 +159,6 @@
 </div>
 
 <script>
-  // Function to enable/disable option values based on inventory quantity
-  function updateOptionAvailability() {
-    var options = document.querySelectorAll('.product-option input[type="radio"]');
-    options.forEach(function(option) {
-      var inventory = parseInt(option.getAttribute('data-inventory'));
-      option.disabled = (inventory <= 0);
-      option.nextElementSibling.classList.toggle('out-of-stock', inventory <= 0);
-    });
-  }
-
-  // Call the function when the page loads and whenever an option value is changed
-  document.addEventListener('DOMContentLoaded', updateOptionAvailability);
-  document.querySelectorAll('.product-option input[type="radio"]').forEach(function(option) {
-    option.addEventListener('change', updateOptionAvailability);
-  });
-</script>
-
-<script>
   var product = {{ product | json }};
 
   // variant product handler
