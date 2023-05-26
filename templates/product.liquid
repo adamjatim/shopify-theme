@@ -219,6 +219,20 @@
       url.query.variant = matchedVariant.id;
       window.history.replaceState(null, null, url.toString());
 
+      // Update option availability
+      document.querySelectorAll('.product-option input[type="radio"]').forEach(option => {
+        var optionValue = option.value;
+        var variant = product.variants.find(variant => {
+          return variant.options.some(opt => opt.value === optionValue);
+        });
+
+        if (variant && variant.inventory_quantity === 0) {
+          option.classList.add('out-of-stock');
+        } else {
+          option.classList.remove('out-of-stock');
+        }
+      });
+
       // change price
       //document.querySelector('.product-price').textContent = formatMoney(matchedVariant.price, "{{ shop.money_format }}" );
       
