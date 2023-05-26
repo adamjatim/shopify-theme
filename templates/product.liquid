@@ -104,27 +104,29 @@
 
                 {% if product.variants.size > 1 %}
 
-                  <div class="product-option">
-                    {% for option in product.options_with_values %}
-                      <fieldset style="display: block ruby; border: none;">
-                        {% comment  %} <legend> {{ option.name }} </legend> {% endcomment %}
-                        {% for value in option.values %}
-                          <div class="product-variant">
-                            <input
-                              {% if option.selected_value == value %}checked="checked"{% endif %}
-                              type="radio"
-                              name="{{ option.name }}"
-                              value="{{ value }}"
-                              id="{{ option.name | handleize}}-{{ value | handleize}}"
-                              {% if variant.inventory_quantity == 0 %}disabled{% endif %}>
-                            <label for="{{ option.name | handleize}}-{{ value | handleize}}" {% if option.inventory_quantity == null or option.inventory_quantity <= 0 %}disabled class="out-of-stock"{% endif %}>
-                              {{ value }}
-                            </label>
-                          </div>
-                        {% endfor %}
-                      </fieldset>
-                    {% endfor %}
-                  </div>
+                <div class="product-option">
+                  {% for option in product.options_with_values %}
+                    <fieldset style="display: block ruby; border: none;">
+                      {% comment  %} <legend> {{ option.name }} </legend> {% endcomment %}
+                      {% for value in option.values %}
+                        {% assign variant = product.variants | where: option.name, value | first %}
+                        <div class="product-variant">
+                          <input
+                            {% if option.selected_value == value %}checked="checked"{% endif %}
+                            type="radio"
+                            name="{{ option.name }}"
+                            value="{{ value }}"
+                            id="{{ option.name | handleize}}-{{ value | handleize}}"
+                            {% if variant.inventory_quantity == null or variant.inventory_quantity <= 0 %}disabled{% endif %}>
+                          <label for="{{ option.name | handleize}}-{{ value | handleize}}" {% if variant.inventory_quantity == null or variant.inventory_quantity <= 0 %}class="out-of-stock"{% endif %}>
+                            {{ value }}
+                          </label>
+                        </div>
+                      {% endfor %}
+                    </fieldset>
+                  {% endfor %}
+                </div>
+                
 
                 {% endif %}
 
