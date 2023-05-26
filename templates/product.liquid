@@ -162,6 +162,20 @@
 
   // variant product handler
   document.querySelectorAll('.product-option input[type="radio"]').forEach(radio => {
+    // disable options with quantity 0
+    document.querySelectorAll('.product-option input[type="radio"]').forEach(radio => {
+      var optionValue = radio.value;
+      var variant = product.variants.find(variant => {
+        return variant.options.includes(optionValue);
+      });
+
+      if (variant && variant.inventory_quantity <= 0) {
+        radio.disabled = true;
+      } else {
+        radio.disabled = false;
+      }
+    });
+    
     radio.addEventListener('change', () => {
 
       // find selection option
@@ -212,20 +226,6 @@
         add.textContent = "Out of Stock"
         add.disabled = true
       }
-
-      // disable options with quantity 0
-      document.querySelectorAll('.product-option input[type="radio"]').forEach(radio => {
-        var optionValue = radio.value;
-        var variant = product.variants.find(variant => {
-          return variant.options.includes(optionValue);
-        });
-
-        if (variant && variant.inventory_quantity <= 0) {
-          radio.disabled = true;
-        } else {
-          radio.disabled = false;
-        }
-      });
     })
   })
   
