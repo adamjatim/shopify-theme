@@ -103,11 +103,9 @@
                 <input id="product-id" type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 
                 {% if product.variants.size > 1 %}
-
                 <div class="product-option">
                   {% for option in product.options_with_values %}
                     <fieldset style="display: block ruby; border: none;">
-                      {% comment  %} <legend> {{ option.name }} </legend> {% endcomment %}
                       {% for value in option.values %}
                         {% assign variant = product.variants | where: option.name, value | first %}
                         <div class="product-variant">
@@ -116,8 +114,9 @@
                             type="radio"
                             name="{{ option.name }}"
                             value="{{ value }}"
-                            id="{{ option.name | handleize}}-{{ value | handleize}}">
-                          <label for="{{ option.name | handleize}}-{{ value | handleize}}">
+                            id="{{ option.name | handleize }}-{{ value | handleize }}"
+                            {% if variant.inventory_quantity == 0 %}disabled{% endif %}>
+                          <label for="{{ option.name | handleize }}-{{ value | handleize }}">
                             {{ value }}
                           </label>
                         </div>
@@ -125,9 +124,6 @@
                     </fieldset>
                   {% endfor %}
                 </div>
-
-                
-
                 {% endif %}
 
                 <div class="hide">
@@ -161,30 +157,18 @@
   var product = {{ product | json }};
   
   // Disable variant options with quantity 0
-  document.querySelectorAll('.product-option input[type="radio"]').forEach(radio => {
-    radio.addEventListener('change', () => {
-      // Find selected options
-      var selectedOptions = [];
-      document.querySelectorAll('.product-option input[type="radio"]:checked').forEach(radio => {
-        selectedOptions.push(radio.value);
-      });
-
-      // Disable options with quantity 0
-      document.querySelectorAll('.product-option input[type="radio"]').forEach(option => {
-        var optionValue = option.value;
-        var variant = product.variants.find(variant => {
-          return variant.options.some(opt => opt.value === optionValue);
-        });
-
-        if (variant && variant.inventory_quantity <= 0) {
-          option.disabled = true;
-        } else {
-          option.disabled = false;
-        }
-      });
+  document.querySelectorAll('.product-option input[type="radio"]').forEach(option => {
+    var optionValue = option.value;
+    var variant = product.variants.find(variant => {
+      return variant.options.some(opt => opt.value === optionValue);
     });
+
+    if (variant && variant.inventory_quantity === 0) {
+      option.disabled = true;
+    } else {
+      option.disabled = false;
+    }
   });
-    
 
   // variant product handler
   document.querySelectorAll('.product-option input[type="radio"]').forEach(radio => {
@@ -218,20 +202,6 @@
       var url = new URLParse(window.location.href, true);
       url.query.variant = matchedVariant.id;
       window.history.replaceState(null, null, url.toString());
-
-      // Update option availability
-      document.querySelectorAll('.product-option input[type="radio"]').forEach(option => {
-        var optionValue = option.value;
-        var variant = product.variants.find(variant => {
-          return variant.options.some(opt => opt.value === optionValue);
-        });
-
-        if (variant && variant.inventory_quantity === 0) {
-          option.classList.add('out-of-stock');
-        } else {
-          option.classList.remove('out-of-stock');
-        }
-      });
 
       // change price
       //document.querySelector('.product-price').textContent = formatMoney(matchedVariant.price, "{{ shop.money_format }}" );
