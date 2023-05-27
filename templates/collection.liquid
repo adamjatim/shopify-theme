@@ -63,10 +63,10 @@
         </div>
         <div class="main-right-bar">
           <ul>
-            {% assign collection_products = collection.products %}
+            {% assign collection_products = collection.products | sort: 'created_at' %}
 
             {% comment %} display 4 first product {% endcomment %}
-            {% for product in collection_products limit: 4 | sort: 'updated_at' | reverse %}
+            {% for product in collection_products limit: 4 %}
               <li class="border">
                 <a href="{{ product.url }}">
                   <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
