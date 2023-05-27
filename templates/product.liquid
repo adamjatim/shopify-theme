@@ -126,6 +126,14 @@
                 </div>
                 {% endif %}
 
+                {% if product.selected_or_first_available_variant.inventory_quantity <= 0 %}
+                <div>Out of Stock</div>
+                {% elseif product.selected_or_first_available_variant.inventory_quantity > 0 and product.selected_or_first_available_variant.inventory_quantity <= 10 %}
+                <div>Only {{product.selected_or_first_available_variant.inventory_quantity}} left!</div>
+                {% else %}
+                <div>{{product.selected_or_first_available_variant.inventory_quantity}} Available!</div>
+                {% endif %}
+
                 <div class="hide">
                   <label for="quantity">Quantity</label>
                   <input
