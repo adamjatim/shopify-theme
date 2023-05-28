@@ -163,20 +163,55 @@
 
 <script>
   var product = {{ product | json }};
-  
-  // Disable variant options with quantity 0
-  document.querySelectorAll('.product-option input[type="radio"]').forEach(option => {
-    var optionValue = option.value;
-    var variant = product.variants.find(variant => {
-      return variant.options.some(opt => opt.value === optionValue);
-    });
 
-    if (variant && variant.inventory_quantity === 0) {
-      option.disabled = true;
-    } else {
-      option.disabled = false;
+  {% comment  %}  
+  
+  // Make an AJAX request to retrieve the quantity of a variant product
+  function getProductVariantQuantity(variantId) {
+    var endpoint = '/variants/' + variantId + '?query=query { variant { inventoryQuantity } }';
+
+    // Make the AJAX request
+    $.ajax({
+      type: 'GET',
+      url: '/api/2023-01/graphql.json',
+      data: {
+        query: endpoint
+      },
+      success: function(response) {
+        var inventoryQuantity = response.data.variant.inventoryQuantity;
+        // Handle the retrieved inventory quantity as needed
+        console.log('Inventory Quantity:', inventoryQuantity);
+      },
+      error: function(error) {
+        console.log('Error:', error);
+      }
+    });
+  }
+
+  // find selection option
+  var optionVariants = [];
+
+  document.querySelectorAll('.product-option input[type="radio"]').forEach(radio => {
+    optionVariants.push(radio.value);
+  })
+
+  // finding the matched variant
+  var matchedVariant = product.variants.find(variant => {
+    var pass = true;
+
+    for (var i = 0; i < optionVariants.length; i++) {
+      if (optionVariants.indexOf(variant.options[i]) === -1) {
+        pass = false;
+        break;
+      }
     }
-  });
+    return pass;
+  })
+
+  var variantId = 'your_variant_id';
+  getProductVariantQuantity(variantId);
+
+  {% endcomment %}
 
   // variant product handler
   document.querySelectorAll('.product-option input[type="radio"]').forEach(radio => {
@@ -202,6 +237,32 @@
         }
         return pass;
       })
+
+      // check product quantity
+      // Make an AJAX request to retrieve the quantity of a variant product
+      function getProductVariantQuantity(variantId) {
+        var endpoint = '/variants/' + variantId + '?query=query { variant { inventoryQuantity } }';
+
+        // Make the AJAX request
+        $.ajax({
+          type: 'GET',
+          url: '/api/2023-01/graphql.json',
+          data: {
+            query: endpoint
+          },
+          success: function(response) {
+            var inventoryQuantity = response.data.variant.inventoryQuantity;
+            // Handle the retrieved inventory quantity as needed
+            console.log('Inventory Quantity:', inventoryQuantity);
+          },
+          error: function(error) {
+            console.log('Error:', error);
+          }
+        });
+      }
+
+      var variantId = matchedVariant.id;
+      getProductVariantQuantity(variantId);
       
       // change product form variant id
       document.querySelector('#product-id').value = matchedVariant.id;
