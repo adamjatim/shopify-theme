@@ -126,13 +126,7 @@
                 </div>
                 {% endif %}
 
-                {% if product.selected_or_first_available_variant.inventory_quantity <= 0 %}
-                <div>Out of Stock</div>
-                {% elseif product.selected_or_first_available_variant.inventory_quantity > 0 and product.selected_or_first_available_variant.inventory_quantity <= 10 %}
-                <div>Only {{product.selected_or_first_available_variant.inventory_quantity}} left!</div>
-                {% else %}
-                <div>{{product.selected_or_first_available_variant.inventory_quantity}} Available!</div>
-                {% endif %}
+                <div id="quantity-product-id"></div>
 
                 <div class="hide">
                   <label for="quantity">Quantity</label>
@@ -163,6 +157,42 @@
 
 <script>
   var product = {{ product | json }};
+
+  // make array option
+  var arrayOption = [];
+
+  document.querySelectorAll('.product-option input[type="radio"]').forEach(radio => {
+    arrayOption.push(radio.value);
+  })
+
+  // finding the matced option
+  var matchedOption = product.variants.find(variant => {
+    var pass = true;
+
+    for (var i = 0; i < arrayOptions.length; i++) {
+      if (arrayOptions.indexOf(variant.options[i]) === -1) {
+        pass = false;
+        break;
+      }
+    }
+    return pass;
+  })
+
+  // change product quantity form
+  document.querySelector('#quantity-product-id').value = matchedOption.id;
+
+  $.ajax({
+    type: 'GET',
+    url: '/api/2023-01/graphql.json',
+    dataType: 'json',
+    success: function(product) {
+      alert('The title of this product is ' + product.title);
+    },
+    error: function(error) {
+      console.log('Error:', error);
+    }
+  });
+
 
   {% comment  %}  
   
@@ -237,33 +267,6 @@
         }
         return pass;
       })
-
-      // check product quantity
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-      // Make an AJAX request to retrieve the quantity of a variant product
-      function getProductVariantQuantity(variantId) {
-        var endpoint = '/variants/' + variantId + '?query=query { variant { inventoryQuantity } }';
-
-        // Make the AJAX request
-        $.ajax({
-          type: 'GET',
-          url: '/api/2023-01/graphql.json',
-          data: {
-            query: endpoint
-          },
-          success: function(response) {
-            var inventoryQuantity = response.data.variant.inventoryQuantity;
-            // Handle the retrieved inventory quantity as needed
-            console.log('Inventory Quantity:', inventoryQuantity);
-          },
-          error: function(error) {
-            console.log('Error:', error);
-          }
-        });
-      }
-
-      var variantId = matchedVariant.id;
-      getProductVariantQuantity(variantId);
       
       // change product form variant id
       document.querySelector('#product-id').value = matchedVariant.id;
