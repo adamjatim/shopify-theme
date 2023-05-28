@@ -236,6 +236,7 @@
       var disableVariant = document.querySelector('.product-variant');
 
       if (matchedVariant.available) {
+        disableVariant.classList.remove('hide');
       }
       else {
         disableVariant.classList.add('hide');
