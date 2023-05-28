@@ -239,6 +239,7 @@
       })
 
       // check product quantity
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       // Make an AJAX request to retrieve the quantity of a variant product
       function getProductVariantQuantity(variantId) {
         var endpoint = '/variants/' + variantId + '?query=query { variant { inventoryQuantity } }';
