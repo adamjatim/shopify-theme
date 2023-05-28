@@ -181,19 +181,6 @@
   // change product quantity form
   document.querySelector('#quantity-product-id').value = matchedOption.id;
 
-  $.ajax({
-    type: 'GET',
-    url: '/api/2023-01/graphql.json',
-    dataType: 'json',
-    success: function(product) {
-      alert('The title of this product is ' + product.title);
-    },
-    error: function(error) {
-      console.log('Error:', error);
-    }
-  });
-
-
   {% comment  %}  
   
   // Make an AJAX request to retrieve the quantity of a variant product
