@@ -158,29 +158,6 @@
 <script>
   var product = {{ product | json }};
 
-  // make array option
-  var arrayOption = [];
-
-  document.querySelectorAll('.product-option input[type="radio"]').forEach(radio => {
-    arrayOption.push(radio.value);
-  })
-
-  // finding the matced option
-  var matchedOption = product.variants.find(variant => {
-    var pass = true;
-
-    for (var i = 0; i < arrayOptions.length; i++) {
-      if (arrayOptions.indexOf(variant.options[i]) === -1) {
-        pass = false;
-        break;
-      }
-    }
-    return pass;
-  })
-
-  // change product quantity form
-  document.querySelector('#quantity-product-id').value = matchedOption.id;
-
   {% comment  %}  
   
   // Make an AJAX request to retrieve the quantity of a variant product
