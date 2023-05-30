@@ -38,8 +38,6 @@
 
 {%comment%}<script src="https://code.jquery.com/jquery-3.4.1.js"></script>{%endcomment%}
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
 <script>
 function changeQuantity(variantId, qty) {
   var currentId = variantId;
@@ -125,6 +123,8 @@ $(document).on('click', '.remove-btn', function() {
           // Clear the contents of the cart div before adding the updated contents
           $('#minicart-product').empty();
 
+          var totalPrice = 0;
+            
           if (items.length < 1) {
             $('#minicart-product').append(
               '<div style="text-align:center; margin:auto; margin-top: 30px; margin-bottom: 40px;">Cart is empty</div>'
