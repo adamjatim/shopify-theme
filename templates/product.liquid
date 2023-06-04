@@ -2,6 +2,7 @@
 {% assign current_variant = product.selected_or_first_available_variant %}
 {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
 
+<div id="quantity-product-id"></div>
 <div class="gap-main-border">
   <div class="main-border">
     <div class="top-menu">
@@ -158,54 +159,45 @@
 <script>
   var product = {{ product | json }};
 
-  {% comment  %}  
-  
-  // Make an AJAX request to retrieve the quantity of a variant product
-  function getProductVariantQuantity(variantId) {
-    var endpoint = '/variants/' + variantId + '?query=query { variant { inventoryQuantity } }';
+  var apiKey = 'e2be72be581ad639d3703a7332bd76d7';
+  var accessToken = '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';
+  var urlParams = new URLSearchParams(window.location.search);
 
-    // Make the AJAX request
-    $.ajax({
-      type: 'GET',
-      url: '/api/2023-01/graphql.json',
-      data: {
-        query: endpoint
-      },
-      success: function(response) {
-        var inventoryQuantity = response.data.variant.inventoryQuantity;
-        // Handle the retrieved inventory quantity as needed
-        console.log('Inventory Quantity:', inventoryQuantity);
-      },
-      error: function(error) {
-        console.log('Error:', error);
-      }
-    });
+  // Get the variant_id from the URL
+  var variantId = urlParams.get('variant');
+
+  // Update the variant ID in the URL if it's not present
+  if (!variantId) {
+    // Get the default variant ID from the product object
+    variantId = {{ product.selected_or_first_available_variant.id }};
+
+    // Update the URL with the variant ID
+    var url = new URL(window.location.href);
+    url.searchParams.set('variant', variantId);
+    window.history.replaceState(null, null, url.toString());
   }
 
-  // find selection option
-  var optionVariants = [];
+  // Use the variantId in your AJAX request
+  var url = 'https://theblotter-room.com/admin/api/2021-09/variants/' + variantId + '.json';
 
-  document.querySelectorAll('.product-option input[type="radio"]').forEach(radio => {
-    optionVariants.push(radio.value);
-  })
-
-  // finding the matched variant
-  var matchedVariant = product.variants.find(variant => {
-    var pass = true;
-
-    for (var i = 0; i < optionVariants.length; i++) {
-      if (optionVariants.indexOf(variant.options[i]) === -1) {
-        pass = false;
-        break;
-      }
+  $.ajax({
+    url: url,
+    type: 'GET',
+    headers: {
+      'X-Shopify-Access-Token': accessToken,
+      'X-Shopify-Api-Key': apiKey,
+      'Content-Type': 'application/json'
+    },
+    success: function(data) {
+      var quantity = data.variant.inventory_quantity;
+      console.log('Quantity:', quantity);
+    },
+    error: function(error) {
+      console.error('Error:', error);
     }
-    return pass;
-  })
+  });
 
-  var variantId = 'your_variant_id';
-  getProductVariantQuantity(variantId);
 
-  {% endcomment %}
 
   // variant product handler
   document.querySelectorAll('.product-option input[type="radio"]').forEach(radio => {
@@ -233,7 +225,7 @@
       })
       
       // disabling variant if not availble
-      var disableVariant = document.querySelector('.product-variant');
+      var disableVariant = document.querySelector('.product-variant ');
 
       if (matchedVariant.available) {
         disableVariant.classList.remove('hide');
