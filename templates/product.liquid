@@ -126,7 +126,7 @@
                           {% assign shopName = 'theblotter-room.com' %}
 
                           $.ajax({
-                            url: 'https://' + '{{shopName}}' + '/admin/api/2023-01/products/'+'.json',
+                            url: 'https://' + '{{shopName}}' + '/products/'+'{{product.handle}}'+'.json',
                             type: 'GET',
                             headers: {
                               'X-Shopify-Access-Token': '{{ accessToken }}'
