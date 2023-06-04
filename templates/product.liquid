@@ -121,6 +121,26 @@
                             {{ value }}
                           </label>
                         </div>
+                        <script>
+                          {% assign accessToken = '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' %}
+                          {% assign shopName = 'theblotter-room.com' %}
+
+                          $.ajax({
+                            url: 'https://' + {{ shopName }} + '/admin/api/2023-01/products/'+{{ product }}+'.json',
+                            type: 'GET',
+                            headers: {
+                              'X-Shopify-Access-Token': {{ accessToken }}
+                            },
+                            success: function(response) {
+                              var res_products = response.products;
+                              console.log('Products:', res_products);
+                              // Perform further processing with the products data
+                            },
+                            error: function(error) {
+                              console.error('Error:', error);
+                            }
+                          });
+                        </script>
                       {% endfor %}
                     </fieldset>
                   {% endfor %}
@@ -159,6 +179,9 @@
 <script>
   var product = {{ product | json }};
 
+  
+
+  {% comment %}
   var apiKey = 'e2be72be581ad639d3703a7332bd76d7';
   var accessToken = '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';
   var urlParams = new URLSearchParams(window.location.search);
@@ -177,35 +200,7 @@
     window.history.replaceState(null, null, url.toString());
   }
 
-  var url = 'https://theblotter-room.com/api/2023-01/graphql.json';
-
-  var query = `
-    query {
-      productVariant(id: "${variantId}") {
-        inventoryQuantity
-      }
-    }
-  `;
-
-  fetch(url, {
-    method: 'POST',
-    headers: {
-      'X-Shopify-Storefront-Access-Token': accessToken,
-      'X-Shopify-Access-Token': accessToken,
-      'X-Shopify-Api-Key': apiKey,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ query }),
-  })
-    .then(response => response.json())
-    .then(data => {
-      var quantity = data.data.productVariant.inventoryQuantity;
-      console.log('Quantity:', quantity);
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-
+{% endcomment %}
 
 
   // variant product handler
