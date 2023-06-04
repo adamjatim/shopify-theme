@@ -129,7 +129,7 @@
                             url: 'https://' + '{{shopName}}' + '/admin/api/2023-01/products/'+'{{product}}'+'.json',
                             type: 'GET',
                             headers: {
-                              'X-Shopify-Access-Token': {{ accessToken }}
+                              'X-Shopify-Access-Token': '{{ accessToken }}'
                             },
                             success: function(response) {
                               var res_products = response.products;
