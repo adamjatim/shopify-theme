@@ -169,7 +169,7 @@
   // Update the variant ID in the URL if it's not present
   if (!variantId) {
     // Get the default variant ID from the product object
-    variantId = product.selected_or_first_available_variant.id;
+    variantId = {{ product.selected_or_first_available_variant.id }};
 
     // Update the URL with the variant ID
     var url = new URL(window.location.href);
