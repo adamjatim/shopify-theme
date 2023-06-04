@@ -69,6 +69,7 @@
 
             {% comment %} display 4 first product {% endcomment %}
             {% for product in collection_products limit: 4 %}
+              {% unless product.available %}{% endunless %}
               <li class="border">
                 <a href="{{ product.url }}">
                   <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
