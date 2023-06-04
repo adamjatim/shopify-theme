@@ -121,26 +121,6 @@
                             {{ value }}
                           </label>
                         </div>
-                        <script>
-                          {% assign accessToken = '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' %}
-                          {% assign shopName = 'theblotter-room.com' %}
-
-                          $.ajax({
-                            url: 'https://' + '{{shopName}}' + '/products/'+'{{product.handle}}'+'.json',
-                            type: 'GET',
-                            headers: {
-                              'X-Shopify-Access-Token': '{{ accessToken }}'
-                            },
-                            success: function(response) {
-                              var res_products = response.products;
-                              console.log('Products:', response);
-                              // Perform further processing with the products data
-                            },
-                            error: function(error) {
-                              console.error('Error:', error);
-                            }
-                          });
-                        </script>
                       {% endfor %}
                     </fieldset>
                   {% endfor %}
@@ -179,7 +159,24 @@
 <script>
   var product = {{ product | json }};
 
-  
+  {% assign accessToken = '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' %}
+  {% assign shopName = 'theblotter-room.com' %}
+
+  $.ajax({
+    url: 'https://' + '{{shopName}}' + '/products/'+'{{product.handle}}'+'.json',
+    type: 'GET',
+    headers: {
+      'X-Shopify-Access-Token': '{{ accessToken }}'
+    },
+    success: function(response) {
+      var res_products = response.products;
+      console.log('Products:', response);
+      // Perform further processing with the products data
+    },
+    error: function(error) {
+      console.error('Error:', error);
+    }
+  });
 
   {% comment %}
   var apiKey = 'e2be72be581ad639d3703a7332bd76d7';
