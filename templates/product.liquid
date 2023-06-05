@@ -109,6 +109,9 @@
                     <fieldset style="display: flex; border: none;">
                       {% for value in option.values %}
                         {% assign variant = product.variants | where: option.name, value | first %}
+                        {% if variant %}
+                          
+                        {% endif %}
                         <div class="product-variant">
                           <input
                             {% if option.selected_value == value %}checked="checked"{% endif %}
@@ -116,7 +119,7 @@
                             name="{{ option.name }}"
                             value="{{ value }}"
                             id="{{ option.name | handleize }}-{{ value | handleize }}"
-                            {% if variant.inventory_quantity == 0 %}disabled{% endif %}>
+                            {% if variant.available == false %}disabled{% endif %}>
                           <label for="{{ option.name | handleize }}-{{ value | handleize }}">
                             {{ value }}
                           </label>
