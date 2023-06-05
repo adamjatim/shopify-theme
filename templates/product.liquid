@@ -159,14 +159,14 @@
 <script>
   var product = {{ product | json }};
 
-  {% assign accessToken = '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' %}
+  {% comment %} {% assign accessToken = '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' %}{% endcomment %}
   {% assign shopName = 'theblotter-room.com' %}
 
   $.ajax({
     url: 'https://' + '{{shopName}}' + '/products/'+'{{product.handle}}'+'.json',
     type: 'GET',
     headers: {
-      'X-Shopify-Access-Token': '{{ accessToken }}'
+      {% comment  %} 'X-Shopify-Access-Token': '{{ accessToken }}' {% endcomment %}
     },
     success: function(response) {
       var res_products = response.products;
