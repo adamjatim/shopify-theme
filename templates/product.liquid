@@ -104,6 +104,7 @@
                 <input id="product-id" type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 
                 {% if product.variants.size > 1 %}
+                <div class="product-option">
                   {% for option in product.options_with_values %}
                     <fieldset style="display: product-option block ruby; border: none;">
                       {% for value in option.values %}
@@ -123,6 +124,7 @@
                       {% endfor %}
                     </fieldset>
                   {% endfor %}
+                </div>
                 {% endif %}
 
                 <div id="quantity-product-id"></div>
