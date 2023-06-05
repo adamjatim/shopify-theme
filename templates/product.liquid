@@ -106,7 +106,7 @@
                 {% if product.variants.size > 1 %}
                 <div class="product-option">
                   {% for option in product.options_with_values %}
-                    <fieldset style="display: product-option block ruby; border: none;">
+                    <fieldset style="display: flex; border: none;">
                       {% for value in option.values %}
                         {% assign variant = product.variants | where: option.name, value | first %}
                         <div class="product-variant">
