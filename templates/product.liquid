@@ -119,7 +119,7 @@
                             name="{{ option.name }}"
                             value="{{ value }}"
                             id="{{ option.name | handleize }}-{{ value | handleize }}"
-                            {% if variant.available == false %}disabled{% endif %}>
+                          {% unless variant.available %}disabled{% endunless %}>
                           <label for="{{ option.name | handleize }}-{{ value | handleize }}">
                             {{ value }}
                           </label>
