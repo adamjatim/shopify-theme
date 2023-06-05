@@ -163,10 +163,14 @@
   {% assign shopName = 'theblotter-room.com' %}
 
   $.ajax({
+    {% comment %}
     url: 'https://' + '{{shopName}}' + '/products/'+'{{product.handle}}'+'.json',
+    {% endcomment %}
+    url: 'https://' + '{{shopName}}' + 'admin/api/2023-04/products.json',
     type: 'GET',
     headers: {
       {% comment  %} 'X-Shopify-Access-Token': '{{ accessToken }}' {% endcomment %}
+      'X-Shopify-Access-Token': '{{ accessToken }}'
     },
     success: function(response) {
       var res_products = response.products;

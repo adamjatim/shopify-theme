@@ -705,7 +705,7 @@ nav[role=navigation] {
 
 /* Style for BUCKS-CC shopify app */
 #button-currency.buckscc-currency-box {
-  padding-top: 4px !important;
+  padding-top: 4.5px !important;
   padding-bottom: 5px !important;
   z-index: 1;
 }
