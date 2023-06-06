@@ -162,9 +162,7 @@
   var product = {{ product | json }};
 
   //document.querySelector('.product-option')
-  $(document).ready(function() {
-    console.log({{product.variants}});
-  })
+  console.log({{product.variants}});
 
   // variant product handler
   document.querySelectorAll('.product-option input[type="radio"]').forEach(radio => {
