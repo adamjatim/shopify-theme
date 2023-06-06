@@ -109,9 +109,6 @@
                     <fieldset style="display: flex; border: none;">
                       {% for value in option.values %}
                         {% assign variant = product.variants | where: option.name, value | first %}
-                        {% if variant %}
-                          
-                        {% endif %}
                         <div class="product-variant">
                           <input
                             {% if option.selected_value == value %}checked="checked"{% endif %}
@@ -119,7 +116,9 @@
                             name="{{ option.name }}"
                             value="{{ value }}"
                             id="{{ option.name | handleize }}-{{ value | handleize }}"
-                          {% unless product.variants.available %}disabled{% endunless %}>
+                          {% comment %}
+                        {% unless product.variants[].available %}disabled{% endunless %}
+                          {% endcomment %}>
                           <label for="{{ option.name | handleize }}-{{ value | handleize }}">
                             {{ value }}
                           </label>
@@ -162,50 +161,10 @@
 <script>
   var product = {{ product | json }};
 
-  {% comment %} {% assign accessToken = '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' %}{% endcomment %}
-  {% assign shopName = 'theblotter-room.com' %}
-
-  $.ajax({
-    {% comment %}
-    url: 'https://' + '{{shopName}}' + '/products/'+'{{product.handle}}'+'.json',
-    {% endcomment %}
-    url: 'https://' + '{{shopName}}' + 'admin/api/2023-04/products.json',
-    type: 'GET',
-    headers: {
-      {% comment  %} 'X-Shopify-Access-Token': '{{ accessToken }}' {% endcomment %}
-      'X-Shopify-Access-Token': '{{ accessToken }}'
-    },
-    success: function(response) {
-      var res_products = response.products;
-      console.log('Products:', response);
-      // Perform further processing with the products data
-    },
-    error: function(error) {
-      console.error('Error:', error);
-    }
-  });
-
-  {% comment %}
-  var apiKey = 'e2be72be581ad639d3703a7332bd76d7';
-  var accessToken = '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';
-  var urlParams = new URLSearchParams(window.location.search);
-
-  // Get the variant_id from the URL
-  var variantId = urlParams.get('variant');
-
-  // Update the variant ID in the URL if it's not present
-  if (!variantId) {
-    // Get the default variant ID from the product object
-    variantId = {{ product.selected_or_first_available_variant.id }};
-
-    // Update the URL with the variant ID
-    var url = new URL(window.location.href);
-    url.searchParams.set('variant', variantId);
-    window.history.replaceState(null, null, url.toString());
-  }
-
-{% endcomment %}
-
+  //document.querySelector('.product-option')
+  $(document).ready(function() {
+    console.log({{product.variants}});
+  })
 
   // variant product handler
   document.querySelectorAll('.product-option input[type="radio"]').forEach(radio => {
