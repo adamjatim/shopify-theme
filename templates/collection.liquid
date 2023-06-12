@@ -83,7 +83,7 @@
                 </a>
                 <img class="offer-badge" src="{{ 'sale.png' | asset_url }}">
               </li>
-              {% if displayed_products_count >= 4 %}
+              {% if displayed_products_count > 4 %}
                 {% break %}
               {% endif %}
             {% endfor %}
