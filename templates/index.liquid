@@ -66,15 +66,14 @@
         <div class="main-right-bar">
           <ul>
             {% assign collection_products = collection.products %}
-            {% assign displayed_products_count = 0 %}
+            {% assign displayed_products_top = 0 %}
+            {% assign displayed_products_bottom = 0 %}
             {% assign total_products_count = collection_products.size %}
 
-            {% for product in collection_products limit : 8%}
+            {% for product in collection_products %}
               {% unless product.available %}
                 {% continue %}
               {% endunless %}
-
-              {% assign displayed_products_count = displayed_products_count | plus: 1 %}
 
               {% if displayed_products_count <= 4 %}
                 <!-- Display products at the top -->
@@ -92,9 +91,8 @@
                   </a>
                   <img class="offer-badge" src="{{ 'sale.png' | asset_url }}">
                 </li>
+                {% assign displayed_products_count = displayed_products_count | plus: 1 %}
               {% else %}
-
-                {% if displayed_products_count > (total_products_count - 4) %}
                   <!-- Display products at the bottom -->
                   <li class="border border-product-5">
                     <!-- Product content -->
@@ -110,7 +108,11 @@
                     </a>
                     <img class="offer-badge" src="{{ 'sale.png' | asset_url }}">
                   </li>
-                {% endif %}
+                  {% assign displayed_products_count = displayed_products_count | plus: 1 %}
+              {% endif %}
+
+              {% if displayed_products_top >= 4 and displayed_products_bottom >= 4 %}
+                {% break %}
               {% endif %}
             {% endfor %}
 
