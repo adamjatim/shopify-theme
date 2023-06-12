@@ -75,7 +75,7 @@
                 {% continue %}
               {% endunless %}
 
-              {% if displayed_products_count <= 4 %}
+              {% if displayed_products_top <= 4 %}
                 <!-- Display products at the top -->
                 <li class="border">
                   <!-- Product content -->
@@ -91,7 +91,7 @@
                   </a>
                   <img class="offer-badge" src="{{ 'sale.png' | asset_url }}">
                 </li>
-                {% assign displayed_products_count = displayed_products_count | plus: 1 %}
+                {% assign displayed_products_top = displayed_products_top | plus: 1 %}
               {% else %}
                   <!-- Display products at the bottom -->
                   <li class="border border-product-5">
@@ -108,7 +108,7 @@
                     </a>
                     <img class="offer-badge" src="{{ 'sale.png' | asset_url }}">
                   </li>
-                  {% assign displayed_products_count = displayed_products_count | plus: 1 %}
+                  {% assign displayed_products_bottom = displayed_products_bottom | plus: 1 %}
               {% endif %}
 
               {% if displayed_products_top >= 4 and displayed_products_bottom >= 4 %}
