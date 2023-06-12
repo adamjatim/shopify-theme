@@ -69,7 +69,7 @@
             {% assign displayed_products_count = 0 %}
             {% assign total_products_count = collection_products.size %}
 
-            {% for product in collection_products %}
+            {% for product in collection_products limit : 8%}
               {% unless product.available %}
                 {% continue %}
               {% endunless %}
@@ -92,28 +92,25 @@
                   </a>
                   <img class="offer-badge" src="{{ 'sale.png' | asset_url }}">
                 </li>
-              {% endif %}
+              {% else %}
 
-              {% if displayed_products_count > (total_products_count - 4) %}
-                <!-- Display products at the bottom -->
-                <li class="border border-product-5">
-                  <!-- Product content -->
-                  <a href="{{ product.url }}">
-                    <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
-                    <p class="text-product">
-                      <br>
-                      {{ product.title }}
-                      <br>
-                      <dl class="price{% if available and compare_at_price > price %} price--on-sale{% endif %}{% if available and variant.unit_price_measurement %} price--unit-available{% endif %}" data-price></dl>
-                      {{ product.price | money }}
-                    </p>
-                  </a>
-                  <img class="offer-badge" src="{{ 'sale.png' | asset_url }}">
-                </li>
-              {% endif %}
-
-              {% if displayed_products_count >= 8 %}
-                {% break %}
+                {% if displayed_products_count > (total_products_count - 4) %}
+                  <!-- Display products at the bottom -->
+                  <li class="border border-product-5">
+                    <!-- Product content -->
+                    <a href="{{ product.url }}">
+                      <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
+                      <p class="text-product">
+                        <br>
+                        {{ product.title }}
+                        <br>
+                        <dl class="price{% if available and compare_at_price > price %} price--on-sale{% endif %}{% if available and variant.unit_price_measurement %} price--unit-available{% endif %}" data-price></dl>
+                        {{ product.price | money }}
+                      </p>
+                    </a>
+                    <img class="offer-badge" src="{{ 'sale.png' | asset_url }}">
+                  </li>
+                {% endif %}
               {% endif %}
             {% endfor %}
 
