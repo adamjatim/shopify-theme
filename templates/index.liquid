@@ -70,6 +70,7 @@
             {% comment %} display 4 first product {% endcomment %}
             {% for product in collection_products limit: 4 %}
               {% unless product.available %}{% continue %}{% endunless %}
+              {% assign displayed_products_count = displayed_products_count | plus: 1 %}
               <li class="border">
                 <a href="{{ product.url }}">
                   <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
@@ -83,11 +84,15 @@
                 </a>
                 <img class="offer-badge" src="{{ 'sale.png' | asset_url }}">
               </li>
+              {% if displayed_products_count > 4 %}
+                {% break %}
+              {% endif %}
             {% endfor %}
 
             {% comment %} display 4 last product {% endcomment %}
             {% for product in collection_products offset: 4 limit: 4 %}
               {% unless product.available %}{% continue %}{% endunless %}
+              {% assign displayed_products_count = displayed_products_count | plus: 1 %}
               <li class="border border-product-5">
                 <a href="{{ product.url }}">
                   <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
@@ -101,6 +106,9 @@
                 </a>
                 <img class="offer-badge" src="{{ 'sale.png' | asset_url }}">
               </li>
+              {% if displayed_products_count > 4 %}
+                {% break %}
+              {% endif %}
             {% endfor %}
           </ul>
         </div>
