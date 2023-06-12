@@ -67,8 +67,9 @@
 
             {% comment %} display 4 first product {% endcomment %}
             {% for product in collection_products %}
-              {% unless product.available %}{% continue %}{% endunless %}
               {% assign displayed_products_count = displayed_products_count | plus: 1 %}
+              {% unless product.available %}{% continue %}{% endunless %}
+              
               <li class="border">
                 <a href="{{ product.url }}">
                   <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
