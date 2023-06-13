@@ -21,7 +21,7 @@ window.shopCurrency = "{{ shop.currency }}";
 window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
 </script>
 <script>
-  var product = {{ product | json }};
+  var product = {{ collection | json }};
 </script>
 {% include 'bucks-cc' %}
             </head>
