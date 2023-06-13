@@ -71,7 +71,7 @@
             {% assign total_products_count = collection_products.size %}
 
             {% for product in collection_products %}
-              {% if product.available == true %}
+              {% if product.available == false %}
                 {% continue %}
               {% endif %}
 
