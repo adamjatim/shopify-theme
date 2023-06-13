@@ -161,13 +161,6 @@
 <script>
   var product = {{ product | json }};
 
-  var productOption = document.querySelectorAll('.product-variant');
-  for (var i = 0; i < product.variants.length; i++) {
-    if (product.variants[i].available == false) {
-      productOption.classList.add('hide');
-    }
-  }
-
   // variant product handler
   document.querySelectorAll('.product-option input[type="radio"]').forEach(radio => {
     // disable options with quantity 0
@@ -249,4 +242,13 @@
     });
   });
 
+  // variant product out of stock
+  document.querySelectorAll('.product-option .product-variant').forEach('.product-variant' => {
+    for (var i = 0; i < product.variants.length; i++) {
+      if (product.variants[i].available == false) {
+        productOption.classList.add('hide');
+      }
+    }
+  })
+  
 </script>
