@@ -189,15 +189,6 @@
         return pass;
       })
       
-      // disabling variant if not availble
-      var disableVariant = document.querySelector('.product-variant ');
-
-      if (matchedVariant.available) {
-        disableVariant.classList.remove('hide');
-      }
-      else {
-        disableVariant.classList.add('hide');
-      }
 
       // change product form variant id
       document.querySelector('#product-id').value = matchedVariant.id;
