@@ -71,9 +71,7 @@
             {% assign total_products_count = collection_products.size %}
 
             {% for product in collection_products %}
-              {% if product.available == false %}
-                {% continue %}
-              {% endif %}
+              
 
               {% if displayed_products_top < 4 %}
                 <!-- Display products at the top -->
