@@ -161,8 +161,12 @@
 <script>
   var product = {{ product | json }};
 
-  var productOption = document.querySelector('.product-option');
-  console.log(product.variants);
+  var productOption = document.querySelectorAll('.product-variant');
+  for (var i = 0; i < product.variants.length; i++) {
+    if (product.variants[i].available == false) {
+      productOption.classList.add('hide');
+    }
+  }
 
   // variant product handler
   document.querySelectorAll('.product-option input[type="radio"]').forEach(radio => {
