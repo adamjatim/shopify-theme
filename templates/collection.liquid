@@ -67,7 +67,7 @@
             {% assign collection_products = collection.products | sort: 'created_at' %}
             {% assign displayed_products_top = 0 %}
             {% assign displayed_products_bottom = 0 %}
-            {% assign total_products_count = collection_products.size %}
+            {% assign total_products_count = collection.all_products_count %}
 
             {% for product in collection_products %}
               {% if product.available != true %}
