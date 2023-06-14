@@ -132,6 +132,16 @@
                   {% if collection.products[i].available %}
                     <li class="border border-product-5">
                       <!-- Product content -->
+                      <a href="{{ product.url }}">
+                        <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
+                        <p class="text-product">
+                          <br>
+                          {{ product.title }}
+                          <br>
+                          <dl class="price{% if available and compare_at_price > price %} price--on-sale{% endif %}{% if available and variant.unit_price_measurement %} price--unit-available{% endif %}" data-price></dl>
+                          {{ product.price | money }}
+                        </p>
+                      </a>
                     </li>
                     {% assign remaining_bottom_products = remaining_bottom_products | minus: 1 %}
                   {% endif %}
