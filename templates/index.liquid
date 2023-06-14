@@ -1,5 +1,5 @@
 {% assign collection = collections['all'] %}
-{%- paginate collection.products -%}
+{%- paginate.items -%}
 
   <div class="gap-main-border">
     <div class="main-border">
@@ -123,6 +123,8 @@
                 {% break %}
               {% endif %}
 
+              {% comment %}
+                
               {% if forloop.last and displayed_products_bottom < 4 %}
                 {% assign remaining_bottom_products = 4 | minus: displayed_products_bottom %}
                 {% for i in (global_bottom_counter..collection.products.size) %}
@@ -147,6 +149,8 @@
                   {% endif %}
                 {% endfor %}
               {% endif %}
+
+              {% endcomment %}
 
             {% endfor %}
 
