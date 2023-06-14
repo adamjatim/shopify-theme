@@ -1,5 +1,5 @@
 {% assign collection = collections['all'] %}
-{%- paginate collection.products by 8 -%}
+{%- paginate collection.products -%}
 
   <div class="gap-main-border">
     <div class="main-border">
@@ -65,51 +65,103 @@
         </div>
         <div class="main-right-bar">
           <ul>
-            {% assign collection_products = collection.products %}
+            {% assign collection_products = collection.products  %}
+            {% assign displayed_products_top = 0 %}
+            {% assign displayed_products_bottom = 0 %}
+            {% assign total_products_count = collection.products_count %}
 
-            {% comment %} display 4 first product {% endcomment %}
-            {% for product in collection_products limit: 4 %}
-              {% unless product.available %}{% continue %}{% endunless %}
-              <li class="border">
-                <a href="{{ product.url }}">
-                  <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
-                  <p class="text-product">
-                    <br>
-                    {{ product.title }}
-                    <br>
-                    <dl class="price{% if available and compare_at_price > price %} price--on-sale{% endif %}{% if available and variant.unit_price_measurement %} price--unit-available{% endif %}" data-price></dl>
-                    {{ product.price | money }}
-                  </p>
-                </a>
-                <img class="offer-badge" src="{{ 'sale.png' | asset_url }}">
-              </li>
+            {% capture global_top_counter %}{{ global_top_counter | default: 0 }}{% endcapture %}
+            {% capture global_bottom_counter %}{{ global_bottom_counter | default: 0 }}{% endcapture %}
+
+
+            {% for product in collection.products %}
+              
+
+              {% if displayed_products_top < 4 %}
+                <!-- Display products at the top -->
+                <li class="border">
+                  <!-- Product content -->
+                  <a href="{{ product.url }}">
+                    <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
+                    <p class="text-product">
+                      <br>
+                      {{ product.title }}
+                      <br>
+                      <dl class="price{% if available and compare_at_price > price %} price--on-sale{% endif %}{% if available and variant.unit_price_measurement %} price--unit-available{% endif %}" data-price></dl>
+                      {{ product.price | money }}
+                    </p>
+                  </a>
+                  {% comment %}
+                    <img class="offer-badge" src="{{ 'sale.png' | asset_url }}">
+                  {% endcomment %}
+                </li>
+                {% assign displayed_products_top = displayed_products_top | plus: 1 %}
+                {% assign global_top_counter = global_top_counter | plus: 1 %}
+              {% elsif displayed_products_bottom < 4 %}
+                  <!-- Display products at the bottom -->
+                  <li class="border border-product-5">
+                    <!-- Product content -->
+                    <a href="{{ product.url }}">
+                      <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
+                      <p class="text-product">
+                        <br>
+                        {{ product.title }}
+                        <br>
+                        <dl class="price{% if available and compare_at_price > price %} price--on-sale{% endif %}{% if available and variant.unit_price_measurement %} price--unit-available{% endif %}" data-price></dl>
+                        {{ product.price | money }}
+                      </p>
+                    </a>
+                    {% comment %}
+                        <img class="offer-badge" src="{{ 'sale.png' | asset_url }}">
+                    {% endcomment %}
+                  </li>
+                  {% assign displayed_products_bottom = displayed_products_bottom | plus: 1 %}
+                  {% assign global_bottom_counter = global_bottom_counter | plus: 1 %}
+              {% endif %}
+
+              {% if displayed_products_top >= 4 and displayed_products_bottom >= 4 %}
+                {% break %}
+              {% endif %}
+
+              {% if forloop.last and displayed_products_bottom < 4 %}
+                {% assign remaining_bottom_products = 4 | minus: displayed_products_bottom %}
+                {% for i in (global_bottom_counter..collection.products.size) %}
+                  {% if remaining_bottom_products == 0 %}
+                    {% break %}
+                  {% endif %}
+                  {% if collection.products[i].available %}
+                    <li class="border border-product-5">
+                      <!-- Product content -->
+                    </li>
+                    {% assign remaining_bottom_products = remaining_bottom_products | minus: 1 %}
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+
             {% endfor %}
 
-            {% comment %} display 4 last product {% endcomment %}
-            {% for product in collection_products offset: 4 limit: 4 %}
-              <li class="border border-product-5">
-                <a href="{{ product.url }}">
-                  <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
-                  <p class="text-product">
-                    <br>
-                    {{ product.title }}
-                    <br>
-                    <dl class="price{% if available and compare_at_price > price %} price--on-sale{% endif %}{% if available and variant.unit_price_measurement %} price--unit-available{% endif %}" data-price></dl>
-                    {{ product.price | money }}
-                  </p>
-                </a>
-                <img class="offer-badge" src="{{ 'sale.png' | asset_url }}">
-              </li>
-            {% endfor %}
+            {% assign global_top_counter = global_top_counter | plus: displayed_products_top %}
+            {% assign global_bottom_counter = global_bottom_counter | plus: displayed_products_bottom %}
+
+            {% assign global_top_counter = global_top_counter | modulo: 4 %}
+            {% assign global_bottom_counter = global_bottom_counter | modulo: 4 %}
+
           </ul>
         </div>
       </div>
-      <div class="pagination">
-        <div class="page-number">{{ paginate | default_pagination: next: ' ', previous: ' ' }}</div>
+      <div class="flex">
+        <div class="about" align="right"><a href="https://theblotter-room.com/pages/about">About</a> <a>•</a>
+          <a href="https://theblotter-room.com/pages/privacy-policy">Privacy & Policy</a> <a>•</a>
+          <a href="https://theblotter-room.com/pages/terms-condition">Terms & Conditions</a><a>•</a>
+          <a href="https://theblotter-room.com/pages/contact">Contact</a>
+        </div>
+        <div class="pagination">
+          <div class="page-number">{{ paginate | default_pagination: next: ' ', previous: ' ' }}</div>
+        </div>
       </div>
     </div>
   </div>
 
-  
+
 
 {%- endpaginate -%}
