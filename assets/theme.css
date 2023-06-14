@@ -231,7 +231,7 @@ li.border {
   margin: auto;
 }
 
-product-image-thumbs img {
+product-image-thumbs li img {
   width: 100px;
 }
 
