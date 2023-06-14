@@ -132,10 +132,15 @@ img {
   height: auto;
 }
 
+.about {
+  margin: auto;
+  margin-left: 10px;
+}
+
 .pagination {
   margin: auto;
   margin-bottom: 10px;
-  margin-right: 0px;
+  margin-right: 10px;
 }
 
 .page-number {
