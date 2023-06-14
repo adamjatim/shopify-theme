@@ -106,7 +106,9 @@
                         {{ product.price | money }}
                       </p>
                     </a>
-                    <img class="offer-badge" src="{{ 'sale.png' | asset_url }}">
+                    {% comment %}
+                      <img class="offer-badge" src="{{ 'sale.png' | asset_url }}">
+                    {% endcomment %}
                   </li>
                   {% assign displayed_products_bottom = displayed_products_bottom | plus: 1 %}
               {% endif %}
