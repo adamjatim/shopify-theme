@@ -1,5 +1,5 @@
 {% assign collection = collections['all'] %}
-{%- for all_products in paginate -%}
+{%- paginate aray by all_products -%}
 
   <div class="gap-main-border">
     <div class="main-border">
@@ -74,7 +74,7 @@
             {% capture global_bottom_counter %}{{ global_bottom_counter | default: 0 }}{% endcapture %}
 
 
-            {% for product in collection.products %}
+            {% for item in array %}
               
 
               {% if displayed_products_top < 4 %}
@@ -178,4 +178,4 @@
 
 
 
-{%- endfor -%}
+{%- endpaginate -%}
