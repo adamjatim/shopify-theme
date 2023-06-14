@@ -118,54 +118,6 @@
               {% endif %}
             {% endfor %}
 
-
-            {% comment %} display 4 first product {% endcomment %}
-            {% comment %}
-            {% for product in collection_products limit: 4 %}
-              {% unless product.available %}{% continue %}{% endunless %}
-              {% assign displayed_products_count = displayed_products_count | plus: 1 %}
-              <li class="border">
-                <a href="{{ product.url }}">
-                  <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
-                  <p class="text-product">
-                    <br>
-                    {{ product.title }}
-                    <br>
-                    <dl class="price{% if available and compare_at_price > price %} price--on-sale{% endif %}{% if available and variant.unit_price_measurement %} price--unit-available{% endif %}" data-price></dl>
-                    {{ product.price | money }}
-                  </p>
-                </a>
-                <img class="offer-badge" src="{{ 'sale.png' | asset_url }}">
-              </li>
-              {% if displayed_products_count > 4 %}
-                {% break %}
-              {% endif %}
-            {% endfor %}
-            {% endcomment %}
-
-            {% comment %} display 4 last product {% endcomment %}
-            {% comment %}
-            {% for product in collection_products offset: 4 limit: 4 %}
-              {% unless product.available %}{% continue %}{% endunless %}
-              {% assign displayed_products_count = displayed_products_count | plus: 1 %}
-              <li class="border border-product-5">
-                <a href="{{ product.url }}">
-                  <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
-                  <p class="text-product">
-                    <br>
-                    {{ product.title }}
-                    <br>
-                    <dl class="price{% if available and compare_at_price > price %} price--on-sale{% endif %}{% if available and variant.unit_price_measurement %} price--unit-available{% endif %}" data-price></dl>
-                    {{ product.price | money }}
-                  </p>
-                </a>
-                <img class="offer-badge" src="{{ 'sale.png' | asset_url }}">
-              </li>
-              {% if displayed_products_count > 4 %}
-                {% break %}
-              {% endif %}
-            {% endfor %}
-            {% endcomment %}
           </ul>
         </div>
       </div>
