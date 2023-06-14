@@ -165,8 +165,15 @@
           </ul>
         </div>
       </div>
-      <div class="pagination">
-        <div class="page-number">{{ paginate | default_pagination: next: ' ', previous: ' ' }}</div>
+      <div class="row">
+        <div align="right"><a href="https://theblotter-room.com/pages/about">About</a> <a>•</a>
+          <a href="https://theblotter-room.com/pages/privacy-policy">Privacy & Policy</a> <a>•</a>
+          <a href="https://theblotter-room.com/pages/terms-condition">Terms & Conditions</a><a>•</a>
+          <a href="https://theblotter-room.com/pages/contact">Contact</a>
+        </div>
+        <div class="pagination">
+          <div class="page-number">{{ paginate | default_pagination: next: ' ', previous: ' ' }}</div>
+        </div>
       </div>
     </div>
   </div>
