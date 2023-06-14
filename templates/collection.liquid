@@ -69,6 +69,7 @@
             {% assign displayed_products_bottom = 0 %}
             {% assign total_products_count = collection.all_products_count %}
 
+
             {% for product in collection_products %}
               {% if product.available != true %}
                 {% continue %}
@@ -132,3 +133,7 @@
     </div>
   </div>
 {% endpaginate %}
+
+<script>
+  console.log({{ collection.all_products_count }})
+</script>
