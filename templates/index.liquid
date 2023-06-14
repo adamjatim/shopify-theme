@@ -68,9 +68,9 @@
             {% assign collection_products = collection.products  %}
             {% assign displayed_products_top = 0 %}
             {% assign displayed_products_bottom = 0 %}
-            {% assign total_products_count = collection.all_products_count %}
+            {% assign total_products_count = collection.products_count %}
 
-            {% for product in collection_products %}
+            {% for product in collection.products %}
               
 
               {% if displayed_products_top < 4 %}
