@@ -71,14 +71,11 @@
 
 
             {% for product in collection_products %}
-              {% if product.available != true %}
-                {% continue %}
-              {% endif %}
+              
 
               {% if  displayed_products_top < 4 %}
                 <!-- Display products at the top -->
                 <li class="border">
-                  {% collection.all_products_count %}
                   <!-- Product content -->
                   <a href="{{ product.url }}">
                     <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
