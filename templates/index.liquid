@@ -133,6 +133,7 @@
           <a href="https://theblotter-room.com/pages/contact">Contact</a>
         </div>
         <div class="pagination">
+          {% render 'comp-paginator', paginate_object: paginate %}
           <div class="page-number">{{ paginate | default_pagination: next: ' ', previous: ' ' }}</div>
         </div>
       </div>
