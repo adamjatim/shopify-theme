@@ -135,6 +135,7 @@ img {
 .about {
   margin: auto;
   margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 .pagination {
