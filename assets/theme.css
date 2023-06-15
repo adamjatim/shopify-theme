@@ -635,7 +635,7 @@ nav[role=navigation] {
   }
 
   .bar > .main-right-bar > ul > li{
-    width: auto;
+    width: 44vw;
     height: auto;
     margin: auto;
     margin-top: 30px;
