@@ -622,6 +622,7 @@ nav[role=navigation] {
     border: 1px solid #000000;
     border-left: none;
     border-right: none;
+    border-bottom: none;
   }
 
   .bar > .main-right-bar > ul {
@@ -629,10 +630,11 @@ nav[role=navigation] {
   }
 
   .bar > .main-right-bar > ul > li{
-    max-width: 330px;
+    max-width: 500px;
+    max-height: 660px;
     margin: auto;
     margin-top: 30px;
-    height: 500px;
+    height: auto;
     border: 1px solid #000000;
   }
 
