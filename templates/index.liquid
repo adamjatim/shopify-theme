@@ -78,7 +78,7 @@
                 <!-- Display products at the top -->
                 <li class="border">
                   <!-- Product content -->
-                  <a href="{{ product.url }}">
+                  <a class="product-card" href="{{ product.url }}">
                     <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
                     <p class="text-product">
                       <br>
@@ -98,7 +98,7 @@
                   <!-- Display products at the bottom -->
                   <li class="border border-product-5">
                     <!-- Product content -->
-                    <a href="{{ product.url }}">
+                    <a class="product-card" href="{{ product.url }}">
                       <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
                       <p class="text-product">
                         <br>
