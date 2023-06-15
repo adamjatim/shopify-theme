@@ -149,6 +149,7 @@ img {
   padding: 0px;
   margin: auto;
   margin-right: 5px;
+  margin-left: 5px;
 }
 
 .page-number span {
@@ -683,6 +684,18 @@ nav[role=navigation] {
   
   .bottom-content {
     flex-direction: column-reverse;
+  }
+
+  .pagination {
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .about {
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: -20px;
   }
 }
 
