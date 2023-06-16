@@ -652,6 +652,7 @@ nav[role=navigation] {
   .bar > .main-right-bar > ul > li:nth-child(1),
   .bar > .main-right-bar > ul > li:nth-child(2){
     margin-top: 30px;
+    border-top: 1px solid #000000;
   }
 
   li.border {
