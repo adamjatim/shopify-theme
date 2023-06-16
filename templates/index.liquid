@@ -72,7 +72,7 @@
 
 
             {% for product in collection.products %}
-              
+              {% assign trimmed_title = product.title | truncate: 48, '' %}
 
               {% if displayed_products_top < 4 %}
                 <!-- Display products at the top -->
@@ -81,7 +81,7 @@
                   <a class="product-card" href="{{ product.url }}">
                     <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
                     <p class="text-product">
-                      {{ product.title }}
+                      {{ trimmed_title }}
                       <dl class="price{% if available and compare_at_price > price %} price--on-sale{% endif %}{% if available and variant.unit_price_measurement %} price--unit-available{% endif %}" data-price></dl>
                       {{ product.price | money }}
                     </p>
@@ -99,7 +99,7 @@
                     <a class="product-card" href="{{ product.url }}">
                       <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
                       <p class="text-product">
-                        {{ product.title }}
+                        {{ trimmed_title }}
                         <dl class="price{% if available and compare_at_price > price %} price--on-sale{% endif %}{% if available and variant.unit_price_measurement %} price--unit-available{% endif %}" data-price></dl>
                         {{ product.price | money }}
                       </p>
