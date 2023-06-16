@@ -255,6 +255,10 @@ li.border {
   height: 4rem;
 }
 
+.text-product .money {
+  height: 2rem;
+}
+
 .product-single__logo {
 	width: 200px;
   height: 117px;
