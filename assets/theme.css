@@ -638,10 +638,6 @@ nav[role=navigation] {
     width: 42vw;
     height: 100%;
     margin: auto;
-    margin-top: 5px;
-    margin-right: 5px;
-    margin-left: 5px;
-    margin-bottom: 5px; 
     border: 1px solid #000000;
     border-left: none;
     border-right: none;
