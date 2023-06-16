@@ -635,12 +635,13 @@ nav[role=navigation] {
   }
 
   .bar > .main-right-bar > ul > li{
-    width: 46.5vw;
+    width: 45vw;
     height: 100%;
     margin: auto;
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-left: 0px; 
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 5px; 
     border: 1px solid #000000;
     border-left: none;
     border-right: none;
