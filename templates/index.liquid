@@ -65,16 +65,17 @@
         </div>
         <div class="main-right-bar">
           <ul>
-            {% assign collection_products = collection.products  %}
+            {% comment %}{% assign collection_products = collection.products | sort: 'created_at'  %}{% endcomment %}
+            {% assign collection_products = collection.products | sort: 'created_at' %}
             {% assign displayed_products_top = 0 %}
             {% assign displayed_products_bottom = 0 %}
-            {% assign total_products_count = collection.products_count %}
+            {% assign total_products_count = collection.all_products_count %}
 
 
-            {% for product in collection.products %}
+            {% for product in collection_products %}
               {% assign trimmed_title = product.title | truncate: 46, '' %}
 
-              {% if displayed_products_top < 4 %}
+              {% if  displayed_products_top < 4 %}
                 <!-- Display products at the top -->
                 <li class="border">
                   <!-- Product content -->
@@ -91,34 +92,31 @@
                   {% endcomment %}
                 </li>
                 {% assign displayed_products_top = displayed_products_top | plus: 1 %}
-                
-              {% elsif displayed_products_bottom < 4 %}
+              {% else %}
                   <!-- Display products at the bottom -->
                   <li class="border border-product-5">
                     <!-- Product content -->
                     <a class="product-card" href="{{ product.url }}">
                       <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
                       <p class="text-product">
+                        <br>
                         {{ trimmed_title }}
+                        <br>
                         <dl class="price{% if available and compare_at_price > price %} price--on-sale{% endif %}{% if available and variant.unit_price_measurement %} price--unit-available{% endif %}" data-price></dl>
                         {{ product.price | money }}
                       </p>
                     </a>
                     {% comment %}
-                        <img class="offer-badge" src="{{ 'sale.png' | asset_url }}">
+                      <img class="offer-badge" src="{{ 'sale.png' | asset_url }}">
                     {% endcomment %}
                   </li>
                   {% assign displayed_products_bottom = displayed_products_bottom | plus: 1 %}
-                  
               {% endif %}
 
               {% if displayed_products_top >= 4 and displayed_products_bottom >= 4 %}
                 {% break %}
               {% endif %}
-
             {% endfor %}
-
-
           </ul>
         </div>
       </div>
