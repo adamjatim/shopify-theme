@@ -73,7 +73,7 @@
 
 
             {% for product in collection_products %}
-              {% assign trimmed_title = product.title | truncate: 46, '' %}
+              {% assign trimmed_title = product.title | truncate: 38, '' %}
 
               {% if  displayed_products_top < 4 %}
                 <!-- Display products at the top -->
