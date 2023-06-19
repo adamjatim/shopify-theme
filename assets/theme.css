@@ -756,8 +756,13 @@ nav[role=navigation] {
 #button-currency.buckscc-currency-box {
   padding-top: 4.5px !important;
   padding-bottom: 5px !important;
-  z-index: 1;
+  z-index: 1 ;
 }
+
+.buckscc-currency-box {
+  z-index: 1 !important;
+}
+
 .hxoSelectTheme.hxo-relative {
   margin: 0 !important;
   position: static !important;
