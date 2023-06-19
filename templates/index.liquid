@@ -1,5 +1,6 @@
 {% assign collection = collections['all'] %}
-{% paginate collection.products = 8 %}
+{% assign product_per_page = 8 %}
+{% paginate collection.products by product_per_page %}
 
 <div class="gap-main-border">
   <div class="main-border">
