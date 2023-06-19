@@ -73,7 +73,7 @@
           {% for product in collection.products | sort: 'created_at' %}
             {% assign trimmed_title = product.title | truncate: 38, '' %}
 
-            {% unless product.available %}
+            {% unless collection.product.available %}
               {% continue %}
             {% endunless %}
 
