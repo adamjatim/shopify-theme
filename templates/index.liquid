@@ -1,83 +1,98 @@
 {% assign collection = collections['all'] %}
-{%- paginate collection.products -%}
+{% paginate collection.products %}
 
-  <div class="gap-main-border">
-    <div class="main-border">
-      <div class="top-menu">
-        <div class="top-menu-right">
-          <h1 class="title">{{ collection.title }}</h1>
-          <button class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+<div class="gap-main-border">
+  <div class="main-border">
+    <div class="top-menu">
+      <div class="top-menu-right">
+        <h1 class="title">{{ collection.title }}</h1>
+        <button class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <div class="top-menu-left">
+        <div class="top-menu-content">
+          <a href="{{ paginate.previous.url }}">
+            <div class="button">BACK</div>
+          </a>
+          <a href="{{ paginate.next.url }}">
+            <div class="button">NEXT</div>
+          </a>
         </div>
-        <div class="top-menu-left">
-          <div class="top-menu-content">
-            <a href="{{ paginate.previous.url }}">
-              <div class="button">BACK</div>
-            </a>
-            <a href="{{ paginate.next.url }}">
-              <div class="button">NEXT</div>
-            </a>
+        <div class="top-menu-content">
+          <div id="cartbtn" class="button">
+            <a>CART</a>
           </div>
-          <div class="top-menu-content">
-            <div id="cartbtn" class="button">
-              <a>CART</a>
-            </div>
-            <div class="buckscc-currency-box button"></div>
-          </div>
+          <div class="buckscc-currency-box button"></div>
         </div>
       </div>
-      <div class="bar">
-        <div class="left-bar">
-          <nav role="navigation">
-            {%- for link in linklists.main-menu.links -%}
-              <div class="widget-left-bar">
-                <a href="/" {% comment  %} href="{{ link.url }}" {% endcomment %} {% if link.active %}aria-current="page"{% endif %}>
-                  <h2>{{ link.title }}</h2>
+    </div>
+    <div class="bar">
+      <div class="left-bar">
+        <nav role="navigation">
+          {% for link in linklists.main-menu.links %}
+            <div class="widget-left-bar">
+              <a href="/" {% if link.active %}aria-current="page"{% endif %}>
+                <h2>{{ link.title }}</h2>
+              </a>
+              {% if link.links != blank %}
+                <ul class="product-list">
+                  {% for child_link in link.links %}
+                    <li>
+                      <a href="{{ child_link.url }}" {% if child_link.active %}aria-current="page"{% endif %}>
+                        {{ child_link.title }}
+                      </a>
+                      {% if child_link.links != blank %}
+                        <ul>
+                          {% for grandchild_link in child_link.links %}
+                            <li>
+                              <a href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page"{% endif %}>
+                                {{ grandchild_link.title }}
+                              </a>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      {% endif %}
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </nav>
+      </div>
+      <div class="main-right-bar">
+        <ul>
+          {% assign displayed_products_top = 0 %}
+          {% assign displayed_products_bottom = 0 %}
+          {% assign total_products_count = collection.all_products_count %}
+
+          {% for product in collection.products | sort: 'created_at' %}
+            {% assign trimmed_title = product.title | truncate: 38, '' %}
+
+            {% if displayed_products_top < 4 %}
+              <!-- Display products at the top -->
+              <li class="border">
+                <!-- Product content -->
+                <a class="product-card" href="{{ product.url }}">
+                  <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
+                  <p class="text-product">
+                    {{ trimmed_title }}
+                    <dl class="price{% if available and compare_at_price > price %} price--on-sale{% endif %}{% if available and variant.unit_price_measurement %} price--unit-available{% endif %}" data-price></dl>
+                    {{ product.price | money }}
+                  </p>
                 </a>
-                {%- if link.links != blank -%}
-                  <ul class="product-list">
-                    {%- for child_link in link.links -%}
-                      <li>
-                        <a  href="{{ child_link.url }}" {%- if child_link.active -%} aria-current="page" {%- endif -%}>
-                          {{ child_link.title }}
-                        </a>
-                        {%- if child_link.links != blank -%}
-                          <ul>
-                            {%- for grandchild_link in child_link.links -%}
-                              <li>
-                                <a href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page"{% endif %}>
-                                  {{ grandchild_link.title }}
-                                </a>
-                              </li>
-                            {%- endfor -%}
-                          </ul>
-                        {%- endif -%}
-                      </li>
-                    {%- endfor -%}
-                  </ul>
-                {%- endif -%}
-              </div>
-            {%- endfor -%}
-          </nav>
-        </div>
-        <div class="main-right-bar">
-          <ul>
-            {% comment %}{% assign collection_products = collection.products | sort: 'created_at'  %}{% endcomment %}
-            {% assign collection_products = collection.products %}
-            {% assign displayed_products_top = 0 %}
-            {% assign displayed_products_bottom = 0 %}
-            {% assign total_products_count = collection.all_products_count %}
-
-
-            {% for product in collection_products %}
-              {% assign trimmed_title = product.title | truncate: 38, '' %}
-
-              {% if  displayed_products_top < 4 %}
-                <!-- Display products at the top -->
-                <li class="border">
+                {% comment %}
+                  <img class="offer-badge" src="{{ 'sale.png' | asset_url }}">
+                {% endcomment %}
+              </li>
+              {% assign displayed_products_top = displayed_products_top | plus: 1 %}
+            {% else %}
+              {% if displayed_products_bottom < 4 %}
+                <!-- Display products at the bottom -->
+                <li class="border border-product-5">
                   <!-- Product content -->
                   <a class="product-card" href="{{ product.url }}">
                     <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
@@ -91,46 +106,32 @@
                     <img class="offer-badge" src="{{ 'sale.png' | asset_url }}">
                   {% endcomment %}
                 </li>
-                {% assign displayed_products_top = displayed_products_top | plus: 1 %}
-              {% else %}
-                  <!-- Display products at the bottom -->
-                  <li class="border border-product-5">
-                    <!-- Product content -->
-                    <a class="product-card" href="{{ product.url }}">
-                      <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
-                      <p class="text-product">
-                        {{ trimmed_title }}
-                        <dl class="price{% if available and compare_at_price > price %} price--on-sale{% endif %}{% if available and variant.unit_price_measurement %} price--unit-available{% endif %}" data-price></dl>
-                        {{ product.price | money }}
-                      </p>
-                    </a>
-                    {% comment %}
-                      <img class="offer-badge" src="{{ 'sale.png' | asset_url }}">
-                    {% endcomment %}
-                  </li>
-                  {% assign displayed_products_bottom = displayed_products_bottom | plus: 1 %}
+                {% assign displayed_products_bottom = displayed_products_bottom | plus: 1 %}
               {% endif %}
+            {% endif %}
 
-              {% if displayed_products_top >= 4 and displayed_products_bottom >= 4 %}
-                {% break %}
-              {% endif %}
-            {% endfor %}
-          </ul>
-        </div>
+            {% if displayed_products_top >= 4 and displayed_products_bottom >= 4 %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+        </ul>
       </div>
-      <div class="flex bottom-content">
-        <div class="about" align="right"><a href="https://theblotter-room.com/pages/about">About</a> <a>•</a>
-          <a href="https://theblotter-room.com/pages/privacy-policy">Privacy & Policy</a> <a>•</a>
-          <a href="https://theblotter-room.com/pages/terms-condition">Terms & Conditions</a><a>•</a>
-          <a href="https://theblotter-room.com/pages/contact">Contact</a>
-        </div>
-        <div class="pagination">
-          <div class="page-number">{{ paginate | default_pagination: next: ' ', previous: ' ' }}</div>
-        </div>
+    </div>
+    <div class="flex bottom-content">
+      <div class="about" align="right">
+        <a href="https://theblotter-room.com/pages/about">About</a>
+        <a>•</a>
+        <a href="https://theblotter-room.com/pages/privacy-policy">Privacy & Policy</a>
+        <a>•</a>
+        <a href="https://theblotter-room.com/pages/terms-condition">Terms & Conditions</a>
+        <a>•</a>
+        <a href="https://theblotter-room.com/pages/contact">Contact</a>
+      </div>
+      <div class="pagination">
+        <div class="page-number">{{ paginate | default_pagination: next: ' ', previous: ' ' }}</div>
       </div>
     </div>
   </div>
+</div>
 
-
-
-{%- endpaginate -%}
+{% endpaginate %}
