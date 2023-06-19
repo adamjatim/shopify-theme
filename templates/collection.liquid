@@ -72,6 +72,10 @@
           {% for product in collection.products | sort: 'created_at' %}
             {% assign trimmed_title = product.title | truncate: 38, '' %}
 
+            {% unless product.available %}
+              {% continue %}
+            {% endunless %}
+
             {% if displayed_products_top < 4 %}
               <!-- Display products at the top -->
               <li class="border">
