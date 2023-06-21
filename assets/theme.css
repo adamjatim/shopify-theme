@@ -116,7 +116,9 @@ button:hover,
 }
 
 .flex-direction-column {
+  display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .gap-1 {
@@ -335,6 +337,7 @@ li.border {
 .minicart-product-description {
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
 
 .minicart-product-title,
