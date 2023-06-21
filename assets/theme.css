@@ -657,7 +657,7 @@ nav[role=navigation] {
     height: 100%;
     margin: auto;
     border: 1px solid #000000;
-    margin-top: 20px;
+    margin-top: 20px ;
   }
 
   .bar > .main-right-bar > ul > li:nth-child(1),
