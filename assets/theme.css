@@ -394,6 +394,8 @@ input[type=number]::-webkit-outer-spin-button {
 .minicart-detail {
   top: auto;
   bottom: 0px;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 .minicart-detail-total {
@@ -406,14 +408,12 @@ input[type=number]::-webkit-outer-spin-button {
 
 .minicart-detail > .button {
   display: flex;
-  width: 380px;
+  width: 96%;
   height: auto;
   border-radius: 10em;
   padding: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
   justify-content: center;
-  margin: 10px;
+  margin: auto;
 }
 
 .minicart-detail > .button:hover {
