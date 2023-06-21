@@ -272,6 +272,12 @@ li.border {
   right: 0px;
 }
 
+@media screen and (max-width: 700px) {
+  .minicart {
+    width: 100vw;
+  }
+}
+
 .minicart {
   display: block;
   visibility: hidden;
@@ -564,6 +570,12 @@ input[type=number]::-webkit-outer-spin-button {
   z-index: 9999;
 }
 
+@media screen and (max-width: 700px) {
+  .overlay {
+    display: none;
+  }
+}
+
 .navbar-mobile {
   display: none;
 }
@@ -645,15 +657,12 @@ nav[role=navigation] {
     height: 100%;
     margin: auto;
     border: 1px solid #000000;
-    border-left: none;
-    border-right: none;
-    border-top: none;
+    margin-top: 4px;
   }
 
   .bar > .main-right-bar > ul > li:nth-child(1),
   .bar > .main-right-bar > ul > li:nth-child(2){
     margin-top: 30px;
-    border-top: 1px solid #000000;
   }
 
   li.border {
