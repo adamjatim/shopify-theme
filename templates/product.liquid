@@ -205,16 +205,6 @@
       url.query.variant = matchedVariant.id;
       window.history.replaceState(null, null, url.toString());
 
-      // change price
-      //document.querySelector('.product-price').textContent = formatMoney(matchedVariant.price, "{{ shop.money_format }}" );
-      
-      //location.reload();
-      //document.querySelector('.product-compare').textContent = formatMoney(matchedVariant.compare_at_price, "{{ shop.money_format }}" );
-
-      //matchedVariant.compare_at_price > matchedVariant.price ? 
-      //  document.querySelector('.product-compare').classList.remove('hide') : 
-      //  document.querySelector('.product-compare').classList.add('hide');
-
       // change button
       var add = document.querySelector("#AddToCart")
 

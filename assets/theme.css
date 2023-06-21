@@ -272,12 +272,6 @@ li.border {
   right: 0px;
 }
 
-@media screen and (max-width: 700px) {
-  .minicart {
-    width: 100vw;
-  }
-}
-
 .minicart {
   display: block;
   visibility: hidden;
@@ -573,6 +567,15 @@ input[type=number]::-webkit-outer-spin-button {
 @media screen and (max-width: 700px) {
   .overlay {
     display: none;
+  }
+  .navbar-mobile is-active {
+    width: 100vw;
+  }
+  nav[role="navigation"] {
+    height: 100%;
+  }
+  .minicart {
+    width: 100vw !important;
   }
 }
 
