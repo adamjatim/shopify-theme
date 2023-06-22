@@ -580,6 +580,9 @@ input[type=number]::-webkit-outer-spin-button {
   .minicart {
     width: 100vw !important;
   }
+  .navbar-mobile.is-active {
+    width: 100%;
+  }
 }
 
 .navbar-mobile {
