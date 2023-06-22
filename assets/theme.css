@@ -621,7 +621,7 @@ nav[role=navigation] {
   font-size: x-large;
   margin: 10px;
   overflow-y: scroll;
-  height: 608px;
+  height: 100%;
 }
 
 @media screen and (min-width: 1081px){
