@@ -200,7 +200,7 @@ h1.title {
 ul {
   display: flex;
   flex-flow: row wrap;
-  width: 800px;
+  width: 100%;
 }
 
 ul.product-list {
