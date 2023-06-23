@@ -171,6 +171,7 @@ h1.title {
 .left-bar {
   width: 200px;
   border: 1px solid #000000;
+  height: 628px;
 }
 
 .widget-left-bar {
@@ -621,7 +622,7 @@ nav[role=navigation] {
   font-size: x-large;
   margin: 10px;
   overflow-y: scroll;
-  height: 100%;
+  height: 96%;
 }
 
 @media screen and (min-width: 1081px){
