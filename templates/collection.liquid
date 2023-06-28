@@ -118,14 +118,10 @@
                       <p class="text-product">
                         {{ trimmed_title }}
                         {% if product.compare_at_price > product.price %}
-                          <span class="product-price">
-                            <span class="compare-price">{{ product.compare_at_price | money }}</span>
-                            <span class="original-price">{{ product.price | money }}</span>
-                          </span>
+                          <span class="compare-price">{{ product.compare_at_price | money }}</span>
+                          <span class="original-price">{{ product.price | money }}</span>
                         {% else %}
-                          <span class="product-price">
-                            {{ product.price | money }}
-                          </span>
+                          {{ product.price | money }}
                         {% endif %}
                       </p>
                     </a>
