@@ -98,9 +98,7 @@
                             <span class="original-price">{{ product.price | money }}</span>
                           </span>
                         {% else %}
-                          <span class="product-price">
-                            {{ product.price | money }}
-                          </span>
+                          {{ product.price | money }}
                         {% endif %}
                     </p>
                   </a>
