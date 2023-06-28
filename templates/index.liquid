@@ -92,8 +92,16 @@
                     <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
                     <p class="text-product">
                       {{ trimmed_title }}
-                      <dl class="price{% if available and compare_at_price > price %} price--on-sale{% endif %}{% if available and variant.unit_price_measurement %} price--unit-available{% endif %}" data-price></dl>
-                      {{ product.price | money }}
+                      {% if product.compare_at_price > product.price %}
+                          <span class="product-price">
+                            <span class="compare-price">{{ product.compare_at_price | money }}</span>
+                            <span class="original-price">{{ product.price | money }}</span>
+                          </span>
+                        {% else %}
+                          <span class="product-price">
+                            {{ product.price | money }}
+                          </span>
+                        {% endif %}
                     </p>
                   </a>
                   {% comment %}
@@ -110,8 +118,17 @@
                       <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
                       <p class="text-product">
                         {{ trimmed_title }}
-                        <dl class="price{% if available and compare_at_price > price %} price--on-sale{% endif %}{% if available and variant.unit_price_measurement %} price--unit-available{% endif %}" data-price></dl>
-                        {{ product.price | money }}
+                        {% if product.compare_at_price > product.price %}
+                          <span class="product-price">
+                            <span class="compare-price">{{ product.compare_at_price | money }}</span>
+                            <span class="original-price">{{ product.price | money }}</span>
+                          </span>
+                        {% else %}
+                          <span class="product-price">
+                            {{ product.price | money }}
+                          </span>
+                        {% endif %}
+
                       </p>
                     </a>
                     {% comment %}

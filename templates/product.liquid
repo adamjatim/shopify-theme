@@ -94,9 +94,16 @@
                     {{ product.selected_or_first_available_variant.compare_at_price | money }}
                   </p>
                 {% endcomment %}
-                <p class="product-price">
-                  {{ product.selected_or_first_available_variant.price | money }}
-                </p>
+                {% if product.compare_at_price > product.price %}
+                  <p class="product-price"></p>
+                    <span class="compare-price">{{ product.selected_or_first_available_variant.compare_at_price | money }}</span>
+                    <span class="original-price">{{ product.selected_or_first_available_variant.price | money }}</span>
+                  </p>
+                {% else %}
+                  <p class="product-price">
+                    {{ product.selected_or_first_available_variant.price | money }}
+                  </p>
+                {% endif %}
               </div>
               <div>{{ product.description }}</div>
 
