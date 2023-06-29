@@ -673,6 +673,10 @@ nav[role=navigation] {
     border-bottom: none;
   }
 
+  .bar > .main-right-bar {
+    height: 100%;
+  }
+
   .bar > .main-right-bar > ul {
     width: auto;
   }
