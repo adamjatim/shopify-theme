@@ -809,6 +809,10 @@ nav[role=navigation] {
   padding: 0px !important;
 }
 
+.buckscc-select-options {
+  height: auto !important;
+}
+
 .hxoSelectTheme {
   --hxoSelect-width: none !important;
   --hxoSelect-height: none !important;
