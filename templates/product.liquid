@@ -97,6 +97,7 @@
                 {% if product.compare_at_price > product.price %}
                   <p class="product-price"></p>
                     <p class="compare-price">{{ product.selected_or_first_available_variant.compare_at_price | money }}</p>
+                    <br>
                     <p class="original-price">{{ product.selected_or_first_available_variant.price | money }}</p>
                   </p>
                 {% else %}
@@ -113,7 +114,7 @@
                 {% if product.variants.size > 1 %}
                 <div class="product-option">
                   {% for option in product.options_with_values %}
-                    <fieldset style="display: flex; border: none;">
+                    <fieldset style="display: flex; border: none; flex-direction;flex-flow: inherit;">
                       {% for value in option.values %}
                         {% assign variant = product.variants | where: option.name, value | first %}
                         <div class="product-variant">

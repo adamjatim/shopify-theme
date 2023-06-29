@@ -678,7 +678,8 @@ nav[role=navigation] {
 
   .bar > .main-right-bar > ul > li{
     width: 42vw;
-    height: 100%;
+    height: auto;
+    min-height: 24%;
     margin: auto;
     border: 1px solid #000000;
     margin-top: 20px ;
@@ -757,6 +758,7 @@ nav[role=navigation] {
 @media screen and (min-width: 721px){
   .mobile-product-page {
     display: flex;
+    height: 100%;
   }
 }
 
