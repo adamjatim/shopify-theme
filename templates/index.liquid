@@ -94,14 +94,12 @@
                       {{ trimmed_title }}
                       <br>
                       {% if product.compare_at_price > product.price %}
-                          <span class="product-price">
-                            <span class="compare-price">{{ product.compare_at_price | money }}</span>
-                            <br>
-                            <span class="original-price">{{ product.price | money }}</span>
-                          </span>
-                        {% else %}
-                          <span class="original-price">{{ product.price | money }}</span>
-                        {% endif %}
+                        <span class="compare-price">{{ product.compare_at_price | money }}</span>
+                        <br>
+                        <span class="original-price">{{ product.price | money }}</span>
+                      {% else %}
+                        <span class="original-price">{{ product.price | money }}</span>
+                      {% endif %}
                     </p>
                   </a>
                   {% comment %}
@@ -126,7 +124,6 @@
                         {% else %}
                           <span class="original-price">{{ product.price | money }}</span>
                         {% endif %}
-
                       </p>
                     </a>
                     {% comment %}
