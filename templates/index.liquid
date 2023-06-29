@@ -92,6 +92,7 @@
                     <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
                     <p class="text-product">
                       {{ trimmed_title }}
+                      <br>
                       {% if product.compare_at_price > product.price %}
                           <span class="product-price">
                             <span class="compare-price">{{ product.compare_at_price | money }}</span>
@@ -116,6 +117,7 @@
                       <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
                       <p class="text-product">
                         {{ trimmed_title }}
+                        <br>
                         {% if product.compare_at_price > product.price %}
                           <span class="compare-price">{{ product.compare_at_price | money }}</span>
                           <span class="original-price">{{ product.price | money }}</span>
