@@ -220,6 +220,7 @@ ul li.border-product-5 {
 
 li.border {
   width: 182px;
+  max-height: 48%;
   border-right: 1px solid #000000;
   border-top: 1px solid #000000;
   border-left: 0px;
