@@ -120,6 +120,7 @@
                         <br>
                         {% if product.compare_at_price > product.price %}
                           <span class="compare-price">{{ product.compare_at_price | money }}</span>
+                          <br>
                           <span class="original-price">{{ product.price | money }}</span>
                         {% else %}
                           {{ product.price | money }}

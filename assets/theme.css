@@ -202,6 +202,7 @@ ul {
   display: flex;
   flex-flow: row wrap;
   width: 100%;
+  height: 100%;
 }
 
 ul.product-list {
@@ -454,6 +455,17 @@ input[type=number]::-webkit-outer-spin-button {
 
 .product-compare {
   font-size: 20px;
+  color: #666;
+  text-decoration: line-through;
+}
+
+.original-price {
+  font-size: 22px;
+  color: #000000;
+}
+
+.compare-price {
+  font-size: 16px;
   color: #666;
   text-decoration: line-through;
 }
