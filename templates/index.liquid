@@ -10,7 +10,7 @@
     {% endif %}
   {% endif %}
 {% endfor %}
-{% paginate collection.products by product_per_page%}
+{% paginate collection.products | sort_by: 'updated_at' by product_per_page%}
 
 <div class="gap-main-border">
   <div class="main-border">
