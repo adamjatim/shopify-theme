@@ -79,7 +79,9 @@
           {% assign displayed_products_bottom = 0 %}
           {% assign total_products_count = collection.all_products_count %}
 
-          {% for product in collection.products | sort: 'created_at' %}
+          {% assign sorted_products = collection.products | sort: 'updated_at' %}
+          {% for product in sorted_products %}
+
             {% assign trimmed_title = product.title | truncate: 38, '' %}
 
             {% if product.available %}
