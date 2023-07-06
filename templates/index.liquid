@@ -80,7 +80,7 @@
           {% assign displayed_products_bottom = 0 %}
           {% assign total_products_count = collection.all_products_count %}
 
-          {% assign sorted_products = collection.products | sort: 'updated_at' %}
+          {% assign sorted_products = collection.products | sort: 'created_at' | reverse %}
           {% for product in sorted_products %}
 
             {% assign trimmed_title = product.title | truncate: 38, '' %}
