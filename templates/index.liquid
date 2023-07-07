@@ -11,9 +11,9 @@
   {% endif %}
 {% endfor %}
 
-{% assign sorted = collection.products | sort: 'updated_at' %}
+{% assign collection.products = collection.products | sort: 'created_at' %}
 
-{% paginate sorted by product_per_page%}
+{% paginate collection.products by product_per_page%}
 
 <div class="gap-main-border">
   <div class="main-border">
