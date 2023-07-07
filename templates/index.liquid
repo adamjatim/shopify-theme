@@ -11,6 +11,8 @@
   {% endif %}
 {% endfor %}
 
+<script>console.log({{ collections.all.products | json }})</script>
+
 {% paginate collection.products by product_per_page %}
 
 <div class="gap-main-border">
@@ -78,7 +80,7 @@
       <div class="main-right-bar">
         <ul>
           {% assign sorted_products = collections.all.products | sort: 'updated_at' | reverse %}
-          <script>console.log({{ collections.all.products | json }})</script>
+          
           {% assign displayed_products_top = 0 %}
           {% assign displayed_products_bottom = 0 %}
           {% assign total_products_count = sorted_products.size %}
