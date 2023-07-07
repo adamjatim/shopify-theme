@@ -11,7 +11,7 @@
   {% endif %}
 {% endfor %}
 
-<script>console.log({{ collection | json }})</script>
+<script>console.log({{ collections.all | json }})</script>
 
 {% paginate collection.products by product_per_page %}
 
