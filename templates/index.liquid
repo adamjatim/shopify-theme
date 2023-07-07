@@ -85,7 +85,7 @@
           {% assign displayed_products_bottom = 0 %}
           {% assign total_products_count = sorted_products.size %}
 
-          {% for product in sorted_products | sort: 'published_at'%}
+          {% for product in sorted_products | sort: 'published_at' %}
 
             {% assign trimmed_title = product.title | truncate: 38, '' %}
 
