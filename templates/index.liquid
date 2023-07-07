@@ -100,12 +100,12 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const productList = document.getElementById("product-list");
-    const products = {{ collection.products | json }};
+    const products = {{ collection.products | json | strip_newlines }};
 
-    // Sort products by published_at using JavaScript
+    // Sort products by created_at using JavaScript
     const sortedProducts = products.sort((a, b) => {
-      const dateA = new Date(a.published_at);
-      const dateB = new Date(b.published_at);
+      const dateA = new Date(a.created_at);
+      const dateB = new Date(b.created_at);
       return dateB - dateA;
     });
 
