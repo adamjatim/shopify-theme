@@ -15,7 +15,7 @@
 
 {% assign sort = collection.products | sort: 'created_at' %}
 
-{% paginate collection.products by product_per_page %}
+{% paginate sort by product_per_page %}
 
 <div class="gap-main-border">
   <div class="main-border">
