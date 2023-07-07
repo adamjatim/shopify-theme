@@ -10,7 +10,7 @@
   {% endif %}
 {% endfor %}
 
-{% paginate collection.products by product_per_page | sort: 'created_at' %}
+{% paginate collection.products by product_per_page %}
 
 <div class="gap-main-border">
   <div class="main-border">
@@ -81,7 +81,7 @@
           {% assign displayed_products_bottom = 0 %}
           {% assign total_products_count = sorted_products.size %}
 
-          {% for product in collection.products | sort: 'created_at' %}
+          {% for product in sorted_products %}
 
             {% assign trimmed_title = product.title | truncate: 38, '' %}
 
