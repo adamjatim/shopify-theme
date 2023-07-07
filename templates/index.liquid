@@ -11,6 +11,8 @@
   {% endif %}
 {% endfor %}
 
+<script>console.log({{ collections | json }})</script>
+
 {% paginate collection.products by product_per_page %}
 
 <div class="gap-main-border">
