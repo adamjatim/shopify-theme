@@ -13,7 +13,8 @@
 
 <script>console.log({{ collections.all.products | json }})</script>
 
-{% paginate collection.products by product_per_page %}
+{% assign sort = collection.products | sort: 'published_at' %}
+{% paginate sort by product_per_page %}
 
 <div class="gap-main-border">
   <div class="main-border">
@@ -79,7 +80,7 @@
       </div>
       <div class="main-right-bar">
         <ul>
-          {% assign sorted_products = collections.all.products | sort: 'published_at' | reverse %}
+          {% assign sorted_products = collections.all.products %}
           
           {% assign displayed_products_top = 0 %}
           {% assign displayed_products_bottom = 0 %}
