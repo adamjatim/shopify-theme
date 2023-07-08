@@ -1,151 +1,32 @@
-{% assign collection = collections.all %}
-{% assign product_per_page = 1 %}
-{% assign available_product_per_page = 1 %}
-
-{% for product in collection.products %}
-  {% assign product_per_page = product_per_page | plus: 1 %}
-  {% if product.available %}
-    {% assign available_product_per_page = available_product_per_page | plus: 1 %}
-    {% if available_product_per_page == 8 %}
-      {% break %}
-    {% endif %}
-  {% endif %}
-{% endfor %}
+{% assign sorted_products = collections.all.products | sort: 'updated_at' | reverse %}
+{% assign products_per_page = 8 %}
+{% assign current_page = 1 %}
+{% assign paginated_products = sorted_products | slice: (current_page | minus: 1) * products_per_page, products_per_page %}
 
 <div class="gap-main-border">
-  <div class="main-border">
-    <div class="top-menu">
-      <div class="top-menu-right">
-        <h1 class="title">{{ collection.title }}</h1>
-        <button class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-      <div class="top-menu-left">
-        <div class="top-menu-content">
-          <a href="{{ paginate.previous.url }}">
-            <div class="button">BACK</div>
-          </a>
-          <a href="{{ paginate.next.url }}">
-            <div class="button">NEXT</div>
-          </a>
-        </div>
-        <div class="top-menu-content">
-          <div id="cartbtn" class="button">
-            <a>CART</a>
-          </div>
-          <div class="buckscc-currency-box button"></div>
-        </div>
-      </div>
-    </div>
-    <div class="bar">
-      <div class="left-bar">
-        <nav role="navigation">
-          {% for link in linklists.main-menu.links %}
-            <div class="widget-left-bar">
-              <a href="/" {% if link.active %}aria-current="page"{% endif %}>
-                <h2>{{ link.title }}</h2>
-              </a>
-              {% if link.links != blank %}
-                <ul class="product-list">
-                  {% for child_link in link.links %}
-                    <li>
-                      <a href="{{ child_link.url }}" {% if child_link.active %}aria-current="page"{% endif %}>
-                        {{ child_link.title }}
-                      </a>
-                      {% if child_link.links != blank %}
-                        <ul>
-                          {% for grandchild_link in child_link.links %}
-                            <li>
-                              <a href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page"{% endif %}>
-                                {{ grandchild_link.title }}
-                              </a>
-                            </li>
-                          {% endfor %}
-                        </ul>
-                      {% endif %}
-                    </li>
-                  {% endfor %}
-                </ul>
+  <!-- Rest of your code -->
+  <ul>
+    {% for product in paginated_products %}
+      {% if product.available %}
+        <li class="border">
+          <!-- Product content -->
+          <a class="product-card" href="{{ product.url }}">
+            <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
+            <p class="text-product">
+              {{ product.title | truncate: 38, '' }}
+              <br>
+              {% if product.compare_at_price > product.price %}
+                <span class="compare-price">{{ product.compare_at_price | money }}</span>
+                <br>
+                <span class="original-price">{{ product.price | money }}</span>
+              {% else %}
+                <span class="original-price">{{ product.price | money }}</span>
               {% endif %}
-            </div>
-          {% endfor %}
-        </nav>
-      </div>
-      <div class="main-right-bar">
-        <ul id="product-list">
-          <!-- Products will be dynamically inserted here -->
-        </ul>
-      </div>
-    </div>
-    <div class="flex bottom-content">
-      <div class="about" align="right">
-        <a href="https://theblotter-room.com/pages/about">About</a>
-        <a>•</a>
-        <a href="https://theblotter-room.com/pages/privacy-policy">Privacy & Policy</a>
-        <a>•</a>
-        <a href="https://theblotter-room.com/pages/terms-condition">Terms & Conditions</a>
-        <a>•</a>
-        <a href="https://theblotter-room.com/pages/contact">Contact</a>
-      </div>
-      <div class="pagination">
-        <div class="page-number">{{ paginate | default_pagination: next: ' ', previous: ' ' }}</div>
-      </div>
-    </div>
-  </div>
+            </p>
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  <!-- Rest of your code -->
 </div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const productList = document.getElementById("product-list");
-    const products = {{ collection.products | json }};
-
-    console.log(products)
-
-    // Sort products by created_at using JavaScript
-    const sortedProducts = products.sort((a, b) => {
-      const dateA = new Date(a.created_at);
-      const dateB = new Date(b.created_at);
-      return dateB - dateA;
-    });
-
-    // Display sorted products
-    sortedProducts.forEach((product, index) => {
-      const trimmedTitle = product.title.substring(0, 38);
-
-      if (index < 4) {
-        // Display products at the top
-        const listItem = document.createElement("li");
-        listItem.className = "border";
-        listItem.innerHTML = `
-          <a class="product-card" href="${product.url}">
-            <img class="product-image" src="${product.featured_image | img_url: 'large', crop: 'center'}">
-            <p class="text-product">
-              ${trimmedTitle}<br>
-              ${product.compare_at_price > product.price ? `<span class="compare-price">${product.compare_at_price | money}</span><br>` : ''}
-              <span class="original-price">${product.price | money}</span>
-            </p>
-          </a>
-        `;
-        productList.appendChild(listItem);
-      } else if (index < 8) {
-        // Display products at the bottom
-        const listItem = document.createElement("li");
-        listItem.className = "border border-product-5";
-        listItem.innerHTML = `
-          <a class="product-card" href="${product.url}">
-            <img class="product-image" src="${product.featured_image | img_url: 'large', crop: 'center'}">
-            <p class="text-product">
-              ${trimmedTitle}<br>
-              ${product.compare_at_price > product.price ? `<span class="compare-price">${product.compare_at_price | money}</span><br>` : ''}
-              <span class="original-price">${product.price | money}</span>
-            </p>
-          </a>
-        `;
-        productList.appendChild(listItem);
-      }
-    });
-  });
-</script>
