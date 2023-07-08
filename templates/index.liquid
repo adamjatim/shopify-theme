@@ -77,7 +77,8 @@
       </div>
       <div class="main-right-bar">
         <ul>
-          {% assign sorted_products = collection.products | sort: 'created_at' %}
+          {% assign sorted_products = collections.all | sort: 'created_at' %}
+          <script>console.log({{ collections.all | json }})</script>
           {% assign displayed_products_top = 0 %}
           {% assign displayed_products_bottom = 0 %}
           {% assign total_products_count = sorted_products.size %}
