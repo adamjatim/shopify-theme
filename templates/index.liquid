@@ -100,7 +100,7 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const productList = document.getElementById("product-list");
-    const products = {{ collection.products | json | strip_newlines }};
+    const products = {{ collection.products | json }};
 
     console.log(products)
 
