@@ -102,6 +102,8 @@
     const productList = document.getElementById("product-list");
     const products = {{ collection.products | json | strip_newlines }};
 
+    console.log(products)
+
     // Sort products by created_at using JavaScript
     const sortedProducts = products.sort((a, b) => {
       const dateA = new Date(a.created_at);
