@@ -82,27 +82,58 @@
           {% assign displayed_products_bottom = 0 %}
           {% assign total_products_count = sorted_products.size %}
 
-          {% assign sorted_products = collections.all.products | sort: 'updated_at' | reverse %}
-
           {% for product in sorted_products %}
+
+            {% assign trimmed_title = product.title | truncate: 38, '' %}
+
             {% if product.available %}
-              <li class="border">
-                <!-- Product content -->
-                <a class="product-card" href="{{ product.url }}">
-                  <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
-                  <p class="text-product">
-                    {{ product.title | truncate: 38, '' }}
-                    <br>
-                    {% if product.compare_at_price > product.price %}
-                      <span class="compare-price">{{ product.compare_at_price | money }}</span>
+              {% if displayed_products_top < 4 %}
+                <!-- Display products at the top -->
+                <li class="border">
+                  <!-- Product content -->
+                  <a class="product-card" href="{{ product.url }}">
+                    <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
+                    <p class="text-product">
+                      {{ trimmed_title }}
                       <br>
-                      <span class="original-price">{{ product.price | money }}</span>
-                    {% else %}
-                      <span class="original-price">{{ product.price | money }}</span>
-                    {% endif %}
-                  </p>
-                </a>
-              </li>
+                      {% if product.compare_at_price > product.price %}
+                        <span class="compare-price">{{ product.compare_at_price | money }}</span>
+                        <br>
+                        <span class="original-price">{{ product.price | money }}</span>
+                      {% else %}
+                        <span class="original-price">{{ product.price | money }}</span>
+                      {% endif %}
+                    </p>
+                  </a>
+                </li>
+                {% assign displayed_products_top = displayed_products_top | plus: 1 %}
+              {% else %}
+                {% if displayed_products_bottom < 4 %}
+                  <!-- Display products at the bottom -->
+                  <li class="border border-product-5">
+                    <!-- Product content -->
+                    <a class="product-card" href="{{ product.url }}">
+                      <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
+                      <p class="text-product">
+                        {{ trimmed_title }}
+                        <br>
+                        {% if product.compare_at_price > product.price %}
+                          <span class="compare-price">{{ product.compare_at_price | money }}</span>
+                          <br>
+                          <span class="original-price">{{ product.price | money }}</span>
+                        {% else %}
+                          <span class="original-price">{{ product.price | money }}</span>
+                        {% endif %}
+                      </p>
+                    </a>
+                  </li>
+                  {% assign displayed_products_bottom = displayed_products_bottom | plus: 1 %}
+                {% endif %}
+              {% endif %}
+            {% endif %}
+
+            {% if displayed_products_top >= 4 and displayed_products_bottom >= 4 %}
+              {% break %}
             {% endif %}
           {% endfor %}
         </ul>
