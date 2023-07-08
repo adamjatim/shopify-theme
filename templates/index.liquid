@@ -4,29 +4,42 @@
 {% assign paginated_products = sorted_products | slice: (current_page | minus: 1) * products_per_page, products_per_page %}
 
 <div class="gap-main-border">
-  <!-- Rest of your code -->
-  <ul>
-    {% for product in paginated_products %}
-      {% if product.available %}
-        <li class="border">
-          <!-- Product content -->
-          <a class="product-card" href="{{ product.url }}">
-            <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
-            <p class="text-product">
-              {{ product.title | truncate: 38, '' }}
-              <br>
-              {% if product.compare_at_price > product.price %}
-                <span class="compare-price">{{ product.compare_at_price | money }}</span>
-                <br>
-                <span class="original-price">{{ product.price | money }}</span>
-              {% else %}
-                <span class="original-price">{{ product.price | money }}</span>
-              {% endif %}
-            </p>
-          </a>
-        </li>
-      {% endif %}
-    {% endfor %}
-  </ul>
-  <!-- Rest of your code -->
+  <div class="main-border">
+    <div class="top-menu">
+      <!-- Top menu code -->
+    </div>
+    <div class="bar">
+      <div class="left-bar">
+        <!-- Left bar navigation code -->
+      </div>
+      <div class="main-right-bar">
+        <ul>
+          {% for product in paginated_products %}
+            {% if product.available %}
+              <li class="border">
+                <!-- Product content -->
+                <a class="product-card" href="{{ product.url }}">
+                  <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
+                  <p class="text-product">
+                    {{ product.title | truncate: 38, '' }}
+                    <br>
+                    {% if product.compare_at_price > product.price %}
+                      <span class="compare-price">{{ product.compare_at_price | money }}</span>
+                      <br>
+                      <span class="original-price">{{ product.price | money }}</span>
+                    {% else %}
+                      <span class="original-price">{{ product.price | money }}</span>
+                    {% endif %}
+                  </p>
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="flex bottom-content">
+      <!-- Bottom content code -->
+    </div>
+  </div>
 </div>
