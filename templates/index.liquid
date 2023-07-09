@@ -1,6 +1,5 @@
 {% assign collection = collections.all %}
 {% assign sorted_products = collection.products | sort: "created_at" %}
-
 {% assign sorted_products_array = sorted_products | compact %}
 
 {% assign product_per_page = 1 %}
@@ -15,7 +14,8 @@
   {% endif %}
 {% endfor %}
 
-{% assign paginated_products = sorted_products_array | paginate: product_per_page %}
+{% assign paginated_products = sorted_products_array | slice: 0, product_per_page %}
+
 
 <div class="gap-main-border">
   <div class="main-border">
@@ -149,5 +149,3 @@
     </div>
   </div>
 </div>
-
-{% endpaginate %}
