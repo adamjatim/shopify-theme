@@ -1,4 +1,4 @@
-{% assign collection = collections.all %}
+
 <script>console.log({{ collection.products | json | sort: "created_at" }})</script>
 {% assign sorted_products = collection.products | sort: "created_at" %}
 
