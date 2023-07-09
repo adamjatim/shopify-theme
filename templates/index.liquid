@@ -1,9 +1,11 @@
 {% assign collection = collections.all %}
 {% assign sorted_products = collection.products | sort: "created_at" %}
 
+{% assign sorted_products_array = sorted_products | compact %}
+
 {% assign product_per_page = 1 %}
 {% assign available_product_per_page = 1 %}
-{% for product in sorted_products %}
+{% for product in sorted_products_array %}
   {% assign product_per_page = product_per_page | plus: 1 %}
   {% if product.available %}
     {% assign available_product_per_page = available_product_per_page | plus: 1 %}
@@ -13,7 +15,7 @@
   {% endif %}
 {% endfor %}
 
-{% paginate sorted_products by product_per_page %}
+{% assign paginated_products = sorted_products_array | paginate: product_per_page %}
 
 <div class="gap-main-border">
   <div class="main-border">
@@ -79,7 +81,7 @@
       </div>
       <div class="main-right-bar">
         <ul>
-          {% for product in sorted_products %}
+          {% for product in paginated_products %}
             {% assign trimmed_title = product.title | truncate: 38, '' %}
     
             {% if product.available %}
