@@ -13,8 +13,7 @@
   {% endif %}
 {% endfor %}
 
-{% assign sorted_and_paginated_products = sorted_products | slice: 0, product_per_page %}
-
+{% assign paginated_products = sorted_products | slice: 0, product_per_page %}
 
 <div class="gap-main-border">
   <div class="main-border">
@@ -80,9 +79,9 @@
       </div>
       <div class="main-right-bar">
         <ul>
-          {% for product in sorted_and_paginated_products %}
+          {% for product in paginated_products %}
             {% assign trimmed_title = product.title | truncate: 38, '' %}
-
+    
             {% if product.available %}
               {% if forloop.index <= 4 %}
                 <li class="border">
@@ -108,20 +107,19 @@
         </ul>
       </div>
     </div>
-    <div class="pagination">
-      {% assign total_pages = product_per_page | minus: 1 %}
-      {% assign current_page = 0 %}
-      {% if product_per_page > 1 %}
-        <div class="page-number">
-          {% if current_page > 0 %}
-            <a href="?page={{ current_page | minus: 1 }}" class="button">BACK</a>
-          {% endif %}
-          {% if current_page < total_pages %}
-            <a href="?page={{ current_page | plus: 1 }}" class="button">NEXT</a>
-          {% endif %}
-        </div>
-      {% endif %}
+    <div class="flex bottom-content">
+      <div class="about" align="right">
+        <a href="https://theblotter-room.com/pages/about">About</a>
+        <a>•</a>
+        <a href="https://theblotter-room.com/pages/privacy-policy">Privacy & Policy</a>
+        <a>•</a>
+        <a href="https://theblotter-room.com/pages/terms-condition">Terms & Conditions</a>
+        <a>•</a>
+        <a href="https://theblotter-room.com/pages/contact">Contact</a>
+      </div>
+      <div class="pagination">
+        <div class="page-number">{{ paginate | default_pagination: next: ' ', previous: ' ' }}</div>
+      </div>
     </div>
   </div>
 </div>
-
