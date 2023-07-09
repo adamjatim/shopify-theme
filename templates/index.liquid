@@ -15,8 +15,6 @@
 
 {% assign sorted_and_paginated_products = sorted_products | slice: 0, product_per_page %}
 
-{% paginate sorted_products by product_per_page %}
-{% assign pagination = paginate %}
 
 <div class="gap-main-border">
   <div class="main-border">
@@ -83,56 +81,47 @@
       <div class="main-right-bar">
         <ul>
           {% for product in sorted_and_paginated_products %}
-          {% assign trimmed_title = product.title | truncate: 38, '' %}
+            {% assign trimmed_title = product.title | truncate: 38, '' %}
 
-          {% if product.available %}
-            {% if forloop.index <= 4 %}
-              <li class="border">
-                <!-- Product content -->
-                <a class="product-card" href="{{ product.url }}">
-                  <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
-                  <p class="text-product">
-                    {{ trimmed_title }}
-                    <br>
-                    {% if product.compare_at_price > product.price %}
-                      <span class="compare-price">{{ product.compare_at_price | money }}</span>
+            {% if product.available %}
+              {% if forloop.index <= 4 %}
+                <li class="border">
+                  <!-- Product content -->
+                  <a class="product-card" href="{{ product.url }}">
+                    <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
+                    <p class="text-product">
+                      {{ trimmed_title }}
                       <br>
-                      <span class="original-price">{{ product.price | money }}</span>
-                    {% else %}
-                      <span class="original-price">{{ product.price | money }}</span>
-                    {% endif %}
-                  </p>
-                </a>
-              </li>
+                      {% if product.compare_at_price > product.price %}
+                        <span class="compare-price">{{ product.compare_at_price | money }}</span>
+                        <br>
+                        <span class="original-price">{{ product.price | money }}</span>
+                      {% else %}
+                        <span class="original-price">{{ product.price | money }}</span>
+                      {% endif %}
+                    </p>
+                  </a>
+                </li>
+              {% endif %}
             {% endif %}
-          {% endif %}
-        {% endfor %}
+          {% endfor %}
         </ul>
       </div>
     </div>
-    <div class="flex bottom-content">
-      <div class="about" align="right">
-        <a href="https://theblotter-room.com/pages/about">About</a>
-        <a>•</a>
-        <a href="https://theblotter-room.com/pages/privacy-policy">Privacy & Policy</a>
-        <a>•</a>
-        <a href="https://theblotter-room.com/pages/terms-condition">Terms & Conditions</a>
-        <a>•</a>
-        <a href="https://theblotter-room.com/pages/contact">Contact</a>
-      </div>
-      <div class="pagination">
+    <div class="pagination">
+      {% assign total_pages = product_per_page | minus: 1 %}
+      {% assign current_page = 0 %}
+      {% if product_per_page > 1 %}
         <div class="page-number">
-          {% if pagination.previous %}
-            <a href="{{ pagination.previous.url }}" class="button">BACK</a>
+          {% if current_page > 0 %}
+            <a href="?page={{ current_page | minus: 1 }}" class="button">BACK</a>
           {% endif %}
-          
-          {% if pagination.next %}
-            <a href="{{ pagination.next.url }}" class="button">NEXT</a>
+          {% if current_page < total_pages %}
+            <a href="?page={{ current_page | plus: 1 }}" class="button">NEXT</a>
           {% endif %}
         </div>
-      </div>
+      {% endif %}
     </div>
   </div>
 </div>
 
-{% endpaginate %}
