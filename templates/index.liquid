@@ -12,7 +12,7 @@
   {% endif %}
 {% endfor %}
 
-{% assign sort_collection = collection.products | sort: "created_at" %}
+{% assign sort_collection = collection.products %}
 
 {% paginate sort_collection by product_per_page %}
 
