@@ -27,25 +27,25 @@ let pagePaginate = 1;
 
 // back button
 $(document).on('click', '#back-page', function() {
-  console.log("back button clicked")
-
+  
   if (pagePaginate == 1) {
-    return;
+    console.log("back button clicked");
+    console.log("page number 1 mtfck");
   }
-  if (pagePaginate >= 1) {
+  if (pagePaginate > 1) {
     pagePaginate -= pagePaginate;
+    console.log("back button clicked");
+    console.log("page number -1 mtfck");
   }
 })
 
 // next button
 $(document).on('click', '#next-page', function() {
-  console.log("next button clicked")
 
-  if (pagePaginate == 1) {
-    return;
-  }
   if (pagePaginate >= 1) {
-    pagePaginate -= pagePaginate;
+    pagePaginate += pagePaginate;
+    console.log("next button clicked");
+    console.log("page number +1 mtfck");
   }
 })
 
