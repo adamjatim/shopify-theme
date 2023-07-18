@@ -103,7 +103,7 @@ function fetchProductList() {
 }
 {% endjavascript %}
 
-<div class="gap-main-border"`>
+<div class="gap-main-border">
   <div class="main-border">
     <div class="top-menu">
       <div class="top-menu-right">
@@ -182,7 +182,9 @@ function fetchProductList() {
         <a href="https://theblotter-room.com/pages/contact">Contact</a>
       </div>
       <div class="pagination">
-        <div class="page-number"><!--{{ paginate | default_pagination: next: ' ', previous: ' ' }}--></div>
+        <div class="page-number">{% comment %}
+          {{ paginate | default_pagination: next: ' ', previous: ' ' }}
+        {% endcomment %}</div>
       </div>
     </div>
   </div>
