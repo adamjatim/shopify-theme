@@ -53,7 +53,7 @@ $(document).ready(function() {
 });
 
 function fetchProductList() {
-  let shopLink = "https://theblotter-room.com/products";
+  let shopLink = "https://adamjatimstore.myshopify.com/";
   $('#products-list').empty();
 
   let displayed_products_top = 0;
@@ -101,22 +101,6 @@ function fetchProductList() {
   }
 }
 {% endjavascript %}
-
-
-
-{% assign product_per_page = 1 %}
-{% assign available_product_per_page = 1 %}
-{% for product in collection.products%}
-  {% assign product_per_page = product_per_page | plus: 1 %}
-  {% if product.available %}
-    {% assign available_product_per_page = available_product_per_page | plus: 1 %}
-    {% if available_product_per_page == 8 %}
-      {% break %}
-    {% endif %}
-  {% endif %}
-{% endfor %}
-
-{% paginate collection.products by product_per_page %}
 
 <div class="gap-main-border"`>
   <div class="main-border">
@@ -197,10 +181,9 @@ function fetchProductList() {
         <a href="https://theblotter-room.com/pages/contact">Contact</a>
       </div>
       <div class="pagination">
-        <div class="page-number">{{ paginate | default_pagination: next: ' ', previous: ' ' }}</div>
+        <div class="page-number"><!--{{ paginate | default_pagination: next: ' ', previous: ' ' }}--></div>
       </div>
     </div>
   </div>
 </div>
 
-{% endpaginate %}
