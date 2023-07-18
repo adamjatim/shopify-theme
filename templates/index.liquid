@@ -72,16 +72,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var priceSpan = document.createElement('span');
     priceSpan.classList.add('original-price');
-    priceSpan.innerHTML = dataCollectionProducts[i].price;
+
+    var childPriceSpan = document.createElement('span');
+    childPriceSpan.classList.add('money')
+    childPriceSpan.innerHTML = dataCollectionProducts[i].price;
 
     var comparePriceSpan = document.createElement('span');
     comparePriceSpan.classList.add('compare-price');
 
+    var childComparePriceSpan = document.createElement('span');
+    childComparePriceSpan.classList.add('money');
+
     if (dataCollectionProducts[i].compare_at_price > dataCollectionProducts[i].price) {
-      comparePriceSpan.innerHTML = dataCollectionProducts[i].compare_at_price + '<br>';
-      productText.appendChild(comparePriceSpan);
+      childComparePriceSpan.innerHTML = dataCollectionProducts[i].compare_at_price + '<br>';
+      productText.appendChild(childComparePriceSpan);
     }
 
+    priceSpan.appendChild(childPriceSpan);
     productText.appendChild(priceSpan);
     productLink.appendChild(productImage);
     productLink.appendChild(productText);
