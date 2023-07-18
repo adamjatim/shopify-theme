@@ -54,7 +54,7 @@ $(document).ready(function() {
 
 function fetchProductList() {
   let shopLink = "https://adamjatimstore.myshopify.com/";
-  $('#products-list').empty();
+  $('ul#products-list').empty();
 
   let displayed_products_top = 0;
   let add_num_displayed_products_top = displayed_products_top + 1;
@@ -63,7 +63,7 @@ function fetchProductList() {
 
   for (let i = 0 + (pagePaginate * 8); i < (pagePaginate + 1) * 8; i++) {
     if (displayed_products_top < 4) {
-      $('#products-list').append(
+      $('ul#products-list').append(
         '<li class="border">' +
         '<a class="product-card" href="' + shopLink + dataCollectionProducts[i].handle + '">' +
         '<img class="product-image" src="' + dataCollectionProducts[i].featured_image + '">' +
