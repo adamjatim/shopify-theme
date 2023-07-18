@@ -1,7 +1,7 @@
 
 {% assign collection = collections.all %}
 
-{% javascript %}
+<script>
 var collectionProducts = {{ collection.products | json | sort: "published_at" | reverse }};
 var dataCollectionProducts = [];
 
@@ -93,8 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
     productsList.appendChild(productListItems[j]);
   }
 });
-
-{% endjavascript %}
+</script>
 
 <div class="gap-main-border">
   <div class="main-border">
