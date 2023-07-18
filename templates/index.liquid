@@ -1,4 +1,4 @@
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 {% assign collection = collections.all %}
 
 {% javascript %}
@@ -47,59 +47,53 @@ $(document).on('click', '#next-page', function() {
   console.log("page number +1 mtfck");
 });
 
-$(document).ready(function() {
-  fetchProductList();
-  setInterval(fetchProductList, 2000);
+document.addEventListener('DOMContentLoaded', function() {
+  var productsList = document.getElementById('products-list');
+  var productListItems = [];
+
+  // Preload the product list items
+  for (var i = 0; i < dataCollectionProducts.length; i++) {
+    var listItem = document.createElement('li');
+    listItem.classList.add('border');
+
+    var productLink = document.createElement('a');
+    productLink.classList.add('product-card');
+    productLink.href = shopLink + dataCollectionProducts[i].handle;
+
+    var productImage = document.createElement('img');
+    productImage.classList.add('product-image');
+    productImage.src = dataCollectionProducts[i].featured_image;
+
+    var productText = document.createElement('p');
+    productText.classList.add('text-product');
+    productText.innerHTML = dataCollectionProducts[i].title.substr(0, 38) + '<br>';
+
+    var priceSpan = document.createElement('span');
+    priceSpan.classList.add('original-price');
+    priceSpan.innerHTML = dataCollectionProducts[i].price;
+
+    var comparePriceSpan = document.createElement('span');
+    comparePriceSpan.classList.add('compare-price');
+
+    if (dataCollectionProducts[i].compare_at_price > dataCollectionProducts[i].price) {
+      comparePriceSpan.innerHTML = dataCollectionProducts[i].compare_at_price + '<br>';
+      productText.appendChild(comparePriceSpan);
+    }
+
+    productText.appendChild(priceSpan);
+    productLink.appendChild(productImage);
+    productLink.appendChild(productText);
+    listItem.appendChild(productLink);
+
+    productListItems.push(listItem);
+  }
+
+  // Append the preloaded product list items to #products-list
+  for (var j = 0; j < productListItems.length; j++) {
+    productsList.appendChild(productListItems[j]);
+  }
 });
 
-function fetchProductList() {
-  let shopLink = "https://adamjatimstore.myshopify.com/";
-  $('ul#products-list').empty();
-
-  let displayed_products_top = 0;
-  let add_num_displayed_products_top = displayed_products_top + 1;
-  let displayed_products_bottom = 0;
-  let total_products_count = dataCollectionProducts.length;
-
-  for (let i = 0 + (pagePaginate * 8); i < (pagePaginate + 1) * 8; i++) {
-    if (displayed_products_top < 4) {
-      $('ul#products-list').append(
-        '<li class="border">' +
-        '<a class="product-card" href="' + shopLink + dataCollectionProducts[i].handle + '">' +
-        '<img class="product-image" src="' + dataCollectionProducts[i].featured_image + '">' +
-        '<p class="text-product">' +
-        dataCollectionProducts[i].title.substr(0, 38) + '<br' +
-        (dataCollectionProducts[i].compare_at_price > dataCollectionProducts[i].price ?
-          '<span class="compare-price">' + dataCollectionProducts[i].compare_at_price + '</span>' +
-          '<br>' +
-          '<span class="original-price">' + dataCollectionProducts[i].price + '</span>' :
-          '<span class="original-price">' + dataCollectionProducts[i].price + '</span>'
-        ) +
-        '</p>' +
-        '</a>' +
-        '</li>'
-      );
-      displayed_products_top = add_num_displayed_products_top;
-    } else {
-      $('#products-list').append(
-        '<li class="border border-product-5">' +
-        '<a class="product-card" href="' + shopLink + dataCollectionProducts[i].handle + '">' +
-        '<img class="product-image" src="' + dataCollectionProducts[i].featured_image + '">' +
-        '<p class="text-product">' +
-        dataCollectionProducts[i].title.substr(0, 38) + '<br' +
-        (dataCollectionProducts[i].compare_at_price > dataCollectionProducts[i].price ?
-          '<span class="compare-price">' + dataCollectionProducts[i].compare_at_price + '</span>' +
-          '<br>' +
-          '<span class="original-price">' + dataCollectionProducts[i].price + '</span>' :
-          '<span class="original-price">' + dataCollectionProducts[i].price + '</span>'
-        ) +
-        '</p>' +
-        '</a>' +
-        '</li>'
-      );
-    }
-  }
-}
 {% endjavascript %}
 
 <div class="gap-main-border">
