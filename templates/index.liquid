@@ -23,6 +23,87 @@ dataCollectionProducts.sort(function(a, b) {
   }
 });
 
+let pagePaginate = 0;
+
+// back button
+$(document).on('click', '#back-page', function() {
+  console.log("back button clicked");
+  if (pagePaginate == 0) {
+    console.log("page number 1 mtfck");
+  }
+  if (pagePaginate >= 1) {
+    pagePaginate -= pagePaginate;
+    console.log("page number -1 mtfck");
+  }
+})
+
+// next button
+$(document).on('click', '#next-page', function() {
+  if (dataCollectionProducts.length / 8 <= pagePaginate*8) {  
+    console.log("next page is undifine mtfck");
+    continue;
+  }
+  pagePaginate += pagePaginate;
+  console.log("next button clicked");
+  console.log("page number +1 mtfck");
+})
+
+$(document).ready(function() {
+  fetchProductList();
+  setInterval(fetchProductList, 2000 );
+});
+
+function fetchProductList() {
+  $(document).ready(function() {
+    let shopLink = "https://theblotter-room.com/products";
+    $('#products-list').empty();
+
+    let displayed_products_top = 0;
+    let add_num_displayed_products_top = displayed_products_top+1;
+    let displayed_products_bottom = 0;
+    let total_products_count = dataCollectionProducts.length;
+
+    for (let i = 0 + (pagePaginate * 8); i < (pagePaginate+1) * 8; i++) {
+      if(displayed_products_top < 4){
+        $('#products-list').append(
+          '<li class="border">'+
+            '<a class="product-card" href="'+shopLink+dataCollectionProducts[i].handle+'">'+
+              '<img class="product-image" src="'+dataCollectionProducts[i].featured_image+'">'+
+              '<p class="text-product">'+
+                dataCollectionProducts[i].title.substr(0, 38)+'<br'+
+                (dataCollectionProducts[i].compare_at_price > dataCollectionProducts[i].price ? 
+                  '<span class="compare-price">'+dataCollectionProducts[i].compare_at_price+'</span>'+
+                  '<br>'+
+                  '<span class="original-price">'+dataCollectionProducts[i].price+'</span>':
+                  '<span class="original-price">'+dataCollectionProducts[i].price+'</span>'
+                )+
+              '</p>'+
+            '</a>'+
+          '</li>'
+        );
+        displayed_products_top = add_num_displayed_products_top;
+      }
+      else {
+        $('#products-list').append(
+          '<li class="border border-product-5">'+
+            '<a class="product-card" href="'+shopLink+dataCollectionProducts[i].handle+'">'+
+              '<img class="product-image" src="'+dataCollectionProducts[i].featured_image+'">'+
+              '<p class="text-product">'+
+                dataCollectionProducts[i].title.substr(0, 38)+'<br'+
+                (dataCollectionProducts[i].compare_at_price > dataCollectionProducts[i].price ? 
+                  '<span class="compare-price">'+dataCollectionProducts[i].compare_at_price+'</span>'+
+                  '<br>'+
+                  '<span class="original-price">'+dataCollectionProducts[i].price+'</span>':
+                  '<span class="original-price">'+dataCollectionProducts[i].price+'</span>'
+                )+
+              '</p>'+
+            '</a>'+
+          '</li>'
+        );
+      }
+    }
+  })
+}
 </script>
 
 
@@ -104,65 +185,7 @@ dataCollectionProducts.sort(function(a, b) {
       </div>
       <div class="main-right-bar">
         <ul id="products-list">
-          {% assign sorted_products = collection.products | sort: 'published_at' %}
-          {% assign displayed_products_top = 0 %}
-          {% assign displayed_products_bottom = 0 %}
-          {% assign total_products_count = sorted_products.size %}
-
-          {% for product in sorted_products %}
-
-            {% assign trimmed_title = product.title | truncate: 38, '' %}
-
-            {% if product.available %}
-              {% if displayed_products_top < 4 %}
-                <!-- Display products at the top -->
-                <li class="border">
-                  <!-- Product content -->
-                  <a class="product-card" href="{{ product.url }}">
-                    <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
-                    <p class="text-product">
-                      {{ trimmed_title }}
-                      <br>
-                      {% if product.compare_at_price > product.price %}
-                        <span class="compare-price">{{ product.compare_at_price | money }}</span>
-                        <br>
-                        <span class="original-price">{{ product.price | money }}</span>
-                      {% else %}
-                        <span class="original-price">{{ product.price | money }}</span>
-                      {% endif %}
-                    </p>
-                  </a>
-                </li>
-                {% assign displayed_products_top = displayed_products_top | plus: 1 %}
-              {% else %}
-                {% if displayed_products_bottom < 4 %}
-                  <!-- Display products at the bottom -->
-                  <li class="border border-product-5">
-                    <!-- Product content -->
-                    <a class="product-card" href="{{ product.url }}">
-                      <img class="product-image" src="{{ product.featured_image | img_url: 'large', crop: 'center' }}">
-                      <p class="text-product">
-                        {{ trimmed_title }}
-                        <br>
-                        {% if product.compare_at_price > product.price %}
-                          <span class="compare-price">{{ product.compare_at_price | money }}</span>
-                          <br>
-                          <span class="original-price">{{ product.price | money }}</span>
-                        {% else %}
-                          <span class="original-price">{{ product.price | money }}</span>
-                        {% endif %}
-                      </p>
-                    </a>
-                  </li>
-                  {% assign displayed_products_bottom = displayed_products_bottom | plus: 1 %}
-                {% endif %}
-              {% endif %}
-            {% endif %}
-
-            {% if displayed_products_top >= 4 and displayed_products_bottom >= 4 %}
-              {% break %}
-            {% endif %}
-          {% endfor %}
+          
         </ul>
       </div>
     </div>
