@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
     childComparePriceSpan.classList.add('money');
 
     if (dataCollectionProducts[i].compare_at_price > dataCollectionProducts[i].price) {
-      childComparePriceSpan.innerHTML = dataCollectionProducts[i].compare_at_price/100 + '<br>'; // for rounded 2 zero after coma
+      childComparePriceSpan.innerHTML = dataCollectionProducts[i].compare_at_price/100; // for rounded 2 zero after coma
       productText.appendChild(comparePriceSpan);
       comparePriceSpan.appendChild(childComparePriceSpan);
     }
