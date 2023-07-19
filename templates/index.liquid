@@ -72,7 +72,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var priceSpan = document.createElement('span');
     priceSpan.classList.add('original-price');
-    priceSpan.innerHTML = '<br>';
 
     var childPriceSpan = document.createElement('span');
     childPriceSpan.classList.add('money')
@@ -88,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
       childComparePriceSpan.innerHTML = dataCollectionProducts[i].compare_at_price/100; // for rounded 2 zero after coma
       productText.appendChild(comparePriceSpan);
       comparePriceSpan.appendChild(childComparePriceSpan);
-
+      priceSpan.innerHTML = '<br>';
     }
 
     priceSpan.appendChild(childPriceSpan);
