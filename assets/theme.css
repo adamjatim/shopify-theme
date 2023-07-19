@@ -169,7 +169,7 @@ h1.title {
 }
  
 .left-bar {
-  width: 200px;
+  min-width: 200px;
   border: 1px solid #000000;
   height: 628px;
   box-sizing: border-box;

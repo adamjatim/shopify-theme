@@ -85,7 +85,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (dataCollectionProducts[i].compare_at_price > dataCollectionProducts[i].price) {
       childComparePriceSpan.innerHTML = dataCollectionProducts[i].compare_at_price/100 + '<br>'; // for rounded 2 zero after coma
-      productText.appendChild(childComparePriceSpan);
+      productText.appendChild(comparePriceSpan);
+      comparePriceSpan.appendChild(childComparePriceSpan);
     }
 
     priceSpan.appendChild(childPriceSpan);
