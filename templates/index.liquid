@@ -72,6 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var priceSpan = document.createElement('span');
     priceSpan.classList.add('original-price');
+    priceSpan.innerHTML = '<br>';
 
     var childPriceSpan = document.createElement('span');
     childPriceSpan.classList.add('money')
@@ -79,7 +80,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var comparePriceSpan = document.createElement('span');
     comparePriceSpan.classList.add('compare-price');
-    comparePriceSpan.innerHTML = '<br>';
 
     var childComparePriceSpan = document.createElement('span');
     childComparePriceSpan.classList.add('money');
