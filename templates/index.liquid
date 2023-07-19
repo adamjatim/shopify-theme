@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var lengthProducts = dataCollectionProducts.length;
 
   // Preload the product list items
-  for (var i = 0 + pagePaginate*8; i < pagePaginate; i++) {
+  for (var i = 0 + (pagePaginate*8); i < pagePaginate; i++) {
     var listItem = document.createElement('li');
     listItem.classList.add('border');
 
