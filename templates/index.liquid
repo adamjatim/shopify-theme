@@ -25,7 +25,7 @@
   let pagePaginate = 0;
 
 // back button
-  document.getElementById('back-page').addEventListener('click', function() {
+  document.getElementById('backPage').addEventListener('click', function() {
     if (pagePaginate == 0) {
       console.log("page number 1 mtfck");
     } else {
@@ -37,7 +37,7 @@
   });
 
 // next button
-  document.getElementById('next-page').addEventListener('click', function() {
+  document.getElementById('nextPage').addEventListener('click', function() {
     if (dataCollectionProducts.length / 8 <= (pagePaginate + 1) * 8) {
       console.log("next page is undefined mtfck");
     } else {
@@ -126,10 +126,10 @@
       </div>
       <div class="top-menu-left">
         <div class="top-menu-content">
-          <a id="back-page">
+          <a id="backPage">
             <div class="button">BACK</div>
           </a>
-          <a id="next-page">
+          <a id="nextPage">
             <div class="button">NEXT</div>
           </a>
         </div>
