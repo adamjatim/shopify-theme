@@ -26,7 +26,7 @@ dataCollectionProducts.sort(function(a, b) {
 let pagePaginate = 0;
 
 // back button
-$(document).on('click', '#backPage', function() {
+$(document).on('click', '#back-page', function() {
   console.log("back button clicked");
   if (pagePaginate == 0) {
     console.log("page number 1 mtfck");
@@ -38,7 +38,7 @@ $(document).on('click', '#backPage', function() {
 });
 
 // next button
-$(document).on('click', '#nextPage', function() {
+$(document).on('click', '#next-page', function() {
   if (dataCollectionProducts.length / 8 <= pagePaginate * 8) {
     console.log("next page is undefined mtfck");
   }
