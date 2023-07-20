@@ -38,7 +38,7 @@ $(document).on('click', '#back-page', function() {
 
 // next button
 $(document).on('click', '#next-page', function() {
-    if (dataCollectionProducts.length / 8 <= (pagePaginate + 1) * 8) {
+    if (dataCollectionProducts.length / 8 <= pagePaginate * 8) {
       console.log("next page is undefined mtfck");
     } else {
       pagePaginate += 1;
