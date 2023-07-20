@@ -25,7 +25,7 @@
   let pagePaginate = 0;
 
 // back button
-  document.getElementById('backPage').addEventListener('click', function() {
+$(document).on('click', '#back-page', function() {
     if (pagePaginate == 0) {
       console.log("page number 1 mtfck");
     } else {
@@ -37,7 +37,7 @@
   });
 
 // next button
-  document.getElementById('nextPage').addEventListener('click', function() {
+$(document).on('click', '#next-page', function() {
     if (dataCollectionProducts.length / 8 <= (pagePaginate + 1) * 8) {
       console.log("next page is undefined mtfck");
     } else {
