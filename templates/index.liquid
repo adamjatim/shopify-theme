@@ -79,44 +79,56 @@ function updateProductList() {
   let displayedProducts = dataCollectionProducts.slice(startIndex, endIndex);
 
   displayedProducts.forEach(product => {
-    // Create the product list items and append them to productsList
-    displayedProducts.forEach(product => {
-    // Create the product list item container (e.g., <li>)
     let listItem = document.createElement('li');
-    listItem.classList.add('product-item'); // Add appropriate classes for styling
+    listItem.classList.add('border');
 
-    // Create the link to the product page (e.g., <a href="product_url">)
+    if (displayed_products_top >= 4) {
+      listItem.classList.add('border-product-5');
+    }
+
+    displayed_products_top++;
+
     let productLink = document.createElement('a');
-    productLink.classList.add('product-link'); // Add appropriate classes for styling
-    productLink.href = shopLink + product.handle; // Assuming "handle" is the product's URL handle
+    productLink.classList.add('product-card');
+    productLink.href = shopLink + product.handle;
 
-    // Create the product image element (e.g., <img src="product_image_url">)
     let productImage = document.createElement('img');
-    productImage.classList.add('product-image'); // Add appropriate classes for styling
-    productImage.src = product.featured_image; // Assuming "featured_image" is the product's image URL
+    productImage.classList.add('product-image');
+    productImage.src = product.featured_image;
 
-    // Create the product title element (e.g., <p>Title</p>)
-    let productTitle = document.createElement('p');
-    productTitle.classList.add('product-title'); // Add appropriate classes for styling
-    productTitle.textContent = product.title; // Assuming "title" is the product's title
+    let productText = document.createElement('p');
+    productText.classList.add('text-product');
+    productText.innerHTML = product.title.substr(0, 38) + '<br>';
 
-    // Create the product price element (e.g., <span>Price</span>)
-    let productPrice = document.createElement('span');
-    productPrice.classList.add('product-price'); // Add appropriate classes for styling
-    productPrice.textContent = '$' + (product.price / 100).toFixed(2); // Convert price to appropriate format
+    let priceSpan = document.createElement('span');
+    priceSpan.classList.add('original-price');
 
-    // Append elements to the product link
+    let childPriceSpan = document.createElement('span');
+    childPriceSpan.classList.add('money');
+    childPriceSpan.innerHTML = (product.price / 100).toFixed(2); // for rounded 2 zero after coma
+
+    let comparePriceSpan = document.createElement('span');
+    comparePriceSpan.classList.add('compare-price');
+
+    let childComparePriceSpan = document.createElement('span');
+    childComparePriceSpan.classList.add('money');
+
+    if (product.compare_at_price > product.price) {
+      childComparePriceSpan.innerHTML = (product.compare_at_price / 100).toFixed(2); // for rounded 2 zero after coma
+      productText.appendChild(comparePriceSpan);
+      comparePriceSpan.appendChild(childComparePriceSpan);
+      priceSpan.innerHTML = '<br>';
+    }
+
+    priceSpan.appendChild(childPriceSpan);
+    productText.appendChild(priceSpan);
     productLink.appendChild(productImage);
-    productLink.appendChild(productTitle);
-    productLink.appendChild(productPrice);
-
-    // Append the product link to the list item
+    productLink.appendChild(productText);
     listItem.appendChild(productLink);
 
-    // Append the list item to the productsList
     productsList.appendChild(listItem);
-    });
   });
+
 
   // Save the current page number to localStorage
   localStorage.setItem('currentPage', pagePaginate);
