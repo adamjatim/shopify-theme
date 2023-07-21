@@ -74,7 +74,7 @@ $(document).on('click', '#next-page', function() {
         let products = data.products;
 
         // Preload the product list items
-        for (let i = 0 + (pagePaginate * 8); i < (pagePaginate + 1) * 8; i++) {
+        for (let i = 0 + (page * 8); i < (page + 1) * 8; i++) {
           let listItem = document.createElement('li');
 
           if (displayed_products_top < 4) {
