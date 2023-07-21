@@ -26,39 +26,27 @@
 
 // back button
 $(document).on('click', '#back-page', function() {
-  if (pagePaginate === 0) {
-    console.log("Page number 1 reached.");
-  } else {
-    pagePaginate -= 1;
-    console.log("Back button clicked");
-    console.log("Page number -1");
-    updateProductList(pagePaginate);
-  }
-});
+    if (pagePaginate == 0) {
+      console.log("page number 1 mtfck");
+    } else {
+      pagePaginate -= 1;
+      console.log("back button clicked");
+      console.log("page number -1 mtfck");
+      updateProductList(); // Display the previous page of products
+    }
+  });
 
 // next button
 $(document).on('click', '#next-page', function() {
-  if (dataCollectionProducts.length / 8 <= pagePaginate * 8) {
-    console.log("Next page is undefined.");
-  } else {
-    pagePaginate += 1;
-    console.log("Next button clicked");
-    console.log("Page number +1");
-    updateProductList(pagePaginate);
-  }
-});
-
-  // Function to fetch the product list
-  async function fetchProductList(page) {
-    try {
-      const response = await fetch(`/api/products?page=${page}`);
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Error fetching product list:', error);
-      return null;
+    if (dataCollectionProducts.length / 8 <= pagePaginate * 8) {
+      console.log("next page is undefined mtfck");
+    } else {
+      pagePaginate += 1;
+      console.log("next button clicked");
+      console.log("page number +1 mtfck");
+      updateProductList(); // Display the next page of products
     }
-  }
+  });
 
 // Function to update the product list
   function updateProductList() {
@@ -68,73 +56,61 @@ $(document).on('click', '#next-page', function() {
 
     let displayed_products_top = 0;
 
-    try {
-      const data = await fetchProductList(page);
-      if (data && data.products && data.products.length > 0) {
-        let products = data.products;
+// Preload the product list items
+    for (let i = 0 + (pagePaginate * 8); i < (pagePaginate + 1) * 8; i++) {
+      let listItem = document.createElement('li');
 
-        // Preload the product list items
-        for (let i = 0 + (page * 8); i < (page + 1) * 8; i++) {
-          let listItem = document.createElement('li');
-
-          if (displayed_products_top < 4) {
-            listItem.classList.add('border');
-          } else {
-            listItem.classList.add('border');
-            listItem.classList.add('border-product-5');
-          } displayed_products_top++;
-
-          let productLink = document.createElement('a');
-          productLink.classList.add('product-card');
-          productLink.href = shopLink + dataCollectionProducts[i].handle;
-
-          let productImage = document.createElement('img');
-          productImage.classList.add('product-image');
-          productImage.src = dataCollectionProducts[i].featured_image;
-
-          let productText = document.createElement('p');
-          productText.classList.add('text-product');
-          productText.innerHTML = dataCollectionProducts[i].title.substr(0, 38) + '<br>';
-
-          let priceSpan = document.createElement('span');
-          priceSpan.classList.add('original-price');
-
-          let childPriceSpan = document.createElement('span');
-          childPriceSpan.classList.add('money');
-          childPriceSpan.innerHTML = dataCollectionProducts[i].price / 100; // for rounded 2 zero after coma
-
-          let comparePriceSpan = document.createElement('span');
-          comparePriceSpan.classList.add('compare-price');
-
-          let childComparePriceSpan = document.createElement('span');
-          childComparePriceSpan.classList.add('money');
-
-          if (dataCollectionProducts[i].compare_at_price > dataCollectionProducts[i].price) {
-            childComparePriceSpan.innerHTML = dataCollectionProducts[i].compare_at_price / 100; // for rounded 2 zero after coma
-            productText.appendChild(comparePriceSpan);
-            comparePriceSpan.appendChild(childComparePriceSpan);
-            priceSpan.innerHTML = '<br>';
-          }
-
-          priceSpan.appendChild(childPriceSpan);
-          productText.appendChild(priceSpan);
-          productLink.appendChild(productImage);
-          productLink.appendChild(productText);
-          listItem.appendChild(productLink);
-
-          productsList.appendChild(listItem);
-        }
+      if (displayed_products_top < 4) {
+        listItem.classList.add('border');
       } else {
-        console.error('No product data found.');
+        listItem.classList.add('border');
+        listItem.classList.add('border-product-5');
+      } displayed_products_top++;
+
+      let productLink = document.createElement('a');
+      productLink.classList.add('product-card');
+      productLink.href = shopLink + dataCollectionProducts[i].handle;
+
+      let productImage = document.createElement('img');
+      productImage.classList.add('product-image');
+      productImage.src = dataCollectionProducts[i].featured_image;
+
+      let productText = document.createElement('p');
+      productText.classList.add('text-product');
+      productText.innerHTML = dataCollectionProducts[i].title.substr(0, 38) + '<br>';
+
+      let priceSpan = document.createElement('span');
+      priceSpan.classList.add('original-price');
+
+      let childPriceSpan = document.createElement('span');
+      childPriceSpan.classList.add('money');
+      childPriceSpan.innerHTML = dataCollectionProducts[i].price / 100; // for rounded 2 zero after coma
+
+      let comparePriceSpan = document.createElement('span');
+      comparePriceSpan.classList.add('compare-price');
+
+      let childComparePriceSpan = document.createElement('span');
+      childComparePriceSpan.classList.add('money');
+
+      if (dataCollectionProducts[i].compare_at_price > dataCollectionProducts[i].price) {
+        childComparePriceSpan.innerHTML = dataCollectionProducts[i].compare_at_price / 100; // for rounded 2 zero after coma
+        productText.appendChild(comparePriceSpan);
+        comparePriceSpan.appendChild(childComparePriceSpan);
+        priceSpan.innerHTML = '<br>';
       }
-    } catch (error) {
-      console.error('Error updating product list:', error);
+
+      priceSpan.appendChild(childPriceSpan);
+      productText.appendChild(priceSpan);
+      productLink.appendChild(productImage);
+      productLink.appendChild(productText);
+      listItem.appendChild(productLink);
+
+      productsList.appendChild(listItem);
     }
+  }
 
 // Initial load of the product list
-document.addEventListener('DOMContentLoaded', function() {
-  updateProductList(pagePaginate);
-});
+  document.addEventListener('DOMContentLoaded', updateProductList);
 </script>
 
 <div class="gap-main-border">
