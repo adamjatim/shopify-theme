@@ -32,7 +32,7 @@ const pagePaginate = Number(urlParams.get('page'));
 function updateProductList() {
   let shopLink = window.location.origin + window.location.pathname ;
   let productsList = document.getElementById('products-list');
-  productsList.innerHTML = ""; // Clear the existing product list
+  
   let displayed_products_top = 0;
 
   // Preload the product list items
