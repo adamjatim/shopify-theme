@@ -28,8 +28,6 @@ const urlParams = new URLSearchParams(queryUrlString);
 // Retrieve the last displayed page number from localStorage (if available)
 const pagePaginate = Number(urlParams.get('page'));
 
-updateProductList(); // Display the next page of products
-
 // Function to update the product list
 function updateProductList() {
   let shopLink = window.location.origin + window.location.pathname ;
@@ -92,6 +90,7 @@ function updateProductList() {
 }
 
 // Initial load of the product list
+updateProductList(); // Display the next page of products
 document.addEventListener('DOMContentLoaded', updateProductList);
 </script>
 
