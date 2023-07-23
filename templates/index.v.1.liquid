@@ -1,4 +1,3 @@
-
 {% assign collection = collections.all %}
 
 <script>
@@ -23,17 +22,18 @@ dataCollectionProducts.sort(function(a, b) {
   }
 });
 
-let pagePaginate = 0;
+// Retrieve the last displayed page number from localStorage (if available)
+let pagePaginate = parseInt(localStorage.getItem('currentPage')) || 0;
 
 // back button
 $(document).on('click', '#back-page', function() {
-  console.log("back button clicked");
   if (pagePaginate == 0) {
     console.log("page number 1 mtfck");
-  }
-  if (pagePaginate >= 1) {
-    pagePaginate -= pagePaginate;
+  } else {
+    pagePaginate -= 1;
+    console.log("back button clicked");
     console.log("page number -1 mtfck");
+    updateProductList(); // Display the previous page of products
   }
 });
 
@@ -41,63 +41,59 @@ $(document).on('click', '#back-page', function() {
 $(document).on('click', '#next-page', function() {
   if (dataCollectionProducts.length / 8 <= pagePaginate * 8) {
     console.log("next page is undefined mtfck");
-  }
-  else {
-    pagePaginate += pagePaginate;
+  } else {
+    pagePaginate += 1;
     console.log("next button clicked");
     console.log("page number +1 mtfck");
+    updateProductList(); // Display the next page of products
   }
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-  var productsList = document.getElementById('products-list');
-  var productListItems = [];
-  var shopLink = "https://adamjatimstore.myshopify.com/";
-  var lengthProducts = dataCollectionProducts.length;
-  var displayed_products_top = 0;
-  var displayed_products_bottom = 0;
+// Function to update the product list
+function updateProductList() {
+  let shopLink = "https://adamjatimstore.myshopify.com/";
+  let productsList = document.getElementById('products-list');
+  productsList.innerHTML = ""; // Clear the existing product list
+  let displayed_products_top = 0;
 
   // Preload the product list items
-  for (var i = 0 + (pagePaginate*8); i < (pagePaginate+1)*8; i++) {
-    var listItem = document.createElement('li');
+  for (let i = 0 + (pagePaginate * 8); i < (pagePaginate + 1) * 8; i++) {
+    let listItem = document.createElement('li');
 
-    if(displayed_products_top < 4){
+    if (displayed_products_top < 4) {
       listItem.classList.add('border');
-    }
-    else {
+    } else {
       listItem.classList.add('border');
-      
       listItem.classList.add('border-product-5');
-    }
-    displayed_products_top++;
+    } displayed_products_top++;
 
-    var productLink = document.createElement('a');
+    let productLink = document.createElement('a');
     productLink.classList.add('product-card');
     productLink.href = shopLink + dataCollectionProducts[i].handle;
 
-    var productImage = document.createElement('img');
+    let productImage = document.createElement('img');
     productImage.classList.add('product-image');
     productImage.src = dataCollectionProducts[i].featured_image;
 
-    var productText = document.createElement('p');
+    let productText = document.createElement('p');
     productText.classList.add('text-product');
     productText.innerHTML = dataCollectionProducts[i].title.substr(0, 38) + '<br>';
 
-    var priceSpan = document.createElement('span');
+    let priceSpan = document.createElement('span');
     priceSpan.classList.add('original-price');
 
-    var childPriceSpan = document.createElement('span');
-    childPriceSpan.classList.add('money')
+    let childPriceSpan = document.createElement('span');
+    childPriceSpan.classList.add('money');
     childPriceSpan.innerHTML = dataCollectionProducts[i].price / 100; // for rounded 2 zero after coma
 
-    var comparePriceSpan = document.createElement('span');
+    let comparePriceSpan = document.createElement('span');
     comparePriceSpan.classList.add('compare-price');
 
-    var childComparePriceSpan = document.createElement('span');
+    let childComparePriceSpan = document.createElement('span');
     childComparePriceSpan.classList.add('money');
 
     if (dataCollectionProducts[i].compare_at_price > dataCollectionProducts[i].price) {
-      childComparePriceSpan.innerHTML = dataCollectionProducts[i].compare_at_price/100; // for rounded 2 zero after coma
+      childComparePriceSpan.innerHTML = dataCollectionProducts[i].compare_at_price / 100; // for rounded 2 zero after coma
       productText.appendChild(comparePriceSpan);
       comparePriceSpan.appendChild(childComparePriceSpan);
       priceSpan.innerHTML = '<br>';
@@ -109,14 +105,13 @@ document.addEventListener('DOMContentLoaded', function() {
     productLink.appendChild(productText);
     listItem.appendChild(productLink);
 
-    productListItems.push(listItem);
+    productsList.appendChild(listItem);
   }
+  localStorage.setItem('currentPage', pagePaginate);
+}
 
-  // Append the preloaded product list items to #products-list
-  for (var j = 0; j < productListItems.length; j++) {
-    productsList.appendChild(productListItems[j]);
-  }
-});
+// Initial load of the product list
+document.addEventListener('DOMContentLoaded', updateProductList);
 </script>
 
 <div class="gap-main-border">
@@ -182,9 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </nav>
       </div>
       <div class="main-right-bar">
-        <ul id="products-list">
-          
-        </ul>
+        <ul id="products-list"></ul>
       </div>
     </div>
     <div class="flex bottom-content">
@@ -200,9 +193,8 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="pagination">
         <div class="page-number">{% comment %}
           {{ paginate | default_pagination: next: ' ', previous: ' ' }}
-        {% endcomment %}</div>
+          {% endcomment %}</div>
       </div>
     </div>
   </div>
 </div>
-
