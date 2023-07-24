@@ -128,7 +128,11 @@
   const urlParams = new URLSearchParams(queryUrlString);
 
   // Retrieve the last displayed page number from localStorage (if available)
-  const pagePaginate = Number(urlParams.get('page')) - 1; // for make the first index of paginate start by 0
+  if(Number(urlParams.get('page')) >= 0) {
+    const pagePaginate = Number(urlParams.get('page')) - 1; // for make the first index of paginate start by 0
+  } else {
+    const pagePaginate = 1;
+  }
   
   // back button
   $(document).on('click', '#back-page', function() {
