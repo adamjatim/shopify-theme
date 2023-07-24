@@ -136,8 +136,17 @@ function updateProductList() {
   productsList.innerHTML = ""; // Clear the existing product list
   let displayed_products_top = 0;
 
+  // Determine the start and end index for the current page
+  let startIndex = pagePaginate * 8;
+  let endIndex = (pagePaginate + 1) * 8;
+
+  // Ensure endIndex does not exceed the available products count
+  if (endIndex > dataCollectionProducts.length) {
+    endIndex = dataCollectionProducts.length;
+  }
+
   // Preload the product list items
-  for (let i = 0 + (pagePaginate * 8); i < (pagePaginate + 1) * 8; i++) {
+  for (let i = startIndex; i < endIndex; i++) {
     let listItem = document.createElement('li');
 
     if (displayed_products_top < 4) {
@@ -145,7 +154,8 @@ function updateProductList() {
     } else {
       listItem.classList.add('border');
       listItem.classList.add('border-product-5');
-    } displayed_products_top++;
+    }
+    displayed_products_top++;
 
     let productLink = document.createElement('a');
     productLink.classList.add('product-card');
@@ -191,5 +201,5 @@ function updateProductList() {
 }
 
 // Initial load of the product list
-updateProductList(); // Display the next page of products
+updateProductList();
 </script>
