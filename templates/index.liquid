@@ -129,7 +129,7 @@
 
   // Retrieve the last displayed page number from localStorage (if available)
   let pagePaginate = 0;
-  if(Number(urlParams.get('page')) >= 0) {
+  if(Number(urlParams.get('page')) > 0) {
     pagePaginate = Number(urlParams.get('page')) - 1; // for make the first index of paginate start by 0
   }
   
