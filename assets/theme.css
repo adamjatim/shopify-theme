@@ -807,6 +807,7 @@ nav[role=navigation] {
 
 .buckscc-currency-box {
   z-index: 1 !important;
+  margin-right: 0px !important;
 }
 
 .hxoSelectTheme.hxo-relative {
