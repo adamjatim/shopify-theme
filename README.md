@@ -1,10 +1,12 @@
 # TODO LIST
 
+## 25 July 2023
+
+- [x] produknya harus urut sesuai update terbaru
+
 ## 8 July 2023
 
 - [x] paginate-number & idr, kepanjangan.
-- [ ] produknya harus urut sesuai update terbaru
-
 
 ## 16 June 2023
 
