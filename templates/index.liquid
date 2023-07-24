@@ -103,14 +103,15 @@
 <script>
 var collectionProducts = {{ collection.products | json | sort: "published_at" | reverse }};
 var dataCollectionProducts = [];
-
-// get the available products
-for (let i = 0; i < collectionProducts.length; i++) {
-  if (collectionProducts[i].available == true) {
-    dataCollectionProducts.push(collectionProducts[i]);
-  }
+  
+// Function to check if the product is available
+function isProductAvailable(product) {
+  return product.available;
 }
-
+  
+// Filter and get the available products
+dataCollectionProducts = collectionProducts.filter(isProductAvailable);
+  
 // sorting of available products by created at
 dataCollectionProducts.sort(function(a, b) {
   if (a.created_at < b.created_at) {
@@ -121,7 +122,6 @@ dataCollectionProducts.sort(function(a, b) {
     return 0;
   }
 });
-
 // put parameter url now
 const queryUrlString = window.location.search;
 const urlParams = new URLSearchParams(queryUrlString);
