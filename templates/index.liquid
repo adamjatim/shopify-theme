@@ -101,7 +101,7 @@
 {% endpaginate %}
 
 <script>
-  var collectionProducts = {{ collection.products | json | sort: "published_at" | reverse }};
+  var collectionProducts = {{ collection.products | json | sort: "created_at"}};
   var dataCollectionProducts = [];
   
   // get the available products
