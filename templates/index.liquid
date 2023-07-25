@@ -111,17 +111,6 @@
     }
   }
   
-  // sorting of available products by created at
-  dataCollectionProducts.sort(function(a, b) {
-    if (a.created_at < b.created_at) {
-      return -1;
-    } else if (a.created_at > b.created_at) {
-      return 1;
-    } else {
-      return 0;
-    }
-  });
-  
   // Retrieve the last displayed page number from localStorage (if available)
   // put parameter url now
   const queryUrlString = window.location.search;
