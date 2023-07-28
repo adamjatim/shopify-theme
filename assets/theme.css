@@ -67,6 +67,7 @@ main {
 .top-menu-left {
   width: 80%;
   justify-content: space-between;
+  margin-right: 7px;
 }
 
 .top-menu-content {
