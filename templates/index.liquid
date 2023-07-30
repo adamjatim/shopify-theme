@@ -177,6 +177,7 @@
   
       let productLink = document.createElement('a');
       productLink.classList.add('product-card');
+      productLink.classList.add('hide');
       productLink.href = shopLink + "products/" + dataCollectionProducts[j].handle;
   
       let productImage = document.createElement('img');
@@ -220,4 +221,17 @@
   
   // Initial load of the product list
   document.addEventListener('DOMContentLoaded', updateProductList);
+  
+  // loading a products
+  document.addEventListener("DOMContentLoaded", function() {
+  // Check if div with class "bucks-selected" exists
+  const bucksSelectedDiv = document.querySelector(".bucks-selected");
+  
+  if (bucksSelectedDiv) {
+    // If div with class "bucks-selected" exists, find and remove the "hide" class from another div
+    const divToRemoveHideClass = document.querySelector(".hide");
+    if (divToRemoveHideClass) {
+      divToRemoveHideClass.classList.remove("hide");
+    }
+  }
 </script>
