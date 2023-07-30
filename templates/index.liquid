@@ -159,7 +159,7 @@
   
   // Function to update the product list
   function updateProductList() {
-    let shopLink = "https://adamjatimstore.myshopify.com/";
+    let shopLink = window.location.origin + window.location.pathname;
     let productsList = document.getElementById('products-list');
     productsList.innerHTML = ""; // Clear the existing product list
     let displayed_products_top = 0;
