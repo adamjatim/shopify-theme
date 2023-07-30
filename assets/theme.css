@@ -67,6 +67,7 @@ main {
 .top-menu-left {
   width: 80%;
   justify-content: space-between;
+  margin-right: 7px;
 }
 
 .top-menu-content {
@@ -807,6 +808,7 @@ nav[role=navigation] {
 
 .buckscc-currency-box {
   z-index: 1 !important;
+  margin-right: 0px !important;
 }
 
 .hxoSelectTheme.hxo-relative {
