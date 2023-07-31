@@ -226,7 +226,7 @@
   // Function to check for the "bucks-selected" element and remove "hide" class from another div
   function checkAndRemoveHideClass() {
     const bucksSelectedDiv = document.querySelector(".bucks-selected");
-    const divToRemoveHideClass = document.querySelector(".hide");
+    const divToRemoveHideClass = document.querySelectorAll(".hide");
     
     if (bucksSelectedDiv && divToRemoveHideClass) {
       divToRemoveHideClass.classList.remove("hide");
