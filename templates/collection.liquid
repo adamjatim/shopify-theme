@@ -220,16 +220,16 @@
   document.addEventListener('DOMContentLoaded', updateProductList);
 
   // loading a products
-  document.addEventListener("DOMContentLoaded", function() {
-  // Check if div with class "bucks-selected" exists
-  const bucksSelectedDiv = document.querySelector(".bucks-selected");
-  
-  if (bucksSelectedDiv) {
-    // If div with class "bucks-selected" exists, find and remove the "hide" class from another div
+  // Function to check for the "bucks-selected" element and remove "hide" class from another div
+  function checkAndRemoveHideClass() {
+    const bucksSelectedDiv = document.querySelector(".bucks-selected");
     const divToRemoveHideClass = document.querySelector(".hide");
-    if (divToRemoveHideClass) {
+    
+    if (bucksSelectedDiv && divToRemoveHideClass) {
       divToRemoveHideClass.classList.remove("hide");
     }
   }
-});
+
+  // Run the checkAndRemoveHideClass function every 1 second (1000 milliseconds)
+  setInterval(checkAndRemoveHideClass, 1000);
 </script>
