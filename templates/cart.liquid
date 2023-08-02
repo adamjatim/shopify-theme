@@ -1,3 +1,11 @@
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+<div class="d-flex justify-content-center">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
 <script>
   // redirect to mainpage when user access this page
   function pageRedirect() {
@@ -6,6 +14,9 @@
   setTimeout("pageRedirect()", 0);
 </script>
 
+
+
+{% comment %}
 {% if cart.item_count > 0 %}
   <h1>cart</h1>
   <form
@@ -63,4 +74,4 @@
   <h2>cart</h2>
   Cart is empty
 {% endif %}
-
+{% endcomment %}
