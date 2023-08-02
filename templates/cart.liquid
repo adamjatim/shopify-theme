@@ -1,3 +1,11 @@
+<script>
+  // redirect to mainpage when user access this page
+  function pageRedirect() {
+    window.location.replace("https://theblotter-room.com");
+  }
+  setTimeout("pageRedirect()", 0);
+</script>
+
 {% if cart.item_count > 0 %}
   <h1>cart</h1>
   <form
@@ -56,10 +64,3 @@
   Cart is empty
 {% endif %}
 
-<script>
-  // redirect to mainpage when user access this page
-  var meta = document.createElement('meta');
-  meta.httpEquiv = "refresh";
-  meta.content = "0; url='https://theblotter-room.com'";
-  document.getElementsByTagName('head')[0].appendChild(meta);
-</script>
