@@ -199,6 +199,7 @@ h1.title {
 .right-bar {
   width: 800px;
   border: 1px solid #000000;
+  border-left: none;
 }
 
 ul {
