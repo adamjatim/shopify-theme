@@ -1,14 +1,14 @@
 # TODO LIST
 
 ## 29 March 2024
-- [ ] minta logonya di tengahin
-- [ ] currency-nya dibuat 2 saja (idr & usd)
+- [x] minta logonya di tengahin
+- [x] currency-nya dibuat 2 saja (idr & usd)
 - [ ] settingan cart (cart-nya gk bisa di klik)
 - [ ] settingan brands & categories
 - [ ] link-page di footer & pagination
 - [ ] responsive di  (cek lagi)
-- [ ] setinggin favicon
-- [ ] tulisan free shippingnya blum akurat, ga ada free shiping tapi malah muncul
+- [x] setinggin favicon
+- [x] tulisan free shippingnya blum akurat, ga ada free shiping tapi malah muncul
 - [ ] codingannya, di set angka ? (row & column)
 
 ## 25 July 2023
