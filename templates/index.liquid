@@ -17,7 +17,7 @@
 
 <div class="mx-auto">
   <div class="min-h-screen lg:border border-black border-y border-x-0 !w-screen lg:!w-[1024px]">
-    <div class="flex flex-col lg:flex-row mx-[10px] mt-[3.5rem] gap-3">
+    <div class="flex flex-col lg:flex-row px-[10px] mt-[3.5rem] gap-y-3 w-[100%]">
       <div class="flex flex-row lg:w-[20%]">
         <h1 class="text-3xl font-bold">{{ collection.title }}</h1>
         <button class="hamburger">
@@ -27,20 +27,20 @@
         </button>
       </div>
 
-      <div class="flex flex-row justify-between">
-        <div class="flex flex-row">
+      <div class="flex flex-row lg:w-[80%] justify-between">
+        <div class="flex flex-row gap-x-2">
           <a href="{{ paginate.previous.url }}">
-            <div class="border border-black py-[3px] px-[8px]">BACK</div>
+            <div class="border border-black py-[3px] px-[8px] h-[32px]">BACK</div>
           </a>
           <a href="{{ paginate.next.url }}">
-            <div class="border border-black py-[3px] px-[8px]">NEXT</div>
+            <div class="border border-black py-[3px] px-[8px] h-[32px]">NEXT</div>
           </a>
         </div>
-        <div class="flex flex-row">
-          <div id="cartbtn" class="border border-black py-[3px] px-[8px]">
+        <div class="flex flex-row gap-x-2">
+          <div id="cartbtn" class="border border-black py-[3px] px-[8px] h-[32px]">
             <a>CART</a>
           </div>
-          <div class="buckscc-currency-box border border-black py-[3px] px-[8px]"></div>
+          <div class="buckscc-currency-box border border-black py-[3px] px-[8px] h-[32px]"></div>
         </div>
       </div>
     </div>
