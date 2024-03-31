@@ -16,15 +16,13 @@
 {% assign input_column_product = column_product %}
 {% assign input_row_product = row_product %}
 
-{% assign query_product = 1 %}
 
 {% assign collection = collections.all %}
 
 {% comment %} make sure length of products {% endcomment %}
-{% assign product_per_page = 1 %}
+{% assign query_product = 0 %}
 
 {% for product in collection.products%}
-  {% assign product_per_page = product_per_page | plus: 1 %}
   {% if product.available %}
     {% if input_column_product == 0 %}
       {% break %}
