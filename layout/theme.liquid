@@ -28,9 +28,10 @@
 
 <body>
   <main class="flex flex-col min-h-screen">
-    <a class="flex w-screen justify-center" href="/">
-      <img src="{{ 'logo.jpg' | asset_url }}">
-      </a>
+    <a class="mt-6 flex w-screen justify-center" href="/">
+      <img class="w-52" src="{{ 'logo.jpg' | asset_url }}">
+    </a>
+
     <div id="overlay">
       <div class="navbar-mobile">
         <button class="hamburger-cancel">
@@ -74,6 +75,7 @@
         <div class="overlay"></div>
       </div>
     </div>
+    
     {{ content_for_layout }}
     {% render 'minicart' %}
   </main>
