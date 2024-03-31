@@ -73,7 +73,7 @@
     </div>
 
     <div class="flex lg:flex-row lg:p-[10px] lg:w-[100%]">
-      <div class="">
+      <div class="w-[20%]" id="navbarProduct">
         <nav role="navigation">
           {% for link in linklists.main-menu.links %}
             <div class="widget-left-bar">
@@ -249,4 +249,7 @@
 
   // Initial load of the product list
   document.addEventListener('DOMContentLoaded', updateProductList);
+
+  // get element for nav brand & type product
+  document.getElementById("navbarProduct").classList.add("h-["+ (314 * {{ column_product }}) +"]")
 </script> 
