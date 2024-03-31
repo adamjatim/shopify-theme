@@ -27,7 +27,7 @@
 {% render 'bucks-cc' %}
 
 <body>
-  <main class="flex flex-col min-h-screen">
+  <main class="flex flex-col min-h-screen gap-5">
     <a class="mt-6 flex w-screen justify-center" href="/">
       <img class="w-52" src="{{ 'logo.jpg' | asset_url }}">
     </a>
@@ -75,7 +75,7 @@
         <div class="overlay"></div>
       </div>
     </div>
-    
+
     {{ content_for_layout }}
     {% render 'minicart' %}
   </main>
