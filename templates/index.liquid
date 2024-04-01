@@ -113,14 +113,31 @@
         var captureUrlWindows = windows.location.origin;
 
         $('#footerPages').append(
-          '<a href="' + captureUrlWindows + '/pages/about">About</a>' +
-          '<a>•</a>' +
-          '<a href="' + captureUrlWindows + '/pages/privacy-policy">Privacy & Policy</a>' +
-          '<a>•</a>' +
-          '<a href="' + captureUrlWindows + '/pages/terms-condition">Terms & Conditions</a>' +
-          '<a>•</a>' +
-          '<a href="' + captureUrlWindows + '/pages/contact">Contact</a>'
+          
         );
+
+        $(document).ready(function() {
+          // Double-check the ID of the footer element:
+          var footerElement = $('#footerPages');
+
+          // Check if the element exists before appending:
+          if (footerElement.length > 0) {
+            var captureUrlWindows = window.location.hostname; // Use location.hostname for the domain
+
+            // Clear existing content if needed (replace with .append() to add after):
+            footerElement.html(
+              '<a href="' + captureUrlWindows + '/pages/about">About</a>' +
+              '<a>•</a>' +
+              '<a href="' + captureUrlWindows + '/pages/privacy-policy">Privacy & Policy</a>' +
+              '<a>•</a>' +
+              '<a href="' + captureUrlWindows + '/pages/terms-condition">Terms & Conditions</a>' +
+              '<a>•</a>' +
+              '<a href="' + captureUrlWindows + '/pages/contact">Contact</a>'
+            );
+          } else {
+            console.error("Element with ID '#footerPages' not found.");
+          }
+        });
       </script>
       <div id="footerPages" class="about" align="right">
       </div>
