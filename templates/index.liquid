@@ -41,7 +41,7 @@
 {% paginate collection.products by query_product %}
 
 <div class="mx-auto">
-  <div class="min-h-screen lg:border border-black border-y border-x-0 !w-screen lg:!w-[1024px]">
+  <div class="lg:border border-black border-y border-x-0 !w-screen lg:!w-[1024px]">
     <div class="flex flex-col lg:flex-row px-[10px] mt-[3.5rem] gap-y-3 w-[100%]">
       <div class="flex flex-row lg:w-[20%]">
         <h1 class="text-3xl font-bold">{{ collection.title }}</h1>
@@ -109,14 +109,20 @@
       </div>
     </div>
     <div class="flex bottom-content">
-      <div class="about" align="right">
-        <a href="https://theblotter-room.com/pages/about">About</a>
-        <a>•</a>
-        <a href="https://theblotter-room.com/pages/privacy-policy">Privacy & Policy</a>
-        <a>•</a>
-        <a href="https://theblotter-room.com/pages/terms-condition">Terms & Conditions</a>
-        <a>•</a>
-        <a href="https://theblotter-room.com/pages/contact">Contact</a>
+      <script>
+        var captureUrlWindows = windows.document.domain;
+
+        $('#footerPages').append(
+          '<a href="' + captureUrlWindows + '/pages/about">About</a>' +
+          '<a>•</a>' +
+          '<a href="' + captureUrlWindows + '/pages/privacy-policy">Privacy & Policy</a>' +
+          '<a>•</a>' +
+          '<a href="' + captureUrlWindows + '/pages/terms-condition">Terms & Conditions</a>' +
+          '<a>•</a>' +
+          '<a href="' + captureUrlWindows + '/pages/contact">Contact</a>'
+        );
+      </script>
+      <div id="footerPages" class="about" align="right">
       </div>
       <div class="pagination">
         <div class="page-number">{{ paginate | default_pagination: next: ' ', previous: ' ' }}</div>
@@ -250,4 +256,7 @@
 
   // get element for nav brand & type product
   document.getElementById("navbarProduct").classList.add("h-["+ (314 * {{ column_product }}) +"]")
+
+  // get element for footer url 
+  
 </script> 
