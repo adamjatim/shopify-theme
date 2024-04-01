@@ -104,8 +104,8 @@
           {% endfor %}
         </nav>
       </div>
-      <div class="w-[80%]">
-        <ul id="products-list"></ul>
+      <div class="w-full lg:w-[80%]">
+        <ul id="products-list" class="flex flex-wrap gap-6"></ul>
       </div>
     </div>
     <div class="flex flex-row justify-between px-[10px] pb-[10px]">
@@ -213,10 +213,10 @@
       let listItem = document.createElement('li');
   
       if (displayed_products_top < {{ row_product }}) {
-        listItem.classList.add('border');
+        listItem.classList.add('lg:border grow max-w-[42vw] h-max-[17vw] mx-auto border');
       } else {
-        listItem.classList.add('border');
-        listItem.classList.add('border-product-5');
+        listItem.classList.add('lg:border grow max-w-[42vw] h-max-[17vw] mx-auto border');
+        listItem.classList.add('lg:border-product-5 grow max-w-[42vw] h-max-[17vw] mx-auto border');
       } displayed_products_top++;
   
       let productLink = document.createElement('a');
