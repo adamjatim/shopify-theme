@@ -643,7 +643,7 @@ nav[role=navigation] {
   height: 96%;
 }
 
-@media screen and (min-width: 1025px){
+@media screen and (min-width: 1024px){
   .hamburger,
   .navbar-mobile {
     display: none;
