@@ -212,11 +212,18 @@
     for (let j = 0 + (pagePaginate * {{ query_product }}); j < (pagePaginate + 1) * {{ query_product }}; j++) {
       let listItem = document.createElement('li');
   
+      // if (displayed_products_top < {{ row_product }}) {
+      //   listItem.classList.add('lg:border grow max-w-[42vw] h-max-[17vw] mx-auto border');
+      // } else {
+      //   listItem.classList.add('lg:border grow max-w-[42vw] h-max-[17vw] mx-auto border');
+      //   listItem.classList.add('lg:border-product-5 grow max-w-[42vw] h-max-[17vw] mx-auto border');
+      // } displayed_products_top++;
+
       if (displayed_products_top < {{ row_product }}) {
-        listItem.classList.add('lg:border grow max-w-[42vw] h-max-[17vw] mx-auto border');
+        listItem.classList.add('border');
       } else {
-        listItem.classList.add('lg:border grow max-w-[42vw] h-max-[17vw] mx-auto border');
-        listItem.classList.add('lg:border-product-5 grow max-w-[42vw] h-max-[17vw] mx-auto border');
+        listItem.classList.add('border');
+        listItem.classList.add('border-product-5');
       } displayed_products_top++;
   
       let productLink = document.createElement('a');
