@@ -643,14 +643,14 @@ nav[role=navigation] {
   height: 96%;
 }
 
-@media screen and (min-width: 1081px){
+@media screen and (min-width: 1025px){
   .hamburger,
   .navbar-mobile {
     display: none;
   }
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1024px) {
   .gap-main-border {
     padding-left: 0px;
     padding-right: 0px;
