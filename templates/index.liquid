@@ -44,7 +44,7 @@
   <div class="lg:border border-black border-y border-x-0 !w-screen lg:!w-[1024px]">
     <div class="flex flex-col lg:flex-row px-[10px] mt-[3.5rem] gap-y-3 w-[100%]">
       <div class="flex flex-row lg:w-[20%]">
-        <h1 class="text-3xl font-bold">{{ collection.title }}</h1>
+        <h1 class="text-4xl font-bold">{{ collection.title }}</h1>
         <button class="hamburger">
           <span></span>
           <span></span>
@@ -76,7 +76,7 @@
           {% for link in linklists.main-menu.links %}
             <div class="widget-left-bar">
               <a href="/" {% if link.active %}aria-current="page"{% endif %}>
-                <h2 class="text-2xl font-bold">{{ link.title }}</h2>
+                <h2 class="text-3xl font-bold">{{ link.title }}</h2>
               </a>
               {% if link.links != blank %}
                 <ul class="product-list">
@@ -108,7 +108,7 @@
         <ul id="products-list"></ul>
       </div>
     </div>
-    <div class="flex px-[10px] ">
+    <div class="flex flex-row justify-between px-[10px] pb-[10px]">
       <script>
         $(document).ready(function() {
           // Double-check the ID of the footer element:
@@ -133,9 +133,9 @@
           }
         });
       </script>
-      <div id="footerPages" class="flex flex-row gap-[5px]" align="right">
+      <div id="footerPages" class="flex flex-row gap-[5px]">
       </div>
-      <div class="pagination">
+      <div class="">
         <div class="page-number">{{ paginate | default_pagination: next: ' ', previous: ' ' }}</div>
       </div>
     </div>
