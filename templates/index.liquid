@@ -40,7 +40,7 @@
 
 {% paginate collection.products by query_product %}
 
-<div class="mx-auto">
+<div class="mx-auto mb-28">
   <div class="lg:border border-black border-y border-x-0 !w-screen lg:!w-[1024px]">
     <div class="flex flex-col lg:flex-row px-[10px] mt-[3.5rem] gap-y-3 w-[100%]">
       <div class="flex flex-row lg:w-[20%]">
@@ -76,7 +76,7 @@
           {% for link in linklists.main-menu.links %}
             <div class="widget-left-bar">
               <a href="/" {% if link.active %}aria-current="page"{% endif %}>
-                <h2>{{ link.title }}</h2>
+                <h2 class="text-2xl font-bold">{{ link.title }}</h2>
               </a>
               {% if link.links != blank %}
                 <ul class="product-list">
