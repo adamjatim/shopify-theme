@@ -4,71 +4,69 @@
 
 <div id="quantity-product-id"></div>
 
-<div class="mx-auto mb-28">
-  <div class="lg:border border-black border-y border-x-0 !w-screen lg:!w-[1024px]">
-    <div class="flex flex-col lg:flex-row px-[10px] mt-[3.5rem] gap-y-3 w-[100%] border-b lg:border-b-0 border-black pb-[20px] lg:pb-0">
-      <div class="flex flex-row lg:w-[20%]">
-        <h1 class="text-4xl font-bold">{{ collection.title }}</h1>
+<div class="gap-main-border">
+  <div class="main-border">
+    <div class="top-menu">
+      <div class="top-menu-right">
+        <h1 class="title">{{ collection.title }}</h1>
         <button class="hamburger">
           <span></span>
           <span></span>
           <span></span>
         </button>
       </div>
-
-      <div class="flex flex-row lg:w-[80%] justify-between">
-        <div class="flex flex-row gap-x-2">
-          <a class="" href="{{ paginate.previous.url }}">
-            <div class="border border-black py-[3px] px-[8px] h-[32px]">BACK</div>
+      <div class="top-menu-left">
+        <div class="top-menu-content">
+          <a href="javascript&colon;history.back()">
+            <div class="button">BACK</div>
           </a>
           <a href="{{ paginate.next.url }}">
-            <div class="border border-black py-[3px] px-[8px] h-[32px]">NEXT</div>
+            <div class="button">NEXT</div>
           </a>
         </div>
-        <div class="flex flex-row gap-x-2">
-          <div id="cartbtn" class="border border-black py-[3px] px-[8px] h-[32px] cursor-pointer">
+        <div class="top-menu-content">
+          <div id="cartbtn" class="button">
             <a>CART</a>
           </div>
-          <div class="buckscc-currency-box border border-black py-[3px] px-[8px] h-[32px]"></div>
+          <div class="button buckscc-currency-box" id="button-currency">
+          </div>
         </div>
       </div>
     </div>
-
-    <div class="flex lg:flex-row lg:p-[10px] lg:w-[100%] mt-[30px] lg:mt-0">
-      <div class="hide lg:flex w-[20%] border border-black" id="navbarProduct">
+    <div class="bar">
+      <div class="left-bar">
         <nav role="navigation">
-          {% for link in linklists.main-menu.links %}
+          {%- for link in linklists.main-menu.links -%}
             <div class="widget-left-bar">
-              <a href="/" {% if link.active %}aria-current="page"{% endif %}>
-                <h2 class="text-3xl font-bold">{{ link.title }}</h2>
+              <a href="/" {% comment  %} href="{{ link.url }}" {% endcomment %} {% if link.active %}aria-current="page"{% endif %}>
+                <h2>{{ link.title }}</h2>
               </a>
-              {% if link.links != blank %}
-                <ul class="product-list">
-                  {% for child_link in link.links %}
+              {%- if link.links != blank -%}
+                <ul>
+                  {%- for child_link in link.links -%}
                     <li>
                       <a href="{{ child_link.url }}" {% if child_link.active %}aria-current="page"{% endif %}>
                         {{ child_link.title }}
                       </a>
-                      {% if child_link.links != blank %}
+                      {%- if child_link.links != blank -%}
                         <ul>
-                          {% for grandchild_link in child_link.links %}
+                          {%- for grandchild_link in child_link.links -%}
                             <li>
                               <a href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page"{% endif %}>
                                 {{ grandchild_link.title }}
                               </a>
                             </li>
-                          {% endfor %}
+                          {%- endfor -%}
                         </ul>
-                      {% endif %}
+                      {%- endif -%}
                     </li>
-                  {% endfor %}
+                  {%- endfor -%}
                 </ul>
-              {% endif %}
+              {%- endif -%}
             </div>
-          {% endfor %}
+          {%- endfor -%}
         </nav>
       </div>
-
       <div class="right-bar">
         <div class="mobile-product-page">
           <div class="sub-left-bar">
