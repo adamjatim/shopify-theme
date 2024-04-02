@@ -3,9 +3,9 @@
 ## 29 March 2024
 - [x] minta logonya di tengahin
 - [x] currency-nya dibuat 2 saja (idr & usd)
-- [ ] settingan cart (cart-nya gk bisa di klik)
-- [ ] settingan brands & categories
-- [ ] link-page di footer & pagination
+- [x] settingan cart (cart-nya gk bisa di klik)
+- [x] settingan brands & categories
+- [x] link-page di footer & pagination
 - [ ] responsive di  (cek lagi)
 - [x] setinggin favicon
 - [x] tulisan free shippingnya blum akurat, ga ada free shiping tapi malah muncul
