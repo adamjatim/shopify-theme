@@ -122,6 +122,7 @@ $(document).on('click', '.remove-btn', function() {
         success: function(cart) {
           // Extract the items from the cart object
           var items = cart.items;
+          console.log(items);
           // Clear the contents of the cart div before adding the updated contents
           $('#minicart-product').empty();
 
