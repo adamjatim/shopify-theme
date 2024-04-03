@@ -209,6 +209,17 @@ $(document).on('click', '.remove-btn', function() {
     });
 
     function formatCurrency(price, currency) {
+      // Define conversion rates from USD to other currencies
+      var conversionRates = {
+        'IDR': 16000, // Example conversion rate from USD to IDR
+        // Add conversion rates for other currencies as needed
+      };
+
+      // Convert price to IDR if the currency is USD
+      if (currency === 'USD') {
+        price = price * conversionRates['IDR'];
+      }
+
       var formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: currency,
