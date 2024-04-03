@@ -69,7 +69,7 @@
         </nav>
       </div>
 
-      <div class="lg:w-[80%] border-black lg:border lg:border-s-0">
+      <div class="lg:w-[80%] border-b border-black lg:border lg:border-s-0">
         <div class="mobile-product-page">
           <div class="sub-left-bar">
             <div class="gap-1">
@@ -81,7 +81,7 @@
               <img id="product-image" src="{{ featured | image_url }}"/>
             {% endif %}
               
-              <ul class="product-image-thumbs">
+              <ul class="product-image-thumbs gap-[10px] mt-[10px]">
                 {%  for image in product.images %}  
                   <li class="{% if image == featured %}selected{% endif %}"><img src="{{ image | image_url: master }}"/></li>
                 {% endfor %}
@@ -90,7 +90,7 @@
           </div>
           <div class="sub-right-bar">
             <div class="gap-1">
-              <h1>{{ product.title }}</h1>
+              <h1 class="text-4xl font-bold">{{ product.title }}</h1>
               <div class="product-prices" id="product-prices">
                 {% comment  %}
                   <p class="product-compare {% if product.selected_or_first_available_variant.compare_at_price <= product.selected_or_first_available_variant.price %} hide {% endif %} ">
