@@ -115,7 +115,7 @@
                 <input id="product-id" type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 
                 {% if product.variants.size > 1 %}
-                <div class="product-option">
+                <div class="flex flex-wrap justify-center">
                   {% for option in product.options_with_values %}
                     <fieldset style="display: flex; border: none; flex-direction;flex-flow: inherit;">
                       {% for value in option.values %}
