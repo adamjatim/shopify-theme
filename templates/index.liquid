@@ -116,7 +116,7 @@
 
           // Check if the element exists before appending:
           if (footerElement.length > 0) {
-            var captureUrlWindows = window.location.hostname; // Use location.hostname for the domain
+            var captureUrlWindows = window.location.origin; // Use location.origin for the domain
 
             // Clear existing content if needed (replace with .append() to add after):
             footerElement.html(

@@ -1,8 +1,8 @@
 # TODO LIST
 
 ## 4 April 2024
-- [ ] variant product (size) dibuat center di tengah.
-- [ ] Add to cart button juga di buat full width nya
+- [x] variant product (size) dibuat center di tengah.
+- [x] Add to cart button juga di buat full width nya
 - [ ] Pages-pages nya di setting lagi stylenya
 - [ ] oh ya mas, saya mnta tambahin   {{ product.vendor }} dong di atas product name nya, kemarin saya bisa nambahin sendiri tp takut salah tempat malah ganggu kode yg lainnya , jadi ntar di atas product name ada link nama brand nya 
 - [x] fetch interval di minicart (diperbaiki)
