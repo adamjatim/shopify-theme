@@ -125,6 +125,7 @@ $(document).on('click', '.remove-btn', function() {
         success: function(cart) {
           // Extract the items from the cart object
           var items = cart.items;
+          console.log(items)
           // Clear the contents of the cart div before adding the updated contents
           $('#minicart-product').empty();
 
@@ -157,6 +158,7 @@ $(document).on('click', '.remove-btn', function() {
               var formattedPrice = parseFloat((item.final_price / 100).toFixed(2));
               var itemTotalPrice = ( price / 100 ) * quantity;
               // var cartCurrency = ;
+              selectedCurrency = 
               totalPrice += itemTotalPrice;
 
               $('#minicart-product').append(
