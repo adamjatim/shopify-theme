@@ -228,7 +228,7 @@ $(document).on('click', '.remove-btn', function() {
       // Convert price to IDR if the currency is USD or EUR
       if (conversionRates[currency]) {
         price = price / conversionRates[currency];
-        // price = Math.ceil(price); // Round the price up to the nearest whole number
+        price = Math.ceil(price); // Round the price up to the nearest whole number
       }
 
       var formatter = new Intl.NumberFormat('en-US', {
