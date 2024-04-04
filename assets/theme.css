@@ -240,7 +240,6 @@ li.border {
 .product-image-thumbs {
   max-width: 100%;
   display: flex;
-  flex-wrap: nowrap;
   margin: auto;
 }
 
