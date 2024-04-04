@@ -25,7 +25,10 @@
 - [x] setinggin favicon
 - [x] tulisan free shippingnya blum akurat, ga ada free shiping tapi malah muncul
 
-## 25 July 2023
+
+<!-- ############################################################################ -->
+
+<!-- ## 25 July 2023
 
 - [x] produknya harus urut sesuai update terbaru
 
@@ -87,4 +90,4 @@
 - [x] currency nya blm pengaruh.
 - [x] cartnya harusnya bisa di scroll.
 - [x] cartnya ga bisa di kurang ato di tambah qty nya.
-- [x] logo href ke main-page.
+- [x] logo href ke main-page. -->
