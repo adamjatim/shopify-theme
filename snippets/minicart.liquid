@@ -227,12 +227,12 @@ $(document).on('click', '.remove-btn', function() {
 
       // Convert price to IDR if the currency is USD
       if (currency === 'USD') {
-        price = price * conversionRates['USD'];
+        price = price / conversionRates['USD'];
       }
 
       // Convert price to IDR if the currency is EUR
       if (currency === 'EUR') {
-        price = price * conversionRates['EUR'];
+        price = price / conversionRates['EUR'];
       }
 
       var formatter = new Intl.NumberFormat('en-US', {
