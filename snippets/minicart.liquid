@@ -225,14 +225,10 @@ $(document).on('click', '.remove-btn', function() {
         // Add conversion rates for other currencies as needed
       };
 
-      // Convert price to IDR if the currency is USD
-      if (currency === 'USD') {
-        price = price / conversionRates['USD'];
-      }
-
-      // Convert price to IDR if the currency is EUR
-      if (currency === 'EUR') {
-        price = price / conversionRates['EUR'];
+      // Convert price to IDR if the currency is USD or EUR
+      if (conversionRates[currency]) {
+        price = price / conversionRates[currency];
+        price = Math.ceil(price); // Round the price up to the nearest whole number
       }
 
       var formatter = new Intl.NumberFormat('en-US', {
