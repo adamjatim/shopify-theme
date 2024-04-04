@@ -125,7 +125,6 @@ $(document).on('click', '.remove-btn', function() {
         success: function(cart) {
           // Extract the items from the cart object
           var items = cart.items;
-          console.log(items)
           // Clear the contents of the cart div before adding the updated contents
           $('#minicart-product').empty();
 
@@ -196,9 +195,9 @@ $(document).on('click', '.remove-btn', function() {
                       '</div>' +
                     '</div>' +
 
-                    '<div class="minicart-product-price">' +
-                      formatCurrency(itemTotalPrice.toFixed(), selectedCurrency) +
-                      // formatCurrency(itemTotalPrice.toFixed(), cart.currency) +
+                    '<div class="minicart-product-price money buckscc-converted buckscc-money">' +
+                      // formatCurrency(itemTotalPrice.toFixed(), selectedCurrency) +
+                      formatCurrency(itemTotalPrice.toFixed(), cart.currency) +
                     '</div>' +
                   '</div>' +
                 '</div>'
@@ -206,7 +205,7 @@ $(document).on('click', '.remove-btn', function() {
             }
           }
 
-          $('.cart__total-price').text(formatCurrency(totalPrice.toFixed(), selectedCurrency));
+          $('.cart__total-price money buckscc-converted buckscc-money').text(formatCurrency(totalPrice.toFixed(), cart.currency));
 
         },
         error: function() {
