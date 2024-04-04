@@ -1,3 +1,6 @@
+<script>
+  console.log(items)
+</script>
 <div class="minicart" style="z-index: 999;">
     <div class="minicart-title">
       <div>Your Cart - item</div>
@@ -153,6 +156,7 @@ $(document).on('click', '.remove-btn', function() {
               var price = parseFloat(item.final_price);
               var formattedPrice = parseFloat((item.final_price / 100).toFixed(2));
               var itemTotalPrice = ( price / 100 ) * quantity;
+              var cartCurrency = ;
               totalPrice += itemTotalPrice;
 
               $('#minicart-product').append(
