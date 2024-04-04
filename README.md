@@ -1,10 +1,19 @@
 # TODO LIST
 
+## 5 April 2024
+- [ ] oh ya mas, saya mnta tambahin   {{ product.vendor }} dong di atas product name nya, kemarin saya bisa nambahin sendiri tp takut salah tempat malah ganggu kode yg lainnya , jadi ntar di atas product name ada link nama brand nya 
+- [ ] responsive di  (cek lagi)
+- [ ] codingannya, di set angka ? (row & column)
+- [ ] Pages-pages nya di setting lagi stylenya
+- [ ] Brand & Category 
+- [ ] redirect /cart harus ke /
+- [ ] pada mobile-view Product dibuat menjadi 2 "windth = 50%" (bukan 1 "width = 100%")
+- [ ] cek lagi style untuk /pages (about - privacy and policy  - terms n condition - contact)
+
 ## 4 April 2024
+- [x] cart nya harus di refresh dlu baru nambah, mungkin bisa di bikin auto refresh setelah add to cart, sama hapus dari cart jg gitu harus refresh dlu baru ilang
 - [x] variant product (size) dibuat center di tengah.
 - [x] Add to cart button juga di buat full width nya
-- [ ] Pages-pages nya di setting lagi stylenya
-- [ ] oh ya mas, saya mnta tambahin   {{ product.vendor }} dong di atas product name nya, kemarin saya bisa nambahin sendiri tp takut salah tempat malah ganggu kode yg lainnya , jadi ntar di atas product name ada link nama brand nya 
 - [x] fetch interval di minicart (diperbaiki)
 
 ## 29 March 2024
@@ -13,10 +22,8 @@
 - [x] settingan cart (cart-nya gk bisa di klik)
 - [x] settingan brands & categories
 - [x] link-page di footer & pagination
-- [ ] responsive di  (cek lagi)
 - [x] setinggin favicon
 - [x] tulisan free shippingnya blum akurat, ga ada free shiping tapi malah muncul
-- [ ] codingannya, di set angka ? (row & column)
 
 ## 25 July 2023
 
