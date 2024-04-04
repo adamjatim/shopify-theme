@@ -213,6 +213,12 @@ $(document).on('click', '.remove-btn', function() {
     });
 
     function formatCurrency(price, currency) {
+      // Get the text inside the span with the class "bucks-selected"
+      var spanText = document.querySelector('.bucks-selected').textContent;
+
+      // Output the text to the console
+      currency = spanText;
+
       // Define conversion rates from USD to other currencies
       var conversionRates = {
         'IDR': 16000, // Example conversion rate from USD to IDR
