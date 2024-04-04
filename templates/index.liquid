@@ -1,18 +1,3 @@
-{% comment %} 
-  Config untuk column & row Produk
-
-  Untuk menentukan banyaknya baris 
-  {% assign column_product = 2 %}
-
-  Untuk menentukan banyaknya item di tiap barisnya
-  {% assign row_product = 4 %}
-{% endcomment %}
-
-{% assign column_product = 3 %}
-{% assign row_product = 4 %}
-
-
-
 {% assign input_column_product = column_product %}
 {% assign input_row_product = row_product %}
 
@@ -211,17 +196,6 @@
     // Preload the product list items
     for (let j = 0 + (pagePaginate * {{ query_product }}); j < (pagePaginate + 1) * {{ query_product }}; j++) {
       let listItem = document.createElement('li');
-  
-      {% comment %}
-  
-      // if (displayed_products_top < {{ row_product }}) {
-      //   listItem.classList.add('lg:border grow max-w-[42vw] h-max-[17vw] mx-auto border');
-      // } else {
-      //   listItem.classList.add('lg:border grow max-w-[42vw] h-max-[17vw] mx-auto border');
-      //   listItem.classList.add('lg:border-product-5 grow max-w-[42vw] h-max-[17vw] mx-auto border');
-      // } displayed_products_top++;
-
-      {% endcomment %}
 
       if (displayed_products_top < {{ row_product }}) {
         listItem.classList.add('border','flex','grow','max-w-[42vw]','h-max-[17vw]','mx-auto','!h-auto','!mx-[4%]','!mb-[4%]','lg:!mx-[0]','lg:!mb-[0]','lg:!border-s-0','!border-black','min-w-[92%]','sm:!min-w-[0%]');
@@ -277,8 +251,6 @@
   document.addEventListener('DOMContentLoaded', updateProductList);
 
   // get element for nav brand & type product
-  document.getElementById("navbarProduct").classList.add("h-["+ (314 * {{ column_product }}) +"]")
-
-  // get element for footer url 
+  document.getElementById("navbarProduct").classList.add("h-["+ (314 * {{ column_product }}) +"]");
   
 </script> 

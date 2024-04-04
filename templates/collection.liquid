@@ -12,41 +12,43 @@
 
 {% paginate collection.products by product_per_page %}
 
-<div class="gap-main-border">
-  <div class="main-border">
-    <div class="top-menu">
-      <div class="top-menu-right">
-        <h1 class="title">{{ collection.title }}</h1>
+<div class="mx-auto mb-28">
+  <div class="lg:border border-black border-y border-x-0 !w-screen lg:!w-[1024px]">
+    <div class="flex flex-col lg:flex-row px-[10px] mt-[3.5rem] gap-y-3 w-[100%] border-b lg:border-b-0 border-black pb-[20px] lg:pb-0">
+      <div class="flex flex-row lg:w-[20%]">
+        <h1 class="text-4xl font-bold">{{ collection.title }}</h1>
         <button class="hamburger">
           <span></span>
           <span></span>
           <span></span>
         </button>
       </div>
-      <div class="top-menu-left">
-        <div class="top-menu-content">
+
+      <div class="flex flex-row lg:w-[80%] justify-between">
+        <div class="flex flex-row gap-x-2">
           <a href="{{ paginate.previous.url }}">
-            <div class="button">BACK</div>
+            <div class="border border-black py-[3px] px-[8px] h-[32px]">BACK</div>
           </a>
           <a href="{{ paginate.next.url }}">
-            <div class="button">NEXT</div>
+            <div class="border border-black py-[3px] px-[8px] h-[32px]">NEXT</div>
           </a>
         </div>
-        <div class="top-menu-content">
-          <div id="cartbtn" class="button">
+        <div class="flex flex-row gap-x-2">
+          <div id="cartbtn" class="border border-black py-[3px] px-[8px] h-[32px] cursor-pointer">
             <a>CART</a>
           </div>
-          <div class="buckscc-currency-box button"></div>
+          <div class="buckscc-currency-box border border-black py-[3px] px-[8px] h-[32px]"></div>
         </div>
       </div>
     </div>
-    <div class="bar">
-      <div class="left-bar">
+
+    <div class="flex lg:flex-row lg:p-[10px] lg:w-[100%] mt-[30px] lg:mt-0">
+      <div class="hide lg:flex w-[20%] border border-black" id="navbarProduct">
         <nav role="navigation">
           {% for link in linklists.main-menu.links %}
             <div class="widget-left-bar">
               <a href="/" {% if link.active %}aria-current="page"{% endif %}>
-                <h2>{{ link.title }}</h2>
+                <h2 class="text-3xl font-bold">{{ link.title }}</h2>
               </a>
               {% if link.links != blank %}
                 <ul class="product-list">
@@ -74,21 +76,38 @@
           {% endfor %}
         </nav>
       </div>
-      <div class="main-right-bar">
-        <ul id="products-list"></ul>
+      <div class="w-full lg:w-[80%]">
+        <ul id="products-list" class="flex flex-wrap gap-0"></ul>
       </div>
     </div>
-    <div class="flex bottom-content">
-      <div class="about" align="right">
-        <a href="https://theblotter-room.com/pages/about">About</a>
-        <a>•</a>
-        <a href="https://theblotter-room.com/pages/privacy-policy">Privacy & Policy</a>
-        <a>•</a>
-        <a href="https://theblotter-room.com/pages/terms-condition">Terms & Conditions</a>
-        <a>•</a>
-        <a href="https://theblotter-room.com/pages/contact">Contact</a>
+    <div class="flex lg:flex-row flex-col-reverse justify-between px-[10px] pb-[10px] items-center gap-4 lg:gap-0">
+      <script>
+        $(document).ready(function() {
+          // Double-check the ID of the footer element:
+          var footerElement = $('#footerPages');
+
+          // Check if the element exists before appending:
+          if (footerElement.length > 0) {
+            var captureUrlWindows = window.location.origin; // Use location.origin for the domain
+
+            // Clear existing content if needed (replace with .append() to add after):
+            footerElement.html(
+              '<a href="' + captureUrlWindows + '/pages/about">About</a>' +
+              '<a>•</a>' +
+              '<a href="' + captureUrlWindows + '/pages/privacy-policy">Privacy & Policy</a>' +
+              '<a>•</a>' +
+              '<a href="' + captureUrlWindows + '/pages/terms-condition">Terms & Conditions</a>' +
+              '<a>•</a>' +
+              '<a href="' + captureUrlWindows + '/pages/contact">Contact</a>'
+            );
+          } else {
+            console.error("Element with ID '#footerPages' not found.");
+          }
+        });
+      </script>
+      <div id="footerPages" class="flex flex-row gap-[5px]">
       </div>
-      <div class="pagination">
+      <div class="">
         <div class="page-number">{{ paginate | default_pagination: next: ' ', previous: ' ' }}</div>
       </div>
     </div>
@@ -165,11 +184,11 @@
     for (let j = 0 + (pagePaginate * 8); j < (pagePaginate + 1) * 8; j++) {
       let listItem = document.createElement('li');
   
-      if (displayed_products_top < 4) {
-        listItem.classList.add('border');
+      if (displayed_products_top < {{ row_product }}) {
+        listItem.classList.add('border','flex','grow','max-w-[42vw]','h-max-[17vw]','mx-auto','!h-auto','!mx-[4%]','!mb-[4%]','lg:!mx-[0]','lg:!mb-[0]','lg:!border-s-0','!border-black','min-w-[92%]','sm:!min-w-[0%]');
       } else {
-        listItem.classList.add('border');
-        listItem.classList.add('border-product-5');
+        listItem.classList.add('border','flex','grow','max-w-[42vw]','h-max-[17vw]','mx-auto','!h-auto','!mx-[4%]','!mb-[4%]','lg:!mx-[0]','lg:!mb-[0]','lg:!border-s-0','!border-black','min-w-[92%]','sm:!min-w-[0%]');
+        listItem.classList.add('border-product-5','flex','grow','max-w-[42vw]','h-max-[17vw]','mx-auto','!h-auto','!mx-[4%]','!mb-[4%]','lg:!mx-[0]','lg:!mb-[0]','lg:!border-s-0','!border-black','!border-t','lg:!border-t-0','min-w-[92%]','sm:!min-w-[0%]');
       } displayed_products_top++;
   
       let productLink = document.createElement('a');
@@ -217,4 +236,8 @@
 
   // Initial load of the product list
   document.addEventListener('DOMContentLoaded', updateProductList);
+
+  // get element for nav brand & type product
+  document.getElementById("navbarProduct").classList.add("h-["+ (314 * {{ column_product }}) +"]");
+  
 </script> 
