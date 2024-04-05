@@ -5,7 +5,7 @@
 - [ ] responsive di  (cek lagi)
 - [ ] codingannya, di set angka ? (row & column)
 - [ ] Pages-pages nya di setting lagi stylenya
-- [ ] Brand & Category 
+- [x] Brand & Category 
 - [ ] redirect /cart harus ke /
 - [ ] pada mobile-view Product dibuat menjadi 2 "windth = 50%" (bukan 1 "width = 100%")
 - [ ] cek lagi style untuk /pages (about - privacy and policy  - terms n condition - contact)
