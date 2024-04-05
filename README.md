@@ -2,7 +2,7 @@
 
 ## 5 April 2024
 - [ ] oh ya mas, saya mnta tambahin   {{ product.vendor }} dong di atas product name nya, kemarin saya bisa nambahin sendiri tp takut salah tempat malah ganggu kode yg lainnya , jadi ntar di atas product name ada link nama brand nya 
-- [ ] responsive di  (cek lagi)
+- [x] responsive di  (cek lagi)
 - [x] codingannya, di set angka ? (row & column)
 - [x] Pages-pages nya di setting lagi stylenya
 - [x] Brand & Category 

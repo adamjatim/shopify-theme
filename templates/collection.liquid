@@ -223,6 +223,9 @@
       productImage.classList.add('product-image');
       productImage.src = dataCollectionProducts[j].featured_image;
   
+      let productVendor = document.createElement('span');
+      productVendor.innerHTML = dataCollectionProducts[j].vendor;
+
       let productText = document.createElement('p');
       productText.classList.add('text-product');
       productText.innerHTML = dataCollectionProducts[j].title.substr(0, 38) + '<br>';
