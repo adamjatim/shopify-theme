@@ -232,8 +232,9 @@
       productText.classList.add('text-product');
       productText.innerHTML = dataCollectionProducts[j].title.substr(0, 38) + '<br>';
 
-      let productVendor = document.createElement('span');
+      let productVendor = document.createElement('a.text-sm.opacity-60');
       productVendor.innerHTML = dataCollectionProducts[j].vendor + '<br>';
+      productVendor.location.href = window.location.origin + '/collections/' + ;
 
       let priceSpan = document.createElement('span');
       priceSpan.classList.add('original-price');
