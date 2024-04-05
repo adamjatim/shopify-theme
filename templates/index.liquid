@@ -233,7 +233,7 @@
       productText.innerHTML = dataCollectionProducts[j].title.substr(0, 38) + '<br>';
 
       let productVendor = document.createElement('span');
-      productVendor.innerHTML = dataCollectionProducts[j].vendor;
+      productVendor.innerHTML = dataCollectionProducts[j].vendor + '<br>';
 
       let priceSpan = document.createElement('span');
       priceSpan.classList.add('original-price');
@@ -258,6 +258,7 @@
       priceSpan.appendChild(childPriceSpan);
       productText.appendChild(priceSpan);
       productLink.appendChild(productImage);
+      productLink.appendChild(productVendor);
       productLink.appendChild(productText);
       listItem.appendChild(productLink);
   

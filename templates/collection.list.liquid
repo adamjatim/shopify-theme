@@ -225,7 +225,7 @@
       productImage.src = dataCollectionProducts[j].featured_image;
 
       let productVendor = document.createElement('span');
-      productVendor.innerHTML = dataCollectionProducts[j].vendor;
+      productVendor.innerHTML = dataCollectionProducts[j].vendor + '<br>';
 
       let productText = document.createElement('p');
       productText.classList.add('text-product');
@@ -254,6 +254,7 @@
       priceSpan.appendChild(childPriceSpan);
       productText.appendChild(priceSpan);
       productLink.appendChild(productImage);
+      productLink.appendChild(productVendor);
       productLink.appendChild(productText);
       listItem.appendChild(productLink);
   
