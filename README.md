@@ -3,12 +3,12 @@
 ## 5 April 2024
 - [ ] oh ya mas, saya mnta tambahin   {{ product.vendor }} dong di atas product name nya, kemarin saya bisa nambahin sendiri tp takut salah tempat malah ganggu kode yg lainnya , jadi ntar di atas product name ada link nama brand nya 
 - [ ] responsive di  (cek lagi)
-- [ ] codingannya, di set angka ? (row & column)
-- [ ] Pages-pages nya di setting lagi stylenya
+- [x] codingannya, di set angka ? (row & column)
+- [x] Pages-pages nya di setting lagi stylenya
 - [x] Brand & Category 
-- [ ] redirect /cart harus ke /
-- [ ] pada mobile-view Product dibuat menjadi 2 "windth = 50%" (bukan 1 "width = 100%")
-- [ ] cek lagi style untuk /pages (about - privacy and policy  - terms n condition - contact)
+- [x] redirect /cart harus ke /
+- [x] pada mobile-view Product dibuat menjadi 2 "windth = 50%" (bukan 1 "width = 100%")
+- [x] cek lagi style untuk /pages (about - privacy and policy  - terms n condition - contact)
 
 ## 4 April 2024
 - [x] cart nya harus di refresh dlu baru nambah, mungkin bisa di bikin auto refresh setelah add to cart, sama hapus dari cart jg gitu harus refresh dlu baru ilang
