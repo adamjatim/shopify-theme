@@ -19,6 +19,7 @@
   "platform_customizations": {
     "custom_css": [
       ".product-image-thumbs li img {width: 87px;}",
+      "@media screen and (max-width: 700px) {.product-image-thumbs li img {width: 80px; }}",
       "nav[role=\"navigation\"] {font-size: 18px;}",
       ".gap-4 {gap: 0.67rem;}",
       ".top-menu,.top-menu-right,.top-menu-left {margin-left: 0px;}",
