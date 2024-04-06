@@ -227,6 +227,13 @@
       let productVendor = document.createElement('a');
       productVendor.classList.add('text-sm','opacity-60');
       productVendor.innerHTML = dataCollectionProducts[j].vendor + '<br>';
+      // Get the vendor name from dataCollectionProducts[j]
+      let vendor = dataCollectionProducts[j].vendor;
+      // Convert the vendor name to lowercase
+      vendor = vendor.toLowerCase();
+      // Replace spaces with hyphens
+      vendor = vendor.replace(/\s+/g, '-');
+      productVendor.location.href = window.location.origin + '/collections/' + vendor;
 
       let productText = document.createElement('p');
       productText.classList.add('text-product');
