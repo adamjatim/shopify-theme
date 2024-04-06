@@ -218,13 +218,13 @@
   
       let productLink = document.createElement('a');
       productLink.classList.add('product-card');
-      productLink.href = shopLink+"products/"+dataCollectionProducts[j].handle;
+      productLink.href = shopLink+"/products/"+dataCollectionProducts[j].handle;
   
       let productImage = document.createElement('img');
       productImage.classList.add('product-image');
       productImage.src = dataCollectionProducts[j].featured_image;
 
-      let productVendor = document.createElement('span');
+      let productVendor = document.createElement('a.text-sm.opacity-60');
       productVendor.innerHTML = dataCollectionProducts[j].vendor + '<br>';
 
       let productText = document.createElement('p');
