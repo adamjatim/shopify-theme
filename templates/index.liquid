@@ -242,7 +242,7 @@
       vendor = vendor.toLowerCase();
       // Replace spaces with hyphens
       vendor = vendor.replace(/\s+/g, '-');
-      productVendor.location.href = window.location.origin + '/collections/' + vendor;
+      productVendor.href = window.location.origin + '/collections/' + vendor;
 
       let priceSpan = document.createElement('span');
       priceSpan.classList.add('original-price');

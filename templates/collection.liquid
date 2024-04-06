@@ -232,7 +232,7 @@
       vendor = vendor.toLowerCase();
       // Replace spaces with hyphens
       vendor = vendor.replace(/\s+/g, '-');
-      productVendor.location.href = window.location.origin + '/collections/' + vendor;
+      productVendor.href = window.location.origin + '/collections/' + vendor;
 
       let productText = document.createElement('p');
       productText.classList.add('text-product');
