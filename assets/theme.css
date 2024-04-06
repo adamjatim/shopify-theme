@@ -544,13 +544,13 @@ input[type=number]::-webkit-outer-spin-button {
   transform-origin: 0 0;
 }
 
-.hamburger:hover {
+/* .hamburger:hover {
   background-color: #000000;
 }
 
 .hamburger:hover span {
   background-color: #ffffff;
-}
+} */
 
 .hamburger-cancel,
 .cart-cancel {
