@@ -634,7 +634,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 nav[role=navigation] {
-  font-size: x-large;
+  font-size: 18px;
   margin: 10px;
   overflow-y: scroll;
   height: 96%;
