@@ -590,7 +590,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .navbar-mobile {
-  display: block;
+  display: none;
   visibility: visible;
   position: fixed;
   transition: .5s ease-in;
@@ -624,7 +624,7 @@ input[type=number]::-webkit-outer-spin-button {
 .navbar-mobile.is-active {
   visibility: hidden;
   right: 0;
-  
+  display: block;
 }
 
 nav[role=navigation] {
