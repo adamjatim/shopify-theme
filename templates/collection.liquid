@@ -223,7 +223,8 @@
       productImage.classList.add('product-image');
       productImage.src = dataCollectionProducts[j].featured_image;
   
-      let productVendor = document.createElement('a.text-sm.opacity-60');
+      let productVendor = document.createElement('a');
+      productVendor.classList.add('text-sm','opacity-60');
       productVendor.innerHTML = dataCollectionProducts[j].vendor + '<br>';
 
       let productText = document.createElement('p');

@@ -232,7 +232,8 @@
       productText.classList.add('text-product');
       productText.innerHTML = dataCollectionProducts[j].title.substr(0, 38) + '<br>';
 
-      let productVendor = document.createElement('a.text-sm.opacity-60');
+      let productVendor = document.createElement('a');
+      productVendor.classList.add('text-sm','opacity-60');
       productVendor.innerHTML = dataCollectionProducts[j].vendor + '<br>';
       // productVendor.location.href = window.location.origin + '/collections/' + ;
 
