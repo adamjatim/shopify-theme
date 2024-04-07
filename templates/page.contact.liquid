@@ -1,146 +1,211 @@
-{% assign collection = collections['all'] %}
-{%- paginate collection.products -%}
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
 
-  <div class="mx-auto mb-28">
-    <div class="lg:border border-black border-y border-x-0 !w-screen lg:!w-[1024px]">
-      <div class="flex flex-col lg:flex-row px-[10px] mt-[3.5rem] gap-y-3 w-[100%] border-b lg:border-b-0 border-black pb-[20px] lg:pb-0">
-        <div class="flex flex-row lg:w-[20%]">
-          <h1 class="text-4xl font-bold">{{ page.title }}</h1>
-          <button class="hamburger">
-            <svg width="30px" height="20px" viewBox="0 0 20.00 20.00" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>hamburger</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke-width="0.0002" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-212.000000, -888.000000)" fill="#000000"> <path d="M230,904 L214,904 C212.896,904 212,904.896 212,906 C212,907.104 212.896,908 214,908 L230,908 C231.104,908 232,907.104 232,906 C232,904.896 231.104,904 230,904 L230,904 Z M230,896 L214,896 C212.896,896 212,896.896 212,898 C212,899.104 212.896,900 214,900 L230,900 C231.104,900 232,899.104 232,898 C232,896.896 231.104,896 230,896 L230,896 Z M214,892 L230,892 C231.104,892 232,891.104 232,890 C232,888.896 231.104,888 230,888 L214,888 C212.896,888 212,888.896 212,890 C212,891.104 212.896,892 214,892 L214,892 Z" id="hamburger" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>
-          </button>
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="title title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        {{ section.settings.heading }}
+      </h2>
+    {%- else -%}
+      <h2 class="visually-hidden">{{ 'templates.contact.form.title' | t }}</h2>
+    {%- endif -%}
+    {%- liquid
+      assign contact_form_class = 'isolate'
+      if settings.animations_reveal_on_scroll
+        assign contact_form_class = 'isolate scroll-trigger animate--slide-in'
+      endif
+    -%}
+    {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
+      {%- if form.posted_successfully? -%}
+        <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
+          {% render 'icon-success' %}
+          {{ 'templates.contact.form.post_success' | t }}
+        </h2>
+      {%- elsif form.errors -%}
+        <div class="form__message">
+          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
+            {% render 'icon-error' %}
+            {{ 'templates.contact.form.error_heading' | t }}
+          </h2>
         </div>
-
-        <div class="flex flex-row lg:w-[80%] justify-between">
-          <div class="flex flex-row gap-x-2">
-            <a class="" href="{{ paginate.previous.url }}">
-              <div class="border border-black py-[3px] px-[8px] h-[32px]">BACK</div>
+        <ul class="form-status-list caption-large" role="list">
+          <li>
+            <a href="#ContactForm-email" class="link">
+              {{ form.errors.translated_fields.email | capitalize }}
+              {{ form.errors.messages.email }}
             </a>
-            <a href="{{ paginate.next.url }}">
-              <div class="border border-black py-[3px] px-[8px] h-[32px]">NEXT</div>
-            </a>
-          </div>
-          <div class="flex flex-row gap-x-2">
-            <div id="cartbtn" class="border border-black py-[3px] px-[8px] h-[32px] cursor-pointer">
-              <a>CART</a>
-            </div>
-            <div class="buckscc-currency-box border border-black py-[3px] px-[8px] h-[32px]"></div>
-          </div>
+          </li>
+        </ul>
+      {%- endif -%}
+      <div class="contact__fields">
+        <div class="field">
+          <input
+            class="field__input"
+            autocomplete="name"
+            type="text"
+            id="ContactForm-name"
+            name="contact[{{ 'templates.contact.form.name' | t }}]"
+            value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+            placeholder="{{ 'templates.contact.form.name' | t }}"
+          >
+          <label class="field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
+        </div>
+        <div class="field field--with-error">
+          <input
+            autocomplete="email"
+            type="email"
+            id="ContactForm-email"
+            class="field__input"
+            name="contact[email]"
+            spellcheck="false"
+            autocapitalize="off"
+            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+            aria-required="true"
+            {% if form.errors contains 'email' %}
+              aria-invalid="true"
+              aria-describedby="ContactForm-email-error"
+            {% endif %}
+            placeholder="{{ 'templates.contact.form.email' | t }}"
+          >
+          <label class="field__label" for="ContactForm-email">
+            {{- 'templates.contact.form.email' | t }}
+            <span aria-hidden="true">*</span></label
+          >
+          {%- if form.errors contains 'email' -%}
+            <small class="contact__field-error" id="ContactForm-email-error">
+              <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+              <span class="form__message">
+                {%- render 'icon-error' -%}
+                {{- form.errors.translated_fields.email | capitalize }}
+                {{ form.errors.messages.email -}}
+              </span>
+            </small>
+          {%- endif -%}
         </div>
       </div>
-
-      <div class="flex lg:flex-row lg:p-[10px] lg:w-[100%] mt-[30px] lg:mt-0">
-        <div class="hide lg:flex w-[20%] border border-black" id="navbarProduct">
-          <nav role="navigation">
-            {% for link in linklists.main-menu.links %}
-              <div class="widget-left-bar">
-                <a href="/" {% if link.active %}aria-current="page"{% endif %}>
-                  <h2 class="text-3xl font-bold">{{ link.title }}</h2>
-                </a>
-                {% if link.links != blank %}
-                  <ul class="product-list">
-                    {% for child_link in link.links %}
-                      <li>
-                        <a href="{{ child_link.url }}" {% if child_link.active %}aria-current="page"{% endif %}>
-                          {{ child_link.title }}
-                        </a>
-                        {% if child_link.links != blank %}
-                          <ul>
-                            {% for grandchild_link in child_link.links %}
-                              <li>
-                                <a href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page"{% endif %}>
-                                  {{ grandchild_link.title }}
-                                </a>
-                              </li>
-                            {% endfor %}
-                          </ul>
-                        {% endif %}
-                      </li>
-                    {% endfor %}
-                  </ul>
-                {% endif %}
-              </div>
-            {% endfor %}
-          </nav>
-        </div>
-        
-        <div class="w-full lg:w-[80%] border border-s-0 border-black py-2 px-3">
-          {% form 'contact' %}
-            {{ form.errors | default_errors }}
-          
-            <div class="first-name">
-              <label for="first-name">First name</label>
-              <input type="text" name="contact[first_name]" id="first-name" />
-            </div>
-          
-            <div class="last-name">
-              <label for="last-name">Last name</label>
-              <input type="text" name="contact[last_name]" id="last-name" />
-            </div>
-          
-            <div class="phone">
-              <label for="phone">Phone</label>
-              <input type="tel" name="contact[phone]" id="phone" />
-            </div>
-          
-            <div class="email">
-              <label for="email">Email</label>
-              <input type="email" name="contact[email]" id="email" />
-            </div>
-          
-            <div class="order-number">
-              <label for="order-number">Order number</label>
-              <input type="text" name="contact[order_number]" id="order-number" />
-            </div>
-          
-            <div class="message">
-              <label for="message">Message</label>
-              <textarea name="contact[body]" id="message"></textarea>
-            </div>
-          
-            <div class="submit">
-              <input type="submit" value="Create" />
-            </div>
-          {% endform %}
-          
-        </div>
+      <div class="field">
+        <input
+          type="tel"
+          id="ContactForm-phone"
+          class="field__input"
+          autocomplete="tel"
+          name="contact[{{ 'templates.contact.form.phone' | t }}]"
+          pattern="[0-9\-]*"
+          value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+          placeholder="{{ 'templates.contact.form.phone' | t }}"
+        >
+        <label class="field__label" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
       </div>
-
-      <div class="flex lg:flex-row flex-col-reverse justify-between px-[10px] pb-[10px] items-center gap-4 lg:gap-0">
-        <script>
-          $(document).ready(function() {
-            // Double-check the ID of the footer element:
-            var footerElement = $('#footerPages');
-
-            // Check if the element exists before appending:
-            if (footerElement.length > 0) {
-              var captureUrlWindows = window.location.origin; // Use location.origin for the domain
-
-              // Clear existing content if needed (replace with .append() to add after):
-              footerElement.html(
-                '<a href="' + captureUrlWindows + '/pages/about">About</a>' +
-                '<a>•</a>' +
-                '<a href="' + captureUrlWindows + '/pages/privacy-policy">Privacy & Policy</a>' +
-                '<a>•</a>' +
-                '<a href="' + captureUrlWindows + '/pages/terms-conditions">Terms & Conditions</a>' +
-                '<a>•</a>' +
-                '<a href="' + captureUrlWindows + '/pages/contact">Contact</a>'
-              );
-            } else {
-              console.error("Element with ID '#footerPages' not found.");
-            }
-          });
-        </script>
-        <div id="footerPages" class="flex flex-row gap-[5px]">
-        </div>
+      <div class="field">
+        <textarea
+          rows="10"
+          id="ContactForm-body"
+          class="text-area field__input"
+          name="contact[{{ 'templates.contact.form.comment' | t }}]"
+          placeholder="{{ 'templates.contact.form.comment' | t }}"
+        >
+          {{- form.body -}}
+        </textarea>
+        <label class="form__label field__label" for="ContactForm-body">
+          {{- 'templates.contact.form.comment' | t -}}
+        </label>
       </div>
-
-    </div>
+      <div class="contact__button">
+        <button type="submit" class="button">
+          {{ 'templates.contact.form.send' | t }}
+        </button>
+      </div>
+    {%- endform -%}
   </div>
+</div>
 
-{%- endpaginate -%}
-
-<script>
-  // get element for nav brand & type product
-  document.getElementById("navbarProduct").classList.add("min-h-["+ (314 * 2) +"px]");
-</script>
+{% schema %}
+{
+  "name": "t:sections.contact-form.name",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Contact form",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.contact-form.presets.name"
+    }
+  ]
+}
+{% endschema %}
