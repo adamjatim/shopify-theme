@@ -99,7 +99,7 @@
 
   const shopifyEmail = document.getElementById('shopify-section-template--22499168452907__forms');
   if (shopifyEmail) {
-    $("#specialForShopifyEmail").append('{% render 'page' %}');
+    $("#specialForShopifyEmail").append(`{% render 'page' %}`);
 
     $('#shopify-section-template--22499168452907__forms').detach().prependTo('#specialFor');
   }
