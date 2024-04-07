@@ -65,13 +65,142 @@
         </div>
         
         <div class="w-full lg:w-[80%] border border-s-0 border-black py-2 px-3">
+          
           <div id="shopify-section-template--22499168452907__forms" class="shopify-section">
-            
             <div id="shopify-block-bbde3200-6af7-4bd8-93fb-fda62228fc34" class="shopify-block shopify-app-block">
               <div id="bbde3200-6af7-4bd8-93fb-fda62228fc34" data-form-root="true" data-forms-id="forms-root-93035" data-forms-text-color="#202020" data-forms-button-background-color="#202020" data-forms-button-label-color="#FFFFFF" data-forms-links-color="#1878B9" data-forms-errors-color="#E02229" data-forms-text-alignment="center" data-forms-alignment="center" data-forms-padding-top="0" data-forms-padding-right="0" data-forms-padding-bottom="0" data-forms-padding-left="0" style="--inline-container-min-height: 125px">
-                <form-embed id="app-embed" style="display: block;"></form-embed>
-              </div>
+                <form-embed id="app-embed" style="display: block;">
+                  <template shadowrootmode="open">
+                    <div data-form-root="true" id="app-embed" class="undefined _appEmbedRoot_1d2l7_9 _appEmbed_3eyaa_1" data-current-step="form">
+                      <style>
+                        :host {
+                          --spacing-size: 25px;
+                          --spacing-size-y: 35px;
+                          --spacing-size-x: 30px;
+                          --app-embed-padding-x: var(--spacing-size);
+                          --app-embed-padding-y: var(--spacing-size);
+                          --app-embed-width: auto;
+                    
+                          --forms-base-font-size: 14px;
+                          --forms-heading-font-size: 22px;
+                    
+                          --forms-body-font: normal 400 14px Helvetica, Verdana, Geneva, Tahoma, sans-serif;
+                          --forms-heading-font: normal 600 22px Helvetica, Verdana, Geneva, Tahoma, sans-serif;
+                    
+                          --forms-accent-color: #1878B9;
+                          --forms-accent-color-hovered-modifier: #1878B91a;
+                    
+                          --forms-discount-code-color: #1878B9;
+                          --forms-discount-code-background-color-hover: #ffffff;
+                    
+                          --forms-overlay-background-color: #000000;
+                          --forms-overlay-background-opacity: 0.6;
+                    
+                          --heading-font-size: 22px;
+                          --body-text-color: #202020;
+                          --link-text-color: #1878B9;
+                          --heading-text-color: #202020;
+                          --form-error-color: #E02229;
+                          --form-text-color: #202020;
+                          --form-placeholder-color: #20202080;
+                          --form-background-color: #FFFFFF;
+                          --button-text-color: #FFFFFF;
+                          --button-background-color: #202020;
+                          --button-background-color-hovered-modifier: opacity(80%);
+                    
+                          --button-close-background-color: #FFFFFF00;
+                          --button-close-color: #000000;
+                    
+                          --container-background-color: #FFFFFF00;
+                          --forms-padding-top: 0px;
+                          --forms-padding-right: 0px;
+                          --forms-padding-bottom: 0px;
+                          --forms-padding-left: 0px;
+                          --container-text-alignment: center;
+                          --disclaimer-padding: 0;
+                          --heading-padding: 0;
+                    
+                    
+                          --form-field-border: 0 0 0 1px #20202033;
+                          --form-field-border-focused: 0 0 0 2px #1878B9;
+                          --button-border: 0px solid none;
+                    
+                          --form-field-border-radius: 5px;
+                          --button-border-radius: 5px;
+                          --container-border-radius: 0px;
+                    
+                          --form-field-padding: 15px;
+                          --button-padding: 15px;
+                    
+                          --container-shadow: none;
+                          --container-max-w: 370px;
+                          --inline-container-max-width: 450px;
+                          --inline-form-alignment: center;
+                          }
+                    
+                    
+                        /* Decrease shadow size so it is not cut off when app embed has overflow set */
+                        /* breakpoint sm used for height */
+                        @media only screen and (max-height: 490px) {
+                          :host {
+                            --container-shadow: none;
+                          }
+                        }
+                    
+                        /* breakpoint sm */
+                        @media only screen and (max-width: 490px) {
+                          :host {
+                            --spacing-size: 16px;
+                            --app-embed-padding-x: 0;
+                            --app-embed-padding-y: var(--spacing-size);
+                          }
+                        }
+                      </style>
 
+                      <div data-testid="app-router" class="_container_3eyaa_70 _fadeAnimation_3eyaa_87">
+                        <div id="form-container-ref">
+                          <section class="_inline_whyqz_45">
+                            <section role="dialog" tabindex="-1" aria-modal="true" aria-label="Contact Us!" data-testid="form-container" class="_formContainer_whyqz_30 _grid_whyqz_145 _noImage_whyqz_158">
+                              <div data-testid="image" class="_gridItem_whyqz_169 _imageLoading_whyqz_238"></div>
+                              <div class="_gridItem_whyqz_169 _gridItemContent_whyqz_254">
+                                <section class="_formHeader_16kdc_19">
+                                  <h2 class="_textHeading_2aowh_35 _textHeading_16kdc_33">Contact Us!</h2>
+                                  <div class="_textBody_2aowh_10">
+                                    <p>Please let us know your query.</p>
+                                  </div>
+                                </section>
+                                
+                                <form novalidate="" data-testid="form" class="_formFieldset_16kdc_67">
+                                  <div class="_formFieldContainer_z7chr_5 ">
+                                    <input id="first_name" inputmode="text" type="text" autocomplete="off" aria-invalid="false" aria-labelledby="label-first_name" data-testid="field-first_name" placeholder="" class="_formInputField_237zm_7" labelsize="[object Object]">
+                                    <label id="label-first_name" for="label-first_name" class="_formInputFieldLabel_z7chr_37 ">Name</label>
+                                  </div>
+                                  <div class="_formFieldContainer_z7chr_5 ">
+                                    <input id="email" inputmode="email" type="text" autocomplete="off" aria-invalid="false" aria-labelledby="label-email" data-testid="field-email" placeholder="" class="_formInputField_237zm_7" labelsize="[object Object]">
+                                    <label id="label-email" for="label-email" class="_formInputFieldLabel_z7chr_37 ">Email</label>
+                                  </div>
+                                  <div class="_formFieldContainer_z7chr_5 ">
+                                    <textarea name="custom#message" rows="3" class="_textArea_17mgw_1" style="padding-top: calc(var(--form-field-padding) * 0.75 + 11.9033203125px);"></textarea>
+                                    <label id="label-custom#message" for="label-custom#message" class="_formInputFieldLabel_z7chr_37 ">Message</label>
+                                  </div>
+                                  <button aria-disabled="false" type="submit" data-testid="btn-form-submit" class="_formSubmitButton_16kdc_81">Send</button>
+                                </form>
+                              </div>
+                            </section>
+                          </section>
+                          <section>
+                            <div>
+                              <iframe aria-hidden="true" data-hcaptcha-widget-id="0klk9xw37g4p" data-hcaptcha-response="" style="display: none;"></iframe>
+                              <textarea id="h-captcha-response-0klk9xw37g4p" name="h-captcha-response" style="display: none;"></textarea>
+                            </div>
+                          </section>
+                        </div>
+                      </div>
+                    </div>
+                  </template>
+                </form-embed>
+              </div>
+      
               <script>
                 window['ShopifyForms'] = {
                   ...window['ShopifyForms'],
@@ -80,7 +209,10 @@
               </script>
             </div>
           </div>
+
         </div>
+
+        
 
       </div>
 
