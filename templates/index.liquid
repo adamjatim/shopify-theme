@@ -247,8 +247,12 @@
   
       let childPriceSpan = document.createElement('span');
       childPriceSpan.classList.add('money');
-      let roundedPrice = dataCollectionProducts[j].price / 100; // for rounded 2 zero after coma
-      childPriceSpan.innerHTML = Math.ceil(roundedPrice);
+      let getClassAttribute = document.getElementsByClassName('money');
+      let attributeValue = getClassAttribute.getAttribute('bucks-current');
+      // let roundedPrice = 
+      // childPriceSpan.innerHTML = dataCollectionProducts[j].price / 100; // for rounded 2 zero after coma
+      childPriceSpan.innerHTML = attributeValue; // for rounded 2 zero after coma
+      // Math.ceil(roundedPrice);
   
       let comparePriceSpan = document.createElement('span');
       comparePriceSpan.classList.add('compare-price');
