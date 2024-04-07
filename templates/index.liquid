@@ -248,7 +248,8 @@
       let childPriceSpan = document.createElement('span');
       childPriceSpan.classList.add('money');
       let getClassAttribute = document.getElementsByClassName('money');
-      let attributeValue = getClassAttribute.getAttribute('bucks-current');
+      // let attributeValue = getClassAttribute.getAttribute('bucks-current');
+      let attributeValue = document.querySelectorAll('[bucks-current]')
       // let roundedPrice = 
       // childPriceSpan.innerHTML = dataCollectionProducts[j].price / 100; // for rounded 2 zero after coma
       childPriceSpan.innerHTML = attributeValue; // for rounded 2 zero after coma
