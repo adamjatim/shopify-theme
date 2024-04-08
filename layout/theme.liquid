@@ -59,7 +59,7 @@
           } else if (getCurrencyValue === 'EUR') {
             $('#EUR.converterTriggers').click();
           }
-          
+          localStorage.setItem('hasRun', true); // Set the flag to indicate that the script has run
         }, 4000); // 3000 milliseconds = 3 seconds
       }
         
