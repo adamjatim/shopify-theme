@@ -18,9 +18,9 @@
   {% capture cur %}{% include "booster-currency" %}{% endcapture %}{% unless cur contains "Liquid error" %}{{ cur }}{% endunless %}
 
   <script>
-    window.mlvedaShopCurrency = "{{ shop.currency }}";
-    window.shopCurrency = "{{ shop.currency }}";
-    window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
+    // window.mlvedaShopCurrency = "{{ shop.currency }}";
+    // window.shopCurrency = "{{ shop.currency }}";
+    // window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
   </script>
   {% include 'bucks-cc' %}
 </head>
