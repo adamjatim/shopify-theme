@@ -211,7 +211,7 @@
     // Preload the product list items
     for (let j = 0 + (pagePaginate * {{ query_product }}); j < (pagePaginate + 1) * {{ query_product }}; j++) {
       let listItem = document.createElement('li');
-      listItem.setAttribute(dataCollectionProducts[j].id);
+      listItem.setAttribute(dataCollectionProducts[j].id, ID);
 
       if (displayed_products_top < {{ row_product }}) {
         listItem.classList.add('border','flex','grow','max-w-[42vw]','h-max-[17vw]','mx-auto','!h-auto','!mx-[4%]','!mb-[4%]','lg:!mx-[0]','lg:!mb-[0]','lg:!border-s-0','!border-black','!min-w-[0%]');
