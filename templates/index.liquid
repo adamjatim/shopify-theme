@@ -249,7 +249,6 @@
       childPriceSpan.classList.add('money');
       
       let roundedPrice = dataCollectionProducts[j].price / 100;
-      console.log(roundedPrice);
 
       childPriceSpan.innerHTML = Math.ceil(roundedPrice);
   
@@ -278,6 +277,7 @@
       listItem.appendChild(productLink);
   
       productsList.appendChild(listItem);
+      console.log(listItem);
     }
     localStorage.setItem('currentPage', pagePaginate);
   }
@@ -288,6 +288,6 @@
   // get element for nav brand & type product
   document.getElementById("navbarProduct").classList.add("h-["+ (314 * {{ column_product }}) +"px]");
   
-  
+
 
 </script> 
