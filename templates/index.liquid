@@ -242,18 +242,14 @@
       vendor = vendor.replace(/\s+/g, '-');
       productVendor.href = window.location.origin + '/collections/' + vendor;
 
-      // for currency as shopify apps
-      /*
       let priceSpan = document.createElement('span');
       priceSpan.classList.add('original-price');
   
       let childPriceSpan = document.createElement('span');
       childPriceSpan.classList.add('money');
-      let roundedPrice = dataCollectionProducts[j].price / 100; // for rounded 2 zero after coma
-      // var currency = document.querySelector('.bucks-selected').textContent;
-      // if (currency == 'IDR') {
-      //   roundedPrice = Math.ceil(roundedPrice / 10000) * 10000; // for IDR format
-      // }
+      
+      let roundedPrice = dataCollectionProducts[j].price / 100;
+
       childPriceSpan.innerHTML = Math.ceil(roundedPrice);
   
       let comparePriceSpan = document.createElement('span');
@@ -261,44 +257,6 @@
   
       let childComparePriceSpan = document.createElement('span');
       childComparePriceSpan.classList.add('money');
-  
-      if (dataCollectionProducts[j].compare_at_price > dataCollectionProducts[j].price) {
-        childComparePriceSpan.innerHTML = dataCollectionProducts[j].compare_at_price / 100; // for rounded 2 zero after coma
-        productText.appendChild(Math.ceil(comparePriceSpan));
-        comparePriceSpan.appendChild(Math.ceil(childComparePriceSpan));
-        priceSpan.innerHTML = '<br>';
-      }
-      */
-
-      // manually
-
-      let priceSpan = document.createElement('span');
-      priceSpan.classList.add('__original-price');
-  
-      let childPriceSpan = document.createElement('span');
-      childPriceSpan.classList.add('__money');
-      
-      let roundedPrice = dataCollectionProducts[j].price / 100;
-      
-      var currency = document.querySelector('.bucks-selected').textContent;
-      // Define conversion rates from USD to other currencies
-      var conversionRates = {
-        'IDR': 16000, // Example conversion rate from USD to IDR
-        'EUR': 1,    // Example conversion rate from USD to EUR
-        // Add conversion rates for other currencies as needed
-      };
-
-      if (conversionRates[currency]) {
-        roundedPrice = roundedPrice * conversionRates[currency];
-      }
-
-      childPriceSpan.innerHTML = Math.ceil(roundedPrice);
-  
-      let comparePriceSpan = document.createElement('span');
-      comparePriceSpan.classList.add('__compare-price');
-  
-      let childComparePriceSpan = document.createElement('span');
-      childComparePriceSpan.classList.add('__money');
   
       if (dataCollectionProducts[j].compare_at_price > dataCollectionProducts[j].price) {
         childComparePriceSpan.innerHTML = dataCollectionProducts[j].compare_at_price / 100; // for rounded 2 zero after coma
