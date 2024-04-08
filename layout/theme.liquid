@@ -45,6 +45,9 @@
   // });
 
     $(document).ready(function() {
+      var hasRun = localStorage.getItem('hasRun'); // Check if the script has already run
+
+      if (!hasRun) {
         setTimeout(function() {
           var getCurrencyValue = $('.bucks-selected').text();
           console.log(getCurrencyValue);
@@ -58,6 +61,8 @@
           }
           
         }, 4000); // 3000 milliseconds = 3 seconds
+      }
+        
     });
   </script>
   <main class="flex flex-col min-h-screen gap-4">
