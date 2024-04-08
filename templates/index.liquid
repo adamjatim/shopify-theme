@@ -319,14 +319,14 @@
       // productLink.appendTo(listItem);
       // listItem.appendTo(productsList);
 
-      priceSpan.appendChild(childPriceSpan);
-      productText.appendChild(priceSpan);
-      productLink.appendChild(productImage);
-      productLink.appendChild(productVendor);
-      productLink.appendChild(productText);
-      listItem.appendChild(productLink);
+      priceSpan.append(childPriceSpan);
+      productText.append(priceSpan);
+      productLink.append(productImage);
+      productLink.append(productVendor);
+      productLink.append(productText);
+      listItem.append(productLink);
   
-      productsList.appendChild(listItem);
+      productsList.append(listItem);
     }
     localStorage.setItem('currentPage', pagePaginate);
   }
