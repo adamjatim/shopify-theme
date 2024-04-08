@@ -25,7 +25,16 @@
     
     $(document).ready(function() {
         setTimeout(function() {
-          $('#USD.converterTriggers').click();
+          var getCurrencyValue = $('.bucks-selected').text();
+
+          if (getCurrencyValue.text === 'USD') {
+            $('#USD.converterTriggers').click();
+          } else if (getCurrencyValue.text === 'IDR') {
+            $('#IDR.converterTriggers').click();
+          } else if (getCurrencyValue.text === 'EUR') {
+            $('#EUR.converterTriggers').click();
+          }
+          
         }, 3000); // 3000 milliseconds = 3 seconds
     });
 
