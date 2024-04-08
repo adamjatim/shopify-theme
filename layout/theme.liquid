@@ -22,11 +22,7 @@
     window.shopCurrency = "{{ shop.currency }}";
     window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
 
-    var c = hxo$(this).attr("id"),
-        i = hxo$(this).attr("id");
-      (((window || {}).bucksCC || {}).metaConfig || {}).isMerchant && (((window || {}).bucksPreview || {}).currencyCode = c), o && o.selectedCurrencies && o.selectedCurrencies.selectedCurrencies > 1 && hxo$(this).addClass("hxoSelected").siblings().removeClass("hxoSelected"), e.children(":first-child").html('<div class="flagWrapper"><div class="hxoFlag hxoFlag-' + i + '"></div></div>'), e.children(":nth-child(2)").text(i), e.addClass("deactive"), t.val(i), o.multiCurrencyEnabled ? Object(a.a)(c, "manual") : Object(n.a)(o, c);
-    var s = Object(r.a)(c);
-    document.dispatchEvent(s), o.cartNotificationStatus && window.bucksCC && window.bucksCC.addCartBanner && window.bucksCC.addCartBanner()
+    $('#USD.converterTriggers').click();
   </script>
   {% include 'bucks-cc' %}
 </head>
