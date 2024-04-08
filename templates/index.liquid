@@ -243,10 +243,10 @@
       productVendor.href = window.location.origin + '/collections/' + vendor;
 
       let priceSpan = document.createElement('span');
-      priceSpan.classList.add('original-price');
+      priceSpan.classList.add('__original-price');
   
       let childPriceSpan = document.createElement('span');
-      childPriceSpan.classList.add('money');
+      childPriceSpan.classList.add('__money');
       let roundedPrice = dataCollectionProducts[j].price / 100; // for rounded 2 zero after coma
       // var currency = document.querySelector('.bucks-selected').textContent;
       // if (currency == 'IDR') {
@@ -255,10 +255,10 @@
       childPriceSpan.innerHTML = Math.ceil(roundedPrice);
   
       let comparePriceSpan = document.createElement('span');
-      comparePriceSpan.classList.add('compare-price');
+      comparePriceSpan.classList.add('__compare-price');
   
       let childComparePriceSpan = document.createElement('span');
-      childComparePriceSpan.classList.add('money');
+      childComparePriceSpan.classList.add('__money');
   
       if (dataCollectionProducts[j].compare_at_price > dataCollectionProducts[j].price) {
         childComparePriceSpan.innerHTML = dataCollectionProducts[j].compare_at_price / 100; // for rounded 2 zero after coma
