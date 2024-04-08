@@ -202,7 +202,7 @@
   });
   
   // Function to update the product list
-  async function updateProductList() {
+  function updateProductList() {
     let shopLink = window.location.origin + window.location.pathname;
     let productsList = document.getElementById('products-list');
     productsList.innerHTML = ""; // Clear the existing product list
@@ -247,9 +247,7 @@
   
       let childPriceSpan = document.createElement('span');
       childPriceSpan.classList.add('money');
-      
-      let roundedPrice = dataCollectionProducts[j].price / 100;
-
+      let roundedPrice = dataCollectionProducts[j].price / 100; // for rounded 2 zero after coma
       childPriceSpan.innerHTML = Math.ceil(roundedPrice);
   
       let comparePriceSpan = document.createElement('span');
@@ -260,15 +258,11 @@
   
       if (dataCollectionProducts[j].compare_at_price > dataCollectionProducts[j].price) {
         childComparePriceSpan.innerHTML = dataCollectionProducts[j].compare_at_price / 100; // for rounded 2 zero after coma
-        if (conversionRates[currency]) {
-          comparePriceSpan = comparePriceSpan * conversionRates[currency];
-          childComparePriceSpan = childComparePriceSpan * conversionRates[currency];
-        }
         productText.appendChild(Math.ceil(comparePriceSpan));
         comparePriceSpan.appendChild(Math.ceil(childComparePriceSpan));
         priceSpan.innerHTML = '<br>';
       }
-
+  
       priceSpan.appendChild(childPriceSpan);
       productText.appendChild(priceSpan);
       productLink.appendChild(productImage);
@@ -277,8 +271,6 @@
       listItem.appendChild(productLink);
   
       productsList.appendChild(listItem);
-      console.log(listItem);
-      console.log(dataCollectionProducts[j]);
     }
     localStorage.setItem('currentPage', pagePaginate);
   }
@@ -289,6 +281,4 @@
   // get element for nav brand & type product
   document.getElementById("navbarProduct").classList.add("h-["+ (314 * {{ column_product }}) +"px]");
   
-
-
 </script> 
