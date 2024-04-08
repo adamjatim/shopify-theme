@@ -1,5 +1,5 @@
-{% comment %} {% assign collection = collections['all'] %} {% endcomment %}
-{% comment %} {%- paginate collection.products -%} {% endcomment %}
+{% assign collection = collections['all'] %}
+{%- paginate collection.products -%}
 
   <div class="mx-auto mb-28">
     <div class="lg:border border-black border-y border-x-0 !w-screen lg:!w-[1024px]">
@@ -100,7 +100,7 @@
     </div>
   </div>
 
-{% comment %} {%- endpaginate -%} {% endcomment %}
+{%- endpaginate -%}
 
 <script>
   // get element for nav brand & type product

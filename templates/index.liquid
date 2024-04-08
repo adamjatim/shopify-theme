@@ -247,8 +247,7 @@
   
       let childPriceSpan = document.createElement('span');
       childPriceSpan.classList.add('money');
-      let roundedPrice = dataCollectionProducts[j].price / 100; // for rounded 2 zero after coma
-      childPriceSpan.innerHTML = Math.ceil(roundedPrice);
+      childPriceSpan.innerHTML = dataCollectionProducts[j].price / 100; // for rounded 2 zero after coma
   
       let comparePriceSpan = document.createElement('span');
       comparePriceSpan.classList.add('compare-price');
@@ -258,8 +257,8 @@
   
       if (dataCollectionProducts[j].compare_at_price > dataCollectionProducts[j].price) {
         childComparePriceSpan.innerHTML = dataCollectionProducts[j].compare_at_price / 100; // for rounded 2 zero after coma
-        productText.appendChild(Math.ceil(comparePriceSpan));
-        comparePriceSpan.appendChild(Math.ceil(childComparePriceSpan));
+        productText.appendChild(comparePriceSpan);
+        comparePriceSpan.appendChild(childComparePriceSpan);
         priceSpan.innerHTML = '<br>';
       }
   
