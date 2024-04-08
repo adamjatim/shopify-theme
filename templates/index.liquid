@@ -211,6 +211,7 @@
     // Preload the product list items
     for (let j = 0 + (pagePaginate * {{ query_product }}); j < (pagePaginate + 1) * {{ query_product }}; j++) {
       let listItem = document.createElement('li');
+      listItem.setAttribute(dataCollectionProducts[j].id);
 
       if (displayed_products_top < {{ row_product }}) {
         listItem.classList.add('border','flex','grow','max-w-[42vw]','h-max-[17vw]','mx-auto','!h-auto','!mx-[4%]','!mb-[4%]','lg:!mx-[0]','lg:!mb-[0]','lg:!border-s-0','!border-black','!min-w-[0%]');
@@ -242,12 +243,47 @@
       vendor = vendor.replace(/\s+/g, '-');
       productVendor.href = window.location.origin + '/collections/' + vendor;
 
+
+      $(document).ready(function() {
+        // Function to update currency conversion
+        function updateCurrencyConversion() {
+            var getPriceProduct = dataCollectionProducts[j].price / 100;
+            var currency = $('.bucks-selected').text();
+
+            // Define conversion rates from USD to other currencies
+            var conversionRates = {
+                'USD': 1, // Example conversion rate USD
+                'IDR': 16000, // Example conversion rate from IDR to USD
+                'EUR': 1,    // Example conversion rate from IDR to EUR
+                // Add conversion rates for other currencies as needed
+            };
+
+            var conversionSymbol = {
+                'USD': '$', // Example conversion rate USD
+                'IDR': 'Rp', // Example conversion rate from IDR to USD
+                'EUR': '€',    // Example conversion rate from IDR to EUR
+            }
+
+            // Convert price to IDR if the currency is USD or EUR
+            if (conversionRates[currency] && conversionSymbol[currency]) {
+                var priceProduct = conversionSymbol[currency] + " " + getPriceProduct + " " + conversionRates[currency];
+            }
+        }
+
+        // Call the updateCurrencyConversion function initially
+        updateCurrencyConversion();
+
+        // Set interval to continuously check for changes in currency
+        // setInterval(updateCurrencyConversion, 1000); // Adjust interval as needed
+      });
+
+
       let priceSpan = document.createElement('span');
       priceSpan.classList.add('original-price');
   
       let childPriceSpan = document.createElement('span');
       childPriceSpan.classList.add('money');
-      childPriceSpan.innerHTML = dataCollectionProducts[j].price / 100; // for rounded 2 zero after coma
+      childPriceSpan.innerHTML = priceProduct; // for rounded 2 zero after coma
   
       let comparePriceSpan = document.createElement('span');
       comparePriceSpan.classList.add('compare-price');
@@ -280,42 +316,6 @@
   // get element for nav brand & type product
   document.getElementById("navbarProduct").classList.add("h-["+ (314 * {{ column_product }}) +"px]");
   
-  $(document).ready(function() {
-    // Function to update currency conversion
-    function updateCurrencyConversion() {
-        var currency = $('.bucks-selected').text();
-
-        // Define conversion rates from USD to other currencies
-        var conversionRates = {
-            'USD': 1, // Example conversion rate USD
-            'IDR': 16000, // Example conversion rate from IDR to USD
-            'EUR': 1,    // Example conversion rate from IDR to EUR
-            // Add conversion rates for other currencies as needed
-        };
-
-        var conversionSymbol = {
-            'USD': '$', // Example conversion rate USD
-            'IDR': 'Rp', // Example conversion rate from IDR to USD
-            'EUR': '€',    // Example conversion rate from IDR to EUR
-        }
-
-        // Convert price to IDR if the currency is USD or EUR
-        if (conversionRates[currency] && conversionSymbol[currency]) {
-            $('.money').each(function() {
-                var price = parseFloat($(this).text().replace(/[^0-9.-]+/g,"")); // Extract numeric value from text
-                price *= conversionRates[currency];
-                price = Math.ceil(price); // Round the price up to the nearest whole number
-
-                $(this).empty().append(conversionSymbol[currency] + ' ' + price + ' ' + conversionRates[currency]);
-            });
-        }
-    }
-
-    // Call the updateCurrencyConversion function initially
-    updateCurrencyConversion();
-
-    // Set interval to continuously check for changes in currency
-    setInterval(updateCurrencyConversion, 1000); // Adjust interval as needed
-  });
+  
 
 </script> 
