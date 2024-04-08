@@ -250,10 +250,10 @@
       let childPriceSpan = document.createElement('span');
       childPriceSpan.classList.add('money');
       let roundedPrice = dataCollectionProducts[j].price / 100; // for rounded 2 zero after coma
-      // var currency = document.querySelector('.bucks-selected').textContent;
-      // if (currency == 'IDR') {
-      //   roundedPrice = Math.ceil(roundedPrice / 10000) * 10000; // for IDR format
-      // }
+      var currency = document.querySelector('.bucks-selected').textContent;
+      if (currency == 'IDR') {
+        roundedPrice = Math.ceil(roundedPrice / 10000) * 10000; // for IDR format
+      }
       childPriceSpan.innerHTML = Math.ceil(roundedPrice);
   
       let comparePriceSpan = document.createElement('span');
