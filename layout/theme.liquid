@@ -22,7 +22,13 @@
     window.shopCurrency = "{{ shop.currency }}";
     window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
 
-    $('#USD.converterTriggers').click();
+    
+    $(document).ready(function() {
+        setTimeout(function() {
+          $('#USD.converterTriggers').click();
+        }, 3000); // 3000 milliseconds = 3 seconds
+    });
+
   </script>
   {% include 'bucks-cc' %}
 </head>
