@@ -277,7 +277,8 @@
   
       let childPriceSpan = document.createElement('span');
       childPriceSpan.classList.add('__money');
-      let roundedPrice = dataCollectionProducts[j].price / 100; // for rounded 2 zero after coma
+      // for rounded 2 zero after coma
+      let roundedPrice = dataCollectionProducts[j].price / 100;
       
       var currency = document.querySelector('.bucks-selected').textContent;
       // Define conversion rates from USD to other currencies
