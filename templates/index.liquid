@@ -243,7 +243,7 @@
       productVendor.href = window.location.origin + '/collections/' + vendor;
 
       // for currency as shopify apps
-      /*
+      
       let priceSpan = document.createElement('span');
       priceSpan.classList.add('original-price');
   
@@ -268,68 +268,69 @@
         comparePriceSpan.appendChild(Math.ceil(childComparePriceSpan));
         priceSpan.innerHTML = '<br>';
       }
-      */
+      
 
       // manually
 
-      let priceSpan = document.createElement('span');
-      priceSpan.classList.add('__original-price');
+      // let priceSpan = document.createElement('span');
+      // priceSpan.classList.add('__original-price');
   
-      // let childPriceSpan = document.createElement('span');
-      // childPriceSpan.classList.add('__money');
-      // for rounded 2 zero after coma
-      let roundedPrice = dataCollectionProducts[j].price / 100;
+      // // let childPriceSpan = document.createElement('span');
+      // // childPriceSpan.classList.add('__money');
+      // // for rounded 2 zero after coma
+      // let roundedPrice = dataCollectionProducts[j].price / 100;
       
-      let currency = $('.bucks-selected').text();
-      // Define conversion rates from USD to other currencies
-      let conversionRates = {
-        'IDR': 16000, // Example conversion rate from USD to IDR
-        'EUR': 1,    // Example conversion rate from USD to EUR
-        // Add conversion rates for other currencies as needed
-      };
+      // let currency = $('.bucks-selected').text();
+      // // Define conversion rates from USD to other currencies
+      // let conversionRates = {
+      //   'IDR': 16000, // Example conversion rate from USD to IDR
+      //   'EUR': 1,    // Example conversion rate from USD to EUR
+      //   // Add conversion rates for other currencies as needed
+      // };
 
-      if (conversionRates[currency]) {
-        roundedPrice = roundedPrice * conversionRates[currency];
-      }
+      // if (conversionRates[currency]) {
+      //   roundedPrice = roundedPrice * conversionRates[currency];
+      // }
 
-      let childPriceSpan = $('<span>').addClass('__money').html(Math.ceil(roundedPrice));
+      // let childPriceSpan = $('<span>').addClass('__money').html(Math.ceil(roundedPrice));
   
-      let comparePriceSpan = document.createElement('span');
-      comparePriceSpan.classList.add('__compare-price');
+      // let comparePriceSpan = document.createElement('span');
+      // comparePriceSpan.classList.add('__compare-price');
   
-      let childComparePriceSpan = document.createElement('span');
-      childComparePriceSpan.classList.add('__money');
+      // let childComparePriceSpan = document.createElement('span');
+      // childComparePriceSpan.classList.add('__money');
   
-      if (dataCollectionProducts[j].compare_at_price > dataCollectionProducts[j].price) {
-        childComparePriceSpan.innerHTML = dataCollectionProducts[j].compare_at_price / 100; // for rounded 2 zero after coma
-        if (conversionRates[currency]) {
-          comparePriceSpan = comparePriceSpan * conversionRates[currency];
-          childComparePriceSpan = childComparePriceSpan * conversionRates[currency];
-        }
-        productText.appendChild(Math.ceil(comparePriceSpan));
-        comparePriceSpan.appendChild(Math.ceil(childComparePriceSpan));
-        priceSpan.innerHTML = '<br>';
-      }
+      // if (dataCollectionProducts[j].compare_at_price > dataCollectionProducts[j].price) {
+      //   childComparePriceSpan.innerHTML = dataCollectionProducts[j].compare_at_price / 100; // for rounded 2 zero after coma
+      //   if (conversionRates[currency]) {
+      //     comparePriceSpan = comparePriceSpan * conversionRates[currency];
+      //     childComparePriceSpan = childComparePriceSpan * conversionRates[currency];
+      //   }
+      //   productText.appendChild(Math.ceil(comparePriceSpan));
+      //   comparePriceSpan.appendChild(Math.ceil(childComparePriceSpan));
+      //   priceSpan.innerHTML = '<br>';
+      // }
 
-      childPriceSpan.appendTo(priceSpan);
-      priceSpan.appendTo(productText);
-      productImage.appendTo(productLink);
-      productVendor.appendTo(productLink);
-      productText.appendTo(productLink);
-      productLink.appendTo(listItem);
-      listItem.appendTo(productsList);
+      // childPriceSpan.appendTo(priceSpan);
+      // priceSpan.appendTo(productText);
+      // productImage.appendTo(productLink);
+      // productVendor.appendTo(productLink);
+      // productText.appendTo(productLink);
+      // productLink.appendTo(listItem);
+      // listItem.appendTo(productsList);
 
-      // priceSpan.appendChild(childPriceSpan);
-      // productText.appendChild(priceSpan);
-      // productLink.appendChild(productImage);
-      // productLink.appendChild(productVendor);
-      // productLink.appendChild(productText);
-      // listItem.appendChild(productLink);
+      priceSpan.appendChild(childPriceSpan);
+      productText.appendChild(priceSpan);
+      productLink.appendChild(productImage);
+      productLink.appendChild(productVendor);
+      productLink.appendChild(productText);
+      listItem.appendChild(productLink);
   
-      // productsList.appendChild(listItem);
+      productsList.appendChild(listItem);
     }
     localStorage.setItem('currentPage', pagePaginate);
-  }setInterval(updateProductList, 5000);
+  }
+  // setInterval(updateProductList, 5000);
 
   // Initial load of the product list
   document.addEventListener('DOMContentLoaded', updateProductList);
