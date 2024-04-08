@@ -329,7 +329,7 @@
       // productsList.appendChild(listItem);
     }
     localStorage.setItem('currentPage', pagePaginate);
-  }
+  }setInterval(updateProductList, 5000);
 
   // Initial load of the product list
   document.addEventListener('DOMContentLoaded', updateProductList);
