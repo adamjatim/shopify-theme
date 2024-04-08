@@ -280,31 +280,42 @@
   // get element for nav brand & type product
   document.getElementById("navbarProduct").classList.add("h-["+ (314 * {{ column_product }}) +"px]");
   
-  var currency = $('.bucks-selected').text();
+  $(document).ready(function() {
+    // Function to update currency conversion
+    function updateCurrencyConversion() {
+        var currency = $('.bucks-selected').text();
 
-  // Define conversion rates from USD to other currencies
-  var conversionRates = {
-    'USD': 1, // Example conversion rate USD
-    'IDR': 16000, // Example conversion rate from IDR to USD
-    'EUR': 1,    // Example conversion rate from IDR to EUR
-    // Add conversion rates for other currencies as needed
-  };
+        // Define conversion rates from USD to other currencies
+        var conversionRates = {
+            'USD': 1, // Example conversion rate USD
+            'IDR': 16000, // Example conversion rate from IDR to USD
+            'EUR': 1,    // Example conversion rate from IDR to EUR
+            // Add conversion rates for other currencies as needed
+        };
 
-  var conversionSymbol = {
-    'USD': '$', // Example conversion rate USD
-    'IDR': 'Rp', // Example conversion rate from IDR to USD
-    'EUR': '€',    // Example conversion rate from IDR to EUR
-  }
+        var conversionSymbol = {
+            'USD': '$', // Example conversion rate USD
+            'IDR': 'Rp', // Example conversion rate from IDR to USD
+            'EUR': '€',    // Example conversion rate from IDR to EUR
+        }
 
-  // Convert price to IDR if the currency is USD or EUR
-  if (conversionRates[currency] && conversionSymbol[currency]) {
-    var price = price * conversionRates[currency];
-    price = Math.ceil(price); // Round the price up to the nearest whole number
+        // Convert price to IDR if the currency is USD or EUR
+        if (conversionRates[currency] && conversionSymbol[currency]) {
+            $('.money').each(function() {
+                var price = parseFloat($(this).text().replace(/[^0-9.-]+/g,"")); // Extract numeric value from text
+                price *= conversionRates[currency];
+                price = Math.ceil(price); // Round the price up to the nearest whole number
 
-    $('.money').remove();
-    $('.money').append(conversionSymbol[currency] + ' ' + price + ' ' + conversionRates[currency]);
-  }
+                $(this).empty().append(conversionSymbol[currency] + ' ' + price + ' ' + conversionRates[currency]);
+            });
+        }
+    }
 
-  
+    // Call the updateCurrencyConversion function initially
+    updateCurrencyConversion();
+
+    // Set interval to continuously check for changes in currency
+    setInterval(updateCurrencyConversion, 1000); // Adjust interval as needed
+  });
 
 </script> 
