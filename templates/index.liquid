@@ -244,38 +244,27 @@
       productVendor.href = window.location.origin + '/collections/' + vendor;
 
 
-      $(document).ready(function() {
-        // Function to update currency conversion
-        function updateCurrencyConversion() {
-            var getPriceProduct = dataCollectionProducts[j].price / 100;
-            var currency = $('.bucks-selected').text();
+      var getPriceProduct = dataCollectionProducts[j].price / 100;
+      var currency = $('.bucks-selected').text();
 
-            // Define conversion rates from USD to other currencies
-            var conversionRates = {
-                'USD': 1, // Example conversion rate USD
-                'IDR': 16000, // Example conversion rate from IDR to USD
-                'EUR': 1,    // Example conversion rate from IDR to EUR
-                // Add conversion rates for other currencies as needed
-            };
+      // Define conversion rates from USD to other currencies
+      var conversionRates = {
+        'USD': 1, // Example conversion rate USD
+        'IDR': 16000, // Example conversion rate from IDR to USD
+        'EUR': 1,    // Example conversion rate from IDR to EUR
+        // Add conversion rates for other currencies as needed
+      };
 
-            var conversionSymbol = {
-                'USD': '$', // Example conversion rate USD
-                'IDR': 'Rp', // Example conversion rate from IDR to USD
-                'EUR': '€',    // Example conversion rate from IDR to EUR
-            }
+      var conversionSymbol = {
+        'USD': '$', // Example conversion rate USD
+        'IDR': 'Rp', // Example conversion rate from IDR to USD
+        'EUR': '€',    // Example conversion rate from IDR to EUR
+      }
 
-            // Convert price to IDR if the currency is USD or EUR
-            if (conversionRates[currency] && conversionSymbol[currency]) {
-                var priceProduct = conversionSymbol[currency] + " " + getPriceProduct + " " + conversionRates[currency];
-            }
-        }
-
-        // Call the updateCurrencyConversion function initially
-        updateCurrencyConversion();
-
-        // Set interval to continuously check for changes in currency
-        // setInterval(updateCurrencyConversion, 1000); // Adjust interval as needed
-      });
+      // Convert price to IDR if the currency is USD or EUR
+      if (conversionRates[currency] && conversionSymbol[currency]) {
+        var priceProduct = conversionSymbol[currency] + " " + getPriceProduct + " " + conversionRates[currency];
+      }
 
 
       let priceSpan = document.createElement('span');
