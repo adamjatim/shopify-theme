@@ -247,6 +247,8 @@
       var getPriceProduct = dataCollectionProducts[j].price / 100;
       var currency = $('.bucks-selected').text();
 
+      console.log(currency);
+
       // Define conversion rates from USD to other currencies
       var conversionRates = {
         'USD': 1, // Example conversion rate USD
@@ -266,6 +268,7 @@
         var priceProduct = conversionSymbol[currency] + " " + getPriceProduct + " " + conversionRates[currency];
       }
 
+      console.log(priceProduct);
 
       let priceSpan = document.createElement('span');
       priceSpan.classList.add('original-price');
