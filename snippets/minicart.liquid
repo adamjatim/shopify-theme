@@ -229,14 +229,14 @@ $(document).on('click', '.remove-btn', function() {
 
       // Define conversion rates from USD to other currencies
       var conversionRates = {
-        'USD': 16000, // Example conversion rate from IDR to USD
-        'EUR': 17600,    // Example conversion rate from IDR to EUR
+        'IDR': 16000, // Example conversion rate from IDR to USD
+        'EUR': 1,    // Example conversion rate from IDR to EUR
         // Add conversion rates for other currencies as needed
       };
 
       // Convert price to IDR if the currency is USD or EUR
       if (conversionRates[currency]) {
-        price = price / conversionRates[currency];
+        price = price * conversionRates[currency];
         price = Math.ceil(price); // Round the price up to the nearest whole number
       }
 
