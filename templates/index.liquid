@@ -46,7 +46,9 @@
       <div class="flex flex-row lg:w-[20%]">
         <h1 class="text-4xl font-bold">{{ collection.title }}</h1>
         <button class="hamburger">
-          <svg width="30px" height="20px" viewBox="0 0 20.00 20.00" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>hamburger</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke-width="0.0002" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-212.000000, -888.000000)" fill="#000000"> <path d="M230,904 L214,904 C212.896,904 212,904.896 212,906 C212,907.104 212.896,908 214,908 L230,908 C231.104,908 232,907.104 232,906 C232,904.896 231.104,904 230,904 L230,904 Z M230,896 L214,896 C212.896,896 212,896.896 212,898 C212,899.104 212.896,900 214,900 L230,900 C231.104,900 232,899.104 232,898 C232,896.896 231.104,896 230,896 L230,896 Z M214,892 L230,892 C231.104,892 232,891.104 232,890 C232,888.896 231.104,888 230,888 L214,888 C212.896,888 212,888.896 212,890 C212,891.104 212.896,892 214,892 L214,892 Z" id="hamburger" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
       </div>
 
@@ -102,7 +104,6 @@
           {% endfor %}
         </nav>
       </div>
-
       <div class="w-full lg:w-[80%]">
         <ul id="products-list" class="flex flex-wrap gap-0"></ul>
       </div>
@@ -124,7 +125,7 @@
               '<a>•</a>' +
               '<a href="' + captureUrlWindows + '/pages/privacy-policy">Privacy & Policy</a>' +
               '<a>•</a>' +
-              '<a href="' + captureUrlWindows + '/pages/terms-conditions">Terms & Conditions</a>' +
+              '<a href="' + captureUrlWindows + '/pages/terms-condition">Terms & Conditions</a>' +
               '<a>•</a>' +
               '<a href="' + captureUrlWindows + '/pages/contact">Contact</a>'
             );
@@ -133,7 +134,7 @@
           }
         });
       </script>
-      <div id="footerPages" class="flex flex-row gap-x-[10px] justify-evenly w-full lg:justify-normal lg:w-fit">
+      <div id="footerPages" class="flex flex-row gap-[5px]">
       </div>
       <div class="">
         <div class="page-number">{{ paginate | default_pagination: next: ' ', previous: ' ' }}</div>
@@ -211,7 +212,6 @@
     // Preload the product list items
     for (let j = 0 + (pagePaginate * {{ query_product }}); j < (pagePaginate + 1) * {{ query_product }}; j++) {
       let listItem = document.createElement('li');
-      
 
       if (displayed_products_top < {{ row_product }}) {
         listItem.classList.add('border','flex','grow','max-w-[42vw]','h-max-[17vw]','mx-auto','!h-auto','!mx-[4%]','!mb-[4%]','lg:!mx-[0]','lg:!mb-[0]','lg:!border-s-0','!border-black','!min-w-[0%]');
@@ -231,52 +231,13 @@
       let productText = document.createElement('p');
       productText.classList.add('text-product');
       productText.innerHTML = dataCollectionProducts[j].title.substr(0, 38) + '<br>';
-
-      let productVendor = document.createElement('a');
-      productVendor.classList.add('text-xs','opacity-60');
-      productVendor.innerHTML = dataCollectionProducts[j].vendor + '<br>';
-      // Get the vendor name from dataCollectionProducts[j]
-      let vendor = dataCollectionProducts[j].vendor;
-      // Convert the vendor name to lowercase
-      vendor = vendor.toLowerCase();
-      // Replace spaces with hyphens
-      vendor = vendor.replace(/\s+/g, '-');
-      productVendor.href = window.location.origin + '/collections/' + vendor;
-
-
-      var getPriceProduct = dataCollectionProducts[j].price / 100;
-      getPriceProduct.toString();
-      var currency = $('.bucks-selected').text();
-
-      console.log(currency);
-
-      // Define conversion rates from USD to other currencies
-      var conversionRates = {
-        'USD': 1, // Example conversion rate USD
-        'IDR': 16000, // Example conversion rate from IDR to USD
-        'EUR': 1,    // Example conversion rate from IDR to EUR
-        // Add conversion rates for other currencies as needed
-      };
-
-      var conversionSymbol = {
-        'USD': '$', // Example conversion rate USD
-        'IDR': 'Rp', // Example conversion rate from IDR to USD
-        'EUR': '€',    // Example conversion rate from IDR to EUR
-      }
-
-      // Convert price to IDR if the currency is USD or EUR
-      if (conversionRates[currency] && conversionSymbol[currency]) {
-        var priceProduct = conversionSymbol[currency] + " " + getPriceProduct + " " + conversionRates[currency];
-      }
-
-      console.log(priceProduct);
-
+  
       let priceSpan = document.createElement('span');
       priceSpan.classList.add('original-price');
   
       let childPriceSpan = document.createElement('span');
       childPriceSpan.classList.add('money');
-      childPriceSpan.innerHTML = priceProduct; // for rounded 2 zero after coma
+      childPriceSpan.innerHTML = dataCollectionProducts[j].price / 100; // for rounded 2 zero after coma
   
       let comparePriceSpan = document.createElement('span');
       comparePriceSpan.classList.add('compare-price');
@@ -294,7 +255,6 @@
       priceSpan.appendChild(childPriceSpan);
       productText.appendChild(priceSpan);
       productLink.appendChild(productImage);
-      productLink.appendChild(productVendor);
       productLink.appendChild(productText);
       listItem.appendChild(productLink);
   
@@ -307,8 +267,6 @@
   document.addEventListener('DOMContentLoaded', updateProductList);
 
   // get element for nav brand & type product
-  document.getElementById("navbarProduct").classList.add("h-["+ (314 * {{ column_product }}) +"px]");
+  document.getElementById("navbarProduct").classList.add("h-["+ (314 * {{ column_product }}) +"]");
   
-  
-
 </script> 
