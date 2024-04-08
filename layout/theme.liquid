@@ -24,7 +24,12 @@
     window.shopCurrency = "{{ shop.currency }}";
     window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
 
-    
+  </script>
+</head>
+{% render 'bucks-cc' %}
+
+<body>
+  <script>
     $(document).ready(function() {
         setTimeout(function() {
           var getCurrencyValue = $('.bucks-selected').text();
@@ -39,12 +44,7 @@
           
         }, 3000); // 3000 milliseconds = 3 seconds
     });
-
   </script>
-</head>
-{% render 'bucks-cc' %}
-
-<body>
   <main class="flex flex-col min-h-screen gap-4">
     <a class="mt-5 flex justify-center" href="/">
       <img class="w-52" src="{{ 'logo.jpg' | asset_url }}">
