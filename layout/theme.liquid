@@ -30,17 +30,35 @@
 
 <body>
   <script>
-    $(document).ready(function() {
-        var hasRun = localStorage.getItem('hasRun'); // Check if the script has already run
-        
-        if (!hasRun) { // If it hasn't run yet
-            setTimeout(function() {
-                $('#USD.converterTriggers').click();
-                localStorage.setItem('hasRun', true); // Set the flag to indicate that the script has run
-            }, 3000); // 3000 milliseconds = 3 seconds
-        }
-    });
+  //   $(document).ready(function() {
+  //     var hasRun = localStorage.getItem('hasRun'); // Check if the script has already run
+      
+  //     if (!hasRun) { // If it hasn't run yet
+  //         setTimeout(function() {
+  //             var divValue = $('#myDiv').text();
+  //             if (divValue === 'special value') {
+  //                 $('#myButton').click();
+  //             }
+  //             localStorage.setItem('hasRun', true); // Set the flag to indicate that the script has run
+  //         }, 3000); // 3000 milliseconds = 3 seconds
+  //     }
+  // });
 
+    $(document).ready(function() {
+        setTimeout(function() {
+          var getCurrencyValue = $('.bucks-selected').text();
+          console.log(getCurrencyValue);
+
+          if (getCurrencyValue === 'USD') {
+            $('#USD.converterTriggers').click();
+          } else if (getCurrencyValue === 'IDR') {
+            $('#IDR.converterTriggers').click();
+          } else if (getCurrencyValue === 'EUR') {
+            $('#EUR.converterTriggers').click();
+          }
+          
+        }, 4000); // 3000 milliseconds = 3 seconds
+    });
   </script>
   <main class="flex flex-col min-h-screen gap-4">
     <a class="mt-5 flex justify-center" href="/">
