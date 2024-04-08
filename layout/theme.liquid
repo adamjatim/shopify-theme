@@ -35,11 +35,11 @@
           var getCurrencyValue = $('.bucks-selected').text();
           console.log(getCurrencyValue);
 
-          if (getCurrencyValue.text === 'USD') {
+          if (getCurrencyValue === 'USD') {
             $('#USD.converterTriggers').click();
-          } else if (getCurrencyValue.text === 'IDR') {
+          } else if (getCurrencyValue === 'IDR') {
             $('#IDR.converterTriggers').click();
-          } else if (getCurrencyValue.text === 'EUR') {
+          } else if (getCurrencyValue === 'EUR') {
             $('#EUR.converterTriggers').click();
           }
           
