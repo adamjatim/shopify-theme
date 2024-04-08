@@ -248,6 +248,7 @@ li.border {
   bottom: auto;
   margin: auto;
   overflow-x: auto;
+  flex-wrap: nowrap;
 
 }
 
