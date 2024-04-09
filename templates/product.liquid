@@ -194,9 +194,9 @@
       </script>
       <div id="footerPages" class="flex flex-row gap-[5px]">
       </div>
-      <div class="">
+      {% comment %} <div class="">
         <div class="page-number">{{ paginate | default_pagination: next: ' ', previous: ' ' }}</div>
-      </div>
+      </div> {% endcomment %}
     </div>
   </div>
 </div>
