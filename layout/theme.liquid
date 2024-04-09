@@ -91,7 +91,10 @@
 
   <script>
     $(document).ready(function() {
+      
       var hasRun = localStorage.getItem('makeSure'); // Check if the script has already run
+
+      localStorage.setItem('makeSure', false); // Set the flag to indicate that the script has run
 
       if (!hasRun) {
         setTimeout(function() {
