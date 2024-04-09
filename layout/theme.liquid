@@ -120,6 +120,8 @@
 
         var hasRun = localStorage.getItem(localStorageKey); // Check if the script has already run
 
+        console.log(localStorageKey);
+
         if (!hasRun) {
             setTimeout(function() {
                 var getCurrencyValue = $('.bucks-selected').text();
