@@ -90,29 +90,6 @@
 </body>
 
   <script>
-    // $(document).ready(function() {
-      
-    //   var hasRun = localStorage.getItem('makeSure'); // Check if the script has already run
-
-    //   hasRun = localStorage.setItem('makeSure', false); // Set the flag to indicate that the script has run
-
-    //   if (!hasRun) {
-    //     setTimeout(function() {
-    //       var getCurrencyValue = $('.bucks-selected').text();
-    //       console.log(getCurrencyValue);
-
-    //       if (getCurrencyValue === 'USD') {
-    //         $('#USD.converterTriggers').click();
-    //       } else if (getCurrencyValue === 'IDR') {
-    //         $('#IDR.converterTriggers').click();
-    //       } else if (getCurrencyValue === 'EUR') {
-    //         $('#EUR.converterTriggers').click();
-    //       }
-    //       localStorage.setItem('makeSure', true); // Set the flag to indicate that the script has run
-    //     }, 4000); // 3000 milliseconds = 3 seconds
-    //   }
-        
-    // });
 
     $(document).ready(function() {
         var currentTime = new Date().toLocaleString(); // Get the current time in a readable format
@@ -120,12 +97,12 @@
 
         var hasRun = localStorage.getItem(localStorageKey); // Check if the script has already run
 
-        console.log(localStorageKey);
+        // console.log(localStorageKey);
 
         if (!hasRun) {
             setTimeout(function() {
                 var getCurrencyValue = $('.bucks-selected').text();
-                console.log(getCurrencyValue);
+                // console.log(getCurrencyValue);
 
                 if (getCurrencyValue === 'USD') {
                     $('#USD.converterTriggers').click();
