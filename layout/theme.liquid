@@ -29,42 +29,6 @@
 {% render 'bucks-cc' %}
 
 <body>
-  <script>
-  //   $(document).ready(function() {
-  //     var hasRun = localStorage.getItem('hasRun'); // Check if the script has already run
-      
-  //     if (!hasRun) { // If it hasn't run yet
-  //         setTimeout(function() {
-  //             var divValue = $('#myDiv').text();
-  //             if (divValue === 'special value') {
-  //                 $('#myButton').click();
-  //             }
-  //             localStorage.setItem('hasRun', true); // Set the flag to indicate that the script has run
-  //         }, 3000); // 3000 milliseconds = 3 seconds
-  //     }
-  // });
-
-    $(document).ready(function() {
-      var hasRun = localStorage.getItem('hasRun'); // Check if the script has already run
-
-      if (!hasRun) {
-        setTimeout(function() {
-          var getCurrencyValue = $('.bucks-selected').text();
-          console.log(getCurrencyValue);
-
-          if (getCurrencyValue === 'USD') {
-            $('#USD.converterTriggers').click();
-          } else if (getCurrencyValue === 'IDR') {
-            $('#IDR.converterTriggers').click();
-          } else if (getCurrencyValue === 'EUR') {
-            $('#EUR.converterTriggers').click();
-          }
-          localStorage.setItem('hasRun', true); // Set the flag to indicate that the script has run
-        }, 4000); // 3000 milliseconds = 3 seconds
-      }
-        
-    });
-  </script>
   <main class="flex flex-col min-h-screen gap-4">
     <a class="mt-5 flex justify-center" href="/">
       <img class="w-52" src="{{ 'logo.jpg' | asset_url }}">
@@ -125,4 +89,26 @@
 {% include 'mlveda-currencies-switcher' %}{% include 'mlveda-currencies' %}{% include 'mlveda-flag' %}{% include 'mlveda-currencies-style' %}
 </body>
 
+  <script>
+    $(document).ready(function() {
+      var hasRun = localStorage.getItem('hasRun'); // Check if the script has already run
+
+      if (!hasRun) {
+        setTimeout(function() {
+          var getCurrencyValue = $('.bucks-selected').text();
+          console.log(getCurrencyValue);
+
+          if (getCurrencyValue === 'USD') {
+            $('#USD.converterTriggers').click();
+          } else if (getCurrencyValue === 'IDR') {
+            $('#IDR.converterTriggers').click();
+          } else if (getCurrencyValue === 'EUR') {
+            $('#EUR.converterTriggers').click();
+          }
+          localStorage.setItem('hasRun', true); // Set the flag to indicate that the script has run
+        }, 4000); // 3000 milliseconds = 3 seconds
+      }
+        
+    });
+  </script>
 </html>
