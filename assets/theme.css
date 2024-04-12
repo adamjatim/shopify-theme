@@ -239,8 +239,16 @@ li.border {
 
 .product-image-thumbs {
   max-width: 100%;
+  width: auto;
+  height: fit-content;
   display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: auto;
+  bottom: auto;
   margin: auto;
+  overflow-x: auto;
+  flex-wrap: nowrap;
 }
 
 .product-image-thumbs li img {
