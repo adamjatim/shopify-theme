@@ -43,7 +43,7 @@
           {%- for link in linklists.main-menu.links -%}
             <div class="widget-left-bar">
               <a {% comment  %} href="{{ link.url }}" {% endcomment %} {% if link.active %}aria-current="page"{% endif %}>
-                <h2>{{ link.title }}</h2>
+                <h2 class="text-3xl font-bold">{{ link.title }}</h2>
               </a>
               {%- if link.links != blank -%}
                 <ul class="product-list">
@@ -76,6 +76,8 @@
       </div>
     </div>
 
+    <div class="flex " id="specialForShopifyEmail"></div>
+
     {{ content_for_layout }}
     {% render 'minicart' %}
   </main>
@@ -87,8 +89,30 @@
 {% include 'mlveda-currencies-switcher' %}{% include 'mlveda-currencies' %}{% include 'mlveda-flag' %}{% include 'mlveda-currencies-style' %}
 </body>
 
+{% comment %}
+  this is for Shopify Email apps,
+  fyi, this apps is ridiculous
+  i'm trying to fixing the app style as custom but nothing it would be change
+  so i create a JS POWER in here to to force a theme like i want.
+{% endcomment %}
+
   <script>
 
+    // 
+    // custom contacts pages
+    // 
+    const shopifyEmail = document.getElementById('shopify-section-template--22499168452907__forms');
+    if (shopifyEmail) {
+      $("#specialForShopifyEmail").append(`{% render 'page' %}`);
+
+      $('.buckscc-select-options').css({"bottom":"-150px !important"});
+
+      $('#shopify-section-template--22499168452907__forms').detach().prependTo('#specialFor');
+    }
+
+    // 
+    // auto load for currency
+    // 
     $(document).ready(function() {
         var currentTime = new Date().toLocaleString(); // Get the current time in a readable format
         var localStorageKey = 'runStatus_' + currentTime; // Create a dynamic key based on the current time
