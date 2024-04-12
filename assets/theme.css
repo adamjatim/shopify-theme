@@ -552,13 +552,13 @@ input[type=number]::-webkit-outer-spin-button {
   transform-origin: 0 0;
 }
 
-.hamburger:hover {
+/* .hamburger:hover {
   background-color: #000000;
 }
 
 .hamburger:hover span {
   background-color: #ffffff;
-}
+} */
 
 .hamburger-cancel,
 .cart-cancel {
@@ -568,9 +568,13 @@ input[type=number]::-webkit-outer-spin-button {
   border: none;
 }
 
-.overlay {
-  padding: 0px;
+.navbar-mobile.is-active .overlay {
   left: 0;
+}
+
+.navbar-mobile .overlay {
+  padding: 0px;
+  left: -100vw;
   width: calc(100% - 350px);
   height: 100%;
   background-color: #000;
@@ -598,7 +602,19 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .navbar-mobile {
-  display: none;
+  visibility: hidden;
+  position: fixed;
+  transition: .5s ease-in;
+  right: -400px;
+  top: 0px;
+  bottom: 0px;
+  width: 350px;
+  background-color: #ffffff;
+  z-index: 999;
+  margin: auto;
+  margin-right: 0;
+  border-left: 1px solid #000000;
+
 }
 
 .navbar-mobile.is-active .hamburger-cancel span:nth-child(1),
@@ -617,16 +633,9 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .navbar-mobile.is-active {
+  visibility: visible;
+  right: 0;
   display: block;
-  position: fixed;
-  top: 0px;
-  bottom: 0px;
-  width: 350px;
-  background-color: #ffffff;
-  z-index: 999;
-  margin: auto;
-  margin-right: 0;
-  border-left: 1px solid #000000;
 }
 
 nav[role=navigation] {
