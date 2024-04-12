@@ -1,6 +1,6 @@
 {% assign collection = collections['all'] %}
-{% assign current_variant = product.selected_or_first_available_variant %}
-{% assign featured_image = current_variant.featured_image | default: product.featured_image %}
+{% comment %} {% assign current_variant = product.selected_or_first_available_variant %} {% endcomment %}
+{% comment %} {% assign featured_image = current_variant.featured_image | default: product.featured_image %} {% endcomment %}
 
 <div id="quantity-product-id"></div>
 
@@ -10,9 +10,7 @@
       <div class="flex flex-row lg:w-[20%]">
         <h1 class="text-4xl font-bold">{{ collection.title }}</h1>
         <button class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
+          <svg width="30px" height="20px" viewBox="0 0 20.00 20.00" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>hamburger</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke-width="0.0002" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-212.000000, -888.000000)" fill="#000000"> <path d="M230,904 L214,904 C212.896,904 212,904.896 212,906 C212,907.104 212.896,908 214,908 L230,908 C231.104,908 232,907.104 232,906 C232,904.896 231.104,904 230,904 L230,904 Z M230,896 L214,896 C212.896,896 212,896.896 212,898 C212,899.104 212.896,900 214,900 L230,900 C231.104,900 232,899.104 232,898 C232,896.896 231.104,896 230,896 L230,896 Z M214,892 L230,892 C231.104,892 232,891.104 232,890 C232,888.896 231.104,888 230,888 L214,888 C212.896,888 212,888.896 212,890 C212,891.104 212.896,892 214,892 L214,892 Z" id="hamburger" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>
         </button>
       </div>
 
@@ -90,6 +88,23 @@
           </div>
           <div class="sub-right-bar">
             <div class="gap-1">
+              <script>
+                $(document).ready(function() {
+                    // Double-check the ID of the footer element:
+                    var vendorElement = $('#vendorProduct');
+                    var captureUrlWindows = window.location.origin; // Use location.origin for the domain
+
+                    // Assuming dataCollectionProducts is accessible here
+                    var productVendor = "{{ product.vendor }}"; // Example vendor name
+                    // Convert the vendor name to lowercase
+                    var vendor = productVendor.toLowerCase();
+                    // Replace spaces with hyphens
+                    vendor = vendor.replace(/\s+/g, '-');
+                    vendorElement.html(productVendor);
+                    vendorElement.attr("href", captureUrlWindows + '/collections/' + vendor);
+                });
+              </script>
+              <a id="vendorProduct" class="flex my-auto gap-x-2 opacity-50"></a>
               <h1 class="text-4xl font-bold">{{ product.title }}</h1>
               <div class="product-prices" id="product-prices">
                 {% comment  %}
@@ -192,11 +207,9 @@
           }
         });
       </script>
-      <div id="footerPages" class="flex flex-row gap-[5px]">
+      <div id="footerPages" class="flex flex-row gap-x-[10px] justify-evenly w-full lg:justify-normal lg:w-fit">
       </div>
-      {% comment %} <div class="">
-        <div class="page-number">{{ paginate | default_pagination: next: ' ', previous: ' ' }}</div>
-      </div> {% endcomment %}
+      
     </div>
   </div>
 </div>
@@ -278,4 +291,6 @@
   // variant product out of stock
   //
   
+  // get element for nav brand & type product
+  document.getElementById("navbarProduct").classList.add("min-h-["+ (314 * 2) +"px]");
 </script>
