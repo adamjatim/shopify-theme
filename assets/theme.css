@@ -252,7 +252,7 @@ li.border {
 }
 
 .product-image-thumbs li img {
-  width: 100px;
+  min-width: 100px;
 }
 
 .product-image-thumbs li {
