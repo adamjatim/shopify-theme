@@ -306,7 +306,8 @@
             console.log("comparePriceNumeric : "+comparePriceNumeric)
             // Convert the compare price to IDR
             var convertedComparePrice = comparePriceNumeric * 16000;
-            comparePriceSpan.textContent = "Rp " + convertedComparePrice + " IDR";
+            
+            comparePriceSpan.textContent = "Rp " + convertedComparePrice.toLocaleString('id-ID') + " IDR";
           }
 
           if (originalPriceSpan) {
@@ -314,7 +315,7 @@
             var originalPriceNumeric = parseFloat(originalPriceString);
             // Convert the original price to IDR
             var convertedOriginalPrice = originalPriceNumeric * 16000;
-            originalPriceSpan.textContent = "Rp " + convertedOriginalPrice + " IDR";
+            originalPriceSpan.textContent = "Rp " + convertedOriginalPrice.toLocaleString('id-ID') + " IDR";
           }
         });
       }
