@@ -708,6 +708,7 @@ nav[role=navigation] {
 
   .border-product-5 {
     border: 1px solid #000000;
+    border-top: none;
   }
 
   .product-image {
