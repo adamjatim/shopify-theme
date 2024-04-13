@@ -268,7 +268,7 @@ li.border {
   max-width: 100%;
 }
 
-.product-card .money {
+.product-card ._money {
   height: 2rem;
 }
 
@@ -467,12 +467,12 @@ input[type=number]::-webkit-outer-spin-button {
   text-decoration: line-through;
 }
 
-.original-price {
+._original-price {
   font-size: 22px;
   color: #000000;
 }
 
-.compare-price {
+._compare-price {
   font-size: 16px;
   color: #666;
   text-decoration: line-through;
