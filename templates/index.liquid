@@ -298,8 +298,6 @@
       
         if (document.getElementsByClassName("bucks-selected")[0].textContent === 'IDR') {
           var productList = document.querySelectorAll("ul#products-list li");
-          
-          console.log(productList)
 
           productList.forEach(function(list) {
             var originalPriceSpan = list.querySelector(".original-price .money");
