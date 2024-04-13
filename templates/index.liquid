@@ -309,7 +309,8 @@
           var productInfo = $(this).find(".text-product");
             var originalPriceSpan = productInfo.find(".original-price .money");
             var comparePriceSpan = productInfo.find(".compare-price .money");
-            
+            console.log(comparePriceSpan);
+
             // Extract numeric value from the original price and compare price strings
             var originalPriceString = originalPriceSpan.attr("bucks-original");
             var originalPriceNumeric = parseFloat(originalPriceString.replace(/[^\d.]/g, ''));
