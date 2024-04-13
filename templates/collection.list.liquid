@@ -277,7 +277,7 @@
 
   // get element for nav brand & type product
   var getValueLengthProduct = collectionProducts.length;
-  if (getValueLengthProduct <= {{ row_product }} * 2) {
+  if (getValueLengthProduct <= 4) {
     document.getElementById("navbarProduct").classList.add("h-["+ (314 * 2) +"px]");
   } else {
     document.getElementById("navbarProduct").classList.add("h-["+ (314 * {{ column_product }}) +"px]");
