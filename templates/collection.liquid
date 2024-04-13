@@ -203,7 +203,7 @@
     let displayed_products_top = 0;
   
     // Preload the product list items
-    for (let j = 0 + (pagePaginate * 8); j < (pagePaginate + 1) * 8; j++) {
+    for (let j = 0 + (pagePaginate * {{ query_product }}); j < (pagePaginate + 1) * {{ query_product }}; j++) {
       let listItem = document.createElement('li');
   
       
