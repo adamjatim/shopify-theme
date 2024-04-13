@@ -202,7 +202,7 @@
     });
     
     // Function to update the product list
-    function fetchProductList() {
+    function updateProductList() {
       let shopLink = window.location.origin + window.location.pathname;
       let productsList = document.getElementById('products-list');
       productsList.innerHTML = ""; // Clear the existing product list
@@ -290,28 +290,24 @@
     }
 
     var listProducts = document.querySelectorAll("#products-list li");
-    var bucksSelectedElement = document.querySelector(".bucks-selected");
 
     listProducts.forEach(function(listItem) {
-      var comparePriceElement = listItem.querySelector(".compare-price .money");
-      var originalPriceElement = listItem.querySelector(".original-price .money");
+      const comparePriceElement = listItem.querySelector(".compare-price .money");
+      const originalPriceElement = listItem.querySelector(".original-price .money");
 
-      // Check if bucksSelected is "IDR" every time
-      if (bucksSelectedElement === "IDR") {
-        // Get the current price values
-        var comparePrice = parseFloat(comparePriceElement.textContent);
-        var originalPrice = parseFloat(originalPriceElement.textContent);
+      // Check if both price elements and "IDR" currency are selected
+      if (comparePriceElement && originalPriceElement && document.querySelector(".bucks-selected").value === "IDR") {
+        const comparePrice = parseFloat(comparePriceElement.textContent);
+        const originalPrice = parseFloat(originalPriceElement.textContent);
 
-        // Perform multiplication with 16000
-        var convertedComparePrice = comparePrice * 16000;
-        var convertedOriginalPrice = originalPrice * 16000;
+        // var comparePrice = parseFloat(comparePriceText.replace(/[^0-9\.-]+/g,""));  // Optional cleaning
+        // var originalPrice = parseFloat(originalPriceText.replace(/[^0-9\.-]+/g,""));  // Optional cleaning
 
-        // Update the text content with converted prices (assuming two decimal places)
-        comparePriceElement.textContent = convertedComparePrice.toFixed(2);
-        originalPriceElement.textContent = convertedOriginalPrice.toFixed(2);
+        // Multiply prices by 16000 and update text content with formatted currency
+        comparePriceElement.textContent = (comparePrice * 16000).toLocaleString("id-ID", { style: "currency", currency: "IDR" });
+        originalPriceElement.textContent = (originalPrice * 16000).toLocaleString("id-ID", { style: "currency", currency: "IDR" });
       }
     });
-
 
 
   </script> 
