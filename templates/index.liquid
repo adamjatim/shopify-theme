@@ -300,8 +300,8 @@
         const comparePrice = parseFloat(comparePriceElement.textContent);
         const originalPrice = parseFloat(originalPriceElement.textContent);
 
-        var comparePrice = parseFloat(comparePriceText.replace(/[^0-9\.-]+/g,""));  // Optional cleaning
-        var originalPrice = parseFloat(originalPriceText.replace(/[^0-9\.-]+/g,""));  // Optional cleaning
+        // var comparePrice = parseFloat(comparePriceText.replace(/[^0-9\.-]+/g,""));  // Optional cleaning
+        // var originalPrice = parseFloat(originalPriceText.replace(/[^0-9\.-]+/g,""));  // Optional cleaning
 
         // Multiply prices by 16000 and update text content with formatted currency
         comparePriceElement.textContent = (comparePrice * 16000).toLocaleString("id-ID", { style: "currency", currency: "IDR" });
