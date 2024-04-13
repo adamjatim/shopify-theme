@@ -304,9 +304,9 @@
     // Define the conversion function
     function convertPricesToIDR() {
       if ($('.bucks-selected').text().trim() === 'IDR') {
-        $('ul#products-list').each(function() {
-          $(this).find("li").each(function() {
-            var productInfo = $(this).find(".text-product");
+        $('ul#products-list li').each(function() {
+          
+          var productInfo = $(this).find(".text-product");
             var originalPriceSpan = productInfo.find(".original-price .money");
             var comparePriceSpan = productInfo.find(".compare-price .money");
             
@@ -326,7 +326,6 @@
               var convertedComparePrice = comparePriceNumeric * 16000;
               comparePriceSpan.text("Rp " + convertedComparePrice.toLocaleString('id-ID') + " IDR");
             }
-          });
         });
       }
     }
