@@ -289,4 +289,22 @@
       document.getElementById("navbarProduct").classList.add("h-["+ (314 * {{ column_product }}) +"px]");
     }
 
+    var listProducts = document.querySelectorAll("#products-list li");
+
+    listProducts.forEach(function(listItem) {
+      const comparePriceElement = listItem.querySelector(".compare-price .money");
+      const originalPriceElement = listItem.querySelector(".original-price .money");
+
+      // Check if both price elements and "IDR" currency are selected
+      if (comparePriceElement && originalPriceElement && document.querySelector(".bucks-selected").value === "IDR") {
+        const comparePrice = parseFloat(comparePriceElement.textContent);
+        const originalPrice = parseFloat(originalPriceElement.textContent);
+
+        // Multiply prices by 16000 and update text content with formatted currency
+        comparePriceElement.textContent = (comparePrice * 16000).toLocaleString("id-ID", { style: "currency", currency: "IDR" });
+        originalPriceElement.textContent = (originalPrice * 16000).toLocaleString("id-ID", { style: "currency", currency: "IDR" });
+      }
+    });
+
+
   </script> 
