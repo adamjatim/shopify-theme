@@ -216,7 +216,7 @@
 
           let listItem = $('<li>');
 
-          if (displayed_products_top < row_product) {
+          if (displayed_products_top < {{row_product}}) {
             listItem.addClass('border flex grow max-w-[42vw] h-max-[17vw] mx-auto h-auto !mx-[4%] !mb-[4%] lg:!mx-[0] lg:!mb-[0] lg:!border-s-0 !border-black !min-w-[0%]');
             if (dataCollectionProducts.length < 4 || dataCollectionProducts.length < 8 && j > 4) {
               listItem.css("height", "fit-content");
@@ -270,7 +270,7 @@
 
       // Calculate navbarProduct height dynamically
       var getValueLengthProduct = dataCollectionProducts.length;
-      var rows = Math.ceil(getValueLengthProduct / row_product);
+      var rows = Math.ceil(getValueLengthProduct / {{row_product}});
       $("#navbarProduct").addClass("h-[" + (314 * rows) + "px]"); // Assuming a base height of 314px per row
 
       // Navigation and Pagination Buttons (using jQuery)
