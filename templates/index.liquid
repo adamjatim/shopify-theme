@@ -324,9 +324,8 @@
         price = Math.ceil(price); // Round the price up to the nearest whole number
       }
 
-      var formatter = new Intl.NumberFormat('en-US', {
+      var formatter = new Intl.NumberFormat('id-ID', {
         style: 'currency',
-
         currency: currency,
       });
       return formatter.format(price);
