@@ -242,12 +242,12 @@
           let vendor = dataCollectionProducts[j].vendor.toLowerCase().replace(/\s+/g, '-');
           productVendor.attr('href', window.location.origin + '/collections/' + vendor);
 
-          let priceSpan = $('<span>').addClass('original-price');
-          let childPriceSpan = $('<span>').addClass('money');
+          let priceSpan = $('<span>').addClass('_original-price');
+          let childPriceSpan = $('<span>').addClass('_money');
           childPriceSpan.html(formatCurrency(Math.floor(dataCollectionProducts[j].price / 100), document.querySelector('.bucks-selected').textContent)); // Round to 2 decimal places
 
-          let comparePriceSpan = $('<span>').addClass('compare-price');
-          let childComparePriceSpan = $('<span>').addClass('money');
+          let comparePriceSpan = $('<span>').addClass('_compare-price');
+          let childComparePriceSpan = $('<span>').addClass('_money');
 
           if (dataCollectionProducts[j].compare_at_price > dataCollectionProducts[j].price) {
             childComparePriceSpan.html(formatCurrency(Math.floor(dataCollectionProducts[j].compare_at_price / 100), document.querySelector('.bucks-selected').textContent));
