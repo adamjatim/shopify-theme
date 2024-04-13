@@ -274,7 +274,7 @@
       // Calculate navbarProduct height dynamically
       var getValueLengthProduct = dataCollectionProducts.length;
       var rows = Math.ceil(getValueLengthProduct / {{row_product}});
-      $("#navbarProduct").addClass("h-[" + (314 * {{row_product}}) + "px]"); // Assuming a base height of 314px per row
+      $("#navbarProduct").addClass("h-[" + (314 * {{column_product}}) + "px]"); // Assuming a base height of 314px per row
 
       // Navigation and Pagination Buttons (using jQuery)
       $('#prev-page').click(function() {
