@@ -294,7 +294,7 @@
   var localStorageKey = 'runStatus_' + currentTime;
 
   // Define the conversion function
-  setTimeout(function convertPricesToIDR() {
+  setInteval(function convertPricesToIDR() {
       // Check if the script has already run
       var hasRun = localStorage.getItem(localStorageKey);
 
