@@ -113,13 +113,13 @@
                   </p>
                 {% endcomment %}
                 {% if product.compare_at_price > product.price %}
-                  <p class="product-price"></p>
-                    <p class="compare-price">{{ product.selected_or_first_available_variant.compare_at_price | money }}</p>
+                  <p class="_product-price"></p>
+                    <p class="_compare-price">{{ product.selected_or_first_available_variant.compare_at_price | money }}</p>
                     <br>
-                    <p class="original-price">{{ product.selected_or_first_available_variant.price | money }}</p>
+                    <p class="_original-price">{{ product.selected_or_first_available_variant.price | money }}</p>
                   </p>
                 {% else %}
-                  <p class="product-price">
+                  <p class="_product-price">
                     {{ product.selected_or_first_available_variant.price | money }}
                   </p>
                 {% endif %}
