@@ -307,10 +307,13 @@
 
               if (comparePriceSpan.length > 0) {
                   var comparePriceString = comparePriceSpan.attr("bucks-original");
+                  console.log(comparePriceString)
                   var comparePriceNumeric = parseFloat(comparePriceString.replace(/[^\d.]/g, ''));
+                  console.log(comparePriceNumeric)
                   if (!isNaN(comparePriceNumeric)) {
                       // Convert the compare price to IDR
                       var convertedComparePrice = comparePriceNumeric * 16000;
+                      console.log(convertedComparePrice)
                       comparePriceSpan.text("Rp " + convertedComparePrice.toLocaleString('id-ID') + " IDR");
                   }
               }
