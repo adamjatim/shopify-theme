@@ -311,6 +311,15 @@
             var comparePriceSpan = productInfo.find(".compare-price .money");
             console.log(comparePriceSpan.length);
             
+            if (comparePriceSpan.length > 0) {
+              var comparePriceString = comparePriceSpan.attr("bucks-original");
+              var comparePriceNumeric = parseFloat(comparePriceString.replace(/[^\d.]/g, ''));
+              if (!isNaN(comparePriceNumeric)) {
+                // Convert the compare price to IDR
+                var convertedComparePrice = comparePriceNumeric * 16000;
+                comparePriceSpan.text("Rp " + convertedComparePrice.toLocaleString('id-ID') + " IDR");
+              }
+            }
 
             // Extract numeric value from the original price and compare price strings
             var originalPriceString = originalPriceSpan.attr("bucks-original");
@@ -321,13 +330,7 @@
               originalPriceSpan.text("Rp " + convertedOriginalPrice.toLocaleString('id-ID') + " IDR");
             }
 
-            var comparePriceString = comparePriceSpan.attr("bucks-original");
-            var comparePriceNumeric = parseFloat(comparePriceString.replace(/[^\d.]/g, ''));
-            if (!isNaN(comparePriceNumeric)) {
-              // Convert the compare price to IDR
-              var convertedComparePrice = comparePriceNumeric * 16000;
-              comparePriceSpan.text("Rp " + convertedComparePrice.toLocaleString('id-ID') + " IDR");
-            }
+            
         });
       }
     }
