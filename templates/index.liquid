@@ -249,15 +249,6 @@
         childPriceSpan.classList.add('money');
         childPriceSpan.innerHTML = Math.ceil(dataCollectionProducts[j].price / 100); // for rounded 2 zero after coma
 
-        // Check if .bucks-selected is 'IDR'
-        // if ($('.bucks-selected').text().trim() === 'IDR') {
-        //   // Convert the price to Indonesian Rupiah
-        //   childPriceSpan.innerHTML = Math.floor(dataCollectionProducts[j].price / 1000 * 16000);
-        // } else {
-        //   // Use the default price
-        //   childPriceSpan.innerHTML = Math.ceil(dataCollectionProducts[j].price / 100);
-        // }
-    
         let comparePriceSpan = document.createElement('span');
         comparePriceSpan.classList.add('compare-price');
     
@@ -270,17 +261,6 @@
           comparePriceSpan.appendChild(childComparePriceSpan);
           priceSpan.innerHTML = '<br>';
         }
-
-        // if (dataCollectionProducts[j].compare_at_price > dataCollectionProducts[j].price) {
-        //   if ($('.bucks-selected').text().trim() === 'IDR') {
-        //     childComparePriceSpan.innerHTML = Math.ceil(dataCollectionProducts[j].compare_at_price / 100 * 16000);
-        //   } else {
-        //     childComparePriceSpan.innerHTML = Math.ceil(dataCollectionProducts[j].compare_at_price / 100); // for rounded 2 zero after coma
-        //   }
-        //   productText.appendChild(comparePriceSpan);
-        //   comparePriceSpan.appendChild(childComparePriceSpan);
-        //   priceSpan.innerHTML = '<br>';
-        // }
     
         priceSpan.appendChild(childPriceSpan);
         productText.appendChild(priceSpan);
@@ -337,8 +317,5 @@
 
     var intervalId = setTimeout(convertPricesToIDR, 4000);
     // clearInterval(intervalId); // Use this line to stop the interval if needed
-
-
-
 
   </script> 
