@@ -307,6 +307,7 @@
 
             if (comparePriceSpan) {
                 var comparePriceString = comparePriceSpan.getAttribute("bucks-original");
+                console.log("comparePriceString : "+comparePriceString)
                 var comparePriceNumeric = parseFloat(comparePriceString.replace(/[^\d.]/g, ''));
                 if (!isNaN(comparePriceNumeric)) {
                     // Convert the compare price to IDR
