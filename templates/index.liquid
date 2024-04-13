@@ -289,43 +289,45 @@
       document.getElementById("navbarProduct").classList.add("h-["+ (314 * {{ column_product }}) +"px]");
     }
 
-    // Define the conversion function
-    var breakInterval = 0;
-    convertPricesToIDR = setInterval(function() {
-      if (document.getElementsByClassName("bucks-selected")[0].textContent === 'IDR') {
-        var productList = document.querySelectorAll("ul#products-list li");
+    // Define the outer interval to continuously check for the condition
+    var outerInterval = setInterval(function() {
+        if (document.getElementsByClassName("bucks-selected")[0].textContent === 'IDR') {
+            // If the condition is met, execute the inner interval
+            var innerInterval = setInterval(function() {
+                var productList = document.querySelectorAll("ul#products-list li");
 
-        productList.forEach(function(list) {
-          var originalPriceSpan = list.querySelector(".original-price .money");
-          var comparePriceSpan = list.querySelector(".compare-price .money");
+                productList.forEach(function(list) {
+                    var originalPriceSpan = list.querySelector(".original-price .money");
+                    var comparePriceSpan = list.querySelector(".compare-price .money");
 
-          if (comparePriceSpan) {
-            var comparePriceString = comparePriceSpan.getAttribute("bucks-original");
-            console.log("comparePriceString : "+comparePriceString)
-            var comparePriceNumeric = parseFloat(comparePriceString);
-            console.log("comparePriceNumeric : "+comparePriceNumeric)
-            // Convert the compare price to IDR
-            var convertedComparePrice = comparePriceNumeric * 16000;
-            
-            comparePriceSpan.textContent = "Rp " + convertedComparePrice.toLocaleString('id-ID') + " IDR";
-          }
+                    if (comparePriceSpan) {
+                        var comparePriceString = comparePriceSpan.getAttribute("bucks-original");
+                        var comparePriceNumeric = parseFloat(comparePriceString);
+                        // Convert the compare price to IDR
+                        var convertedComparePrice = comparePriceNumeric * 16000;
+                        comparePriceSpan.textContent = "Rp " + convertedComparePrice.toLocaleString('id-ID') + " IDR";
+                    }
 
-          if (originalPriceSpan) {
-            var originalPriceString = originalPriceSpan.getAttribute("bucks-original");
-            var originalPriceNumeric = parseFloat(originalPriceString);
-            // Convert the original price to IDR
-            var convertedOriginalPrice = originalPriceNumeric * 16000;
-            originalPriceSpan.textContent = "Rp " + convertedOriginalPrice.toLocaleString('id-ID') + " IDR";
-          }
-        });
-      }
-      
-      breakInterval++;
+                    if (originalPriceSpan) {
+                        var originalPriceString = originalPriceSpan.getAttribute("bucks-original");
+                        var originalPriceNumeric = parseFloat(originalPriceString);
+                        // Convert the original price to IDR
+                        var convertedOriginalPrice = originalPriceNumeric * 16000;
+                        originalPriceSpan.textContent = "Rp " + convertedOriginalPrice.toLocaleString('id-ID') + " IDR";
+                    }
+                });
+            }, 4000); // Inner interval runs every 4 seconds
 
-      if(breakInterval == 1) {
-        clearInterval(convertPricesToIDR);
-      }
-      
-    }, 4000);
+            // Clear the inner interval after 2 iterations
+            setTimeout(function() {
+                clearInterval(innerInterval);
+            }, 8000); // Stop the inner interval after 8 seconds (2 iterations)
+
+            // Clear the outer interval after 10 iterations
+            setTimeout(function() {
+                clearInterval(outerInterval);
+            }, 40000); // Stop the outer interval after 40 seconds (10 iterations)
+        }
+    }, 5000); // Outer interval checks every 5 seconds
 
   </script> 
