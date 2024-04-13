@@ -279,7 +279,7 @@
     // setTimeout(updateProductList, 4000);
 
     // Initial load of the product list
-    // document.addEventListener('DOMContentLoaded', updateProductList);
+    document.addEventListener('DOMContentLoaded', updateProductList);
 
     // get element for nav brand & type product
     var getValueLengthProduct = collectionProducts.length;
@@ -299,6 +299,9 @@
       if (comparePriceElement && originalPriceElement && document.querySelector(".bucks-selected").value === "IDR") {
         const comparePrice = parseFloat(comparePriceElement.textContent);
         const originalPrice = parseFloat(originalPriceElement.textContent);
+
+        console.log(comparePrice)
+        console.log(originalPrice)
 
         // var comparePrice = parseFloat(comparePriceText.replace(/[^0-9\.-]+/g,""));  // Optional cleaning
         // var originalPrice = parseFloat(originalPriceText.replace(/[^0-9\.-]+/g,""));  // Optional cleaning
