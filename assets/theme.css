@@ -838,6 +838,10 @@ nav[role=navigation] {
   padding-top: 3px !important;
 }
 
+.hxoSelectTheme .buckscc-select-styled.bucks__drop-down_close + .buckscc-select-options, .hxoSelectTheme .buckscc-select-styled.deactive.active + .buckscc-select-options {
+  visibility: hidden;
+}
+
 .qtydiv label{
   display: block;
   margin-bottom: 12px;
