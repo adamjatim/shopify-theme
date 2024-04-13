@@ -296,8 +296,7 @@
     // Define the conversion function
     setInterval(function convertPricesToIDR() {
       
-
-        if (document.getElementsByClassName("bucks-selected").textContent == 'IDR') {
+        if (document.getElementsByClassName("bucks-selected")[0].textContent === 'IDR') {
           var productList = document.querySelectorAll("ul#products-list li");
           productList.forEach(function(list) {
             console.log(list)
