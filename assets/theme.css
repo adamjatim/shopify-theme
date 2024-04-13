@@ -704,6 +704,7 @@ nav[role=navigation] {
 
   li.border {
     width: auto;
+    height: auto;
   }
 
   .border-product-5 {
