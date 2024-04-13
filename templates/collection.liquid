@@ -212,11 +212,12 @@
       );
 
       if (displayed_products_top < {{ row_product }}) {
+        
+      } else {
+        listItem.classList.add('border-product-5');
         if (dataCollectionProducts.length < 4 || (dataCollectionProducts.length < 8 && j > 4)) {
           listItem.classList.add('!h-fit');
         }
-      } else {
-        listItem.classList.add('border-product-5');
       }
 
       displayed_products_top++;
