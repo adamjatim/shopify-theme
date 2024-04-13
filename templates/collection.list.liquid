@@ -213,9 +213,10 @@
 
       if (displayed_products_top < {{ row_product }}) {
         if (dataCollectionProducts.length < 4 || (dataCollectionProducts.length < 8 && j > 4)) {
-          listItem.style.height = "fit-content";
+          listItem.classList.add('!h-fit');
         }
       } else {
+        listItem.classList.remove('border');
         listItem.classList.add('border-product-5');
       }
 
