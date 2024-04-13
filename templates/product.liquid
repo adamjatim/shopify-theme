@@ -79,7 +79,7 @@
               <img id="product-image" src="{{ featured | image_url }}"/>
             {% endif %}
               
-              <ul class="product-image-thumbs gap-[10px] mt-[10px]">
+              <ul class="product-image-thumbs gap-[10px] mt-[10px] w-[90vw] sm:w-full">
                 {%  for image in product.images %}  
                   <li class="{% if image == featured %}selected{% endif %}"><img src="{{ image | image_url: master }}"/></li>
                 {% endfor %}
