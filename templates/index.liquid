@@ -306,25 +306,24 @@
       if ($('.bucks-selected').text().trim() === 'IDR') {
         $('ul#products-list').each(function() {
           $(this).find("li").each(function() {
-            // Find the p element containing the product information
             var productInfo = $(this).find(".text-product");
-            // Find the original-price and compare-price spans within this p element
             var originalPriceSpan = productInfo.find(".original-price .money");
             var comparePriceSpan = productInfo.find(".compare-price .money");
             
-            // Convert the original price to IDR
+            // Extract numeric value from the original price and compare price strings
             var originalPriceString = originalPriceSpan.attr("bucks-original");
-            var originalPrice = parseFloat(originalPriceString.replace(/[^\d.-]/g, ''));
-            if (!isNaN(originalPrice)) {
-              var convertedOriginalPrice = originalPrice * 16000;
+            var originalPriceNumeric = parseFloat(originalPriceString.replace(/[^\d.]/g, ''));
+            if (!isNaN(originalPriceNumeric)) {
+              // Convert the original price to IDR
+              var convertedOriginalPrice = originalPriceNumeric * 16000;
               originalPriceSpan.text("Rp " + convertedOriginalPrice.toLocaleString('id-ID') + " IDR");
             }
 
-            // Convert the compare price to IDR
             var comparePriceString = comparePriceSpan.attr("bucks-original");
-            var comparePrice = parseFloat(comparePriceString.replace(/[^\d.-]/g, ''));
-            if (!isNaN(comparePrice)) {
-              var convertedComparePrice = comparePrice * 16000;
+            var comparePriceNumeric = parseFloat(comparePriceString.replace(/[^\d.]/g, ''));
+            if (!isNaN(comparePriceNumeric)) {
+              // Convert the compare price to IDR
+              var convertedComparePrice = comparePriceNumeric * 16000;
               comparePriceSpan.text("Rp " + convertedComparePrice.toLocaleString('id-ID') + " IDR");
             }
           });
@@ -332,11 +331,9 @@
       }
     }
 
-    // Set interval to run the conversion function every 4 seconds (for example)
-    var intervalId = setInterval(convertPricesToIDR, 4000); // 4000 milliseconds = 4 seconds
+    var intervalId = setInterval(convertPricesToIDR, 4000);
+    // clearInterval(intervalId); // Use this line to stop the interval if needed
 
-    // To stop the interval execution (if needed)
-    // clearInterval(intervalId);
 
 
 
