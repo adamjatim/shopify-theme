@@ -290,37 +290,38 @@
     }
 
     // Define the conversion function
-    setInterval(function convertPricesToIDR() {
-      
-        if (document.getElementsByClassName("bucks-selected")[0].textContent === 'IDR') {
-          var productList = document.querySelectorAll("ul#products-list li");
+    var breakInterval = 0;
+    convertPricesToIDR = setInterval(function() {
+      if (document.getElementsByClassName("bucks-selected")[0].textContent === 'IDR') {
+        var productList = document.querySelectorAll("ul#products-list li");
 
-          productList.forEach(function(list) {
-            var originalPriceSpan = list.querySelector(".original-price .money");
-            var comparePriceSpan = list.querySelector(".compare-price .money");
+        productList.forEach(function(list) {
+          var originalPriceSpan = list.querySelector(".original-price .money");
+          var comparePriceSpan = list.querySelector(".compare-price .money");
 
-            if (comparePriceSpan) {
-                var comparePriceString = comparePriceSpan.getAttribute("bucks-original");
-                console.log("comparePriceString : "+comparePriceString)
-                var comparePriceNumeric = parseFloat(comparePriceString);
-                console.log("comparePriceNumeric : "+comparePriceNumeric)
-                // Convert the compare price to IDR
-                var convertedComparePrice = comparePriceNumeric * 16000;
-                comparePriceSpan.textContent = "Rp " + convertedComparePrice + " IDR";
-            }
+          if (comparePriceSpan) {
+            var comparePriceString = comparePriceSpan.getAttribute("bucks-original");
+            console.log("comparePriceString : "+comparePriceString)
+            var comparePriceNumeric = parseFloat(comparePriceString);
+            console.log("comparePriceNumeric : "+comparePriceNumeric)
+            // Convert the compare price to IDR
+            var convertedComparePrice = comparePriceNumeric * 16000;
+            comparePriceSpan.textContent = "Rp " + convertedComparePrice + " IDR";
+          }
 
-            if (originalPriceSpan) {
-                var originalPriceString = originalPriceSpan.getAttribute("bucks-original");
-                var originalPriceNumeric = parseFloat(originalPriceString.replace(/[^\d.]/g, ''));
-                if (!isNaN(originalPriceNumeric)) {
-                    // Convert the original price to IDR
-                    var convertedOriginalPrice = originalPriceNumeric * 16000;
-                    originalPriceSpan.textContent = "Rp " + convertedOriginalPrice.toLocaleString('id-ID') + " IDR";
-                }
-            }
-          });
-
-        }
+          if (originalPriceSpan) {
+            var originalPriceString = originalPriceSpan.getAttribute("bucks-original");
+            var originalPriceNumeric = parseFloat(originalPriceString);
+            // Convert the original price to IDR
+            var convertedOriginalPrice = originalPriceNumeric * 16000;
+            originalPriceSpan.textContent = "Rp " + convertedOriginalPrice + " IDR";
+          }
+        });
+      }
+      breakInterval++;
+      if(breakInterval == 1) {
+        clearInterval(convertPricesToIDR);
+      }
     }, 4000);
 
   </script> 
