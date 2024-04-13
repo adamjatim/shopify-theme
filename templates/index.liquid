@@ -202,131 +202,137 @@
     });
     
     // Function to update the product list
-    function updateProductList() {
-      let shopLink = window.location.origin + window.location.pathname;
-      let productsList = document.getElementById('products-list');
-      productsList.innerHTML = ""; // Clear the existing product list
-      let displayed_products_top = 0;
-    
-      // Preload the product list items
-      for (let j = 0 + (pagePaginate * {{ query_product }}); j < (pagePaginate + 1) * {{ query_product }}; j++) {
-        let listItem = document.createElement('li');
+    $(document).ready(function() {
+      // Update product list function
+      function updateProductList() {
+        let shopLink = window.location.origin + window.location.pathname;
+        let productsList = $('#products-list');
+        productsList.html(""); // Clear the existing product list
+        let displayed_products_top = 0;
 
-        if (displayed_products_top < {{ row_product }}) {
-          listItem.classList.add('border','flex','grow','max-w-[42vw]','h-max-[17vw]','mx-auto','h-auto','!mx-[4%]','!mb-[4%]','lg:!mx-[0]','lg:!mb-[0]','lg:!border-s-0','!border-black','!min-w-[0%]');
-          if (dataCollectionProducts.length < 4 || dataCollectionProducts.length < 8 && j > 4) {
-            listItem.style = "height: fit-content";
+        // Preload the product list items based on current page
+        for (let j = 0 + (pagePaginate * query_product); j < (pagePaginate + 1) * query_product; j++) {
+          if (j >= dataCollectionProducts.length) break; // Handle potential out-of-bounds access
+
+          let listItem = $('<li>');
+
+          if (displayed_products_top < row_product) {
+            listItem.addClass('border flex grow max-w-[42vw] h-max-[17vw] mx-auto h-auto !mx-[4%] !mb-[4%] lg:!mx-[0] lg:!mb-[0] lg:!border-s-0 !border-black !min-w-[0%]');
+            if (dataCollectionProducts.length < 4 || dataCollectionProducts.length < 8 && j > 4) {
+              listItem.css("height", "fit-content");
+            }
+          } else {
+            listItem.addClass('border flex grow max-w-[42vw] h-max-[17vw] mx-auto h-auto !mx-[4%] !mb-[4%] lg:!mx-[0] lg:!mb-[0] lg:!border-s-0 !border-black !min-w-[0%] border-product-5 flex grow max-w-[42vw] h-max-[17vw] mx-auto h-auto !mx-[4%] !mb-[4%] lg:!mx-[0] lg:!mb-[0] lg:!border-s-0 !border-black !border-t lg:!border-t-0 !min-w-[0%]');
+          } displayed_products_top++;
+
+          let productLink = $('<a>').addClass('product-card');
+          productLink.attr('href', shopLink + "products/" + dataCollectionProducts[j].handle);
+
+          let productImage = $('<img>').addClass('product-image');
+          productImage.attr('src', dataCollectionProducts[j].featured_image);
+
+          let productText = $('<p>').addClass('text-product');
+          productText.html(dataCollectionProducts[j].title.substr(0, 20) + '<br>');
+
+          let productVendor = $('<a>').addClass('text-xs opacity-60');
+          productVendor.html(dataCollectionProducts[j].vendor + '<br>');
+          let vendor = dataCollectionProducts[j].vendor.toLowerCase().replace(/\s+/g, '-');
+          productVendor.attr('href', window.location.origin + '/collections/' + vendor);
+
+          let priceSpan = $('<span>').addClass('original-price');
+          let childPriceSpan = $('<span>').addClass('money');
+          childPriceSpan.html(Math.floor(dataCollectionProducts[j].price / 100)); // Round to 2 decimal places
+
+          let comparePriceSpan = $('<span>').addClass('compare-price');
+          let childComparePriceSpan = $('<span>').addClass('money');
+
+          if (dataCollectionProducts[j].compare_at_price > dataCollectionProducts[j].price) {
+            childComparePriceSpan.html(Math.floor(dataCollectionProducts[j].compare_at_price / 100));
+            productText.append(comparePriceSpan);
+            comparePriceSpan.append(childComparePriceSpan);
+            priceSpan.html('<br>');
           }
-        } else {
-          listItem.classList.add('border','flex','grow','max-w-[42vw]','h-max-[17vw]','mx-auto','h-auto','!mx-[4%]','!mb-[4%]','lg:!mx-[0]','lg:!mb-[0]','lg:!border-s-0','!border-black','!min-w-[0%]');
-          listItem.classList.add('border-product-5','flex','grow','max-w-[42vw]','h-max-[17vw]','mx-auto','h-auto','!mx-[4%]','!mb-[4%]','lg:!mx-[0]','lg:!mb-[0]','lg:!border-s-0','!border-black','!border-t','lg:!border-t-0','!min-w-[0%]');
-        } displayed_products_top++;
-    
-        let productLink = document.createElement('a');
-        productLink.classList.add('product-card');
-        productLink.href = shopLink+"products/"+dataCollectionProducts[j].handle;
-    
-        let productImage = document.createElement('img');
-        productImage.classList.add('product-image');
-        productImage.src = dataCollectionProducts[j].featured_image;
-    
-        let productText = document.createElement('p');
-        productText.classList.add('text-product');
-        productText.innerHTML = dataCollectionProducts[j].title.substr(0, 20) + '<br>';
-    
-        let productVendor = document.createElement('a');
-        productVendor.classList.add('text-xs','opacity-60');
-        productVendor.innerHTML = dataCollectionProducts[j].vendor + '<br>';
-        // Get the vendor name from dataCollectionProducts[j]
-        let vendor = dataCollectionProducts[j].vendor;
-        // Convert the vendor name to lowercase
-        vendor = vendor.toLowerCase();
-        // Replace spaces with hyphens
-        vendor = vendor.replace(/\s+/g, '-');
-        productVendor.href = window.location.origin + '/collections/' + vendor;
 
-        let priceSpan = document.createElement('span');
-        priceSpan.classList.add('original-price');
-    
-        let childPriceSpan = document.createElement('span');
-        childPriceSpan.classList.add('money');
-        childPriceSpan.innerHTML = Math.floor(dataCollectionProducts[j].price / 100); // for rounded 2 zero after coma
+          priceSpan.append(childPriceSpan);
+          productText.append(priceSpan);
+          productLink.append(productImage);
+          productLink.append(productVendor);
+          productLink.append(productText);
+          listItem.append(productLink);
 
-        let comparePriceSpan = document.createElement('span');
-        comparePriceSpan.classList.add('compare-price');
-    
-        let childComparePriceSpan = document.createElement('span');
-        childComparePriceSpan.classList.add('money');
-    
-        if (dataCollectionProducts[j].compare_at_price > dataCollectionProducts[j].price) {
-          childComparePriceSpan.innerHTML = Math.floor(dataCollectionProducts[j].compare_at_price / 100); // for rounded 2 zero after coma
-          productText.appendChild(comparePriceSpan);
-          comparePriceSpan.appendChild(childComparePriceSpan);
-          priceSpan.innerHTML = '<br>';
+          productsList.append(listItem);
         }
-    
-        priceSpan.appendChild(childPriceSpan);
-        productText.appendChild(priceSpan);
-        productLink.appendChild(productImage);
-        productLink.appendChild(productVendor);
-        productLink.appendChild(productText);
-        listItem.appendChild(productLink);
-    
-        productsList.appendChild(listItem);
+        localStorage.setItem('currentPage', pagePaginate);
       }
-      localStorage.setItem('currentPage', pagePaginate);
-    } 
-    // setTimeout(updateProductList, 4000);
 
-    // Initial load of the product list
-    document.addEventListener('DOMContentLoaded', updateProductList);
+      // Initial load of the product list
+      updateProductList();
 
-    // get element for nav brand & type product
-    var getValueLengthProduct = collectionProducts.length;
-    if (getValueLengthProduct <= {{ row_product }} * 2) {
-      document.getElementById("navbarProduct").classList.add("h-["+ (314 * 2) +"px]");
-    } else {
-      document.getElementById("navbarProduct").classList.add("h-["+ (314 * {{ column_product }}) +"px]");
-    }
+      // Calculate navbarProduct height dynamically
+      var getValueLengthProduct = dataCollectionProducts.length;
+      var rows = Math.ceil(getValueLengthProduct / row_product);
+      $("#navbarProduct").addClass("h-[" + (314 * rows) + "px]"); // Assuming a base height of 314px per row
+
+      // Navigation and Pagination Buttons (using jQuery)
+      $('#prev-page').click(function() {
+        if (pagePaginate > 1) {
+          pagePaginate--;
+          updateProductList();
+        }
+      });
+
+      $('#next-page').click(function() {
+        let maxPages = Math.ceil(dataCollectionProducts.length / query_product);
+        if (pagePaginate < maxPages) {
+          pagePaginate++;
+          updateProductList();
+        }
+      });
+
+      $('.page-item').click(function() {
+        let pageNumber = $(this).attr('data-page');
+        pagePaginate = pageNumber;
+        updateProductList();
+      });
+      });
+
+
 
   </script> 
   <script>
-    function convertPrices() {
-      var productList = document.getElementById("products-list");
-    
-      productList.querySelectorAll("li").forEach(function(listItem) {
-        var comparePriceElement = listItem.querySelector(".compare-price .money");
-        var originalPriceElement = listItem.querySelector(".original-price .money");
-    
-        // Check if ".bucks-selected" class exists (assuming it's on the body)
-        if (document.body.classList.contains("bucks-selected")) {
-          // Get the currency code from ".bucks-currency" attribute (assuming it's within the span.money element)
-          var currencyCode = comparePriceElement.getAttribute("bucks-currency");
-    
-          if (currencyCode === "IDR") {
-            // Convert compare price (assuming it's in cents)
-            var comparePrice = parseFloat(comparePriceElement.textContent.replace(/[^0-9.]/g, "")); // Remove non-numeric characters
-            var convertedComparePrice = Math.floor(comparePrice / 1000) * 1000;
-    
-            // Convert original price (assuming it's in cents)
-            var originalPrice = parseFloat(originalPriceElement.textContent.replace(/[^0-9.]/g, ""));
-            var convertedOriginalPrice = Math.floor(originalPrice / 1000) * 1000;
-    
-            // Update text content with converted prices (assuming two decimal places)
-            comparePriceElement.textContent = convertedComparePrice.toFixed(2);
-            originalPriceElement.textContent = convertedOriginalPrice.toFixed(2);
-          }
-        }
-      });
-    }
-    
-    // Set the interval (adjust the time in milliseconds)
-    setInterval(convertPrices, 3000); // Runs every 3 seconds
-    
-    // Optionally, clear the interval when needed (e.g., on page unload)
-    // window.addEventListener("unload", function() {
-    //   clearInterval(intervalId);
-    // });
+    $(document).ready(function() {
+  function convertPrices() {
+    let currencySelect = $('#currency-selector').val();
+    let productList = $('#products-list');
+    let moneySpans = productList.find('.money'); // Select all elements with class 'money'
+
+    moneySpans.each(function() {
+      let price = $(this).text();
+      let convertedPrice;
+
+      // Implement conversion logic based on selected currency (replace with your conversion logic)
+      if (currencySelect === 'USD') {
+        convertedPrice = (price / 100 * conversionRateUSD).toFixed(2);
+      } else if (currencySelect === 'EUR') {
+        convertedPrice = (price / 100 * conversionRateEUR).toFixed(2);
+      } else {
+        // Handle default currency (IDR)
+        convertedPrice = price;
+      }
+
+      $(this).text(convertedPrice);
+    });
+  }
+
+  // Convert prices on initial load
+  convertPrices();
+
+  // Convert prices on currency change
+  $('#currency-selector').change(function() {
+    convertPrices();
+  });
+});
+
   </script>
     
     
