@@ -288,10 +288,6 @@
     } else {
       document.getElementById("navbarProduct").classList.add("h-["+ (314 * {{ column_product }}) +"px]");
     }
-    
-    // Generate the localStorage key
-    var currentTime = new Date().toLocaleString();
-    var localStorageKey = 'runStatus_' + currentTime;
 
     // Define the conversion function
     setInterval(function convertPricesToIDR() {
@@ -306,12 +302,11 @@
             if (comparePriceSpan) {
                 var comparePriceString = comparePriceSpan.getAttribute("bucks-original");
                 console.log("comparePriceString : "+comparePriceString)
-                var comparePriceNumeric = parseFloat(comparePriceString.replace(/[^\d.]/g, ''));
-                if (!isNaN(comparePriceNumeric)) {
-                    // Convert the compare price to IDR
-                    var convertedComparePrice = comparePriceNumeric * 16000;
-                    comparePriceSpan.textContent = "Rp " + convertedComparePrice.toLocaleString('id-ID') + " IDR";
-                }
+                var comparePriceNumeric = parseFloat(comparePriceString);
+                console.log("comparePriceNumeric : "+comparePriceNumeric)
+                // Convert the compare price to IDR
+                var convertedComparePrice = comparePriceNumeric * 16000;
+                comparePriceSpan.textContent = "Rp " + convertedComparePrice.toLocaleString('id-ID') + " IDR";
             }
 
             if (originalPriceSpan) {
@@ -325,8 +320,6 @@
             }
           });
 
-            // Set the flag to indicate that the script has run
-            // localStorage.setItem(localStorageKey, true);
         }
     }, 4000);
 
