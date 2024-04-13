@@ -303,29 +303,22 @@
               var productInfo = $(this).find(".text-product");
               var originalPriceSpan = productInfo.find(".original-price .money");
               var comparePriceSpan = productInfo.find(".compare-price .money");
-              console.log("comparePriceSpan : "+comparePriceSpan.attr("bucks-original"))
 
               if (comparePriceSpan.length > 0) {
                   var comparePriceString = comparePriceSpan.attr("bucks-original");
-                  console.log("comparePriceString : "+comparePriceString)
                   var comparePriceNumeric = parseFloat(comparePriceString.replace(/[^\d.]/g, ''));
-                  console.log("comparePriceNumeric : "+comparePriceNumeric)
-                  if (!isNaN(comparePriceNumeric)) {
-                      // Convert the compare price to IDR
-                      var convertedComparePrice = comparePriceNumeric * 16000;
-                      console.log("convertedComparePrice : "+convertedComparePrice)
-                      comparePriceSpan.text("Rp " + convertedComparePrice.toLocaleString('id-ID') + " IDR");
-                  }
+                  
+                  var convertedComparePrice = comparePriceNumeric * 16000;
+                      
+                  comparePriceSpan.text("Rp " + convertedComparePrice.toLocaleString('id-ID') + " IDR");
               }
 
               // Extract numeric value from the original price and compare price strings
               var originalPriceString = originalPriceSpan.attr("bucks-original");
               var originalPriceNumeric = parseFloat(originalPriceString.replace(/[^\d.]/g, ''));
-              if (!isNaN(originalPriceNumeric)) {
-                  // Convert the original price to IDR
-                  var convertedOriginalPrice = originalPriceNumeric * 16000;
-                  originalPriceSpan.text("Rp " + convertedOriginalPrice.toLocaleString('id-ID') + " IDR");
-              }
+              // Convert the original price to IDR
+              var convertedOriginalPrice = originalPriceNumeric * 16000;
+              originalPriceSpan.text("Rp " + convertedOriginalPrice.toLocaleString('id-ID') + " IDR");
           });
 
           // Set the flag to indicate that the script has run
