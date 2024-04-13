@@ -303,17 +303,17 @@
               var productInfo = $(this).find(".text-product");
               var originalPriceSpan = productInfo.find(".original-price .money");
               var comparePriceSpan = productInfo.find(".compare-price .money");
-              console.log(comparePriceSpan.attr("bucks-original"))
+              console.log("comparePriceSpan : "+comparePriceSpan.attr("bucks-original"))
 
               if (comparePriceSpan.length > 0) {
                   var comparePriceString = comparePriceSpan.attr("bucks-original");
-                  console.log(comparePriceString)
+                  console.log("comparePriceString : "+comparePriceString)
                   var comparePriceNumeric = parseFloat(comparePriceString.replace(/[^\d.]/g, ''));
-                  console.log(comparePriceNumeric)
+                  console.log("comparePriceNumeric : "+comparePriceNumeric)
                   if (!isNaN(comparePriceNumeric)) {
                       // Convert the compare price to IDR
                       var convertedComparePrice = comparePriceNumeric * 16000;
-                      console.log(convertedComparePrice)
+                      console.log("convertedComparePrice : "+convertedComparePrice)
                       comparePriceSpan.text("Rp " + convertedComparePrice.toLocaleString('id-ID') + " IDR");
                   }
               }
