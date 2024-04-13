@@ -301,7 +301,6 @@
     // get element for nav brand & type product
     document.getElementById("navbarProduct").classList.add("h-["+ (314 * {{ column_product }}) +"px]");
     
-    // Loop through each <li> element inside the <ul>
     // Define the conversion function
     function convertPricesToIDR() {
       if ($('.bucks-selected').text().trim() === 'IDR') {
@@ -310,20 +309,26 @@
             // Find the span with class "money" within this li
             var moneySpan = $(this).find(".money");
             // Get the value of a specific attribute, "bucks-original"
-            var originalPrice = parseFloat(moneySpan.attr("bucks-original"));
-            // Convert the price to Indonesian Rupiah
-            var convertedPrice = originalPrice * 16000;
-            // Update the text content of the ".money" span with the converted price
-            moneySpan.text("Rp " + convertedPrice.toLocaleString('id-ID') + " IDR");
+            var originalPriceString = moneySpan.attr("bucks-original");
+            // Extract the numerical value from the attribute
+            var originalPrice = parseFloat(originalPriceString.replace(/[^\d.-]/g, ''));
+            // Check if the value is a valid number
+            if (!isNaN(originalPrice)) {
+              // Convert the price to Indonesian Rupiah
+              var convertedPrice = originalPrice * 16000;
+              // Update the text content of the ".money" span with the converted price
+              moneySpan.text("Rp " + convertedPrice.toLocaleString('id-ID') + " IDR");
+            }
           });
         });
       }
     }
 
-    // Set interval to run the conversion function every 4 seconds (for example)
-    var intervalId = setInterval(convertPricesToIDR, 4000); // 4000 milliseconds = 4 seconds
+    // Set interval to run the conversion function every 10 seconds (for example)
+    var intervalId = setInterval(convertPricesToIDR, 10000); // 10000 milliseconds = 10 seconds
 
     // To stop the interval execution (if needed)
     // clearInterval(intervalId);
+
 
   </script> 
