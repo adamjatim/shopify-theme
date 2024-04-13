@@ -247,16 +247,16 @@
     
         let childPriceSpan = document.createElement('span');
         childPriceSpan.classList.add('money');
-        // childPriceSpan.innerHTML = Math.ceil(dataCollectionProducts[j].price / 100); // for rounded 2 zero after coma
+        childPriceSpan.innerHTML = Math.ceil(dataCollectionProducts[j].price / 100); // for rounded 2 zero after coma
 
         // Check if .bucks-selected is 'IDR'
-        if ($('.bucks-selected').text().trim() === 'IDR') {
-          // Convert the price to Indonesian Rupiah
-          childPriceSpan.innerHTML = Math.ceil(dataCollectionProducts[j].price / 100 * 16000);
-        } else {
-          // Use the default price
-          childPriceSpan.innerHTML = Math.ceil(dataCollectionProducts[j].price / 100);
-        }
+        // if ($('.bucks-selected').text().trim() === 'IDR') {
+        //   // Convert the price to Indonesian Rupiah
+        //   childPriceSpan.innerHTML = Math.floor(dataCollectionProducts[j].price / 1000 * 16000);
+        // } else {
+        //   // Use the default price
+        //   childPriceSpan.innerHTML = Math.ceil(dataCollectionProducts[j].price / 100);
+        // }
     
         let comparePriceSpan = document.createElement('span');
         comparePriceSpan.classList.add('compare-price');
@@ -264,23 +264,23 @@
         let childComparePriceSpan = document.createElement('span');
         childComparePriceSpan.classList.add('money');
     
-        // if (dataCollectionProducts[j].compare_at_price > dataCollectionProducts[j].price) {
-        //   childComparePriceSpan.innerHTML = Math.ceil(dataCollectionProducts[j].compare_at_price / 100); // for rounded 2 zero after coma
-        //   productText.appendChild(comparePriceSpan);
-        //   comparePriceSpan.appendChild(childComparePriceSpan);
-        //   priceSpan.innerHTML = '<br>';
-        // }
-
         if (dataCollectionProducts[j].compare_at_price > dataCollectionProducts[j].price) {
-          if ($('.bucks-selected').text().trim() === 'IDR') {
-            childComparePriceSpan.innerHTML = Math.ceil(dataCollectionProducts[j].compare_at_price / 100 * 16000);
-          } else {
-            childComparePriceSpan.innerHTML = Math.ceil(dataCollectionProducts[j].compare_at_price / 100); // for rounded 2 zero after coma
-          }
+          childComparePriceSpan.innerHTML = Math.ceil(dataCollectionProducts[j].compare_at_price / 100); // for rounded 2 zero after coma
           productText.appendChild(comparePriceSpan);
           comparePriceSpan.appendChild(childComparePriceSpan);
           priceSpan.innerHTML = '<br>';
         }
+
+        // if (dataCollectionProducts[j].compare_at_price > dataCollectionProducts[j].price) {
+        //   if ($('.bucks-selected').text().trim() === 'IDR') {
+        //     childComparePriceSpan.innerHTML = Math.ceil(dataCollectionProducts[j].compare_at_price / 100 * 16000);
+        //   } else {
+        //     childComparePriceSpan.innerHTML = Math.ceil(dataCollectionProducts[j].compare_at_price / 100); // for rounded 2 zero after coma
+        //   }
+        //   productText.appendChild(comparePriceSpan);
+        //   comparePriceSpan.appendChild(childComparePriceSpan);
+        //   priceSpan.innerHTML = '<br>';
+        // }
     
         priceSpan.appendChild(childPriceSpan);
         productText.appendChild(priceSpan);
@@ -293,6 +293,7 @@
       }
       localStorage.setItem('currentPage', pagePaginate);
     } 
+    // setTimeout(updateProductList, 3000);
 
     // Initial load of the product list
     document.addEventListener('DOMContentLoaded', updateProductList);
@@ -300,4 +301,19 @@
     // get element for nav brand & type product
     document.getElementById("navbarProduct").classList.add("h-["+ (314 * {{ column_product }}) +"px]");
     
+    // Loop through each <li> element inside the <ul>
+    if ($('.bucks-selected').text().trim() === 'IDR') {
+      $('ul#products-list').each(function() {
+        $(this).find("li").each(function() {
+          // Find the span with class "money" within this li
+          var moneySpan = $(this).find(".money");
+          // Get the value of a specific attribute, "bucks-original"
+          var originalPrice = parseFloat(moneySpan.attr("bucks-original"));
+          // Convert the price to Indonesian Rupiah
+          var convertedPrice = originalPrice * 16000;
+          // Update the text content of the ".money" span with the converted price
+          moneySpan.text("Rp " + convertedPrice.toLocaleString('id-ID') + " IDR");
+        });
+      });
+    }
   </script> 
