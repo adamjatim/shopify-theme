@@ -276,7 +276,12 @@
   document.addEventListener('DOMContentLoaded', updateProductList);
 
   // get element for nav brand & type product
-  document.getElementById("navbarProduct").classList.add("h-["+ (314 * {{ column_product }}) +"px]");
+  var getValueLengthProduct = collectionProducts.length;
+  if (getValueLengthProduct <= {{ row_product }} * 2) {
+    document.getElementById("navbarProduct").classList.add("h-["+ (314 * 2) +"px]");
+  } else {
+    document.getElementById("navbarProduct").classList.add("h-["+ (314 * {{ column_product }}) +"px]");
+  }
   
   // Define the conversion function
   function convertPricesToIDR() {
