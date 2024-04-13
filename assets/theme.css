@@ -243,7 +243,6 @@ li.border {
   height: fit-content;
   display: flex;
   flex-direction: row;
-  position: absolute;
   top: auto;
   bottom: auto;
   margin: auto;
