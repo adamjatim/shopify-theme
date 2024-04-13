@@ -289,29 +289,35 @@
       document.getElementById("navbarProduct").classList.add("h-["+ (314 * {{ column_product }}) +"px]");
     }
 
-    var listProducts = document.querySelectorAll("#products-list li");
-    var bucksSelectedElement = document.querySelector(".bucks-selected");
-
-    listProducts.forEach(function(listItem) {
-      var comparePriceElement = listItem.querySelector(".compare-price .money");
-      var originalPriceElement = listItem.querySelector(".original-price .money");
-
-      // Check if bucksSelected is "IDR" every time
-      if (bucksSelectedElement === "IDR") {
-        // Get the current price values
-        var comparePrice = parseFloat(comparePriceElement.textContent);
-        var originalPrice = parseFloat(originalPriceElement.textContent);
-
-        // Perform multiplication with 16000
-        var convertedComparePrice = comparePrice * 16000;
-        var convertedOriginalPrice = originalPrice * 16000;
-
-        // Update the text content with converted prices (assuming two decimal places)
-        comparePriceElement.textContent = convertedComparePrice.toFixed(2);
-        originalPriceElement.textContent = convertedOriginalPrice.toFixed(2);
-      }
-    });
-
-
-
   </script> 
+  <script>
+    window.onload = function() {
+      var productList = document.getElementById("products-list");
+    
+      productList.querySelectorAll("li").forEach(function(listItem) {
+        var comparePriceElement = listItem.querySelector(".compare-price .money");
+        var originalPriceElement = listItem.querySelector(".original-price .money");
+    
+        // Check if ".bucks-selected" class exists (assuming it's on the body)
+        if (document.body.classList.contains("bucks-selected")) {
+          // Get the currency code from ".bucks-currency" attribute (assuming it's within the span.money element)
+          var currencyCode = comparePriceElement.getAttribute("bucks-currency");
+    
+          if (currencyCode === "IDR") {
+            // Convert compare price (assuming it's in cents)
+            var comparePrice = parseFloat(comparePriceElement.textContent.replace(/[^0-9.]/g, "")); // Remove non-numeric characters
+            var convertedComparePrice = Math.floor(comparePrice / 1000) * 1000;
+    
+            // Convert original price (assuming it's in cents)
+            var originalPrice = parseFloat(originalPriceElement.textContent.replace(/[^0-9.]/g, ""));
+            var convertedOriginalPrice = Math.floor(originalPrice / 1000) * 1000;
+    
+            // Update text content with converted prices (assuming two decimal places)
+            comparePriceElement.textContent = convertedComparePrice.toFixed(2);
+            originalPriceElement.textContent = convertedOriginalPrice.toFixed(2);
+          }
+        }
+      });
+    };
+  </script>
+    
