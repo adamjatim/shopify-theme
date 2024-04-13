@@ -291,7 +291,7 @@
 
   </script> 
   <script>
-    window.onload = function() {
+    function convertPrices() {
       var productList = document.getElementById("products-list");
     
       productList.querySelectorAll("li").forEach(function(listItem) {
@@ -318,6 +318,15 @@
           }
         }
       });
-    };
+    }
+    
+    // Set the interval (adjust the time in milliseconds)
+    var intervalId = setInterval(convertPrices, 5000); // Runs every 5 seconds
+    
+    // Optionally, clear the interval when needed (e.g., on page unload)
+    // window.addEventListener("unload", function() {
+    //   clearInterval(intervalId);
+    // });
   </script>
+    
     
