@@ -99,7 +99,7 @@
         </nav>
       </div>
       <div class="w-full lg:w-[80%]">
-        <ul id="products-list" class="flex flex-wrap gap-0"></ul>
+        <ul id="products-list" class="flex flex-wrap gap-0 lg:h-auto"></ul>
       </div>
     </div>
     <div class="flex lg:flex-row flex-col-reverse justify-between px-[10px] pb-[10px] items-center gap-4 lg:gap-0">
@@ -196,134 +196,133 @@
   });
   
   // Function to update the product list
-  function updateProductList() {
-    let shopLink = window.location.origin + window.location.pathname;
-    let productsList = document.getElementById('products-list');
-    productsList.innerHTML = ""; // Clear the existing product list
-    let displayed_products_top = 0;
-  
-    // Preload the product list items
-    for (let j = 0 + (pagePaginate * {{ query_product }}); j < (pagePaginate + 1) * {{ query_product }}; j++) {
-      let listItem = document.createElement('li');
-  
-      if (displayed_products_top < {{ row_product }}) {
-        listItem.classList.add('border','flex','grow','max-w-[42vw]','h-max-[17vw]','mx-auto','h-auto','!mx-[4%]','!mb-[4%]','lg:!mx-[0]','lg:!mb-[0]','lg:!border-s-0','!border-black','!min-w-[0%]');
-        if (dataCollectionProducts.length < 4) {
-          listItem.classList.add('!h-fit');
+  $(document).ready(function() {
+    // Update product list function
+    function updateProductList() {
+      let shopLink = window.location.origin + window.location.pathname;
+      let productsList = $('#products-list');
+      productsList.html(""); // Clear the existing product list
+      let displayed_products_top = 0;
+
+      // Preload the product list items based on current page
+      for (let j = 0 + (pagePaginate * {{query_product}}); j < (pagePaginate + 1) * {{query_product}}; j++) {
+        console.log("pagePaginate : "+pagePaginate);
+        if (j >= dataCollectionProducts.length) break; // Handle potential out-of-bounds access
+
+        let listItem = $('<li>');
+
+        if (displayed_products_top < {{row_product}}) {
+          listItem.addClass('border flex grow max-w-[42vw] h-max-[17vw] mx-auto h-auto !mx-[4%] !mb-[4%] lg:!mx-[0] lg:!mb-[0] lg:!border-s-0 !border-black !min-w-[0%]');
+          if ( (pagePaginate * {{ query_product }}) % {{ row_product }} != 0 && j < {{ row_product }} ) {
+            listItem.addClass('lg:!h-full');
+          }
+        } else {
+          listItem.addClass('border-product-5 border flex grow max-w-[42vw] h-max-[17vw] mx-auto h-auto !mx-[4%] !mb-[4%] lg:!mx-[0] lg:!mb-[0] lg:!border-s-0 !border-black !min-w-[0%] border-product-5 flex grow max-w-[42vw] h-max-[17vw] mx-auto h-auto !mx-[4%] !mb-[4%] lg:!mx-[0] lg:!mb-[0] lg:!border-s-0 !border-black !border-t lg:!border-t-0 !min-w-[0%]');
+          if ( (pagePaginate * {{ query_product }}) % {{ row_product }} != 0 && j > {{ row_product }} || j > {{ row_product }} && j >= ({{ query_product }} - {{ row_product }}) && (pagePaginate + 1) * {{ query_product }} >= dataCollectionProducts.length ) {
+            listItem.addClass('lg:!h-full');  
+          }
+        } displayed_products_top++;
+
+        let productLink = $('<a>').addClass('product-card');
+        productLink.attr('href', shopLink + "products/" + dataCollectionProducts[j].handle);
+
+        let productImage = $('<img>').addClass('product-image');
+        productImage.attr('src', dataCollectionProducts[j].featured_image);
+
+        let productText = $('<p>').addClass('text-product');
+        productText.html(dataCollectionProducts[j].title.substr(0, 20) + '<br>');
+
+        let productVendor = $('<a>').addClass('text-xs opacity-60');
+        productVendor.html(dataCollectionProducts[j].vendor + '<br>');
+        let vendor = dataCollectionProducts[j].vendor.toLowerCase().replace(/\s+/g, '-');
+        productVendor.attr('href', window.location.origin + '/collections/' + vendor);
+
+        let priceSpan = $('<span>').addClass('_original-price');
+        let childPriceSpan = $('<span>').addClass('_money');
+        childPriceSpan.html(formatCurrency(Math.floor(dataCollectionProducts[j].price / 100), document.querySelector('.bucks-selected').textContent)); // Round to 2 decimal places
+
+        let comparePriceSpan = $('<span>').addClass('_compare-price');
+        let childComparePriceSpan = $('<span>').addClass('_money');
+
+        if (dataCollectionProducts[j].compare_at_price > dataCollectionProducts[j].price) {
+          childComparePriceSpan.html(formatCurrency(Math.floor(dataCollectionProducts[j].compare_at_price / 100), document.querySelector('.bucks-selected').textContent));
+          productText.append(comparePriceSpan);
+          comparePriceSpan.append(childComparePriceSpan);
+          priceSpan.html('<br>');
         }
-      } else {
-        listItem.classList.add('border-product-5','border','flex','grow','max-w-[42vw]','h-max-[17vw]','mx-auto','h-auto','!mx-[4%]','!mb-[4%]','lg:!mx-[0]','lg:!mb-[0]','lg:!border-s-0','!border-black','!border-t','lg:!border-t-0','!min-w-[0%]');
-        listItem.classList.add('!h-fit');
-        if (dataCollectionProducts.length < 8) {
-          
-        }
-      } displayed_products_top++;
-  
-      let productLink = document.createElement('a');
-      productLink.classList.add('product-card');
-      productLink.href = shopLink+"/products/"+dataCollectionProducts[j].handle;
-  
-      let productImage = document.createElement('img');
-      productImage.classList.add('product-image');
-      productImage.src = dataCollectionProducts[j].featured_image;
-  
-      let productVendor = document.createElement('a');
-      productVendor.classList.add('text-xs','opacity-60');
-      productVendor.innerHTML = dataCollectionProducts[j].vendor + '<br>';
-      // Get the vendor name from dataCollectionProducts[j]
-      let vendor = dataCollectionProducts[j].vendor;
-      // Convert the vendor name to lowercase
-      vendor = vendor.toLowerCase();
-      // Replace spaces with hyphens
-      vendor = vendor.replace(/\s+/g, '-');
-      productVendor.href = window.location.origin + '/collections/' + vendor;
 
-      let productText = document.createElement('p');
-      productText.classList.add('text-product');
-      productText.innerHTML = dataCollectionProducts[j].title.substr(0, 20) + '<br>';
-  
-      let priceSpan = document.createElement('span');
-      priceSpan.classList.add('original-price');
-  
-      let childPriceSpan = document.createElement('span');
-      childPriceSpan.classList.add('money');
-      childPriceSpan.innerHTML = dataCollectionProducts[j].price / 100; // for rounded 2 zero after coma
-  
-      let comparePriceSpan = document.createElement('span');
-      comparePriceSpan.classList.add('compare-price');
-  
-      let childComparePriceSpan = document.createElement('span');
-      childComparePriceSpan.classList.add('money');
-  
-      if (dataCollectionProducts[j].compare_at_price > dataCollectionProducts[j].price) {
-        childComparePriceSpan.innerHTML = dataCollectionProducts[j].compare_at_price / 100; // for rounded 2 zero after coma
-        productText.appendChild(comparePriceSpan);
-        comparePriceSpan.appendChild(childComparePriceSpan);
-        priceSpan.innerHTML = '<br>';
+        priceSpan.append(childPriceSpan);
+        productText.append(priceSpan);
+        productLink.append(productImage);
+        productLink.append(productVendor);
+        productLink.append(productText);
+        listItem.append(productLink);
+
+        productsList.append(listItem);
       }
-  
-      priceSpan.appendChild(childPriceSpan);
-      productText.appendChild(priceSpan);
-      productLink.appendChild(productImage);
-      productLink.appendChild(productVendor);
-      productLink.appendChild(productText);
-      listItem.appendChild(productLink);
-  
-      productsList.appendChild(listItem);
-    }
-    localStorage.setItem('currentPage', pagePaginate);
-  }
+      localStorage.setItem('currentPage', pagePaginate);
+    } setInterval(updateProductList, 1000);
 
-  // Initial load of the product list
-  document.addEventListener('DOMContentLoaded', updateProductList);
+    // Initial load of the product list
+    updateProductList();
 
-  // get element for nav brand & type product
-  var getValueLengthProduct = collectionProducts.length;
-  if (getValueLengthProduct <= 4) {
-    document.getElementById("navbarProduct").classList.add("h-["+ (314 * 2) +"px]");
-  } else {
-    document.getElementById("navbarProduct").classList.add("h-["+ (314 * {{ column_product }}) +"px]");
-  }
-  
-  
-  // Generate the localStorage key
-  var currentTime = new Date().toLocaleString();
-  var localStorageKey = 'runStatus_' + currentTime;
+    // Calculate navbarProduct height dynamically
+    var getValueLengthProduct = dataCollectionProducts.length;
+    var rows = Math.ceil(getValueLengthProduct / {{row_product}});
+    $("#navbarProduct").addClass("h-[" + (314 * {{column_product}}) + "px]"); // Assuming a base height of 314px per row
 
-  // Define the conversion function
-  setTimeout(function convertPricesToIDR() {
-      // Check if the script has already run
-      var hasRun = localStorage.getItem(localStorageKey);
-
-      if ($('.bucks-selected').text().trim() === 'IDR' && !hasRun) {
-          $('ul#products-list li').each(function() {
-              var productInfo = $(this).find(".text-product");
-              var originalPriceSpan = productInfo.find(".original-price .money");
-              var comparePriceSpan = productInfo.find(".compare-price .money");
-
-              if (comparePriceSpan.length > 0) {
-                  var comparePriceString = comparePriceSpan.attr("bucks-original");
-                  var comparePriceNumeric = parseFloat(comparePriceString.replace(/[^\d.]/g, ''));
-                  if (!isNaN(comparePriceNumeric)) {
-                      // Convert the compare price to IDR
-                      var convertedComparePrice = comparePriceNumeric * 16000;
-                      comparePriceSpan.text("Rp " + convertedComparePrice.toLocaleString('id-ID') + " IDR");
-                  }
-              }
-
-              // Extract numeric value from the original price and compare price strings
-              var originalPriceString = originalPriceSpan.attr("bucks-original");
-              var originalPriceNumeric = parseFloat(originalPriceString.replace(/[^\d.]/g, ''));
-              if (!isNaN(originalPriceNumeric)) {
-                  // Convert the original price to IDR
-                  var convertedOriginalPrice = originalPriceNumeric * 16000;
-                  originalPriceSpan.text("Rp " + convertedOriginalPrice.toLocaleString('id-ID') + " IDR");
-              }
-          });
-
-          // Set the flag to indicate that the script has run
-          localStorage.setItem(localStorageKey, true);
+    // Navigation and Pagination Buttons (using jQuery)
+    $('#prev-page').click(function() {
+      if (pagePaginate > 1) {
+        pagePaginate--;
+        updateProductList();
       }
-  }, 4000);
+    });
 
+    $('#next-page').click(function() {
+      let maxPages = Math.ceil(dataCollectionProducts.length / query_product);
+      if (pagePaginate < maxPages) {
+        pagePaginate++;
+        updateProductList();
+      }
+    });
+
+    $('.page-item').click(function() {
+      let pageNumber = $(this).attr('data-page');
+      pagePaginate = pageNumber;
+      updateProductList();
+    });
+  });
+  
 </script> 
+<script>
+  function formatCurrency(price, currency) {
+    // Get the text inside the span with the class "bucks-selected"
+    var spanText = document.querySelector('.bucks-selected').textContent;
+
+    // Output the text to the console
+    currency = spanText;
+
+    // Define conversion rates from USD to other currencies
+    var conversionRates = {
+      'IDR': 16000, // Example conversion rate from USD to IDR
+      'EUR': 1,    // Example conversion rate from USD to EUR
+      // 'USD': 1,
+      // Add conversion rates for other currencies as needed
+    };
+
+    // Convert price to IDR if the currency is USD or EUR
+    if (conversionRates[currency]) {
+      price = Math.floor(price) * conversionRates[currency];
+      price = Math.ceil(price); // Round the price up to the nearest whole number
+    }
+
+    var formatter = new Intl.NumberFormat('en-EN', {
+      style: 'currency',
+      currency: currency,
+    });
+    return formatter.format(price);
+  }
+</script>
+    
+    
