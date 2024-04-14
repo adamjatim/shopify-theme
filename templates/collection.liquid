@@ -36,298 +36,306 @@
 
 {% paginate collection.products by query_product %}
 
-  <div class="mx-auto mb-28">
-    <div class="lg:border border-black border-y border-x-0 !w-screen lg:!w-[1024px]">
-      <div class="flex flex-col lg:flex-row px-[10px] mt-[3.5rem] gap-y-3 w-[100%] border-b lg:border-b-0 border-black pb-[20px] lg:pb-0">
-        <div class="flex flex-row lg:w-[20%]">
-          <h1 class="text-4xl font-bold">{{ collection.title }}</h1>
-          <button class="hamburger">
-            <svg width="30px" height="20px" viewBox="0 0 20.00 20.00" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>hamburger</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke-width="0.0002" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-212.000000, -888.000000)" fill="#000000"> <path d="M230,904 L214,904 C212.896,904 212,904.896 212,906 C212,907.104 212.896,908 214,908 L230,908 C231.104,908 232,907.104 232,906 C232,904.896 231.104,904 230,904 L230,904 Z M230,896 L214,896 C212.896,896 212,896.896 212,898 C212,899.104 212.896,900 214,900 L230,900 C231.104,900 232,899.104 232,898 C232,896.896 231.104,896 230,896 L230,896 Z M214,892 L230,892 C231.104,892 232,891.104 232,890 C232,888.896 231.104,888 230,888 L214,888 C212.896,888 212,888.896 212,890 C212,891.104 212.896,892 214,892 L214,892 Z" id="hamburger" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>
-          </button>
-        </div>
-
-        <div class="flex flex-row lg:w-[80%] justify-between">
-          <div class="flex flex-row gap-x-2">
-            <a class="" href="{{ paginate.previous.url }}">
-              <div class="border border-black py-[3px] px-[8px] h-[32px]">BACK</div>
-            </a>
-            <a href="{{ paginate.next.url }}">
-              <div class="border border-black py-[3px] px-[8px] h-[32px]">NEXT</div>
-            </a>
-          </div>
-          <div class="flex flex-row gap-x-2">
-            <div id="cartbtn" class="border border-black py-[3px] px-[8px] h-[32px] cursor-pointer">
-              <a>CART</a>
-            </div>
-            <div class="buckscc-currency-box border border-black py-[3px] px-[8px] h-[32px]"></div>
-          </div>
-        </div>
+<div class="mx-auto mb-28">
+  <div class="lg:border border-black border-y border-x-0 !w-screen lg:!w-[1024px]">
+    <div class="flex flex-col lg:flex-row px-[10px] mt-[3.5rem] gap-y-3 w-[100%] border-b lg:border-b-0 border-black pb-[20px] lg:pb-0">
+      <div class="flex flex-row lg:w-[20%]">
+        <h1 class="text-4xl font-bold">{{ collection.title }}</h1>
+        <button class="hamburger">
+          <svg width="30px" height="20px" viewBox="0 0 20.00 20.00" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>hamburger</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke-width="0.0002" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-212.000000, -888.000000)" fill="#000000"> <path d="M230,904 L214,904 C212.896,904 212,904.896 212,906 C212,907.104 212.896,908 214,908 L230,908 C231.104,908 232,907.104 232,906 C232,904.896 231.104,904 230,904 L230,904 Z M230,896 L214,896 C212.896,896 212,896.896 212,898 C212,899.104 212.896,900 214,900 L230,900 C231.104,900 232,899.104 232,898 C232,896.896 231.104,896 230,896 L230,896 Z M214,892 L230,892 C231.104,892 232,891.104 232,890 C232,888.896 231.104,888 230,888 L214,888 C212.896,888 212,888.896 212,890 C212,891.104 212.896,892 214,892 L214,892 Z" id="hamburger" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>
+        </button>
       </div>
 
-      <div class="flex lg:flex-row lg:p-[10px] lg:w-[100%] mt-[30px] lg:mt-0">
-        <div class="hide lg:flex w-[20%] border border-black" id="navbarProduct">
-          <nav role="navigation">
-            {% for link in linklists.main-menu.links %}
-              <div class="widget-left-bar">
-                <a href="/" {% if link.active %}aria-current="page"{% endif %}>
-                  <h2 class="text-3xl font-bold">{{ link.title }}</h2>
-                </a>
-                {% if link.links != blank %}
-                  <ul class="product-list">
-                    {% for child_link in link.links %}
-                      <li>
-                        <a href="{{ child_link.url }}" {% if child_link.active %}aria-current="page"{% endif %}>
-                          {{ child_link.title }}
-                        </a>
-                        {% if child_link.links != blank %}
-                          <ul>
-                            {% for grandchild_link in child_link.links %}
-                              <li>
-                                <a href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page"{% endif %}>
-                                  {{ grandchild_link.title }}
-                                </a>
-                              </li>
-                            {% endfor %}
-                          </ul>
-                        {% endif %}
-                      </li>
-                    {% endfor %}
-                  </ul>
-                {% endif %}
-              </div>
-            {% endfor %}
-          </nav>
+      <div class="flex flex-row lg:w-[80%] justify-between">
+        <div class="flex flex-row gap-x-2">
+          <a href="{{ paginate.previous.url }}">
+            <div class="border border-black py-[3px] px-[8px] h-[32px]">BACK</div>
+          </a>
+          <a href="{{ paginate.next.url }}">
+            <div class="border border-black py-[3px] px-[8px] h-[32px]">NEXT</div>
+          </a>
         </div>
-
-        <div class="w-full lg:w-[80%]">
-          <ul id="products-list" class="flex flex-wrap gap-0 lg:h-auto"> </ul>
-        </div>
-      </div>
-      
-      <div class="flex lg:flex-row flex-col-reverse justify-between px-[10px] pb-[10px] items-center gap-4 lg:gap-0">
-        <script>
-          $(document).ready(function() {
-            // Double-check the ID of the footer element:
-            var footerElement = $('#footerPages');
-
-            // Check if the element exists before appending:
-            if (footerElement.length > 0) {
-              var captureUrlWindows = window.location.origin; // Use location.origin for the domain
-
-              // Clear existing content if needed (replace with .append() to add after):
-              footerElement.html(
-                '<a href="' + captureUrlWindows + '/pages/about">About</a>' +
-                '<a>•</a>' +
-                '<a href="' + captureUrlWindows + '/pages/privacy-policy">Privacy & Policy</a>' +
-                '<a>•</a>' +
-                '<a href="' + captureUrlWindows + '/pages/terms-conditions">Terms & Conditions</a>' +
-                '<a>•</a>' +
-                '<a href="' + captureUrlWindows + '/pages/contact">Contact</a>'
-              );
-            } else {
-              console.error("Element with ID '#footerPages' not found.");
-            }
-          });
-        </script>
-        <div id="footerPages" class="flex flex-row gap-x-[10px] justify-evenly w-full lg:justify-normal lg:w-fit">
-        </div>
-        <div class="">
-          <div class="page-number">{{ paginate | default_pagination: next: ' ', previous: ' ' }}</div>
+        <div class="flex flex-row gap-x-2">
+          <div id="cartbtn" class="border border-black py-[3px] px-[8px] h-[32px] cursor-pointer">
+            <a>CART</a>
+          </div>
+          <div class="buckscc-currency-box border border-black py-[3px] px-[8px] h-[32px]"></div>
         </div>
       </div>
     </div>
-  </div>
 
-  {% endpaginate %}
+    <div class="flex lg:flex-row lg:p-[10px] lg:w-[100%] mt-[30px] lg:mt-0">
+      <div class="hide lg:flex w-[20%] border border-black lg:h-auto" id="navbarProduct">
+        <nav role="navigation">
+          {% for link in linklists.main-menu.links %}
+            <div class="widget-left-bar">
+              <a href="/" {% if link.active %}aria-current="page"{% endif %}>
+                <h2 class="text-3xl font-bold">{{ link.title }}</h2>
+              </a>
+              {% if link.links != blank %}
+                <ul class="product-list">
+                  {% for child_link in link.links %}
+                    <li>
+                      <a href="{{ child_link.url }}" {% if child_link.active %}aria-current="page"{% endif %}>
+                        {{ child_link.title }}
+                      </a>
+                      {% if child_link.links != blank %}
+                        <ul>
+                          {% for grandchild_link in child_link.links %}
+                            <li>
+                              <a href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page"{% endif %}>
+                                {{ grandchild_link.title }}
+                              </a>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      {% endif %}
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </nav>
+      </div>
+      <div class="w-full lg:w-[80%]">
+        <ul id="products-list" class="flex flex-wrap gap-0 lg:h-auto"></ul>
+      </div>
+    </div>
+    <div class="flex lg:flex-row flex-col-reverse justify-between px-[10px] pb-[10px] items-center gap-4 lg:gap-0">
+      <script>
+        $(document).ready(function() {
+          // Double-check the ID of the footer element:
+          var footerElement = $('#footerPages');
 
-  <script>
-    var collectionProducts = {{ collection.products | json }};
-    var dataCollectionProducts = [];
-    
-    // get the available products
-    for (let i = 0; i < collectionProducts.length; i++) {
-      if (collectionProducts[i].available == true) {
-        dataCollectionProducts.push(collectionProducts[i]);
-      }
-    }
-    
-    // sorting of available products by created at
-    dataCollectionProducts.sort(function(a, b) {
-      if (a.created_at > b.created_at) {
-        return -1;
-      } else if (a.created_at < b.created_at) {
-        return 1;
-      } else {
-        return 0;
-      }
-    });
+          // Check if the element exists before appending:
+          if (footerElement.length > 0) {
+            var captureUrlWindows = window.location.origin; // Use location.origin for the domain
 
-    // Retrieve the last displayed page number from localStorage (if available)
-    // put parameter url now
-    const queryUrlString = window.location.search;
-    const urlParams = new URLSearchParams(queryUrlString);
-
-    // Retrieve the last displayed page number from localStorage (if available)
-    let pagePaginate = 0;
-    if(Number(urlParams.get('page')) > 0) {
-      pagePaginate = Number(urlParams.get('page')) - 1; // for make the first index of paginate start by 0
-    }
-    
-    // back button
-    $(document).on('click', '#back-page', function() {
-      if (pagePaginate == 0) {
-        console.log("page number 1 mtfck");
-      } else {
-        pagePaginate -= 1;
-        console.log("back button clicked");
-        console.log("page number -1 mtfck");
-        updateProductList(); // Display the previous page of products
-      }
-    });
-    
-    // next button
-    $(document).on('click', '#next-page', function() {
-      if (dataCollectionProducts.length / {{ query_product }} <= pagePaginate * {{ query_product }}) {
-        console.log("next page is undefined mtfck");
-      } else {
-        pagePaginate += 1;
-        console.log("next button clicked");
-        console.log("page number +1 mtfck");
-        updateProductList(); // Display the next page of products
-      }
-    });
-    
-    // Function to update the product list
-    $(document).ready(function() {
-      // Update product list function
-      function updateProductList() {
-        let shopLink = window.location.origin + window.location.pathname;
-        let productsList = $('#products-list');
-        productsList.html(""); // Clear the existing product list
-        let displayed_products_top = 0;
-
-        // Preload the product list items based on current page
-        for (let j = 0 + (pagePaginate * {{query_product}}); j < (pagePaginate + 1) * {{query_product}}; j++) {
-          
-          if (j >= dataCollectionProducts.length) break; // Handle potential out-of-bounds access
-
-          let listItem = $('<li>');
-
-          if (displayed_products_top < {{row_product}}) {
-            listItem.addClass('border flex grow max-w-[42vw] h-max-[17vw] mx-auto h-auto !mx-[4%] !mb-[4%] lg:!mx-[0] lg:!mb-[0] lg:!border-s-0 !border-black !min-w-[0%]');
-            if ( dataCollectionProducts.length % {{ row_product }} != 0 && j < {{ row_product }} ) {
-              listItem.addClass('lg:!h-full');
-            }
+            // Clear existing content if needed (replace with .append() to add after):
+            footerElement.html(
+              '<a href="' + captureUrlWindows + '/pages/about">About</a>' +
+              '<a>•</a>' +
+              '<a href="' + captureUrlWindows + '/pages/privacy-policy">Privacy & Policy</a>' +
+              '<a>•</a>' +
+              '<a href="' + captureUrlWindows + '/pages/terms-conditions">Terms & Conditions</a>' +
+              '<a>•</a>' +
+              '<a href="' + captureUrlWindows + '/pages/contact">Contact</a>'
+            );
           } else {
-            listItem.addClass('border-product-5 border flex grow max-w-[42vw] h-max-[17vw] mx-auto h-auto !mx-[4%] !mb-[4%] lg:!mx-[0] lg:!mb-[0] lg:!border-s-0 !border-black !min-w-[0%] border-product-5 flex grow max-w-[42vw] h-max-[17vw] mx-auto h-auto !mx-[4%] !mb-[4%] lg:!mx-[0] lg:!mb-[0] lg:!border-s-0 !border-black !border-t lg:!border-t-0 !min-w-[0%]');
-            if ( dataCollectionProducts.length % {{ row_product }} != 0 && j > {{ row_product }} * (dataCollectionProducts.length % {{ row_product }}) || j > {{ row_product }} && j >= ({{ query_product }} - {{ row_product }}) && (pagePaginate + 1) * {{ query_product }} >= dataCollectionProducts.length ) {
-              listItem.addClass('lg:!h-full');
-              
-            }
-          } displayed_products_top++;
-
-          let productLink = $('<a>').addClass('product-card');
-          productLink.attr('href', shopLink + "products/" + dataCollectionProducts[j].handle);
-
-          let productImage = $('<img>').addClass('product-image');
-          productImage.attr('src', dataCollectionProducts[j].featured_image);
-
-          let productText = $('<p>').addClass('text-product');
-          productText.html(dataCollectionProducts[j].title.substr(0, 20) + '<br>');
-
-          let productVendor = $('<a>').addClass('text-xs opacity-60');
-          productVendor.html(dataCollectionProducts[j].vendor + '<br>');
-          let vendor = dataCollectionProducts[j].vendor.toLowerCase().replace(/\s+/g, '-');
-          productVendor.attr('href', window.location.origin + '/collections/' + vendor);
-
-          let priceSpan = $('<span>').addClass('_original-price');
-          let childPriceSpan = $('<span>').addClass('_money');
-          childPriceSpan.html(formatCurrency(Math.floor(dataCollectionProducts[j].price / 100), document.querySelector('.bucks-selected').textContent)); // Round to 2 decimal places
-
-          let comparePriceSpan = $('<span>').addClass('_compare-price');
-          let childComparePriceSpan = $('<span>').addClass('_money');
-
-          if (dataCollectionProducts[j].compare_at_price > dataCollectionProducts[j].price) {
-            childComparePriceSpan.html(formatCurrency(Math.floor(dataCollectionProducts[j].compare_at_price / 100), document.querySelector('.bucks-selected').textContent));
-            productText.append(comparePriceSpan);
-            comparePriceSpan.append(childComparePriceSpan);
-            priceSpan.html('<br>');
+            console.error("Element with ID '#footerPages' not found.");
           }
+        });
+      </script>
+      <div id="footerPages" class="flex flex-row gap-x-[10px] justify-evenly w-full lg:justify-normal lg:w-fit">
+      </div>
+      <div class="">
+        <div class="page-number">{{ paginate | default_pagination: next: ' ', previous: ' ' }}</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-          priceSpan.append(childPriceSpan);
-          productText.append(priceSpan);
-          productLink.append(productImage);
-          productLink.append(productVendor);
-          productLink.append(productText);
-          listItem.append(productLink);
+{% endpaginate %}
 
-          productsList.append(listItem);
-        }
-        localStorage.setItem('currentPage', pagePaginate);
-      } setInterval(updateProductList, 1000);
-
-      // Initial load of the product list
-      updateProductList();
-
-      // Calculate navbarProduct height dynamically
-      var getValueLengthProduct = dataCollectionProducts.length;
-      var rows = Math.ceil(getValueLengthProduct / {{row_product}});
-      $("#navbarProduct").addClass("h-[" + (314 * {{column_product}}) + "px]"); // Assuming a base height of 314px per row
-
-      // Navigation and Pagination Buttons (using jQuery)
-      $('#prev-page').click(function() {
-        if (pagePaginate > 1) {
-          pagePaginate--;
-          updateProductList();
-        }
-      });
-
-      $('#next-page').click(function() {
-        let maxPages = Math.ceil(dataCollectionProducts.length / query_product);
-        if (pagePaginate < maxPages) {
-          pagePaginate++;
-          updateProductList();
-        }
-      });
-
-      $('.page-item').click(function() {
-        let pageNumber = $(this).attr('data-page');
-        pagePaginate = pageNumber;
-        updateProductList();
-      });
-      });
-
-
-
-  </script> 
-  <script>
-    function formatCurrency(price, currency) {
-      // Get the text inside the span with the class "bucks-selected"
-      var spanText = document.querySelector('.bucks-selected').textContent;
-
-      // Output the text to the console
-      currency = spanText;
-
-      // Define conversion rates from USD to other currencies
-      var conversionRates = {
-        'IDR': 16000, // Example conversion rate from USD to IDR
-        'EUR': 1,    // Example conversion rate from USD to EUR
-        // 'USD': 1,
-        // Add conversion rates for other currencies as needed
-      };
-
-      // Convert price to IDR if the currency is USD or EUR
-      if (conversionRates[currency]) {
-        price = Math.floor(price) * conversionRates[currency];
-        price = Math.ceil(price); // Round the price up to the nearest whole number
-      }
-
-      var formatter = new Intl.NumberFormat('en-EN', {
-        style: 'currency',
-        currency: currency,
-      });
-      return formatter.format(price);
+<script>
+  var collectionProducts = {{ collection.products | json }};
+  var dataCollectionProducts = [];
+  
+  // get the available products
+  for (let i = 0; i < collectionProducts.length; i++) {
+    if (collectionProducts[i].available == true) {
+      dataCollectionProducts.push(collectionProducts[i]);
     }
-  </script>
+  }
+  
+  // sorting of available products by created at
+  dataCollectionProducts.sort(function(a, b) {
+    if (a.created_at > b.created_at) {
+      return -1;
+    } else if (a.created_at < b.created_at) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+
+  // Retrieve the last displayed page number from localStorage (if available)
+  // put parameter url now
+  const queryUrlString = window.location.search;
+  const urlParams = new URLSearchParams(queryUrlString);
+
+  // Retrieve the last displayed page number from localStorage (if available)
+  let pagePaginate = 0;
+  if(Number(urlParams.get('page')) > 0) {
+    pagePaginate = Number(urlParams.get('page')) - 1; // for make the first index of paginate start by 0
+  }
+  
+  // back button
+  $(document).on('click', '#back-page', function() {
+    if (pagePaginate == 0) {
+      console.log("page number 1 mtfck");
+    } else {
+      pagePaginate -= 1;
+      console.log("back button clicked");
+      console.log("page number -1 mtfck");
+      updateProductList(); // Display the previous page of products
+    }
+  });
+  
+  // next button
+  $(document).on('click', '#next-page', function() {
+    if (dataCollectionProducts.length / 8 <= pagePaginate * 8) {
+      console.log("next page is undefined mtfck");
+    } else {
+      pagePaginate += 1;
+      console.log("next button clicked");
+      console.log("page number +1 mtfck");
+      updateProductList(); // Display the next page of products
+    }
+  });
+  
+  // Function to update the product list
+  $(document).ready(function() {
+    // Update product list function
+    function updateProductList() {
+      let shopLink = window.location.origin + window.location.pathname;
+      let productsList = $('#products-list');
+      productsList.html(""); // Clear the existing product list
+      let displayed_products_top = 0;
+
+      // Preload the product list items based on current page
+      for (let j = 0 + (pagePaginate * {{query_product}}); j < (pagePaginate + 1) * {{query_product}}; j++) {
+
+        // Always check if dataCollectionProducts exists and has elements before accessing it
+        if (!dataCollectionProducts || dataCollectionProducts.length === 0 || j >= dataCollectionProducts.length) {
+          break; // Handle potential issues (empty array or out-of-bounds access)
+        }
+
+        let listItem = $('<li>');
+
+        const itemsPerRow = {{row_product}}; // Assuming row_product is defined elsewhere
+
+        let isLastItemInPage = j === (pagePaginate * {{query_product}} + {{query_product}} - 1);
+        let isLastRowAndNotFull = dataCollectionProducts.length % itemsPerRow !== 0;
+
+        if (displayed_products_top < itemsPerRow) {
+          listItem.addClass('border flex grow max-w-[42vw] h-max-[17vw] mx-auto h-auto !mx-[4%] !mb-[4%] lg:!mx-[0] lg:!mb-[0] lg:!border-s-0 !border-black !min-w-[0%]');
+          if (j < itemsPerRow && dataCollectionProducts.length < itemsPerRow) {
+            listItem.addClass('lg:!h-full'); // Add for the first row
+          }
+        } else {
+          listItem.addClass('border-product-5 border flex grow max-w-[42vw] h-max-[17vw] mx-auto h-auto !mx-[4%] !mb-[4%] lg:!mx-[0] lg:!mb-[0] lg:!border-s-0 !border-black !min-w-[0%] border-product-5 flex grow max-w-[42vw] h-max-[17vw] mx-auto h-auto !mx-[4%] !mb-[4%] lg:!mx-[0] lg:!mb-[0] lg:!border-s-0 !border-black !border-t lg:!border-t-0 !min-w-[0%]');
+
+          if (isLastItemInPage && dataCollectionProducts.length % itemsPerRow === 0) {
+            // Don't add class for last item in a full row on the last page
+          } else {
+            listItem.addClass('lg:!h-full'); // Add for incomplete rows (last row or partial row)
+          }
+        } displayed_products_top++;
+
+        // console.log(dataCollectionProducts);
+
+        let productLink = $('<a>').addClass('product-card');
+        productLink.attr('href', shopLink + "/products/" + dataCollectionProducts[j].handle);
+
+        let productImage = $('<img>').addClass('product-image');
+        productImage.attr('src', dataCollectionProducts[j].featured_image);
+
+        let productText = $('<p>').addClass('text-product');
+        productText.html(dataCollectionProducts[j].title.substr(0, 20) + '<br>');
+
+        let productVendor = $('<a>').addClass('text-xs opacity-60');
+        productVendor.html(dataCollectionProducts[j].vendor + '<br>');
+        let vendor = dataCollectionProducts[j].vendor.toLowerCase().replace(/\s+/g, '-');
+        productVendor.attr('href', window.location.origin + '/collections/' + vendor);
+
+        let priceSpan = $('<span>').addClass('_original-price');
+        let childPriceSpan = $('<span>').addClass('_money');
+        childPriceSpan.html(formatCurrency(Math.floor(dataCollectionProducts[j].price / 100), document.querySelector('.bucks-selected').textContent)); // Round to 2 decimal places
+
+        let comparePriceSpan = $('<span>').addClass('_compare-price');
+        let childComparePriceSpan = $('<span>').addClass('_money');
+
+        if (dataCollectionProducts[j].compare_at_price > dataCollectionProducts[j].price) {
+          childComparePriceSpan.html(formatCurrency(Math.floor(dataCollectionProducts[j].compare_at_price / 100), document.querySelector('.bucks-selected').textContent));
+          productText.append(comparePriceSpan);
+          comparePriceSpan.append(childComparePriceSpan);
+          priceSpan.html('<br>');
+        }
+
+        priceSpan.append(childPriceSpan);
+        productText.append(priceSpan);
+        productLink.append(productImage);
+        productLink.append(productVendor);
+        productLink.append(productText);
+        listItem.append(productLink);
+
+        productsList.append(listItem);
+      }
+      localStorage.setItem('currentPage', pagePaginate);
+    } setInterval(updateProductList, 1000);
+
+    // Initial load of the product list
+    updateProductList();
+
+    // Calculate navbarProduct height dynamically
+    var getValueLengthProduct = dataCollectionProducts.length;
+    var rows = Math.ceil(getValueLengthProduct / {{row_product}});
+    $("#navbarProduct").addClass("h-[" + (314 * {{column_product}}) + "px]"); // Assuming a base height of 314px per row
+
+    // Navigation and Pagination Buttons (using jQuery)
+    $('#prev-page').click(function() {
+      if (pagePaginate > 1) {
+        pagePaginate--;
+        updateProductList();
+      }
+    });
+
+    $('#next-page').click(function() {
+      let maxPages = Math.ceil(dataCollectionProducts.length / query_product);
+      if (pagePaginate < maxPages) {
+        pagePaginate++;
+        updateProductList();
+      }
+    });
+
+    $('.page-item').click(function() {
+      let pageNumber = $(this).attr('data-page');
+      pagePaginate = pageNumber;
+      updateProductList();
+    });
+  });
+  
+</script> 
+<script>
+  function formatCurrency(price, currency) {
+    // Get the text inside the span with the class "bucks-selected"
+    var spanText = document.querySelector('.bucks-selected').textContent;
+
+    // Output the text to the console
+    currency = spanText;
+
+    // Define conversion rates from USD to other currencies
+    var conversionRates = {
+      'IDR': 16000, // Example conversion rate from USD to IDR
+      'EUR': 1,    // Example conversion rate from USD to EUR
+      // 'USD': 1,
+      // Add conversion rates for other currencies as needed
+    };
+
+    // Convert price to IDR if the currency is USD or EUR
+    if (conversionRates[currency]) {
+      price = Math.floor(price) * conversionRates[currency];
+      price = Math.ceil(price); // Round the price up to the nearest whole number
+    }
+
+    var formatter = new Intl.NumberFormat('en-EN', {
+      style: 'currency',
+      currency: currency,
+    });
+    return formatter.format(price);
+  }
+</script>
     
     
