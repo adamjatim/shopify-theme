@@ -212,7 +212,7 @@
 
         // Preload the product list items based on current page
         for (let j = 0 + (pagePaginate * {{query_product}}); j < (pagePaginate + 1) * {{query_product}}; j++) {
-          console.log("pagePaginate : "+pagePaginate);
+          
           if (j >= dataCollectionProducts.length) break; // Handle potential out-of-bounds access
 
           let listItem = $('<li>');
