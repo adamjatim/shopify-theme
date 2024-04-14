@@ -227,7 +227,7 @@
         } else {
           listItem.addClass('border-product-5 border flex grow max-w-[42vw] h-max-[17vw] mx-auto h-auto !mx-[4%] !mb-[4%] lg:!mx-[0] lg:!mb-[0] lg:!border-s-0 !border-black !min-w-[0%] border-product-5 flex grow max-w-[42vw] h-max-[17vw] mx-auto h-auto !mx-[4%] !mb-[4%] lg:!mx-[0] lg:!mb-[0] lg:!border-s-0 !border-black !border-t lg:!border-t-0 !min-w-[0%]');
 
-          if (dataCollectionProducts[(dataCollectionProducts.length%{{ row_product }})+j == null]) {
+          if (dataCollectionProducts[(dataCollectionProducts.length%{{ row_product }})+j] == null) {
             // j > dataCollectionProducts.length - ({{ query_product }} * pagePaginate+1)
             // (dataCollectionProducts[dataCollectionProducts.length+((pagePaginate+1)*{{ query_product }})])==null
             // Don't add class for last item in a full row on the last page
