@@ -1,4 +1,5 @@
 {% assign collection = collections['all'] %}
+<script>var collectionProducts = {{ collection.products | json }};</script>
 {% comment %} {% assign current_variant = product.selected_or_first_available_variant %} {% endcomment %}
 {% comment %} {% assign featured_image = current_variant.featured_image | default: product.featured_image %} {% endcomment %}
 
@@ -115,6 +116,7 @@
                 {% if product.compare_at_price > product.price %}
                   <p class="_product-price"></p>
                     <p class="_compare-price">{{ product.selected_or_first_available_variant.compare_at_price | money }}</p>
+                    <script>console.log()</script>
                     <br>
                     <p class="_original-price">{{ product.selected_or_first_available_variant.price | money }}</p>
                   </p>
@@ -293,4 +295,39 @@
   
   // get element for nav brand & type product
   document.getElementById("navbarProduct").classList.add("min-h-["+ (314 * 2) +"px]");
+</script>
+<script>
+  // Define the formatCurrency function
+  function formatCurrency(price, currency) {
+    // Get the text inside the span with the class "bucks-selected"
+    var spanText = document.querySelector('.bucks-selected').textContent;
+
+    // Output the text to the console
+    currency = spanText;
+
+    // Define conversion rates from USD to other currencies
+    var conversionRates = {
+      'IDR': 16000, // Example conversion rate from USD to IDR
+      'EUR': 1,     // Example conversion rate from USD to EUR
+      // 'USD': 1,
+      // Add conversion rates for other currencies as needed
+    };
+
+    // Convert price to IDR if the currency is USD or EUR
+    if (conversionRates[currency]) {
+      price = Math.floor(price) * conversionRates[currency];
+      price = Math.ceil(price); // Round the price up to the nearest whole number
+    }
+
+    var formatter = new Intl.NumberFormat('en-EN', {
+      style: 'currency',
+      currency: currency,
+    });
+    return formatter.format(price);
+  }
+
+  // Your existing JavaScript code
+  document.addEventListener('DOMContentLoaded', function() {
+    // Your existing code goes here...
+  });
 </script>
