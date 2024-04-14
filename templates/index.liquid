@@ -218,13 +218,13 @@
 
           if (displayed_products_top < {{row_product}}) {
             listItem.addClass('border flex grow max-w-[42vw] h-max-[17vw] mx-auto h-auto !mx-[4%] !mb-[4%] lg:!mx-[0] lg:!mb-[0] lg:!border-s-0 !border-black !min-w-[0%]');
-            if ( dataCollectionProducts.length % {{ row_product }} != 0 ) {
-              listItem.addClass('h-full');
+            if ( dataCollectionProducts.length % {{ row_product }} != 0 && j < {{ row_product }} ) {
+              listItem.addClass('lg:!h-full');
             }
           } else {
             listItem.addClass('border-product-5 border flex grow max-w-[42vw] h-max-[17vw] mx-auto h-auto !mx-[4%] !mb-[4%] lg:!mx-[0] lg:!mb-[0] lg:!border-s-0 !border-black !min-w-[0%] border-product-5 flex grow max-w-[42vw] h-max-[17vw] mx-auto h-auto !mx-[4%] !mb-[4%] lg:!mx-[0] lg:!mb-[0] lg:!border-s-0 !border-black !border-t lg:!border-t-0 !min-w-[0%]');
             if ( dataCollectionProducts.length % {{ row_product }} != 0 ) {
-              listItem.addClass('h-full');
+              listItem.addClass('lg:!h-full');
               
             }
           } displayed_products_top++;
