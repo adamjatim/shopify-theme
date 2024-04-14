@@ -213,8 +213,9 @@
 
         const itemsPerRow = {{ row_product }}; // Assuming row_product is defined elsewhere
 
-        console.log(displayed_products_top)
-        let isLastRow = displayed_products_top >= itemsPerRow;
+        console.log("displayed_products_top : "+displayed_products_top)
+        let isLastRow = (displayed_products_top+1) >= itemsPerRow;
+        console.log("displayed_products_top+1 : "+displayed_products_top)
         let isLastItemInPage = j === (pagePaginate * {{ query_product }} + {{ query_product }} - 1);
         let isLastRowAndNotFull = isLastRow && (dataCollectionProducts.length % itemsPerRow !== 0);
         let isPartialRow = (pagePaginate + 1) * {{ query_product }} >= dataCollectionProducts.length && j >= itemsPerRow;
