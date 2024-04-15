@@ -107,24 +107,7 @@
               </script>
               <a id="vendorProduct" class="flex my-auto gap-x-2 opacity-50"></a>
               <h1 class="text-4xl font-bold">{{ product.title }}</h1>
-              <div class="product-prices" id="product-prices">
-                {% comment  %}
-                  <p class="product-compare {% if product.selected_or_first_available_variant.compare_at_price <= product.selected_or_first_available_variant.price %} hide {% endif %} ">
-                    {{ product.selected_or_first_available_variant.compare_at_price | money }}
-                  </p>
-                {% endcomment %}
-                {% if product.compare_at_price > product.price %}
-                  <p class="_product-price">
-                    <p class="_compare-price">{{ product.selected_or_first_available_variant.compare_at_price | money }}</p>
-                    <br>
-                    <p class="_original-price">{{ product.selected_or_first_available_variant.price | money }}</p>
-                  </p>
-                {% else %}
-                  <p class="_product-price">
-                    {{ product.selected_or_first_available_variant.price | money }}
-                  </p>
-                {% endif %}
-              </div>
+              <div class="product-prices" id="product-prices"></div>
               <div>{{ product.description }}</div>
 
               {% form 'product', product %}
