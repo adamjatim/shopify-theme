@@ -285,13 +285,13 @@
     function UpdateProductPrices() {
       if (product.compare_at_price > product.price) {
         $("#product-prices").html(
-          '<p class="_compare-price">'+formatCurrency(product.compare_at_price, document.querySelector('.bucks-selected').textContent)+'</p>'+
+          '<p class="_compare-price">'+formatCurrency(product.compare_at_price/100, document.querySelector('.bucks-selected').textContent)+'</p>'+
           '<br>'+
-          '<p class="_original-price">'+formatCurrency(product.price, document.querySelector('.bucks-selected').textContent)+'</p>'
+          '<p class="_original-price">'+formatCurrency(product.price/100, document.querySelector('.bucks-selected').textContent)+'</p>'
         );
       } else {
         $("#product-prices").html(
-          '<p class="_original-price">'+formatCurrency(product.price, document.querySelector('.bucks-selected').textContent)+'</p>'
+          '<p class="_original-price">'+formatCurrency(product.price/100, document.querySelector('.bucks-selected').textContent)+'</p>'
         );
       }
     } setInterval(UpdateProductPrices, 1000);
