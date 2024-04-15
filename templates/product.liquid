@@ -114,9 +114,8 @@
                   </p>
                 {% endcomment %}
                 {% if product.compare_at_price > product.price %}
-                  <p class="_product-price"></p>
+                  <p class="_product-price">
                     <p class="_compare-price">{{ product.selected_or_first_available_variant.compare_at_price | money }}</p>
-                    <script>console.log()</script>
                     <br>
                     <p class="_original-price">{{ product.selected_or_first_available_variant.price | money }}</p>
                   </p>

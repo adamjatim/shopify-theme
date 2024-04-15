@@ -237,7 +237,8 @@
           productImage.attr('src', dataCollectionProducts[j].featured_image);
 
           let productText = $('<p>').addClass('text-product');
-          productText.html(dataCollectionProducts[j].title.substr(0, 20) + '<br>');
+            // productText.html(dataCollectionProducts[j].title.substr(0, 20) + '<br>');
+            productText.html(dataCollectionProducts[j].title. + '<br>');
 
           let productVendor = $('<a>').addClass('text-xs opacity-60');
           productVendor.html(dataCollectionProducts[j].vendor + '<br>');
