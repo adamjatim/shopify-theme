@@ -295,6 +295,18 @@
   // get element for nav brand & type product
   document.getElementById("navbarProduct").classList.add("min-h-["+ (314 * 2) +"px]");
 </script>
+
+<script>
+  $(document).ready(function() {
+    // update product price
+    function UpdateProductPrices() {
+      let productPrices = $("#product-prices");
+      product = {{ product }};
+      console.log(product);
+    }
+  })
+</script>
+
 <script>
   // Define the formatCurrency function
   function formatCurrency(price, currency) {
