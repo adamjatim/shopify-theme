@@ -174,11 +174,11 @@
   // back button
   $(document).on('click', '#back-page', function() {
     if (pagePaginate == 0) {
-      console.log("page number 1 mtfck");
+      console.log("page number 1");
     } else {
       pagePaginate -= 1;
       console.log("back button clicked");
-      console.log("page number -1 mtfck");
+      console.log("page number -1");
       updateProductList(); // Display the previous page of products
     }
   });
@@ -186,11 +186,11 @@
   // next button
   $(document).on('click', '#next-page', function() {
     if (dataCollectionProducts.length / 8 <= pagePaginate * 8) {
-      console.log("next page is undefined mtfck");
+      console.log("next page is undefined");
     } else {
       pagePaginate += 1;
       console.log("next button clicked");
-      console.log("page number +1 mtfck");
+      console.log("page number +1");
       updateProductList(); // Display the next page of products
     }
   });
