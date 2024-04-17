@@ -16,6 +16,11 @@ p {
   color: black;
 }
 
+.font-bold {
+    font-weight: 700;
+  text-transform: uppercase;
+}
+
 main {
   display: flex;
   justify-content: center;
