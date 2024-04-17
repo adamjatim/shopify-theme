@@ -254,7 +254,7 @@
         let vendor = dataCollectionProducts[j].vendor.toLowerCase().replace(/\s+/g, '-');
         productVendor.attr('href', window.location.origin + '/collections/' + vendor);
 
-        let priceSpan = $('<span>').addClass('_original-price');
+        let priceSpan = $('<span>').addClass('_original-prize');
         let childPriceSpan = $('<span>').addClass('_money');
         childPriceSpan.html(formatCurrency(Math.floor(dataCollectionProducts[j].price / 100), document.querySelector('.bucks-selected').textContent)); // Round to 2 decimal places
 
