@@ -830,6 +830,12 @@ nav[role=navigation] {
   height: auto !important;
 }
 
+.text-xs {
+    font-size: 11px;
+    line-height: 1rem;
+  text-transform: uppercase;
+}
+
 .hxoSelectTheme {
   --hxoSelect-width: none !important;
   --hxoSelect-height: none !important;
