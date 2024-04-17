@@ -451,14 +451,15 @@ input[type=number]::-webkit-outer-spin-button {
 
 .product-prices {
   display: flex;
-  font-size: 20px;
+  font-size: 11px;
   align-items: center;
   flex-wrap: wrap;
   gap: 1%;
 }
 
 ._product-price {
-  font-size: 20px;
+  font-size: 11px;
+  font-weight: 700;
   color: #000000;
 }
 
