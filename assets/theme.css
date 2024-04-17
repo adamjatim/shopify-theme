@@ -168,7 +168,12 @@ h1.title {
   margin-left: 0;
   padding: 10px;
 }
- 
+
+.text-3xl {
+    font-size: 11px;
+    line-height: none;
+}
+
 .left-bar {
   min-width: 200px;
   max-width: 200px;
