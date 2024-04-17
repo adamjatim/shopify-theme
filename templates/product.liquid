@@ -98,7 +98,7 @@
                     // Assuming dataCollectionProducts is accessible here
                     var productVendor = "{{ product.vendor }}"; // Example vendor name
                     // Convert the vendor name to lowercase
-                    var vendor = productVendor.toUpperCase();
+                    var vendor = productVendor.toLowerCase();
                     // Replace spaces with hyphens
                     vendor = vendor.replace(/\s+/g, '-');
                     vendorElement.html(productVendor);
