@@ -74,7 +74,7 @@
             {% for link in linklists.main-menu.links %}
               <div class="widget-left-bar">
                 <a href="/" {% if link.active %}aria-current="page"{% endif %}>
-                  <h2 text-transform="uppercase" class="font-bold">{{ link.title }}</h2>
+                  <h2 class="font-bold">{{ link.title }}</h2>
                 </a>
                 {% if link.links != blank %}
                   <ul class="product-list">
