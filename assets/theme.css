@@ -474,10 +474,6 @@ input[type=number]::-webkit-outer-spin-button {
   color: #000000;
 }
 
-._original-prize {
-  font-size: 11px;
-  color: #000000;
-}
 ._compare-price {
   font-size: 11px;
   color: #666;
