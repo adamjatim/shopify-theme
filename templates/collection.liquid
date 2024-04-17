@@ -249,7 +249,7 @@
         // productText.html(dataCollectionProducts[j].title.substr(0, 20) + '<br>');
         productText.html(dataCollectionProducts[j].title + '<br>');
 
-        let productVendor = $('<a>').addClass('text-xs opacity-60');
+        let productVendor = $('<a>').addClass('text-s opacity-60');
         productVendor.html(dataCollectionProducts[j].vendor + '<br>');
         let vendor = dataCollectionProducts[j].vendor.toLowerCase().replace(/\s+/g, '-');
         productVendor.attr('href', window.location.origin + '/collections/' + vendor);
