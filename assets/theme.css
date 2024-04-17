@@ -23,7 +23,7 @@ main {
   height: auto;
 }
 
-.widget-left-bar>ul>li {
+.widget-left-bar .ul .li {
     margin-right: auto;
     display: block;
     width: 100%;
