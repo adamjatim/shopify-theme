@@ -832,8 +832,7 @@ nav[role=navigation] {
 
 .text-xs {
     font-size: 11px;
-   
-  text-transform: uppercase;
+    text-transform: uppercase;
 }
 
 .hxoSelectTheme {
