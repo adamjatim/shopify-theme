@@ -835,6 +835,11 @@ nav[role=navigation] {
     text-transform: uppercase;
 }
 
+
+.text-s {
+    text-transform: uppercase;
+}
+
 .hxoSelectTheme {
   --hxoSelect-width: none !important;
   --hxoSelect-height: none !important;
