@@ -211,6 +211,7 @@ ul {
 
 ul.product-list {
   width: auto;
+  font-size: 11px;
 }
 
 .hide {
