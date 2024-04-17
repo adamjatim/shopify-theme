@@ -23,6 +23,14 @@ main {
   height: auto;
 }
 
+.widget-left-bar>ul>li {
+    margin-right: auto;
+    display: block;
+    width: 100%;
+    margin-top: none;
+    margin-bottom: none;
+}
+
 .gap-main-border {
   margin-top: 140px;
   margin-bottom: 100px;
