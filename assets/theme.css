@@ -16,10 +16,6 @@ p {
   color: black;
 }
 
-a:active {
-  color: yellow;
-}
-
 .font-boldz {
     font-weight: 700;
   pointer-events: none;
