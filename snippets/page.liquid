@@ -41,14 +41,14 @@
                   <ul class="product-list">
                     {% for child_link in link.links %}
                       <li>
-                        <a href="{{ child_link.url }}" {% if child_link.active %}aria-current="page"{% endif %}>
+                        <a class="hover:underline hover:underline-offset-4" href="{{ child_link.url }}" {% if child_link.active %}aria-current="page"{% endif %}>
                           {{ child_link.title }}
                         </a>
                         {% if child_link.links != blank %}
                           <ul>
                             {% for grandchild_link in child_link.links %}
                               <li>
-                                <a href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page"{% endif %}>
+                                <a class="hover:underline hover:underline-offset-4" href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page"{% endif %}>
                                   {{ grandchild_link.title }}
                                 </a>
                               </li>
@@ -80,19 +80,19 @@
 
               // Clear existing content if needed (replace with .append() to add after):
               footerElement.html(
-                '<a href="' + captureUrlWindows + '/pages/about">About</a>' +
+                '<a class="hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/about">About</a>' +
                 '<a>•</a>' +
-                '<a href="' + captureUrlWindows + '/pages/privacy-policy">Privacy & Policy</a>' +
+                '<a class="hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/privacy-policy">Privacy & Policy</a>' +
                 '<a>•</a>' +
-                '<a href="' + captureUrlWindows + '/pages/terms-conditions">Terms & Conditions</a>' +
+                '<a class="hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/terms-conditions">Terms & Conditions</a>' +
                 '<a>•</a>' +
-                '<a href="' + captureUrlWindows + '/pages/contact">Contact</a>'
+                '<a class="hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/contact">Contact</a>'
               );
             } else {
               console.error("Element with ID '#footerPages' not found.");
             }
           });
-        <\/script>
+        </script>
         <div id="footerPages" class="flex flex-row gap-[5px]">
         </div>
       </div>
@@ -104,5 +104,5 @@
 
 <script>
   // get element for nav brand & type product
-  document.getElementById("navbarProduct").classList.add("min-h-["+ (314 * 2) +"px]");
-<\/script>
+  document.getElementById("navbarProduct").classList.add("min-h-["+ (280 * 2) +"px]");
+</script>

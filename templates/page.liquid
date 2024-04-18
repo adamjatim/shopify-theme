@@ -81,13 +81,13 @@
 
               // Clear existing content if needed (replace with .append() to add after):
               footerElement.html(
-                '<a href="' + captureUrlWindows + '/pages/about">About</a>' +
+                '<a class="hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/about">About</a>' +
                 '<a>•</a>' +
-                '<a href="' + captureUrlWindows + '/pages/privacy-policy">Privacy & Policy</a>' +
+                '<a class="hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/privacy-policy">Privacy & Policy</a>' +
                 '<a>•</a>' +
-                '<a href="' + captureUrlWindows + '/pages/terms-conditions">Terms & Conditions</a>' +
+                '<a class="hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/terms-conditions">Terms & Conditions</a>' +
                 '<a>•</a>' +
-                '<a href="' + captureUrlWindows + '/pages/contact">Contact</a>'
+                '<a class="hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/contact">Contact</a>'
               );
             } else {
               console.error("Element with ID '#footerPages' not found.");
@@ -105,5 +105,5 @@
 
 <script>
   // get element for nav brand & type product
-  document.getElementById("navbarProduct").classList.add("min-h-["+ (314 * 2) +"px]");
+  document.getElementById("navbarProduct").classList.add("min-h-["+ (280 * 2) +"px]");
 </script>

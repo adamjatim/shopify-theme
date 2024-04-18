@@ -114,13 +114,13 @@
 
             // Clear existing content if needed (replace with .append() to add after):
             footerElement.html(
-              '<a href="' + captureUrlWindows + '/pages/about">About</a>' +
+              '<a class="hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/about">About</a>' +
               '<a>•</a>' +
-              '<a href="' + captureUrlWindows + '/pages/privacy-policy">Privacy & Policy</a>' +
+              '<a class="hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/privacy-policy">Privacy & Policy</a>' +
               '<a>•</a>' +
-              '<a href="' + captureUrlWindows + '/pages/terms-conditions">Terms & Conditions</a>' +
+              '<a class="hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/terms-conditions">Terms & Conditions</a>' +
               '<a>•</a>' +
-              '<a href="' + captureUrlWindows + '/pages/contact">Contact</a>'
+              '<a class="hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/contact">Contact</a>'
             );
           } else {
             console.error("Element with ID '#footerPages' not found.");
@@ -286,7 +286,7 @@
     // Calculate navbarProduct height dynamically
     var getValueLengthProduct = dataCollectionProducts.length;
     var rows = Math.ceil(getValueLengthProduct / {{row_product}});
-    $("#navbarProduct").addClass("h-[" + (340 * {{column_product}}) + "px]"); // Assuming a base height of 314px per row
+    $("#navbarProduct").addClass("h-[" + (280 * {{column_product}}) + "px]"); // Assuming a base height of 314px per row
 
     // Navigation and Pagination Buttons (using jQuery)
     $('#prev-page').click(function() {
