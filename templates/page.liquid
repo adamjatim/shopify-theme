@@ -70,30 +70,7 @@
       </div>
 
       <div class="flex lg:flex-row flex-col-reverse justify-between px-[10px] pb-[10px] items-center gap-4 lg:gap-0">
-        <script>
-          $(document).ready(function() {
-            // Double-check the ID of the footer element:
-            var footerElement = $('#footerPages');
-
-            // Check if the element exists before appending:
-            if (footerElement.length > 0) {
-              var captureUrlWindows = window.location.origin; // Use location.origin for the domain
-
-              // Clear existing content if needed (replace with .append() to add after):
-              footerElement.html(
-                '<a class="hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/about">About</a>' +
-                '<a>•</a>' +
-                '<a class="hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/privacy-policy">Privacy & Policy</a>' +
-                '<a>•</a>' +
-                '<a class="hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/terms-conditions">Terms & Conditions</a>' +
-                '<a>•</a>' +
-                '<a class="hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/contact">Contact</a>'
-              );
-            } else {
-              console.error("Element with ID '#footerPages' not found.");
-            }
-          });
-        </script>
+        
         <div id="footerPages" class="flex flex-row gap-[5px]">
         </div>
       </div>
@@ -102,6 +79,31 @@
   </div>
 
 {% comment %} {%- endpaginate -%} {% endcomment %}
+
+<script>
+    $(document).ready(function() {
+      // Double-check the ID of the footer element:
+      var footerElement = $('#footerPages');
+
+      // Check if the element exists before appending:
+      if (footerElement.length > 0) {
+        var captureUrlWindows = window.location.origin; // Use location.origin for the domain
+
+        // Clear existing content if needed (replace with .append() to add after):
+        footerElement.html(
+          '<a class="hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/about">About</a>' +
+          '<a>•</a>' +
+          '<a class="hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/privacy-policy">Privacy & Policy</a>' +
+          '<a>•</a>' +
+          '<a class="hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/terms-conditions">Terms & Conditions</a>' +
+          '<a>•</a>' +
+          '<a class="hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/contact">Contact</a>'
+        );
+      } else {
+        console.error("Element with ID '#footerPages' not found.");
+      }
+    });
+  </script>
 
 <script>
   // get element for nav brand & type product
