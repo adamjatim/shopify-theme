@@ -115,6 +115,20 @@
 
 {% endpaginate %}
 
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var productLinks = document.querySelectorAll(".product-list a");
+    var currentPath = window.location.pathname;
+
+    productLinks.forEach(function(link) {
+      if (link.getAttribute("href") === currentPath) {
+        link.classList.add("underline"+"underline-offset-4");
+      }
+    });
+  });
+  </script>
+
+
 <script>
     $(document).ready(function() {
       // Double-check the ID of the footer element:
