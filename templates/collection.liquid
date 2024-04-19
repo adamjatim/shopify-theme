@@ -1,6 +1,3 @@
-<script>
-  console.log({{ request.path }});
-</script>
 {% comment %} 
   Config untuk column & row Produk
 
@@ -79,14 +76,14 @@
                 <ul class="product-list">
                   {% for child_link in link.links %}
                     <li>
-                      <a class="hover:underline hover:underline-offset-4" href="{{ child_link.url }}" {% if child_link.active %}aria-current="page"{% endif %}>
+                      <a class="{% if request.path == child_link.url %}hover:underline hover:underline-offset-4{% endif %} hover:underline hover:underline-offset-4" href="{{ child_link.url }}" {% if child_link.active %}aria-current="page"{% endif %}>
                         {{ child_link.title }}
                       </a>
                       {% if child_link.links != blank %}
                         <ul>
                           {% for grandchild_link in child_link.links %}
                             <li>
-                              <a class="hover:underline hover:underline-offset-4" href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page"{% endif %}>
+                              <a class="{% if request.path == child_link.url %}hover:underline hover:underline-offset-4{% endif %} hover:underline hover:underline-offset-4" href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page"{% endif %}>
                                 {{ grandchild_link.title }}
                               </a>
                             </li>
