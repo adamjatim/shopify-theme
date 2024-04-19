@@ -80,7 +80,7 @@
                   <ul class="product-list">
                     {% for child_link in link.links %}
                       <li>
-                        <a class="hover:underline hover:underline-offset-4" href="{{ child_link.url }}" {% if child_link.active %}aria-current="page"{% endif %}>
+                        <a {{ shop.domain }} class="hover:underline hover:underline-offset-4" href="{{ child_link.url }}" {% if child_link.active %}aria-current="page"{% endif %}>
                           {{ child_link.title }}
                         </a>
                         {% if child_link.links != blank %}
@@ -121,6 +121,16 @@
   </div>
 
   {% endpaginate %}
+
+  <script>
+    $(document).ready(function() {
+      var captureUrlWindows = window.location.href; // For the domain
+
+      var navigationCollection = $('nav[role="navigation"]>.widget-left-bar>ul>li>a');
+
+      
+    })
+  </script>
 
   <script>
     $(document).ready(function() {
