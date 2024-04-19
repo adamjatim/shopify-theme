@@ -116,33 +116,6 @@
 {% endpaginate %}
 
 <script>
-  function updateActiveClass() {
-    var productLinks = document.querySelectorAll(".product-list a");
-    var currentPath = window.location.pathname;
-
-    productLinks.forEach(function(link) {
-      if (link.getAttribute("href") === currentPath) {
-        // Add the "underline" and "underline-offset-4" classes
-        var currentClasses = link.getAttribute("class");
-        if (!currentClasses.includes("underline")) {
-          link.setAttribute("class", currentClasses + " underline underline-offset-4");
-        }
-      } else {
-        // Remove the "underline" and "underline-offset-4" classes if it doesn't match the current path
-        var currentClasses = link.getAttribute("class");
-        if (currentClasses.includes("underline")) {
-          link.setAttribute("class", currentClasses.replace("underline", "").replace("underline-offset-4", ""));
-        }
-      }
-    });
-  }
-
-  // Run the updateActiveClass function every 1 second (1000 milliseconds)
-  setInterval(updateActiveClass, 1000);
-</script>
-
-
-<script>
     $(document).ready(function() {
       // Double-check the ID of the footer element:
       var footerElement = $('#footerPages');
