@@ -77,6 +77,17 @@
             // Check if the element exists before appending:
             if (footerElement.length > 0) {
               var captureUrlWindows = window.location.origin; // Use location.origin for the domain
+              var customClassAbout, customClassPrivacyPolicy, customClassTermsConditions, customClassContact;
+
+              if (window.location.pathname == "/pages/about") {
+                customClassAbout = "underline underline-offset-4";
+              } else if (window.location.pathname == "/pages/privacy-policy") {
+                customClassPrivacyPolicy = "underline underline-offset-4";
+              } else if (window.location.pathname == "/pages/terms-conditions") {
+                customClassTermsConditions = "underline underline-offset-4";
+              } else if (window.location.pathname == "/pages/contact") {
+                customClassContact = "underline underline-offset-4";
+              }
 
               // Clear existing content if needed (replace with .append() to add after):
               footerElement.html(
