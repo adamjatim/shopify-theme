@@ -91,13 +91,13 @@
 
               // Clear existing content if needed (replace with .append() to add after):
               footerElement.html(
-                '<a class="hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/about">About</a>' +
+                '<a class="'+customClassAbout+' hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/about">About</a>' +
                 '<a>•</a>' +
-                '<a class="hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/privacy-policy">Privacy & Policy</a>' +
+                '<a class="'+customClassPrivacyPolicy+' hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/privacy-policy">Privacy & Policy</a>' +
                 '<a>•</a>' +
-                '<a class="hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/terms-conditions">Terms & Conditions</a>' +
+                '<a class="'+customClassTermsConditions+' hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/terms-conditions">Terms & Conditions</a>' +
                 '<a>•</a>' +
-                '<a class="hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/contact">Contact</a>'
+                '<a class="'+customClassContact+' hover:underline hover:underline-offset-4" href="' + captureUrlWindows + '/pages/contact">Contact </a>'
               );
             } else {
               console.error("Element with ID '#footerPages' not found.");
